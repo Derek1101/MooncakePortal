@@ -1,0 +1,23 @@
+[
+    {
+        "update_detail": "借助私有 IP 地址为您的 Windows Azure 虚拟机提供负载平衡。如果您的虚拟机在虚拟网络内，将从虚拟网络访问内部负载平衡端点。如果不在虚拟网络内，则可使用云服务访问。内部负载平衡适合用于创建多层应用程序，并对不对外的应用程序层进行负载平衡。该服务可免费用于虚拟机的标准级服务。",
+        "update_description": "内部负载平衡（Internal Load Balancing）预览版上线。",
+        "update_title": "Internal Load Balancing",
+        "update_link": "http://www.windowsazure.cn/community/newsletter/2015/last year",
+        "update_date": "2014年8月15日 "
+    },
+    {
+        "update_detail": "D 系列虚拟机提供基于SSD的存储所支持的临时磁盘，使其可进行极快速的临时存储，您可以获得更快的处理速度以及更大的内存，满足您工作负载的需要。详细信息请参阅?D 系列虚拟机视频，点击这里可进一步了解D系列虚拟机的规格信息，欲了解定价情况，请访问?D 系列虚拟机定价页面。",
+        "update_description": "基于SSD存储支持的D系列虚拟机正式上线。",
+        "update_title": "SSD-VM",
+        "update_link": "http://www.windowsazure.cn/community/newsletter/2015/last year",
+        "update_date": "2014年12月01日"
+    },
+    {
+        "update_detail": "现在您可以直接使用 Windows Azure 的管理门户，即刻直接部署 VM Depot 上的虚拟机。让您更为方便、快捷的尝试各种选择以最大程度 的实现 Azure 这个开放的云平台为您带来的价值。请参阅帮助文档了解详细信息 。",
+        "update_description": "新增直接使用 Windows Azure 管理门户部署 VM Depot上的虚拟机",
+        "update_title": "VM Depot",
+        "update_link": "http://www.windowsazure.cn/community/newsletter/2015/lastyear",
+        "update_date": "2014年04月28日"
+    }
+]

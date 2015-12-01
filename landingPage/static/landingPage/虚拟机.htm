@@ -1,0 +1,1046 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0080)http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/ -->
+<html class="no-js zh-cn t-1052" lang="zh-cn" xmlns:wb="http://open.weibo.com/wb">
+<!--<![endif]-->
+<head>
+    <meta content="IE=11.0000" http-equiv="X-UA-Compatible" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="baidu-site-verification" content="16NXvS5q01" />
+    <meta content="c88636946b021b8f" property="wb:webmaster" />
+    <meta name="msvalidate.01" content="3C6970AB2023ECA83F1D8E83E112A6BF" />
+    <link href="http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/css/images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="虚拟机_files/corecss.css" rel="stylesheet" type="text/css" />
+    <link href="虚拟机_files/corecss2.css" rel="stylesheet" type="text/css" />
+    <title>虚拟机</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="application-name" content="Windows Azure Home" />
+    <meta name="msapplication-task" content="name=Get The Free Trial;action-uri=http://www.windowsazure.cn/zh-cn/pricing/free-trial/?jl=t;icon-uri=https://az83882.vo.msecnd.net/favicon.ico" />
+    <meta name="msapplication-task" content="name=View Pricing Calculator;action-uri=http://www.windowsazure.cn/zh-cn/pricing/calculator/?jl=t;icon-uri=https://az83882.vo.msecnd.net/favicon.ico" />
+    <link href="虚拟机_files/azuremediaplayer.min.css" rel="stylesheet" />
+    <meta name="GENERATOR" content="MSHTML 11.00.10240.16445" />
+</head>
+<body class="page-case-studies-Aile " id="top" style="min-width: 960px;">
+    <style>
+        .main-container {
+            margin: 0;
+            padding: 107px 0 0 0;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .old-main-container {
+            width: 82% !important;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 40px !important;
+            top: 86px;
+        }
+
+        .login-type-win .close {
+            display: block;
+            background: url(//wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/media/wacneditor/close.png);
+            width: 28px;
+            height: 28px;
+            position: absolute;
+            top: 5px;
+            background-size: contain;
+            right: 5px;
+        }
+    </style>
+    <div class="feeback-startup hide">
+        <a class="close" id="feedbackStartClose" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#"></a>
+        <div class="bg">
+            <a class="gotit" id="feedbackStartGotit" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#"></a>
+        </div>
+    </div>
+    <!-- start sidebar feedback -->
+    <div class="feedback-win sidebar-win hide high">
+        <a class="close" id="feedbackClose" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#"></a>
+        <p>这个页面的体验怎么样？请给我们打分</p>
+        <ul class="stars" data-value="0">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <span class="star-not-selected hide"><i class="star-alert"></i>请给我们打分!</span>
+        <p>希望倾听您更多的反馈</p>
+        <textarea class="feedback-text"></textarea>
+        <ul class="scope">
+            <li><span class="checkbox-round active"></span>本页面</li>
+            <li><span class="checkbox-round"></span>整个网站</li>
+        </ul>
+        <p class="hint-email">愿意和我们做进一步的沟通？</p>
+        <input type="text" placeholder="(请留下您的Email)" value="" />
+        <a class="btn btn-submit" id="feedbackASubmit" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#">递交</a>
+        <a class="pd-fd-link" id="sidebarPdFd" href="http://wacn-develop.chinacloudsites.cn/product-feedback">想对Azure产品提供反馈 <span></span></a>
+    </div>
+    <!-- end sidebar feedback -->
+    <div class="xb_main_wrap xiaoice_shadow sidebar-win bing hide" id="xb_main_wrap_id">
+        <div id="xb_lite_header">
+            <div id="logo">
+                <a id="profile0" href="http://www.msxiaoice.com/" target="_blank" rel="nofollow"><img width="22" height="22" id="logoimg" src="虚拟机_files/header.png" /></a>
+            </div>
+            <div class="xb_lite_headerinfo" id="xb_lite_headerinfo_id">
+                <a id="profile1" href="http://www.msxiaoice.com/" target="_blank" rel="nofollow">小冰</a>
+            </div>
+            <div class="xb_lite_close close" id="xb_lite_close_id">
+            </div>
+        </div>
+        <div id="xb_lite_body">
+            <div id="xb_lite_content"></div>
+            <div id="xb_lite_content_hidden" style="display: none;"></div>
+        </div>
+        <div id="xb_lite_footer">
+            <div id="xb_lite_cmd_input">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="xb_lite_cmd_cell_left">
+                                <div class="input_wrap">
+                                    <input id="xb_lite_cmd_inputbox" type="text" />
+                                </div>
+                            </td>
+                            <td class="xb_lite_cmd_cell_right">
+                                <div id="xb_lite_cmd_inputbutton">
+                                    发送
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="xb_lite_cmd_none"></div>
+        </div>
+    </div>
+    <!--
+    <div id="xb_main_small_id" style="top: 50%; right:0; position: fixed; z-index:1;">
+        <script type="text/javascript">
+            function popup() {
+
+                var url = "http://xiaoice.windowsazure.cn:80/";
+
+                /*
+                var left;
+                left = $('#page').position().left + $('#page').width();
+                if (left + $('.xb_main_wrap').width() > $(document).width() - 20)
+                    left = $(document).width() - $('.xb_main_wrap').width() - 20;
+                $('.xb_main_wrap').css("left", left + "px");
+                */
+
+                $('.xb_main_wrap').css("display", "block");
+                xiaoice_start(url);
+
+                $('#xb_main_small_id').css("display", "none");
+            }
+
+            function closexiaoice() {
+                $('#xb_main_wrap_id').css("display", "none");
+                $('#xb_main_small_id').css("display", "block");
+            }
+
+        </script>
+        <img id="xb-switch" onclick="popup()" src="http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/css/images/xiaoice/Xiaoice_square.gif" />
+    </div>
+    -->
+    <header class="clearfix page-header">
+        <div class="header-topbar" style="margin-bottom: 25px;">
+            <div style="color: rgb(74, 74, 74); font-size: 14px; margin-top: 15px;">
+                <a class="header-azure-logo" id="navigation-azure-logo-id" style="margin-top: -2px;" href="http://wacn-develop.chinacloudsites.cn/"></a>
+                <span style="margin-top: 3px; margin-left: 10px; float: left;">由</span>
+                <a class="header-21v-logo" id="navigation-21v-logo-id" href="http://www.21vbluecloud.com/" rel="nofollow"></a>
+                <span style="margin-top: 3px; float: left;">运营</span>
+            </div>
+            <ul class="site-login">
+                <li style="border-left-color: currentColor; border-left-width: 0px; border-left-style: none;"><a class="header-account-logo" id="header-account-id" style="color: rgb(74, 74, 74); font-size: 14px;" href="http://account.windowsazure.cn/" rel="nofollow">我的账户</a> </li>
+                <li style="border-left-color: currentColor; border-left-width: 0px; border-left-style: none;"><a class="header-portal-logo" id="header-portal-logo-id" style="color: rgb(74, 74, 74); font-size: 14px;" href="https://manage.windowsazure.cn/" rel="nofollow">门户</a> </li>
+                <li class="search-box" style="height: 25px;"><input id="MainSearchBox" onkeypress="return checkForEnterKey(event, 'MainSearchBox');" type="text" placeholder="搜索" value="" /> <span title="搜索" class="search-button" id="header-search-button" onclick="doSearch('MainSearchBox'); return false;">&nbsp;</span> </li>
+            </ul>
+        </div>
+        <div class="clearfix nav-container">
+            <nav>
+                <ul class="mdev-navigation">
+                    <!-- 0 -->
+                    <li class="mnav-expander active"><a id="nav_homepage" href="http://wacn-develop.chinacloudsites.cn/">首页</a></li>
+                    <!-- 2 -->
+                    <li class="mnav-expander service-menu" style="margin-right: 20px;">
+                        <a class="mtrigger" id="nav_service" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#">服务</a>
+                        <div class="header-nav-count" style="margin-top: -40px; margin-left: 38px; position: absolute;">
+                            1
+                        </div>
+                        <div class="mnav-expander-wrapper hasSubmenu" style="left: -70px; width: 850px;">
+                            <div class="mnav-expander-div">
+                                <div class="four-columns-special" style="padding: 0px 20px;">
+                                    <ul style="border: currentColor; border-image: none;">
+                                        <li class="submenu-base submenu-compute">计算</li>
+                                        <li><a id="nav_service_vm" href="http://wacn-develop.chinacloudsites.cn/home/features/virtual-machines/">虚拟机</a></li>
+                                        <li><a id="nav_service_website" href="http://wacn-develop.chinacloudsites.cn/home/features/web-site/">网站</a></li>
+                                        <li><a id="nav_service_cloud" href="http://wacn-develop.chinacloudsites.cn/home/features/cloud-services/">云服务</a></li>
+                                        <li><a id="nav_service_mobile" href="http://wacn-develop.chinacloudsites.cn/home/features/mobile-services/">移动服务<span class="span_preview">预览</span></a></li>
+                                    </ul>
+                                    <ul style="border: currentColor; border-image: none;">
+                                        <li class="submenu-base submenu-date">数据服务</li>
+                                        <li><a id="nav_service_storage" href="http://wacn-develop.chinacloudsites.cn/home/features/storage/">存储</a></li>
+                                        <li><a id="nav_service_database" href="http://wacn-develop.chinacloudsites.cn/home/features/sql-database/">SQL 数据库</a></li>
+                                        <li><a id="nav_service_hdinsight" href="http://wacn-develop.chinacloudsites.cn/home/features/hdinsight/">HDInsight</a></li>
+                                        <li><a id="nav_service_backup" href="http://wacn-develop.chinacloudsites.cn/home/features/back-up/">备份</a></li>
+                                        <li><a id="home_service_site" href="http://wacn-develop.chinacloudsites.cn/home/features/site-recovery/">站点恢复</a></li>
+                                        <li><a id="nav_service_mysql" href="http://wacn-develop.chinacloudsites.cn/home/features/mysql/">MySQL Database on Azure<span class="span_preview">预览</span><span class="span-new">新</span></a></li>
+                                        <li><a id="home_service_redis-cache" href="http://wacn-develop.chinacloudsites.cn/home/features/redis-cache/">Redis 缓存<span class="span_preview">预览</span></a></li>
+                                    </ul>
+                                    <ul style="border: currentColor; border-image: none;">
+                                        <li class="submenu-base submenu-application">应用服务</li>
+                                        <li><a id="nav_service_service-bus" href="http://wacn-develop.chinacloudsites.cn/home/features/messaging/">服务总线</a></li>
+                                        <li><a id="nav_service_ad" href="http://wacn-develop.chinacloudsites.cn/home/features/identity/">Active Directory</a></li>
+                                        <li><a id="nav_service_scheduler" href="http://wacn-develop.chinacloudsites.cn/home/features/scheduler/">计划程序</a></li>
+                                        <li><a id="nav_service_cdn" style="float: left;" href="http://wacn-develop.chinacloudsites.cn/home/features/caching/">CDN</a></li>
+                                        <li style="float: left;"><a id="nav_service_media" href="http://wacn-develop.chinacloudsites.cn/home/features/media-services/">媒体服务</a></li>
+                                        <li><a id="nav_service_notification-hun" href="http://wacn-develop.chinacloudsites.cn/home/features/notification-hubs/">通知中心</a></li>
+                                        <li><a title="事件中心" id="nav_service_eve" href="http://wacn-develop.chinacloudsites.cn/home/features/event-hubs/" url="event-hubs">事件中心</a></li>
+                                        <li><a title="自动化" id="nav_service_automation" href="http://wacn-develop.chinacloudsites.cn/home/features/automation/">自动化<span class="span_preview">预览</span></a></li>
+                                    </ul>
+                                    <ul style="border: currentColor; border-image: none;">
+                                        <li class="submenu-base submenu-network">网络服务</li>
+                                        <li><a id="nav_service_network" href="http://wacn-develop.chinacloudsites.cn/home/features/networking/">虚拟网络</a></li>
+                                        <li><a id="nav_service_traffic-manager" href="http://wacn-develop.chinacloudsites.cn/home/features/traffic-manager/">流量管理器</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 3 -->
+                    <li class="mnav-expander"><a id="nav_price" href="http://wacn-develop.chinacloudsites.cn/pricing/overview/">价格</a></li>
+                    <!-- 1 -->
+                    <li class="mnav-expander">
+                        <img style="left: 1px; top: -22px; position: absolute;" src="虚拟机_files/new_21x18.png" /> <a class="mtrigger" id="nav_solution" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#">解决方案</a>
+                        <div class="mnav-expander-wrapper">
+                            <div class="mnav-expander-div">
+                                <div>
+                                    <ul>
+                                        <li><a id="nav_solution_game" href="http://wacn-develop.chinacloudsites.cn/solutions/game/">云端游戏开发</a></li>
+                                        <li><a id="nav_solution_mobile" href="http://wacn-develop.chinacloudsites.cn/solutions/mobile/">云端移动开发</a></li>
+                                        <li><a id="nav_solution_ads" href="http://wacn-develop.chinacloudsites.cn/solutions/advertising/">广告数字营销</a></li>
+                                        <li style="margin-bottom: 30px;"><a id="nav_solution_online" href="http://wacn-develop.chinacloudsites.cn/solutions/online/">在线数字营销</a></li>
+                                        <li><a id="nav_solution_infrastructure" href="http://wacn-develop.chinacloudsites.cn/solutions/infrastructure/">基础结构服务</a></li>
+                                        <li><a id="nav_solution_data-management" href="http://wacn-develop.chinacloudsites.cn/solutions/data-management/">数据管理</a></li>
+                                        <li><a id="nav_solution_web" href="http://wacn-develop.chinacloudsites.cn/solutions/web/">Web 应用程序</a></li>
+                                        <li><a id="nav_solution_dev-test" href="http://wacn-develop.chinacloudsites.cn/solutions/dev-test/">开发和测试</a></li>
+                                        <li><a id="nav_solution_backup" href="http://wacn-develop.chinacloudsites.cn/solutions/storage-backup-recovery/">存储、备份和恢复</a></li>
+                                        <li><a id="nav_solution_oss" href="http://wacn-develop.chinacloudsites.cn/solutions/OSS/">开源软件</a></li>
+                                        <li><a id="nav_solution_storsimple" href="http://wacn-develop.chinacloudsites.cn/solutions/storsimple/">StorSimple</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 4 -->
+                    <li class="mnav-expander">
+                        <a class="mtrigger" id="nav_case-and-partner" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#">案例与伙伴</a>
+                        <div class="mnav-expander-wrapper">
+                            <div class="mnav-expander-div">
+                                <div>
+                                    <ul>
+                                        <li><a id="nav_case-and-partner_case" href="http://wacn-develop.chinacloudsites.cn/partnerancasestudy/case-studies/">案例研究</a></li>
+                                        <li><a id="nav_case-and-partner_partner" href="http://wacn-develop.chinacloudsites.cn/partnerancasestudy/partner/">合作伙伴</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 5 -->
+                    <li class="mnav-expander" style="padding-top: 2px; margin-bottom: -2px; position: static;">
+                        <a class="mtrigger" id="nav_documentation" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#">文档与资源</a>
+                        <div class="mnav-expander-wrapper hasSubmenu" style="top: 41px;">
+                            <div class="mnav-expander-div">
+                                <div>
+                                    <ul>
+                                        <li><a id="nav_documentation_overview" href="http://wacn-develop.chinacloudsites.cn/documentation/">文档概览</a></li>
+                                        <li>
+                                            <a id="nav_documentation_guide" style="float: left;" href="http://wacn-develop.chinacloudsites.cn/starter-guide/">入门指南</a>
+                                            <div class="header-nav-preview" style="margin-top: 9px; margin-left: -80px;">
+                                                推荐
+                                            </div>
+                                        </li>
+                                        <li class="nav-has-submenu" style="float: left;">
+                                            <a id="nav_documentation_service" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#">服务文档</a>
+                                            <div class="nav-submenu four-columns">
+                                                <ul>
+                                                    <li class="submenu-base submenu-compute">计算</li>
+                                                    <li><a id="nav_documentation_windows" href="http://wacn-develop.chinacloudsites.cn/manage/windows/">虚拟机</a></li>
+                                                    <li><a id="nav_documentation_website" href="http://wacn-develop.chinacloudsites.cn/manage/services/web-sites/">网站</a></li>
+                                                    <li><a id="nav_documentation_cloud" href="http://wacn-develop.chinacloudsites.cn/manage/services/cloud-services/">云服务</a></li>
+                                                    <li><a id="nav_documentation_mobile" href="http://wacn-develop.chinacloudsites.cn/manage/services/mobile-services/">移动服务</a></li>
+                                                </ul>
+                                                <ul>
+                                                    <li class="submenu-base submenu-date">数据服务</li>
+                                                    <li><a id="nav_documentation_storage" href="http://wacn-develop.chinacloudsites.cn/manage/services/storage/">存储</a></li>
+                                                    <li><a id="nav_documentation_database" href="http://wacn-develop.chinacloudsites.cn/manage/services/sql-databases/">SQL 数据库</a></li>
+                                                    <li><a id="nav_documentation_hdinsight" href="http://wacn-develop.chinacloudsites.cn/manage/services/hdinsight/">HDInsight</a></li>
+                                                    <li><a id="nav_documentation_backup" href="http://wacn-develop.chinacloudsites.cn/manage/services/backup/">备份</a></li>
+                                                    <li><a id="nav_documentation_site-recovery" href="http://wacn-develop.chinacloudsites.cn/documentation/services/site-recovery/">站点恢复</a></li>
+                                                    <li><a id="nav_documentation_mysql" href="http://wacn-develop.chinacloudsites.cn/documentation/services/mysql/">MySQL Database<br /><span style="padding-left: 10px;">on Azure</span></a></li>
+                                                    <li><a id="nav_documentation_redis-cache" href="http://wacn-develop.chinacloudsites.cn/documentation/services/redis-cache/">Redis 缓存</a></li>
+                                                </ul>
+                                                <ul>
+                                                    <li class="submenu-base submenu-application">应用服务</li>
+                                                    <li><a id="nav_documentation_service-bus" href="http://wacn-develop.chinacloudsites.cn/manage/services/service-bus/">服务总线</a></li>
+                                                    <li><a id="nav_documentation_ad" href="http://wacn-develop.chinacloudsites.cn/manage/services/identity/">Active Directory</a></li>
+                                                    <li><a id="nav_documentation_scheduler" href="http://wacn-develop.chinacloudsites.cn/services/scheduler/">计划程序</a></li>
+                                                    <li><a id="nav_documentation_cdn" href="http://wacn-develop.chinacloudsites.cn/manage/services/cdn/">CDN</a></li>
+                                                    <li><a id="nav_documentation_media" href="http://wacn-develop.chinacloudsites.cn/documentation/services/media-services/">媒体服务</a></li>
+                                                    <li><a id="nav_documentation_notification-hubs" href="http://wacn-develop.chinacloudsites.cn/manage/services/notification-hubs/">通知中心</a></li>
+                                                    <li><a id="nav_documentation_automation" href="http://wacn-develop.chinacloudsites.cn/documentation/services/automation">自动化</a></li>
+                                                </ul>
+                                                <ul>
+                                                    <li class="submenu-base submenu-network">网络服务</li>
+                                                    <li><a id="nav_documentation_network" href="http://wacn-develop.chinacloudsites.cn/manage/services/networking/">虚拟网络</a></li>
+                                                    <li><a id="nav_documentation_traffic-manager" href="http://wacn-develop.chinacloudsites.cn/manage/services/networking/traffic-manager/">流量管理器</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="nav-has-submenu" style="float: left;">
+                                            <a id="nav_documentation_develop" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#">开发文档</a>
+                                            <div class="nav-submenu">
+                                                <ul>
+                                                    <li><a id="nav_documentation_net" href="http://wacn-develop.chinacloudsites.cn/develop/net/">.Net</a></li>
+                                                    <li><a id="nav_documentation_java" href="http://wacn-develop.chinacloudsites.cn/develop/java/">Java</a></li>
+                                                    <li><a id="nav_documentation_nodejs" href="http://wacn-develop.chinacloudsites.cn/develop/nodejs/">Node.js</a></li>
+                                                    <li><a id="nav_documentation_python" href="http://wacn-develop.chinacloudsites.cn/develop/python/">Python</a></li>
+                                                    <li><a id="nav_documentation_python" href="http://wacn-develop.chinacloudsites.cn/develop/ruby/">Ruby</a></li>
+                                                    <li><a id="nav_documentation_python" href="http://wacn-develop.chinacloudsites.cn/develop/php/">PHP</a></li>
+                                                    <li><a id="nav_documentation_python" href="http://wacn-develop.chinacloudsites.cn/develop/media-services/">Media</a></li>
+                                                    <li><a id="nav_documentation_python" href="http://wacn-develop.chinacloudsites.cn/develop/mobile/ios/">iOS,Android,Windows</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a id="nav_documentation_video_center" href="http://wacn-develop.chinacloudsites.cn/video-center/">视频中心</a></li>
+                                        <li>
+                                            <a id="nav_documentation_download" style="float: left;" href="http://wacn-develop.chinacloudsites.cn/downloads/">工具下载</a>
+                                            <div class="header-nav-hot" style="margin-top: 9px; margin-left: -80px;">
+                                                热门
+                                            </div>
+                                        </li>
+                                        <li class="nav-has-submenu" style="float: left;">
+                                            <a id="nav_documentation_other" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#">其他资源</a>
+                                            <div class="nav-submenu">
+                                                <ul>
+                                                    <li><a id="nav_documentation_architecture" href="http://wacn-develop.chinacloudsites.cn/documentation/articles/architecture-overview/">架构指南</a></li>
+                                                    <li><a id="nav_documentation_dev-turorial" href="http://wacn-develop.chinacloudsites.cn/develop/other/developerdifferences/">开发说明</a></li>
+                                                    <li><a id="nav_documentation_oss" href="http://wacn-develop.chinacloudsites.cn/develop/other/open-source-software/">开源软件</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 6 -->
+                    <li class="mnav-expander"><img style="left: 1px; top: -22px; position: absolute;" src="虚拟机_files/new_21x18.png" /> <a id="nav_blog" href="http://wacn-develop.chinacloudsites.cn/blog/">博客</a></li>
+                    <!-- 7 -->
+                    <li class="mnav-expander">
+                        <a class="mtrigger" id="nav_support" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#">支持</a>
+                        <div class="mnav-expander-wrapper">
+                            <div class="mnav-expander-div">
+                                <div>
+                                    <ul>
+                                        <li><a id="nav_support_contact" href="http://wacn-develop.chinacloudsites.cn/support/contact/">联系我们</a></li>
+                                        <li><a id="nav_support_forums" href="http://wacn-develop.chinacloudsites.cn/support/forums/">论坛支持</a></li>
+                                        <li><a id="nav_support_plans" href="http://wacn-develop.chinacloudsites.cn/support/plans/">支持计划</a></li>
+                                        <li><a id="nav_support_service-dashboard" href="http://wacn-develop.chinacloudsites.cn/support/service-dashboard/">服务仪表盘</a></li>
+                                        <li><a id="nav_support_trust" href="http://wacn-develop.chinacloudsites.cn/support/trust-center/">信任中心</a></li>
+                                        <li><a id="nav_support_legal" href="http://wacn-develop.chinacloudsites.cn/support/legal/">法律</a></li>
+                                        <li>
+                                            <a id="nav_documentation_icp" style="float: left;" href="http://wacn-develop.chinacloudsites.cn/icp">ICP备案中心</a>
+                                            <div class="header-nav-hot" style="margin-top: 9px; margin-left: -80px;">
+                                                热门
+                                            </div>
+                                        </li>
+                                        <li><a id="nav_support_faq" href="http://wacn-develop.chinacloudsites.cn/support/faq/">常见问题</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="header-right-nav">
+                        <ul>
+                            <li class="header-get-guide"><a id="homepage-top-starter-guide" style="padding: 0px;" href="http://wacn-develop.chinacloudsites.cn/starter-guide/"><span style="color: rgb(255, 61, 0); line-height: 27px; font-size: 16px;">获取入门指南</span> </a></li>
+                            <li class="header-trial-or-buy" style="margin-right: 10px; margin-left: 10px;"><a id="homepage-top-pia" style="padding: 0px;" href="http://wacn-develop.chinacloudsites.cn/pricing/pia/"><span style="color: rgb(255, 255, 255); line-height: 27px; font-size: 16px;">我要购买</span> </a></li>
+                            <li class="header-trial-or-buy"><a id="homepage-top-1rmb" style="padding: 0px;" onclick="dcsSetVar('WT.z_iLinks','Free Trial Arrow','WT.z_iLinks_actionoffer','inav-Try','WT.z_iLinks_targetcampaign','src-gtnav');return RioTracking.click(300159583);" href="http://wacn-develop.chinacloudsites.cn/pricing/1rmb-trial/"><span style="color: rgb(255, 255, 255); line-height: 27px; font-size: 16px;">我要试用</span> </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- start new sidebar -->
+    <ul class="azsidebar">
+        <li title="反馈"><a class="sidebar-feedback" id="sidebarBtnFeedback" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#" data-target=".feedback-win"></a><span class="tri-angle hide"></span> </li>
+        <li title="最新公告"><a class="news" id="sidebarBtnNews" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#" data-target=".news"></a><span class="tag">3</span> <span class="tri-angle hide"></span> </li>
+        <li title="最新活动列表">
+            <a class="event" id="sidebarBtnEvent" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#" data-target=".events"></a><span class="tag">2</span>
+            <!--<span class="tri-angle-blue hide"></span> -->
+        </li>
+        <li title="小冰有问必答"><a class="bing" id="sidebarBtnXiaoice" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#" data-target=".bing"></a></li>
+        <li title="分享到新浪微博"><a class="sina" id="sidebarBtnSina" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#"></a></li>
+    </ul>
+    <!-- start events panel-->
+    <div class="sidebar-win events hide" style="width: 285px; height: 45px; margin-top: 90px;">
+        <ul class="events-list" id="sidebar_sign">
+            <li>
+                <div class="control">
+                    <a class="close" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#"></a>
+                </div>
+                <div class="detail" style="padding: 8px; height: 45px; float: right;">
+                    <p class="info" style="height: 45px;"> Windows Azure 精彩活动正在筹备中，敬请期待！ </p>
+                </div>
+            </li>
+            <!--
+            <li>
+              <div class="title">
+                <div class="container">
+                  <span class="sub">微软开发训练营</span>
+                  <br/>
+                  <span class="main">微软云端游戏开发者沙龙</span>
+                </div>
+              </div>
+              <div class="detail">
+                <p class="type">
+                  <span class="time">6月13日</span>
+                  <span class="tag">免费</span>
+                  <span class="tag">培训</span>
+                </p>
+                <p class="info">
+                  RUNNING GAME DEVELOPERS 微软云端游戏开发者沙龙
+                </p>
+                <a class="signup" href="https://msevents.microsoft.com/CUI/EventDetail.aspx?EventID=1032627704&Culture=zh-CN&community=0" target="signup" id="sidebarSignuoOne">立即报名</a>
+              </div>
+            </li>
+             -->
+        </ul>
+    </div>
+    <!-- end events panel-->
+    <!-- start what's new panel -->
+    <div class="sidebar-win news hide">
+        <div class="control">
+            <a class="close" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#"></a>
+        </div>
+        <div class="container" id="sider_contain">
+            <p>Redis 缓存<a id="sidebar_redisCache" style="margin-right: 5px; margin-left: 5px;" href="http://wacn-develop.chinacloudsites.cn/home/features/redis-cache/" target="automation">Redis Cache </a>功能预览版上线 </p>
+            <p>IaaS 的 IP 地址<a id="sidebarNews1" style="margin-right: 5px; margin-left: 5px;" href="http://wacn-develop.chinacloudsites.cn/documentation/articles/load-balancer-multivip" target="icp">multi VIP support for IaaS </a>正式上线 </p>
+            <p> 用户定义路由和 IP 转发<a id="sidebarNews2" style="margin-right: 5px; margin-left: 5px;" href="http://wacn-develop.chinacloudsites.cn/documentation/articles/virtual-networks-udr-overview" target="mediaService">User Defined Routes and IP Forwarding </a>功能正式上线 </p>
+            <a class="all" id="sidebarNewsAll" href="http://wacn-develop.chinacloudsites.cn/what-is-new" target="sidebarNewsAll">查看所有公告</a>
+        </div>
+    </div>
+    <style>
+        ul.azsidebar {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: fixed;
+            right: 0;
+            top: 30%;
+            z-index: 999;
+        }
+
+            ul.azsidebar li {
+                position: relative;
+            }
+
+                ul.azsidebar li a {
+                    text-decoration: none;
+                    display: block;
+                    width: 40px;
+                    height: 45px;
+                }
+
+                ul.azsidebar li .tag {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 13px;
+                    height: 13px;
+                    font-size: 10px;
+                    color: white;
+                    background-color: #ee5a30;
+                    text-align: center;
+                    line-height: 13px;
+                }
+
+                ul.azsidebar li .tri-angle {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 5px;
+                    height: 11px;
+                    margin-top: -6px;
+                    background: url(//wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/css/img/triangle_5x11.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+
+                ul.azsidebar li .tri-angle-blue {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 5px;
+                    height: 11px;
+                    margin-top: -6px;
+                    background: url(//wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/css/img/triangle_5x11.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background: url(//wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/css/img/blue_triangle_5x11.png);
+                }
+
+            ul.azsidebar .news {
+                background: url(//wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/css/img/whats_new_40x45.png);
+                background-size: contain;
+                background-color: #00ce7d;
+            }
+
+                ul.azsidebar .news:hover {
+                    opacity: 0.8;
+                }
+
+            ul.azsidebar .event {
+                background: url(//wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/css/img/event_40x45.png);
+                background-size: contain;
+                background-color: #3b3b3b;
+            }
+
+                ul.azsidebar .event:hover {
+                    opacity: 0.8;
+                }
+
+            ul.azsidebar .bing {
+                background: url(//wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/css/img/support_40x45.png);
+                background-size: contain;
+                background-color: #33a4fb;
+            }
+
+                ul.azsidebar .bing:hover {
+                    opacity: 0.8;
+                }
+
+            ul.azsidebar .calculator {
+                background: url(//wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/css/img/calculator_40x45.png);
+                background-size: contain;
+                background-color: #3b3b3b;
+            }
+
+                ul.azsidebar .calculator:hover {
+                    opacity: 0.8;
+                }
+
+        .sidebar-win {
+            position: fixed;
+            right: 40px;
+            top: 30%;
+            z-index: 999;
+            box-shadow: 1px 1px 3px 1px gray;
+        }
+
+            .sidebar-win .control {
+                position: absolute;
+                right: 5px;
+                top: 5px;
+            }
+
+            .sidebar-win .close {
+                width: 16px;
+                height: 16px;
+                display: inline-block;
+                text-decoration: none;
+                color: white;
+                font-size: 12px;
+                background: url(//wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/css/img/sidebar-close.png);
+                background-size: contain;
+            }
+
+            .sidebar-win .max {
+                width: 12px;
+                height: 12px;
+                display: inline-block;
+                text-decoration: none;
+                color: white;
+                font-size: 12px;
+            }
+
+            .sidebar-win.news {
+                width: 550px;
+                height: 160px;
+                background: #3b3b3b;
+                opacity: 0.95;
+                position: fixed;
+                right: 40px;
+                top: 30%;
+                padding: 15px;
+                box-sizing: border-box;
+            }
+
+                .sidebar-win.news p {
+                    font-size: 14px;
+                    color: white;
+                    margin-top: 0;
+                    margin-bottom: 10px;
+                }
+
+                    .sidebar-win.news p a {
+                        display: inline-block;
+                        color: white;
+                        font-size: 14px;
+                        border-radius: 4px;
+                        background: #33a4fb;
+                        padding: 0 3px;
+                        text-decoration: none;
+                    }
+
+                        .sidebar-win.news p a:hover {
+                            opacity: 0.8;
+                        }
+
+                .sidebar-win.news .all {
+                    width: 108px;
+                    height: 28px;
+                    color: white;
+                    font-size: 14px;
+                    background-color: #ff3d00;
+                    display: inline-block;
+                    text-align: center;
+                    text-decoration: none;
+                    line-height: 28px;
+                }
+
+                    .sidebar-win.news .all:hover {
+                        background-color: #fa6434;
+                    }
+
+            .sidebar-win.events {
+                width: 450px;
+                height: 64px;
+                position: fixed;
+                right: 40px;
+                top: 30%;
+                box-sizing: border-box;
+            }
+
+                .sidebar-win.events .events-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                    .sidebar-win.events .events-list .title {
+                        display: inline-block;
+                        width: 160px;
+                        height: 106px;
+                        padding: 4px;
+                        box-sizing: border-box;
+                        background: #2190f8;
+                        position: relative;
+                        left: 5px;
+                        height: 120px;
+                    }
+
+                        .sidebar-win.events .events-list .title .container {
+                            background: #10487c;
+                            height: 100%;
+                            border-radius: 3px;
+                            padding: 8px 4px;
+                            box-sizing: border-box;
+                            color: #f8f8f8;
+                            text-align: center;
+                            padding-top: 24px;
+                        }
+
+                        .sidebar-win.events .events-list .title .sub {
+                            font-size: 12px;
+                        }
+
+                        .sidebar-win.events .events-list .title .main {
+                            font-size: 18px;
+                        }
+
+                    .sidebar-win.events .events-list .detail {
+                        display: inline-block;
+                        width: 285px;
+                        min-height: 45px;
+                        vertical-align: top;
+                        background: #3b3b3b;
+                        border: 1px solid #4b4b4b;
+                        padding: 10px 0;
+                        box-sizing: border-box;
+                        height: 120px;
+                    }
+
+                        .sidebar-win.events .events-list .detail p {
+                            margin: 0;
+                        }
+
+                        .sidebar-win.events .events-list .detail .type {
+                            font-size: 12px;
+                            color: white;
+                            padding: 6px 0 0 10px;
+                        }
+
+                        .sidebar-win.events .events-list .detail .info {
+                            font-size: 12px;
+                            color: white;
+                            margin: 0 10px;
+                        }
+
+                        .sidebar-win.events .events-list .detail .signup {
+                            display: block;
+                            width: 77px;
+                            height: 22px;
+                            color: white;
+                            font-size: 14px;
+                            background-color: #ff3d00;
+                            text-decoration: none;
+                            text-align: center;
+                            line-height: 22px;
+                            margin: 5px 0 0 10px;
+                        }
+
+                        .sidebar-win.events .events-list .detail .tag {
+                            font-size: 12px;
+                            color: #ffea34;
+                        }
+
+            .sidebar-win.bing {
+                top: 20%;
+                right: 40px;
+                position: fixed;
+            }
+    </style>
+    <!--sina weibo popup box-->
+    <!--sina weibo popup box end-->
+    <style>
+        footer {
+            position: relative;
+            top: 86px;
+        }
+    </style>
+    <div class="old-main-container" id="main-container">
+        <section class="clearfix" id="content-container">
+            <div id="content">
+                <link href="/Css/styles.less" rel="stylesheet/less" type="text/css" />
+                <div class="content-header">
+                    <title>虚拟机文档 | Azure</title>
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+                    <link href="虚拟机_files/landingpageframe.css" rel="stylesheet" type="text/css" />
+                    <!--<script type="text/javascript" src="http://wacndevelop.blob.core.chinacloudapi.cn/tech-content/landingpageazuremediaplayer.min.js"></script>-->
+                </div>
+                <script>
+                    //var navigationJsonStr = '{"navigation": [{"group": "\u6982\u8ff0", "id": "area_about", "articles": [{"id": "link_what_is_azure_vm", "title": " \u4ec0\u4e48\u662f Azure \u865a\u62df\u673a ", "link": "/services/virtual-machines/"}, {"id": "link_about_vm_cs", "title": " \u865a\u62df\u673a\u3001\u7f51\u7ad9\u548c\u4e91\u670d\u52a1\u5bf9\u6bd4 ", "link": "/documentation/articles/choose-web-site-cloud-service-vm/"}, {"id": "link_about_linux", "title": " Linux \u548c Azure \u4e2d\u7684\u5f00\u653e\u6e90\u8ba1\u7b97 ", "link": "/documentation/articles/virtual-machines-linux-opensource/"}]}, {"group": "\u5f00\u59cb\u4f7f\u7528", "id": "area_get_started", "articles": [{"id": "link_start_create_linux", "title": " \u521b\u5efa Linux VM ", "link": "/documentation/articles/virtual-machines-linux-tutorial/"}, {"id": "link_start_create_windows", "title": " \u521b\u5efa Windows VM ", "link": "/documentation/articles/virtual-machines-windows-tutorial/"}, {"id": "link_start_rm", "title": " \u4e86\u89e3\u6709\u5173 Azure \u8d44\u6e90\u7ba1\u7406\u5668\u4e2d\u7684 VM \u7684\u4fe1\u606f ", "link": "/documentation/articles/resource-group-overview/"}, {"id": "link_start_sm", "title": " \u4e86\u89e3\u6709\u5173\u201c\u670d\u52a1\u7ba1\u7406\u201d\u4e2d\u7684 VM \u7684\u4fe1\u606f ", "link": "/documentation/articles/virtual-machines-service-management-articles/"}]}, {"group": "\u81ea\u52a8\u5316", "id": "area_automate", "articles": [{"id": "link_automate_deployrm_cli", "title": " \u4f7f\u7528\u8d44\u6e90\u7ba1\u7406\u5668\u548c CLI \u8fdb\u884c\u90e8\u7f72\u548c\u7ba1\u7406 ", "link": "/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli/"}, {"id": "link_automate_deployrm_ps", "title": " \u4f7f\u7528\u8d44\u6e90\u7ba1\u7406\u5668\u548c PowerShell \u8fdb\u884c\u90e8\u7f72\u548c\u7ba1\u7406 ", "link": "/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/"}, {"id": "link_automate_all_templates", "title": " \u4f7f\u7528\u8d44\u6e90\u7ba1\u7406\u5668\u6a21\u677f ", "link": "http://go.microsoft.com/fwlink/p/?linkid=536445&amp;clcid=0x804"}, {"id": "link_automate_images", "title": " \u4f7f\u7528 PowerShell \u6216 CLI \u67e5\u627e\u6620\u50cf ", "link": "/documentation/articles/resource-groups-vm-searching/"}]}, {"group": "\u8ba1\u5212", "id": "area_plan", "articles": [{"id": "link_plan_sizes", "title": " VM \u5927\u5c0f ", "link": "/documentation/articles/virtual-machines-size-specs/"}, {"id": "link_plan_containers", "title": " Azure \u4e2d\u7684\u865a\u62df\u673a\u548c\u5bb9\u5668 ", "link": "/documentation/articles/virtual-machines-vms-containers/"}, {"id": "link_plan_implement", "title": " \u5b9e\u65bd\u6307\u5357 ", "link": "/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines/"}, {"id": "link_plan_availability", "title": " \u7ba1\u7406 VM \u7684\u53ef\u7528\u6027 ", "link": "/documentation/articles/virtual-machines-manage-availability/"}, {"id": "link_plan_maintenance", "title": " \u5173\u4e8e\u8ba1\u5212\u5185\u7ef4\u62a4 ", "link": "/documentation/articles/virtual-machines-planned-maintenance/"}, {"id": "link_plan_vhds", "title": " \u5173\u4e8e\u78c1\u76d8\u548c VHD ", "link": "/documentation/articles/virtual-machines-disks-vhds/"}]}, {"group": "\u521b\u5efa", "id": "area_create", "articles": [{"id": "link_linux_create", "title": " \u521b\u5efa\u8fd0\u884c Linux \u7684\u865a\u62df\u673a ", "link": "/documentation/articles/virtual-machines-linux-choices-create-vm/"}, {"id": "link_windows_create", "title": " \u521b\u5efa\u8fd0\u884c Windows \u7684 VM ", "link": "/documentation/articles/virtual-machines-windows-choices-create-vm/"}, {"id": "link_vnet_create", "title": " \u8fde\u63a5\u7ad9\u70b9\u5230\u7ad9\u70b9 VNet ", "link": "/documentation/articles/virtual-networks-arm-asm-s2s-howto/"}]}, {"group": "\u7ba1\u7406", "id": "area_manage", "articles": [{"id": "link_manage_app_templates", "title": " \u4f7f\u7528\u5e94\u7528\u7a0b\u5e8f\u6a21\u677f ", "link": "/documentation/articles/virtual-machines-app-frameworks/"}, {"id": "link_managevms_rm", "title": " \u4f7f\u7528 Azure \u8d44\u6e90\u7ba1\u7406\u5668\u7ba1\u7406 VM ", "link": "/documentation/articles/virtual-machines-how-to-automate-azure-resource-manager/"}]}, {"group": "\u521b\u5efa\u5de5\u4f5c\u8d1f\u8377", "id": "area_create_workloads", "articles": [{"id": "link_workload_ad_dcs", "title": " Active Directory DC ", "link": "/documentation/articles/virtual-machines-workload-template-ad-domain/"}, {"id": "link_workload_sharepoint", "title": " SharePoint Server 2013 ", "link": "/documentation/articles/virtual-machines-workload-template-sharepoint/"}, {"id": "link_workload_sql", "title": " SQL Server AlwaysOn ", "link": "/documentation/articles/virtual-machines-workload-template-sql-alwayson/"}, {"id": "link_workload_wordpress", "title": " WordPress \u670d\u52a1\u5668 ", "link": "/documentation/articles/virtual-machines-workload-template-wordpress/"}]}, {"group": "\u6545\u969c\u6392\u9664", "id": "area_troubleshoot", "articles": [{"id": "link_troubleshoot_ssh_reset", "title": " SSH \u548c\u5bc6\u7801\u91cd\u7f6e ", "link": "/documentation/articles/virtual-machines-linux-use-vmaccess-reset-password-or-ssh/"}, {"id": "link_troubleshoot_ssh_connections", "title": " SSH \u8fde\u63a5 ", "link": "/documentation/articles/virtual-machines-troubleshoot-ssh-connections/"}, {"id": "link_troubleshoot_rdp_reset", "title": " \u8fdc\u7a0b\u684c\u9762\u548c\u5bc6\u7801\u91cd\u7f6e ", "link": "/documentation/articles/virtual-machines-windows-reset-password/"}, {"id": "link_troubleshoot_rdp", "title": " \u8fdc\u7a0b\u684c\u9762\u8fde\u63a5 ", "link": "/documentation/articles/virtual-machines-troubleshoot-remote-desktop-connections/"}, {"id": "link_troubleshoot_resource", "title": " \u8d44\u6e90\u7ec4\u90e8\u7f72 ", "link": "/documentation/articles/resource-group-deploy-debug/"}]}, {"group": "\u53c2\u8003", "id": "area_reference", "articles": [{"id": "link_ref_ps_arm", "title": " \u8d44\u6e90\u7ba1\u7406\u5668 PowerShell cmdlet ", "link": "http://go.microsoft.com/fwlink/p/?linkid=534862&amp;clcid=0x804"}, {"id": "link_ref_rest_arm", "title": " \u8d44\u6e90\u7ba1\u7406\u5668 REST API ", "link": "https://msdn.microsoft.com/library/azure/mt163647.aspx"}]}], "id": "VirtualMachines", "service": " \u865a\u62df\u673a "}'
+                    var navigationJsonStr = '{"navigation": [{"group": "\u6982\u8ff0", "id": "area_about", "articles": [{"id": "link_what_is_azure_vm", "title": " \u4ec0\u4e48\u662f Azure \u865a\u62df\u673a ", "link": "/home/features/virtual-machines/"}, {"id": "link_about_vm_cs", "title": " \u865a\u62df\u673a\u3001\u7f51\u7ad9\u548c\u4e91\u670d\u52a1\u5bf9\u6bd4 ", "link": "/documentation/articles/choose-web-site-cloud-service-vm/"}, {"id": "link_about_linux", "title": " Linux \u548c Azure \u4e2d\u7684\u5f00\u653e\u6e90\u8ba1\u7b97 ", "link": "/documentation/articles/virtual-machines-linux-opensource/"}]}, {"group": "\u5f00\u59cb\u4f7f\u7528", "id": "area_get_started", "articles": [{"id": "link_start_create_linux", "title": " \u521b\u5efa Linux VM ", "link": "/documentation/articles/virtual-machines-linux-tutorial/"}, {"id": "link_start_create_windows", "title": " \u521b\u5efa Windows VM ", "link": "/documentation/articles/virtual-machines-windows-tutorial/"}]}, {"group": "\u8ba1\u5212", "id": "area_plan", "articles": [{"id": "link_plan_availability", "title": " \u7ba1\u7406 VM \u7684\u53ef\u7528\u6027 ", "link": "/documentation/articles/virtual-machines-manage-availability/"}]}, {"group": "\u521b\u5efa", "id": "area_create", "articles": [{"id": "link_linux_create", "title": " \u521b\u5efa\u8fd0\u884c Linux \u7684\u865a\u62df\u673a ", "link": "/documentation/articles/virtual-machines-linux-choices-create-vm/"}, {"id": "link_windows_create", "title": " \u521b\u5efa\u8fd0\u884c Windows \u7684 VM ", "link": "/documentation/articles/virtual-machines-windows-choices-create-vm/"}]}, {"group": "\u6545\u969c\u6392\u9664", "id": "area_troubleshoot", "articles": [{"id": "link_troubleshoot_rdp_reset", "title": " \u8fdc\u7a0b\u684c\u9762\u548c\u5bc6\u7801\u91cd\u7f6e ", "link": "/documentation/articles/virtual-machines-windows-reset-password/"}, {"id": "link_troubleshoot_rdp", "title": " \u8fdc\u7a0b\u684c\u9762\u8fde\u63a5 ", "link": "/documentation/articles/virtual-machines-troubleshoot-remote-desktop-connections/"}]}, {"group": "\u53c2\u8003", "id": "area_reference", "articles": [{"id": "link_ref_ps_arm", "title": " \u8d44\u6e90\u7ba1\u7406\u5668 PowerShell cmdlet ", "link": "https://msdn.microsoft.com/zh-cn/library/azure/mt125356.aspx?amp;clcid=0x804"}, {"id": "link_ref_rest_arm", "title": " \u8d44\u6e90\u7ba1\u7406\u5668 REST API ", "link": "https://msdn.microsoft.com/zh-cn/library/azure/mt163647.aspx"}]}], "id": "VirtualMachines", "service": " \u865a\u62df\u673a "}'
+                    var activeActicleId = null;
+
+                    var pageId = null;
+                    function renderNavigation(navigationJsonStr, activeActicleId) {
+                        navigationJson = JSON.parse(navigationJsonStr);
+                        mainDiv = document.getElementById("wa-navigationLeft");
+
+                        serviceTitle = document.createElement("a");
+                        serviceTitle.id = navigationJson.id;
+                        serviceTitle.innerHTML = navigationJson.service;
+                        serviceTitle.className = "toggler";
+                        mainDiv.appendChild(serviceTitle);
+
+                        mainUl = document.createElement("ul");
+                        mainUl.className = "toggled";
+                        mainDiv.appendChild(mainUl);
+
+                        for (var i = 0; i < navigationJson.navigation.length; i++) {
+                            groupLi = document.createElement("li");
+                            groupLi.id = navigationJson.navigation[i].id + "_header";
+                            groupLi.setAttribute("data-control", "toggle");
+                            groupLi.setAttribute("data-tag-name", navigationJson.navigation[i].id);
+                            groupLi.setAttribute("data-service-name", navigationJson.id);
+                            mainUl.appendChild(groupLi);
+                            groupTitle = document.createElement("a");
+                            groupTitle.innerHTML = navigationJson.navigation[i].group;
+                            groupTitle.className = "toggler";
+                            groupLi.appendChild(groupTitle);
+                            groupUl = document.createElement("ul");
+                            groupUl.id = navigationJson.navigation[i].id;
+                            groupUl.className = "toggled";
+                            groupLi.appendChild(groupUl);
+                            for (var j = 0; j < navigationJson.navigation[i].articles.length; j++) {
+                                articleLi = document.createElement("li");
+                                groupUl.appendChild(articleLi);
+                                articleLink = document.createElement("a");
+                                articleLink.href = navigationJson.navigation[i].articles[j].link;
+                                articleLink.innerHTML = navigationJson.navigation[i].articles[j].title;
+                                articleLink.id = navigationJson.navigation[i].articles[j].id;
+                                articleLink.setAttribute("data-link-service-name", navigationJson.id);
+                                articleLink.setAttribute("data-link-tag-name", navigationJson.navigation[i].articles[j].id);
+                                articleLi.appendChild(articleLink);
+                            }
+                        }
+                        if (activeActicleId == null) {
+                            document.getElementById(navigationJson.navigation[0].id + "_header").className = "active open";
+                            pageId = navigationJson.navigation[0].id + "_header";
+                        }
+                        else {
+                            for (var i = 0; i < navigationJson.navigation.length; i++) {
+                                for (var j = 0; j < navigationJson.navigation[i].articles.length; j++) {
+                                    if (navigationJson.navigation[i].articles[j].id == activeActicleId) {
+                                        document.getElementById(navigationJson.navigation[i].id + "_header").className = "active open";
+                                        pageId = navigationJson.navigation[i].id + "_header";
+                                        document.getElementById(activeActicleId).style.color = "#00abec";
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    function dropdownSelectChange() {
+                        dropdownSelect = document.getElementById('dropdown-cta');
+                        contentSelected = document.getElementById('wa-dropdown-value');
+                        document.getElementById('wa-button-link').href = dropdownSelect.value;
+                        contentSelected.innerHTML = dropdownSelect.options[dropdownSelect.selectedIndex].innerHTML;
+                    }
+                </script>
+                <style>
+                    .old-main-container {
+                        width: 82% !important;
+                    }
+                </style>
+                <div class="wa-container-documentation wa-container-nested-documentation">
+                    <section class="wa-section wa-section-micro">
+                        <div class="wa-content wa-content-documentation wa-content-4up">
+                            <div class="wa-spacer wa-spacer-docSide">
+                                <div class="wa-navigationLeft" id="wa-navigationLeft" data-control="toggle"></div>
+                                <script>
+                                    renderNavigation(navigationJsonStr, activeActicleId);
+                                </script>
+                            </div>
+                            <div class="wa-spacer wa-spacer-3down wa-spacer-docContent">
+                                <div class="wa-content">
+                                    <h1>虚拟机文档 </h1>
+                                    <h5> 了解如何设置、迁移和管理虚拟机 </h5>
+                                    <label class="wa-dropdown-label" for="dropdown-cta">创建运行以下系统的 VM：</label>
+                                    <div class="wa-dropdown-container wa-dropdown-medium">
+                                        <select class="wa-dropdown" id="dropdown-cta" onchange="dropdownSelectChange()" data-control="dropdown dropdown-linker" data-linker="cta">
+                                            <option value="/documentation/articles/virtual-machines-windows-tutorial/">Windows Server </option>
+                                            <option value="/documentation/articles/virtual-machines-linux-tutorial/"> Linux </option>
+                                            <!--<option value="/documentation/articles/virtual-machines-workload-template-sql-alwayson/">
+                                                            SQL Server
+                                                        </option>
+                                                        <option value="/documentation/articles/virtual-machines-workload-template-sharepoint/">
+                                                            SharePoint
+                                                        </option>-->
+                                        </select>
+                                        <span class="wa-dropdown-value" id="wa-dropdown-value">Windows Server</span>
+                                        <span class="wa-dropdown-arrow"></span>
+                                    </div>
+                                    <a class="wa-button wa-button-primary wa-button-mini" id="wa-button-link" href="http://wacn-develop.chinacloudsites.cn/documentation/articles/virtual-machines-windows-tutorial/" data-linker="cta" data-service-name="virtual-machines">入门教程</a>
+                                </div>
+                                <div class="wa-content wa-content-divided sub-hero-heading">
+                                    <h2> 虚拟机视频 </h2>
+                                </div>
+                                <div class="wa-content wa-content-3up">
+                                    <div class="wa-spacer">
+                                        <a title="What's new in Azure Resource Manager - June 2015" class="wa-video-thumbnail _storage-video-popup" href="http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/18d05657-ea33-4974-9810-c31670aa0fca/Azure%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%AB%98%E7%BA%A7%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.ism/Manifest" rel="nofollow" data-control="" data-ch9="http://channel9.msdn.com/Shows/Azure-Friday/Whats-new-in-Azure-Resource-Manager-June-2015/player/" data-expanding="false"><img class="thumbnail" alt="What's new in Azure Resource Manager - June 2015" src="虚拟机_files/Azure-VM-Advanced-Usage.png" /><img class="play-icon" src="虚拟机_files/VideoPlay.svg" /> <span class="metadata"><span class="date"><span>2015年6月18日</span><span>4' 9&quot;</span></span></span> </a>
+                                        <p>如何配置服务器的功能和如何配置服务器端口开放 </p>
+                                    </div>
+                                    <div class="wa-spacer">
+                                        <a title="What's new in Azure Resource Manager Compute Templates" class="wa-video-thumbnail _storage-video-popup" href="http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/a841607b-0f35-4eb1-95fa-6be7fdfbfd60/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4%E8%99%9A%E6%8B%9F%E6%9C%BA.ism/Manifest" rel="nofollow" data-control="" data-ch9="http://channel9.msdn.com/Shows/Azure-Friday/Whats-new-in-Azure-Resource-Manager-Compute-Templates/player/" data-expanding="false"><img class="thumbnail" alt="What's new in Azure Resource Manager Compute Templates" src="虚拟机_files/Create-Delete-VM-In-Portal.png" /><img class="play-icon" src="虚拟机_files/VideoPlay.svg" /> <span class="metadata"><span class="date"><span>2015年6月18日</span><span>4' 42&quot;</span></span></span> </a>
+                                        <p>如何利用Azure门户管理虚拟机 </p>
+                                    </div>
+                                    <div class="wa-spacer">
+                                        <a title="Azure Compute and AzureCLI with Azure Resource Manager" class="wa-video-thumbnail _storage-video-popup" href="http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/d05c84c7-44ec-4ff3-884f-d5f28ac107e0/%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BD%BF%E7%94%A8Azure%E8%99%9A%E6%8B%9F%E6%9C%BA.ism/Manifest" rel="nofollow" data-control="" data-ch9="http://channel9.msdn.com/Blogs/Regular-IT-Guy/Azure-Compute-and-AzureCLI-with-Azure-Resource-Manager/player/" data-expanding="false"><img class="thumbnail" alt="Azure Compute and AzureCLI with Azure Resource Manager" src="虚拟机_files/Manage-Use-VM.png" /><img class="play-icon" src="虚拟机_files/VideoPlay.svg" /> <span class="metadata"><span class="date"><span>2015年6月18日</span><span>4' 27&quot;</span></span></span> </a>
+                                        <p>远程连接虚拟机，在虚拟机中部署应用 </p>
+                                    </div>
+                                </div>
+                                <div class="wa-content">
+                                    <a class="wa-arrowLink" href="http://wacn-develop.chinacloudsites.cn/video-center/">观看更多视频</a>
+                                </div>
+                                <div class="wa-content wa-content-divided">
+                                    <h2> 虚拟机的最近更新<a href="http://wacn-develop.chinacloudsites.cn/updates/feed/?service=virtual-machines"><span class="wa-icon wa-icon-misc-rss"></span></a> </h2>
+                                </div>
+                                <div class="wa-content wa-content-3up">
+                                    <div class="wa-serviceUpdate">
+                                        <h4>Internal Load Balancing </h4>
+                                        <p class="article-date"> 2015/8/15 </p>
+                                        <p>内部负载平衡（Internal Load Balancing）预览版上线。<br /> 借助私有 IP 地址为您的 Windows Azure 虚拟机提供负载平衡。如果您的虚拟机在虚拟网络内，将从虚拟网络访问内部负载平衡端点。如果不在虚拟网络内，则可使用云服务访问。内部负载平衡适合用于创建多层应用程序，并对不对外的应用程序层进行负载平衡。该服务可免费用于虚拟机的标准级服务。 </p>
+                                        <!--<a class="wa-arrowLink wa-arrowLink-blue" href="http://azure.microsoft.com/en-us/updates/general-availability-g-series-and-gs-series-virtual-machines-in-multiple-new-regions/">了解更多</a>-->
+                                    </div>
+                                    <!--<a href="http://azure.microsoft.com/en-us/updates/general-availability-g-series-and-gs-series-virtual-machines-in-multiple-new-regions/"></a>-->
+                                </div>
+                                <div class="wa-content wa-content-3up">
+                                    <div class="wa-serviceUpdate">
+                                        <h4>SSD-VM </h4>
+                                        <p class="article-date"> 2014/12/1 </p>
+                                        <p>基于SSD存储支持的D系列虚拟机正式上线。<br />D 系列虚拟机提供基于SSD的存储所支持的临时磁盘，使其可进行极快速的临时存储，您可以获得更快的处理速度以及更大的内存，满足您工作负载的需要。详细信息请参阅&nbsp;D 系列虚拟机视频，点击这里可进一步了解D系列虚拟机的规格信息，欲了解定价情况，请访问&nbsp;D 系列虚拟机定价页面。 </p>
+                                        <!--<a class="wa-arrowLink wa-arrowLink-blue" href="http://azure.microsoft.com/en-us/updates/hpc-pack-support-for-linux/">了解更多</a>-->
+                                    </div>
+                                    <!--<a href="http://azure.microsoft.com/en-us/updates/hpc-pack-support-for-linux/"></a>-->
+                                </div>
+                                <div class="wa-content wa-content-3up">
+                                    <div class="wa-serviceUpdate">
+                                        <h4>VM Depot </h4>
+                                        <p class="article-date"> 2014/4/28 </p>
+                                        <p>新增直接使用 Windows Azure 管理门户部署 VM Depot上的虚拟机现在您可以直接使用 Windows Azure 的管理门户，即刻直接部署 VM Depot 上的虚拟机。让您更为方便、快捷的尝试各种选择以最大程度 的实现 Azure 这个开放的云平台为您带来的价值。请参阅帮助文档了解详细信息 。 </p>
+                                        <!--<a class="wa-arrowLink wa-arrowLink-blue" href="http://azure.microsoft.com/en-us/updates/azure-support-for-linux-rdma/">了解更多</a>-->
+                                    </div>
+                                    <!--<a href="http://azure.microsoft.com/en-us/updates/azure-support-for-linux-rdma/"></a>-->
+                                </div>
+                                <div class="wa-content">
+                                    <a class="wa-arrowLink" href="http://wacn-develop.chinacloudsites.cn/what-is-new/">查看更多服务更新</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- start login type selection -->
+    <div class="login-type-win hide">
+        <div class="login-content">
+            <h4>请选择您的登录方式</h4>
+            <a class="close" href="http://wacn-develop.chinacloudsites.cn/documentation/services/virtual-machines/#"></a>
+            <ul class="login-list">
+                <!--<li title="目前还不能使用">
+                               <a href="#">
+                                   <img src="http://wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/media/sso/windows1-disabled.png" />
+                                   <span>Windows</span>
+                               </a>
+                           </li>
+                           <li title="目前还不能使用">
+                               <a href="#">
+                                   <img src="http://wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/media/sso/sina-disabled.png" />
+                                   <span>Sina</span>
+                               </a>
+                           </li>
+                           <li title="目前还不能使用">
+                               <a href="#">
+                                   <img src="http://wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/media/sso/tencent-disabled.png" />
+                                   <span>Tencent</span>
+                               </a>
+                           </li>-->
+                <li><a href="http://wacn-develop.chinacloudsites.cn/sso/authenticate?type=github"><img src="虚拟机_files/github.png" /><span>Github</span> </a> </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end login type selection -->
+    <style>
+        footer {
+            width: 100%;
+            margin: 0;
+            padding: 0 25px;
+            min-width: 960px;
+            box-sizing: border-box;
+        }
+
+        .footer-map {
+            width: 100%;
+            margin: 0 auto;
+            min-width: 910px;
+            max-width: 1200px;
+            box-sizing: border-box;
+            padding: 50px 0 20px 0px;
+        }
+    </style>
+    <footer class="clearfix">
+        <div class="footer-map">
+            <ul style="width: 250px;">
+                <li>关注我们 </li>
+                <li><span class="footer-social-base footer-social-1 chatwithxiaoice" id="footer-xiaoice-id" onclick="popup()"> 在线咨询微软小冰 </span> </li>
+                <li><span class="footer-social-base footer-social-2">400-089-0365 </span> </li>
+                <li><a class="footer-social-base footer-social-3" id="footer-weibo-id" href="http://e.weibo.com/mscloudcomputing/" target="_blank" rel="nofollow">云微博 </a> </li>
+                <li><a class="footer-social-base footer-social-5" id="footer-news-id" href="http://wacn-develop.chinacloudsites.cn/what-is-new/"> 最新公告 </a> </li>
+                <li><a class="footer-social-base footer-social-6" id="footer-event-id" href="http://wacn-develop.chinacloudsites.cn/community/events/"> 活动 </a> </li>
+            </ul>
+            <ul style="width: 245px;">
+                <li><a id="footer-azure-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/">Windows Azure </a></li>
+                <li><a id="footer-solutions-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/solutions/">解决方案 </a></li>
+                <li><a id="footer-service-id" href="http://wacn-develop.chinacloudsites.cn/home/features/virtual-machines/"> 服务 </a></li>
+                <li><a id="footer-price-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/pricing/overview/"> 价格 </a></li>
+                <li><a id="footer-casestudy-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/partnerancasestudy/case-studies/"> 案例库 </a></li>
+                <li><a id="footer-documentation-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/documentation/"> 技术文档 </a></li>
+                <li><a id="footer-download-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/downloads/?sdk=net"> 工具下载 </a></li>
+            </ul>
+            <ul style="width: 195px;">
+                <li><a id="footer-support-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/contact/"> 支持 </a></li>
+                <li><a id="footer-productback-id" href="http://wacn-develop.chinacloudsites.cn/product-feedback"> 评价与反馈 </a></li>
+                <li><a id="footer-contact-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/contact/"> 联系我们 </a></li>
+                <li><a id="footer-plans-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/plans/"> 支持计划 </a></li>
+                <li><a id="footer-service-dashboard-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/service-dashboard/"> 服务仪表盘 </a></li>
+                <li><a id="footer-legal-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/legal/"> 法律 </a></li>
+                <li><a id="footer-support-faq-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/faq/"> 常见问题 </a></li>
+            </ul>
+            <ul>
+                <li><a id="footer-trust-center-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/trust-center/"> 信任中心 </a></li>
+                <li><a id="footer-privacy-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/trust-center/privacy/"> 隐私 </a></li>
+                <li><a id="footer-security-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/trust-center/security/"> 安全性 </a></li>
+                <li><a id="footer-trust-center-faq-id" href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/trust-center/faq/"> 常见问题 </a></li>
+            </ul>
+        </div>
+        <style>
+            footer .legal {
+                float: none;
+                width: 100%;
+                display: block;
+                box-sizing: border-box;
+                margin: 0 auto;
+                max-width: 1200px;
+                min-width: 910px;
+            }
+
+            .footer-bottom {
+                margin: 0 -25px;
+                padding: 20px 25px 10px 25px;
+            }
+
+            footer .footer-copyright {
+                float: left;
+            }
+
+            .footer-right {
+                float: right !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            footer ._footer-21v-logo {
+                display: inline-block;
+                vertical-align: middle;
+                position: relative;
+                top: 2px;
+                margin: 0 4px;
+            }
+
+            footer .footer-ms-logo {
+                display: inline-block;
+                vertical-align: middle;
+                position: relative;
+                top: -5px;
+                margin-left: 4px;
+            }
+
+                footer .footer-ms-logo img {
+                    margin: 0;
+                }
+        </style>
+        <div class="footer-bottom clearfix">
+            <ul class="legal">
+                <li><a href="http://windowsazure.com/" rel="nofollow"><span class="_footer-text-size">不在中国区域内使用 Windows Azure?</span> </a></li>
+                <li class="_footer-text-size"><a href="http://www.miibeian.gov.cn/" rel="nofollow"><span class="_footer-text-size">沪ICP备13015306号-6</span> </a></li>
+                <li class="_footer-text-size"><a href="http://wacn-develop.chinacloudsites.cn/zh-cn/support/legal/privacy-statement/"><span class="_footer-text-size">隐私</span> </a></li>
+                <!-- align right -->
+                <li class="_footer-text-size footer-right">Windows Azure <sup>&reg; </sup> 由 <a class="_footer-21v-logo" href="http://www.ch.21vianet.com/" rel="nofollow"></a> 运营，技术源自 <a class="footer-ms-logo" href="http://www.microsoft.com/" rel="nofollow"><img alt="microsoft" src="虚拟机_files/Microsoft%2520logo-75X14.png" /> </a> </li>
+            </ul>
+        </div>
+    </footer>
+    <noscript>
+        &lt;img alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; src=&quot;http://c.microsoft.com/trans_pixel.aspx/&quot; /&gt;
+    </noscript>
+    <!-- Begin MDA WEDCS -->
+</body>
+</html>

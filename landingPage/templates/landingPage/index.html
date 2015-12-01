@@ -1,0 +1,21 @@
+{% extends "landingPage\page.html" %}
+
+{% block content %}
+<ul style="width:1200px;padding-top:20px">
+    {% for service in services %}
+    <li>
+        <a href="{% url 'landingPage' service.service_id %}">{{service.service_name}}</a> 
+        <a href="{% url 'xmlpagegenerator' service.service_id %}" title="生成xml代码">
+            <img src="/static/landingPage/img/images.png" style="width:20px;height:20px;margin-bottom:0px"/>
+        </a>
+        <a href="{% url 'landingPage' service.service_id %}?edit=" title="编辑">
+            <img src="/static/landingPage/img/edit.png" style="margin-bottom:0px"/>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block title %}
+    <title>Landingpage Index | Azure</title>
+{% endblock %}

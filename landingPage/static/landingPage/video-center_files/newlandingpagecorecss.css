@@ -1,0 +1,25 @@
+.table {
+	color: rgb(0, 0, 0); line-height: 22px; font-family: YaHei,Simsun,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important; font-size: 13px; border-top-color: rgb(153, 153, 153); border-top-width: 2px; border-top-style: solid; border-collapse: collapse;
+}
+
+
+.faqpage .zh-cn body {
+	font-family: YaHei,Simsun,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important;
+}
+.faqpage .zh-cn .light-font {
+	font-family: YaHei,Simsun,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important;
+}
+
+.zh-cn body {
+	font-family: YaHei,Simsun,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important;
+}
+.zh-cn .light-font {
+	font-family: YaHei,Simsun,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important;
+}
+
+.zh-cn h1 {
+	font-family: YaHei,Simsun,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important;
+}
+.zh-cn h2 {
+	font-family: YaHei,Simsun,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important;
+}

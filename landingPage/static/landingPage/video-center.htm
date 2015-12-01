@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+
+<html class="no-js zh-cn t-0" lang="zh-cn" xmlns:wb="http://open.weibo.com/wb">
+<!--<![endif]-->
+<head>
+
+<link href="C:/Users/Administrator/Documents/video-center_files/corecss.css?v=20150813043734" rel="stylesheet" type="text/css">
+<link href="C:/Users/Administrator/Documents/video-center_files/corecss2.css?v=20150813043734" rel="stylesheet" type="text/css">
+<script src="C:/Users/Administrator/Documents/video-center_files/corejs.js?v=20150813043734" type="text/javascript"></script>
+<title></title>
+<meta name="description" content="Windows Azure 视频中心，迅速掌握Windows Azure使用方法" />
+
+<link href="C:/Users/Administrator/Documents/video-center_files/azuremediaplayer.min.css" rel="stylesheet">
+<script src="C:/Users/Administrator/Documents/video-center_files/azuremediaplayer.min.js"></script>
+<script>
+    amp.options.flashSS.swf = "http://amp.azure.net/libs/amp/1.1.1/techs/StrobeMediaPlayback.2.0.swf"
+    amp.options.flashSS.plugin = "http://amp.azure.net/libs/amp/1.1.1/techs/MSAdaptiveStreamingPlugin-osmf2.0.swf"
+    amp.options.silverlightSS.xap = "http://amp.azure.net/libs/amp/1.1.1/techs/SmoothStreamingPlayer.xap"
+</script>   
+   
+</head>
+<body id="top" class='page- ' style="min-width:960px;">
+
+    <style>
+        .main-container {
+            margin: 0;
+            padding: 107px 0 0 0;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .old-main-container {
+            width: 880px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 40px;
+            top: 86px;
+        }
+    </style>
+
+<header class="clearfix page-header">
+</header>
+
+    <!-- start events panel-->
+
+<style>
+  ul.azsidebar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  right: 0;
+  top: 30%;
+  z-index: 999;
+  }
+  ul.azsidebar li {
+  position: relative;
+  }
+  ul.azsidebar li a {
+  text-decoration: none;
+  display: block;
+  width: 40px;
+  height: 45px;
+  }
+  ul.azsidebar li .tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  font-size: 10px;
+  color: white;
+  background-color: #ee5a30;
+  text-align: center;
+  line-height: 13px;
+  }
+  ul.azsidebar li .tri-angle {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 5px;
+  height: 11px;
+  margin-top: -6px;
+  background: url(//wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/css/img/triangle_5x11.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  }
+  ul.azsidebar li .tri-angle-blue {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 5px;
+  height: 11px;
+  margin-top: -6px;
+  background: url(//wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/css/img/triangle_5x11.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background: url(//wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/css/img/blue_triangle_5x11.png);
+  }
+  ul.azsidebar .news {
+  background: url(//wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/css/img/whats_new_40x45.png);
+  background-size: contain;
+  background-color: #00ce7d;
+  }
+  ul.azsidebar .news:hover {
+  opacity: 0.8;
+  }
+  ul.azsidebar .event {
+  background: url(//wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/css/img/event_40x45.png);
+  background-size: contain;
+  background-color: #3b3b3b;
+  }
+  ul.azsidebar .event:hover {
+  opacity: 0.8;
+  }
+  ul.azsidebar .bing {
+  background: url(//wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/css/img/support_40x45.png);
+  background-size: contain;
+  background-color: #33a4fb;
+  }
+  ul.azsidebar .bing:hover {
+  opacity: 0.8;
+  }
+  ul.azsidebar .calculator {
+  background: url(//wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/css/img/calculator_40x45.png);
+  background-size: contain;
+  background-color: #3b3b3b;
+  }
+  ul.azsidebar .calculator:hover {
+  opacity: 0.8;
+  }
+  .sidebar-win {
+  position: fixed;
+  right: 40px;
+  top: 30%;
+  z-index: 999;
+  box-shadow: 1px 1px 3px 1px gray;
+  }
+  .sidebar-win .control {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  }
+  .sidebar-win .close {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+  background: url(//wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/css/img/sidebar-close.png);
+  background-size: contain;
+  }
+  .sidebar-win .max {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+  }
+  .sidebar-win.news {
+  width: 550px;
+  height: 160px;
+  background: #3b3b3b;
+  opacity: 0.95;
+  position: fixed;
+  right: 40px;
+  top: 30%;
+  padding: 15px;
+  box-sizing: border-box;
+  }
+  .sidebar-win.news p {
+  font-size: 14px;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 10px;
+  }
+  .sidebar-win.news p a {
+  display: inline-block;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+  background: #33a4fb;
+  padding: 0 3px;
+  text-decoration: none;
+  }
+  .sidebar-win.news p a:hover {
+  opacity: 0.8;
+  }
+  .sidebar-win.news .all {
+  width: 108px;
+  height: 28px;
+  color: white;
+  font-size: 14px;
+  background-color: #ff3d00;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  line-height: 28px;
+  }
+  .sidebar-win.news .all:hover {
+  background-color: #fa6434;
+  }
+  .sidebar-win.events {
+  width: 450px;
+  height: 64px;
+  position: fixed;
+  right: 40px;
+  top: 30%;
+  box-sizing: border-box;
+  }
+  .sidebar-win.events .events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  }
+  .sidebar-win.events .events-list .title {
+  display: inline-block;
+  width: 160px;
+  height: 106px;
+  padding: 4px;
+  box-sizing: border-box;
+  background: #2190f8;
+  position: relative;
+  left: 5px;
+  height:120px;
+  }
+  .sidebar-win.events .events-list .title .container {
+  background: #10487c;
+  height: 100%;
+  border-radius: 3px;
+  padding: 8px 4px;
+  box-sizing: border-box;
+  color: #f8f8f8;
+  text-align: center;
+  padding-top: 24px;
+  }
+  .sidebar-win.events .events-list .title .sub {
+  font-size: 12px;
+  }
+  .sidebar-win.events .events-list .title .main {
+  font-size: 18px;
+  }
+  .sidebar-win.events .events-list .detail {
+  display: inline-block;
+  width: 285px;
+  min-height: 72px;
+  vertical-align: top;
+  background: #3b3b3b;
+  border: 1px solid #4b4b4b;
+  padding: 10px 0;
+  box-sizing: border-box;
+  height:120px;
+  }
+  .sidebar-win.events .events-list .detail p {
+  margin: 0;
+  }
+  .sidebar-win.events .events-list .detail .type {
+  font-size: 12px;
+  color: white;
+  padding: 6px 0 0 10px;
+  }
+  .sidebar-win.events .events-list .detail .info {
+  font-size: 12px;
+  color: white;
+  margin: 0 10px;
+  }
+  .sidebar-win.events .events-list .detail .signup {
+  display: block;
+  width: 77px;
+  height: 22px;
+  color: white;
+  font-size: 14px;
+  background-color: #ff3d00;
+  text-decoration: none;
+  text-align: center;
+  line-height: 22px;
+  margin: 5px 0 0 10px;
+  }
+  .sidebar-win.events .events-list .detail .tag {
+  font-size: 12px;
+  color: #ffea34;
+  }
+  .sidebar-win.bing {
+  top: 20%;
+  right: 40px;
+  position: fixed;
+  }
+</style>
+<script type="text/javascript">
+</script>
+
+
+    <!--sina weibo popup box-->
+    
+    <!--sina weibo popup box end-->
+        <div class="main-container">
+            
+
+
+<script>
+    var videoList = [{"Title":"Azure高级存储简介","CourseSeries":"快速入门","Services":["存储"],"Duration":359,"PublishTime":"\/Date(1436854380000)\/","Description":"主要介绍了什么是Azure高级存储，高级存储的功能，与普通存储比较的优势，高级存储的可扩展性，高级存储的价格以及如何使用PowerShell创建高级存储账号及DS系列虚拟机。","ImageUrl":"http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/%E5%AD%98%E5%82%A8/Azure%E9%AB%98%E7%BA%A7%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D.png","VideoUrl":"http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/45bd1a47-7e9b-4ec0-9867-46dfb17b5c9d/Azure%E9%AB%98%E7%BA%A7%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D.ism/Manifest","LikeCount":3},{"Title":"在Azure门户中管理Active Directory","CourseSeries":"快速入门","Services":["Active Directory"],"Duration":261,"PublishTime":"\/Date(1434585600000)\/","Description":"Windows Azure Directory介绍，添加一个AAD用户，添加一个协同管理员，添加一个自定义域","ImageUrl":"http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/Active%20Directory/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86Active-Directory.png","VideoUrl":"http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/0cc10672-17f6-4f26-b964-24174b63349c/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86Active%20Directory.ism/Manifest","LikeCount":9},{"Title":"在Azure门户中管理CDN","CourseSeries":"快速入门","Services":["CDN"],"Duration":227,"PublishTime":"\/Date(1434585600000)\/","Description":"CDN介绍, 演示配置CDN","ImageUrl":"http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/CDN/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86CDN.png","VideoUrl":"http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/680ca107-f2ac-4139-b246-91b71d4a889c/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86CDN.ism/Manifest","LikeCount":2},{"Title":"HDInsight（云上Hadoop）介绍","CourseSeries":"快速入门","Services":["HDInsight"],"Duration":293,"PublishTime":"\/Date(1434585600000)\/","Description":"演示使用HDInsight执行数据分析","ImageUrl":"http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/HDInsight/HDInsight-%E4%BA%91%E4%B8%8AHadoop-%E4%BB%8B%E7%BB%8D.png","VideoUrl":"http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/6c2c248d-7329-4827-885f-37834cac29ad/HDInsight(%E4%BA%91%E4%B8%8AHadoop)%E4%BB%8B%E7%BB%8D.ism/Manifest","LikeCount":0},{"Title":"在Azure门户中管理HDInsight（云上的Hadoop）","CourseSeries":"快速入门","Services":["HDInsight"],"Duration":222,"PublishTime":"\/Date(1434585600000)\/","Description":"HDInsight介绍，创建并管理HDInsight","ImageUrl":"http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/HDInsight/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86HDInsight-%E4%BA%91%E4%B8%8AHadoop.png","VideoUrl":"http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/07873d0f-8718-4757-a17a-906197053eab/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86HDInsight%20(%E4%BA%91%E4%B8%8AHadoop).ism/Manifest","LikeCount":2},{"Title":"在Azure门户中管理Service Bus","CourseSeries":"快速入门","Services":["服务总线"],"Duration":243,"PublishTime":"\/Date(1434585600000)\/","Description":"Azure Service Bus组件介绍，创建Service Bus，仪表板，删除Service Bus","ImageUrl":"http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/SERVICE%20BUS/1%20%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86Service%20Bus.png","VideoUrl":"http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/1bf855e5-fe1a-438c-b607-0dd8d172f4b4/1%20%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86Service%20Bus.ism/Manifest","LikeCount":0},{"Title":"在应用中使用Service Bus","CourseSeries":"快速入门","Services":["服务总线"],"Duration":257,"PublishTime":"\/Date(1434585600000)\/","Description":"创建Service Bus队列，创建代码项目发送队列消息，创建代码项目接收队列消息","ImageUrl":"http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/SERVICE%20BUS/2%20%E5%9C%A8%E5%BA%94%E7%94%A8%E4%B8%AD%E4%BD%BF%E7%94%A8Service%20Bus.png","VideoUrl":"http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/ce7a244b-d806-418a-8fd3-af9851b81831/2%20%E5%9C%A8%E5%BA%94%E7%94%A8%E4%B8%AD%E4%BD%BF%E7%94%A8Service%20Bus.ism/Manifest","LikeCount":0},{"Title":"SQL数据库迁移到云端","CourseSeries":"快速入门","Services":["SQL数据库"],"Duration":224,"PublishTime":"\/Date(1434585600000)\/","Description":"使用Azure管理门户中的SQL数据库导入和导出服务结合SQL Server Management Studio中的导入和导出数据库层应用程序完成数据库迁移","ImageUrl":"http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/SOL%E6%95%B0%E6%8D%AE%E5%BA%93/SQL%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E5%88%B0%E4%BA%91%E7%AB%AF.png","VideoUrl":"http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/0149e2c4-f790-4a4b-89cb-e6d3b7b45ebb/SQL%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E5%88%B0%E4%BA%91%E7%AB%AF.ism/Manifest","LikeCount":2},{"Title":"SQL数据库防火墙规则介绍","CourseSeries":"快速入门","Services":["SQL数据库"],"Duration":229,"PublishTime":"\/Date(1434585600000)\/","Description":"SQL数据库防火墙规则介绍， 演示管理防火墙规则","ImageUrl":"http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/SOL%E6%95%B0%E6%8D%AE%E5%BA%93/SQL%E6%95%B0%E6%8D%AE%E5%BA%93%E9%98%B2%E7%81%AB%E5%A2%99%E8%A7%84%E5%88%99%E4%BB%8B%E7%BB%8D.png","VideoUrl":"http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/f2d2e6c4-430f-4f35-a617-6e711af08848/SQL%E6%95%B0%E6%8D%AE%E5%BA%93%E9%98%B2%E7%81%AB%E5%A2%99%E8%A7%84%E5%88%99%E4%BB%8B%E7%BB%8D.ism/Manifest","LikeCount":1},{"Title":"在Azure门户中管理SQL数据库","CourseSeries":"快速入门","Services":["SQL数据库"],"Duration":232,"PublishTime":"\/Date(1434585600000)\/","Description":"Windows Azure SQL数据库介绍，创建SQL数据库，修改SQL数据库服务层和性能级别","ImageUrl":"http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/SOL%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86SQL%E6%95%B0%E6%8D%AE%E5%BA%93.png","VideoUrl":"http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/b59202d9-0101-4eca-a143-44d4e09b8e22/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86SQL%E6%95%B0%E6%8D%AE%E5%BA%93.ism/Manifest","LikeCount":1}];
+    var courseSeriesFilter =  {"ItemList":["快速入门","进阶学习"]};
+    var serviceFilter =  {"ItemList":["Active Directory","CDN","HDInsight","服务总线","SQL数据库","云服务","备份服务","媒体服务","存储","流量管理器","移动服务","网站","虚拟机","虚拟网络","计划程序","通知中心","MySQL Database on Azure"]};
+    var durationFilter =  {"ItemList":["小于等于5分钟","大于五分钟小于等于十分钟","大于十分钟"]};
+    var totalVideoCount = 37;
+    
+</script>
+
+<div id="video-center">
+    <div id="banner">
+        <div class="text">
+            <div class="title">视频中心</div>
+            <div class="sub-title">十分迅速掌握 Windows Azure 使用方法</div>
+        </div>
+    </div>
+    <div id="content">
+        <div id="left">
+            <div class="filter-field">
+             
+            </div>
+            <div class="video-field">
+              <div class="video-item">
+                <div class="video-image">
+                    <a class="_storage-video-popup" style=" background: url("http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/CDN/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86CDN.png") no-repeat;"
+                      href="http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/680ca107-f2ac-4139-b246-91b71d4a889c/%E5%9C%A8Azure%E9%97%A8%E6%88%B7%E4%B8%AD%E7%AE%A1%E7%90%86CDN.ism/Manifest">
+                    <div class="play-btn">
+                      <img class="image" src="http://wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/css/images/video_center_play.png" />
+                    </div>
+                    </a>
+                </div>
+                
+              </div>
+              
+            </div>
+            <div id="Pagination" class="pagination"></div>
+        </div>
+    </div>
+</div>
+<script src="C:/Users/Administrator/Documents/video-center_files/videocenter.js"></script>
+        </div>
+
+
+    <style>
+    footer {
+        width:100%;
+        margin:0;
+        padding: 0 25px;
+        min-width: 960px;
+        box-sizing: border-box;
+    }
+
+    .footer-map {
+        width: 100%;
+        margin: 0 auto;
+        min-width: 910px;
+        max-width: 1200px;
+        box-sizing: border-box;
+        padding: 50px 0 20px 0px;
+    }
+</style>
+
+<footer class="clearfix">
+    <style>
+        footer .legal {
+            float: none;
+            width: 100%;
+            display: block;
+            box-sizing: border-box;
+            margin: 0 auto;
+            max-width: 1200px;
+            min-width: 910px;
+        }
+
+        .footer-bottom {
+            margin: 0 -25px;
+            padding: 20px 25px 10px 25px;
+
+        }
+
+        footer .footer-copyright {
+            float: left;
+        }
+
+        .footer-right {
+            float: right !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        footer ._footer-21v-logo {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            top: 2px;
+            margin: 0 4px;
+        }
+
+        footer .footer-ms-logo {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            top: -5px;
+            margin-left: 4px;
+        }
+
+        footer .footer-ms-logo img {
+           margin: 0;
+        }
+
+
+    </style>
+</footer>
+
+
+    
+
+</body>
+</html>

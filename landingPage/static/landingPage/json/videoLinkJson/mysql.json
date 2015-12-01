@@ -1,0 +1,12 @@
+[
+    {
+        "CourseSeries": "进阶学习",
+        "VideoUrl": "http://wacnvideo.streaming.mediaservices.chinacloudapi.cn/17fbc55f-5bb3-46bb-981e-66290f701c49/MySQL%20Database%20on%20Azure%20MVP%20Talk%2020150526.ism/Manifest",
+        "Duration": "66' 49\"",
+        "Title": "MySQL Database on Azure MVP Talk",
+        "PublishTime": "2015年6月18日",
+        "ImageUrl": "http://wacnstorage.blob.core.chinacloudapi.cn/marketing-resource/media/VideoCenter/image/MySQL/My%20SQL.png",
+        "Description": "微软在四月底首次在Azure上发布MySQL Database on Azure公共预览版。这是由微软中国云计算创新中心的产品开发团队负责开发的兼容MySQL的数据库PaaS服务，它帮助用户在云端快速部署MySQL数据库，无需人工维护基础架构，具有高可靠、高安全、高可用、高性价比和简单易用的特点。在这个讲座里我们会全面介绍MySQL Database on Azure的功能，特点，和架构，我们也会演示如何方便快速地部署，配置，监视，和管理Azure上的MySQL数据库。本视频主要包括用户介绍，功能介绍，版本介绍，架构支持，实战QA",
+        "Services": "MySQL Database on Azure"
+    }
+]

@@ -1,0 +1,52 @@
+{
+  "sevices": [
+    {
+      "service_name": "App Service Web", "folder": "articles/app-service-web/"
+    },
+    {
+      "service_name": "Automation", "folder": "articles/automation/"
+    },
+    {
+      "service_name": "HDInsight", "folder": "articles/hdinsight/"
+    },
+    {
+      "service_name": "Media Service", "folder": "articles/media-services/"
+    },
+    {
+      "service_name": "Redis Cache", "folder": "articles/redis-cache/"
+    },
+    {
+      "service_name": "Traffic Manager", "folder": "articles/traffic-manager/"
+    },
+    {
+      "service_name": "Virtual Network", "folder": "articles/virtual-network/"
+    }
+  ],
+  "includes_search_keys": {
+    "App Service Web": [ "web", "publishing-with-git" ],
+    "Automation": [ "automation" ],
+    "HDInsight": [ "hdinsight" ],
+    "Media Service": [ "media" ],
+    "Redis Cache": [ "cache" ],
+    "Traffic Manager": [ "traffic" ],
+    "Virtual Network": [ "virtual-network", "vnet" ],
+    "Active Directory": [ "active-directory" ],
+    "Application Gateway": [ "application-gateway" ],
+    "Backup": [ "backup" ],
+    "Batch": [ "batch" ],
+    "Cache": [ "cache" ],
+    "CDN": [ "cdn" ],
+    "Cloud Service": [ "cloud-services" ],
+    "Event Hubs": [ "event-hubs" ],
+    "ExpressRoute": [ "expressroute" ],
+    "Mobile Services": [ "mobile-services" ],
+    "Notification Hubs": [ "notification-hubs" ],
+    "Scheduler": [ "scheduler" ],
+    "Service Bus": [ "service-bus" ],
+    "Site Recovery": [ "site-recovery" ],
+    "SQL Database": [ "sql-database" ],
+    "Storage": [ "storage" ],
+    "Virtual Machine": [ "virtual-machines", "vm" ],
+    "Others": [ "" ]
+  }
+}

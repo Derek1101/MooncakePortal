@@ -1,0 +1,12 @@
+﻿{% for option in options %}
+<div id="edit_option_{{forloop.counter}}">
+    <textarea >{{option.title}}</textarea>
+    <textarea >{{option.link}}</textarea>
+    <a href="javascript:deleteField('edit_option_{{forloop.counter}}')" title="删除">
+        <img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>
+    </a>
+</div>
+{% endfor %}
+<span id="add_option_butt">
+    <a href="javascript:addTutorialOption('add_option_butt')">增加选项</a>
+</span>

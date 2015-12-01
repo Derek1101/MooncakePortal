@@ -1,0 +1,383 @@
+{% extends "landingPage\page.html" %}
+{% block title %}
+    <title>{{service_name}}文档 | Azure</title>
+{% endblock %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{{cssLink}}" />
+    <script type="text/javascript" src="{{jqueryLink}}"></script>
+    <script type="text/javascript" src="{{jsLink}}"></script>
+{% endblock %}
+
+{% block content %}
+    <script>
+        amp.options.flashSS.swf = "http://amp.azure.net/libs/amp/1.1.1/techs/StrobeMediaPlayback.2.0.swf";
+        amp.options.flashSS.plugin = "http://amp.azure.net/libs/amp/1.1.1/techs/MSAdaptiveStreamingPlugin-osmf2.0.swf";
+        amp.options.silverlightSS.xap = "http://amp.azure.net/libs/amp/1.1.1/techs/SmoothStreamingPlayer.xap";
+        var navigationJsonStr = '{% autoescape off %}{{navigationJson}}{% endautoescape %}'
+		var activeActicleId = null;
+        var pageId = null;
+        function renderNavigation(navigationJsonStr, activeActicleId) {
+            navigationJson = JSON.parse(navigationJsonStr);
+            mainDiv = document.getElementById("wa-navigationLeft");
+
+            serviceTitle = document.createElement("a");
+            serviceTitle.id = navigationJson.id;
+            serviceTitle.innerHTML = navigationJson.service;
+            serviceTitle.className = "toggler";
+            mainDiv.appendChild(serviceTitle);
+
+            mainUl = document.createElement("ul");
+            mainUl.className = "toggled";
+            mainDiv.appendChild(mainUl);
+
+            for (var i = 0; i < navigationJson.navigation.length; i++) {
+                groupLi = document.createElement("li");
+                groupLi.id = navigationJson.navigation[i].id + "_header";
+                groupLi.setAttribute("data-control", "toggle");
+                groupLi.setAttribute("data-tag-name", navigationJson.navigation[i].id);
+                groupLi.setAttribute("data-service-name", navigationJson.id);
+                mainUl.appendChild(groupLi);
+                groupTitle = document.createElement("a");
+                groupTitle.setAttribute("onclick", "show('" + navigationJson.navigation[i].id + "_header" + "')");
+                groupTitle.innerHTML = navigationJson.navigation[i].group;
+                groupTitle.className = "toggler";
+                groupLi.appendChild(groupTitle);
+                groupUl = document.createElement("ul");
+                groupUl.id = navigationJson.navigation[i].id;
+                groupUl.className = "toggled";
+                groupLi.appendChild(groupUl);
+                for (var j = 0; j < navigationJson.navigation[i].articles.length; j++) {
+                    articleLi = document.createElement("li");
+                    articleLi.id = navigationJson.navigation[i].articles[j].id+"_li"
+                    groupUl.appendChild(articleLi);
+                    articleLink = document.createElement("a");
+                    articleLink.href = navigationJson.navigation[i].articles[j].link;
+                    articleLink.innerHTML = navigationJson.navigation[i].articles[j].title;
+                    articleLink.id = navigationJson.navigation[i].articles[j].id;
+                    articleLink.setAttribute("data-link-service-name", navigationJson.id);
+                    articleLink.setAttribute("data-link-tag-name", navigationJson.navigation[i].articles[j].id);
+                    articleLi.appendChild(articleLink);
+                }
+            }
+            if (activeActicleId == null) {
+                document.getElementById(navigationJson.navigation[0].id + "_header").className = "active open";
+                pageId = navigationJson.navigation[0].id + "_header";
+            }
+            else {
+                for (var i = 0; i < navigationJson.navigation.length; i++) {
+                    for (var j = 0; j < navigationJson.navigation[i].articles.length; j++) {
+                        if (navigationJson.navigation[i].articles[j].id == activeActicleId) {
+                            document.getElementById(navigationJson.navigation[i].id + "_header").className = "active open";
+                            pageId = navigationJson.navigation[i].id + "_header";
+                            document.getElementById(activeActicleId).style.color = "#00abec";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        function dropdownSelectChange() {
+            dropdownSelect = document.getElementById('dropdown-cta');
+            contentSelected = document.getElementById('wa-dropdown-value');
+            document.getElementById('wa-button-link').href = dropdownSelect.value;
+            contentSelected.innerHTML = dropdownSelect.options[dropdownSelect.selectedIndex].innerHTML;
+        }
+
+        // show article-content when click on link
+        $(function () {
+            $(".wa-arrowLink.wa-arrowLink-blue").click(function () {
+                $(this).attr('style', 'display:none');
+                $(this).siblings(".article-content").removeAttr('style');
+            });
+        });
+    </script>
+    <script>
+        var editting = {};
+        function editField(id, type) {
+            element = document.getElementById(id);
+            if(type == "text"){
+                if(!editting[id]){
+                    textField = document.createElement("textarea");
+                    textField.addEventListener("click", function(e){
+                        if ( e && e.stopPropagation ) 
+                            e.stopPropagation(); 
+                        else
+                            window.event.cancelBubble = true; 
+                    });
+                    textField.setAttribute("style","width:85%;")
+                    for (var i = 0; i<element.childNodes.length; i++){
+                        if(element.childNodes[i].nodeValue!=null && element.childNodes[i].nodeValue.trim()!=""){
+                            textField.value = element.childNodes[i].nodeValue.trim();
+                            editting[id]={"element":element, "textField":textField, "text":element.childNodes[i]}
+                            element.replaceChild(textField, element.childNodes[i]);
+                            break;
+                        }
+                    }
+                }
+                else{
+                    editting[id].text.nodeValue = editting[id].textField.value;
+                    a = editting[id].element.replaceChild(editting[id].text, editting[id].textField);
+                    editting[id] = false;
+                }
+            }
+            else if(type == "link"){
+                if(!editting[id]){
+                    container = document.createElement("span");
+                    textField1 = document.createElement("textarea");
+                    textField1.setAttribute("style","width:85%;")
+                    textField2 = document.createElement("textarea");
+                    textField2.setAttribute("style","width:85%;")
+                    for (var i = 0; i<element.childNodes.length; i++){
+                        if(element.childNodes[i].nodeValue!=null && element.childNodes[i].nodeValue.trim()!=""){
+                            textField1.value = element.childNodes[i].nodeValue.trim();
+                            textField2.value = element.href;
+                            editting[id]={"element":element, "container":container, "title":textField1, "link":textField2, "text":element.childNodes[i]}
+                            container.appendChild(textField1);
+                            container.appendChild(textField2);
+                            element.parentElement.insertBefore(container, element);
+                            element.childNodes[i].nodeValue = "";
+                            break
+                        }
+                    }
+                    
+                }
+                else{
+                    editting[id].element.tagName = "a";
+                    editting[id].text.nodeValue = editting[id].title.value;
+                    editting[id].element.href = editting[id].link.value
+                    editting[id].container.parentElement.replaceChild(editting[id].element, editting[id].container);
+                    editting[id] = false;
+                }
+            }
+            else if(type == "select_list"){
+                
+                if(!editting[id]){
+                    var xmlhttp2;
+                    if (window.XMLHttpRequest)
+                    {// code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp2=new XMLHttpRequest();
+                    }
+                    else
+                    {// code for IE6, IE5
+                        xmlhttp2=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp2.onreadystatechange=function()
+                    {
+                        if (xmlhttp2.readyState==4 && xmlhttp2.status==200)
+                        {
+                            
+                            editSelectList = document.createElement("div");
+                            editSelectList.innerHTML = xmlhttp2.responseText;
+                            editting[id]={"element":element, "editSelectList":editSelectList}
+                            element.parentElement.replaceChild(editSelectList, element);
+                        }
+                    }
+                    options = element.getElementsByTagName("option");
+                    optionsJson = [];
+                    
+                    for(var i = 0; i<options.length; i++){
+                        option = {"title":options[i].innerHTML.trim(), "link":options[i].value.trim()};
+                        optionsJson[i]=option;
+                        
+                    }
+                    optionsJsonStr = JSON.stringify(optionsJson);
+                    xmlhttp2.open("POST","/editTutorialSelectList/activeDirectory/",true);//TODO
+                    xmlhttp2.setRequestHeader("options", optionsJsonStr)
+                    xmlhttp2.send();
+                    
+                }
+                else{
+                    editting[id].editSelectList.parentElement.replaceChild(editting[id].element, editting[id].editSelectList);
+                    divList = editting[id].editSelectList.getElementsByTagName("div");
+                    options = editting[id].element.getElementsByTagName("option");
+                    if(divList.length>options.length){
+                        for(var i = 0; i<divList.length-options.length; i++){
+                            newOption = options[0].cloneNode(true);
+                            options[0].parentElement.appendChild(newOption);
+                        }
+                        options = editting[id].element.getElementsByTagName("option");
+                    }
+                    else if(divList.length<options.length){
+                        for(var i = 0; i<options.length-divList.length; i++){
+                            options[i].parentElement.removeChild(options[i]);
+                        }
+                        options = editting[id].element.getElementsByTagName("option");
+                    }
+                    for(var i = 0; i<divList.length; i++){
+                        textareas = divList[i].getElementsByTagName("textarea");
+                        options[i].value = textareas[1].value;
+                        options[i].innerHTML = textareas[0].value;
+                    }
+                    editting[id] = false;
+                }
+            }
+            else if(type == "video"){
+                if(!editting[id]){
+                    var xmlhttp4;
+                    if (window.XMLHttpRequest)
+                    {// code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp4=new XMLHttpRequest();
+                    }
+                    else
+                    {// code for IE6, IE5
+                        xmlhttp4=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp4.onreadystatechange=function()
+                    {
+                        if (xmlhttp4.readyState==4 && xmlhttp4.status==200)
+                        {
+                            
+                            editSelectList = document.createElement("div");
+                            editSelectList.innerHTML = xmlhttp4.responseText;
+                            editting[id]={"element":element, "editSelectList":editSelectList}
+                            element.parentElement.replaceChild(editSelectList, element);
+                        }
+                    }
+                    aLink = element.getElementsByClassName("wa-video-thumbnail _storage-video-popup")[0];
+                    bgImage = aLink.getElementsByClassName("thumbnail")[0];
+                    description = element.getElementsByTagName("p")[0].innerHTML.trim();
+                    content = {"title":bgImage.alt, };
+                    
+                    for(var i = 0; i<options.length; i++){
+                        option = {"title":options[i].innerHTML.trim(), "link":options[i].value.trim()};
+                        optionsJson[i]=option;
+                        
+                    }
+                    optionsJsonStr = JSON.stringify(optionsJson);
+                    xmlhttp4.open("GET","/editVideo/activeDirectory/?Content="+optionsJsonStr,true);//TODO
+                    xmlhttp4.send();
+                }
+                else{
+                    
+                }
+            }
+        }
+        function deleteField(id){
+            element = document.getElementById(id);
+            element.parentElement.removeChild(element);
+        }
+        
+    </script>
+    <style>
+        .old-main-container {
+            width: 100% !important;
+            padding: 20px 0px !important;
+        }
+    </style>
+    <div class="wa-container-documentation wa-container-nested-documentation">
+        <section class="wa-section wa-section-micro">
+            <div class="wa-content wa-content-documentation wa-content-4up">
+                <div class="wa-spacer wa-spacer-docSide">
+                    <div id="wa-navigationLeft" class="wa-navigationLeft" data-control="toggle">
+
+                    </div>
+                    <script>
+                        renderNavigation(navigationJsonStr, activeActicleId);
+                    </script>
+                </div>
+                <div class="wa-spacer wa-spacer-3down wa-spacer-docContent">
+                    <div class="wa-content">
+                        <h1>
+                            {{service_name}}文档
+                        </h1>
+                        <h5>
+                            {{subtitle}}
+                        </h5>
+                        <label for="dropdown-cta" class="wa-dropdown-label">
+                            {{tutorial_message}}
+                        </label>
+                        {% if options|length == 1 %}
+                            <p class="tutorial-label">
+                                {{first_option_title}}
+                                <a class="wa-button wa-button-primary wa-button-mini" href="{{first_option_link}}" data-linker="cta">
+                                    入门教程
+                                </a>
+                            </p>
+                        {% else %}
+                            <div class="wa-dropdown-container wa-dropdown-medium">
+                                <select id="dropdown-cta" class="wa-dropdown" data-control="dropdown dropdown-linker" data-linker="cta" onchange="dropdownSelectChange()">
+                                    {% for option in options %}
+                                    <option value="{{option.link}}">
+                                        {{option.title}}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                                <script>
+                                checkDropdownMenuHasMoreThanOneOption();
+                                </script>
+                                <span id="wa-dropdown-value" class="wa-dropdown-value">{{first_option_title}}</span><span class="wa-dropdown-arrow"></span>
+                            </div>
+                            <a id="wa-button-link" data-service-name="virtual-machines" href="{{first_option_link}}" class="wa-button wa-button-primary wa-button-mini" data-linker="cta">入门教程</a>
+                        {% endif %}
+                    </div>
+                    {% if videoLinks|length > 0 %}
+                    <div class="wa-content wa-content-divided sub-hero-heading">
+                        <h2>
+                            {{service_name}}视频
+                        </h2>
+                    </div>
+                    <div class="wa-content wa-content-3up">
+                        {% for videoLink in videoLinks%}
+                            <div class="wa-spacer">
+                                <a href="{{videoLink.video_url}}" data-control="" data-expanding="false" class="wa-video-thumbnail _storage-video-popup" title="{{videoLink.title}}">
+                                    <img src="{{imgLink}}{{videoLink.image_title}}.png" alt="{{videoLink.title}}" class="thumbnail" />
+                                    {% if azure %}
+                                    <img class="play-icon" src="{{imgLink}}VideoPlay.png" />
+                                    {% else %}
+                                    <img class="play-icon" src="{{imgLink}}VideoPlay.svg" />
+                                    {% endif %}
+                                    <span class="metadata">
+                                        <span class="date">
+                                            <span>{{videoLink.publish_time}}</span>
+                                            <span>{{videoLink.duration}}</span>
+                                        </span>
+                                    </span>
+                                </a>
+                                <p>
+                                    {{videoLink.description}}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="wa-content">
+                        <a href="/video-center/" class="wa-arrowLink">观看更多视频</a>
+                    </div>
+                    {% endif %}
+                    <div class="wa-content wa-content-divided">
+                        <h2>
+                            {{service_name}}服务更新 <a href=""><span class="wa-icon wa-icon-misc-rss"></span></a>
+                        </h2>
+                    </div>
+                    <div class="wa-content wa-content-3up">
+                    {% for recent in recentUpdates %}
+                        <div class="wa-content wa-content-3up">
+                            <div class="wa-serviceUpdate">
+                                <h4>
+                                    {{recent.title}}
+                                </h4>
+                                <p class="article-date">
+                                    {{recent.date}}
+                                </p>
+                                <p>
+                                    {{recent.description}}
+                                </p>
+                                <p class="article-content" style="display:none">
+                                    {{recent.detail}}
+                                </p>
+                                <a class="wa-arrowLink wa-arrowLink-blue" href="javascript:void(0);">了解更多</a>
+                            </div>
+                            <a href=""></a>
+                        </div>
+                    {% endfor %}
+                        
+                    </div>
+                    <div class="wa-content">
+                        <a href="{{update_search_link}}" class="wa-arrowLink">查看更多服务更新</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

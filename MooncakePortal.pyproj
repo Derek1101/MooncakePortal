@@ -1,0 +1,779 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>MooncakePortal</Name>
+    <RootNamespace>MooncakePortal</RootNamespace>
+    <InterpreterId>{b67c672c-f273-4db0-b5e2-26de33681cd1}</InterpreterId>
+    <InterpreterVersion>3.4</InterpreterVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>5c70b97c-395c-49ef-9e45-5d84744e4551</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app\forms.py" />
+    <Compile Include="app\models.py" />
+    <Compile Include="app\tests.py" />
+    <Compile Include="app\views.py" />
+    <Compile Include="app\__init__.py" />
+    <Compile Include="customizationTool\admin.py" />
+    <Compile Include="customizationTool\keywordExtract.py" />
+    <Compile Include="customizationTool\mdFileStructure.py" />
+    <Compile Include="customizationTool\migrations\0001_initial.py" />
+    <Compile Include="customizationTool\migrations\0002_init_data.py" />
+    <Compile Include="customizationTool\migrations\0003_init_data_keyword.py" />
+    <Compile Include="customizationTool\migrations\__init__.py" />
+    <Compile Include="customizationTool\models.py" />
+    <Compile Include="customizationTool\replaceInclude.py" />
+    <Compile Include="customizationTool\tests.py" />
+    <Compile Include="customizationTool\views.py" />
+    <Compile Include="customizationTool\__init__.py" />
+    <Compile Include="landingPage\admin.py" />
+    <Compile Include="landingPage\migrations\0001_initial.py" />
+    <Compile Include="landingPage\migrations\0002_add_init_data.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="landingPage\migrations\0003_update_image_titles.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="landingPage\migrations\__init__.py" />
+    <Compile Include="landingPage\models.py" />
+    <Compile Include="landingPage\tests.py" />
+    <Compile Include="landingPage\views.py" />
+    <Compile Include="landingPage\__init__.py" />
+    <Compile Include="manage.py" />
+    <Compile Include="MooncakePortal\__init__.py" />
+    <Compile Include="MooncakePortal\settings.py" />
+    <Compile Include="MooncakePortal\urls.py" />
+    <Compile Include="MooncakePortal\wsgi.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\" />
+    <Folder Include="app\static\" />
+    <Folder Include="app\static\app\" />
+    <Folder Include="app\static\app\content\" />
+    <Folder Include="app\static\app\fonts\" />
+    <Folder Include="app\static\app\scripts\" />
+    <Folder Include="app\templates\" />
+    <Folder Include="app\templates\app\" />
+    <Folder Include="customizationTool\" />
+    <Folder Include="customizationTool\migrations\" />
+    <Folder Include="customizationTool\static\" />
+    <Folder Include="customizationTool\static\customizationTool\" />
+    <Folder Include="customizationTool\static\customizationTool\input\" />
+    <Folder Include="customizationTool\static\customizationTool\input\keywordException\" />
+    <Folder Include="customizationTool\static\customizationTool\input\trainingSet\" />
+    <Folder Include="customizationTool\static\customizationTool\input\trainingSet\articles\" />
+    <Folder Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\" />
+    <Folder Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\" />
+    <Folder Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\" />
+    <Folder Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\" />
+    <Folder Include="customizationTool\static\customizationTool\input\trainingSet\articles\redis-cache\" />
+    <Folder Include="customizationTool\static\customizationTool\input\trainingSet\articles\traffic-manager\" />
+    <Folder Include="customizationTool\static\customizationTool\input\trainingSet\articles\virtual-network\" />
+    <Folder Include="customizationTool\static\customizationTool\input\trainingSet\includes\" />
+    <Folder Include="customizationTool\static\customizationTool\package\" />
+    <Folder Include="customizationTool\static\customizationTool\package\nltk_data\" />
+    <Folder Include="landingPage\" />
+    <Folder Include="landingPage\migrations\" />
+    <Folder Include="landingPage\static\" />
+    <Folder Include="landingPage\static\landingPage\" />
+    <Folder Include="landingPage\static\landingPage\img\" />
+    <Folder Include="landingPage\static\landingPage\json\" />
+    <Folder Include="landingPage\static\landingPage\json\contentJson\" />
+    <Folder Include="landingPage\static\landingPage\json\metaJson\" />
+    <Folder Include="landingPage\static\landingPage\json\navigationJson\" />
+    <Folder Include="landingPage\static\landingPage\json\recentUpdateJson\" />
+    <Folder Include="landingPage\static\landingPage\json\tutorialOptionsJson\" />
+    <Folder Include="landingPage\static\landingPage\json\videoLinkJson\" />
+    <Folder Include="landingPage\static\landingPage\script\" />
+    <Folder Include="landingPage\static\landingPage\style\" />
+    <Folder Include="landingPage\static\landingPage\video-center_files\" />
+    <Folder Include="landingPage\static\landingPage\虚拟机_files\" />
+    <Folder Include="landingPage\templates\" />
+    <Folder Include="landingPage\templates\landingPage\" />
+    <Folder Include="MooncakePortal\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="customizationTool\static\customizationTool\input\keywordException\app-service-web.txt" />
+    <Content Include="customizationTool\static\customizationTool\input\setting.json" />
+    <Content Include="customizationTool\static\customizationTool\input\setting2.json" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\azure-sdk-dotnet-release-notes-2_7.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\azure-sdk-dotnet-release-notes.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\cdn-websites-with-cdn.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\choose-web-site-cloud-service-vm.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\java-create-azure-website-using-java-sdk.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\storage-nodejs-use-table-storage-web-site.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-authentication-authorization.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-available-operating-system-functionality.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-backup.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-business-application-solution-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-configure-ssl-certificate.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-configure.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-create-web-app-using-vscode.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-create-web-jobs.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-custom-domain-name.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-deploy.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-digital-marketing-application-solution-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-dotnet-deploy-aspnet-mvc-mobile-app.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-dotnet-get-started.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-dotnet-lob-application-adfs.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-dotnet-lob-application-azure-ad.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-dotnet-rest-service-aspnet-api-sql-database.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-dotnet-session-state-caching.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-dotnet-store-data-mongodb-vm.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-dotnet-troubleshoot-visual-studio.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-enable-diagnostic-log.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-enterprise-offerings.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-global-web-presence-solution-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-java-add-app.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-java-custom-upload.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-java-get-started.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-manage-azure-website.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-monitor.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-nodejs-chat-app-socketio.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-nodejs-debug.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-nodejs-develop-deploy-mac.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-nodejs-iojs.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-nodejs-use-webmatrix.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-php-configure.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-php-convert-wordpress-multisite.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-php-enterprise-wordpress.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-php-mysql-deploy-use-ftp.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-php-mysql-deploy-use-git.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-php-sql-database-deploy-use-git.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-php-storage.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-publish-source-control.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-python-configure.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-python-create-deploy-bottle-app.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-python-create-deploy-django-app.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-python-create-deploy-flask-app.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-python-ptvs-bottle-table-storage.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-python-ptvs-django-mysql.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-python-ptvs-django-sql.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-python-ptvs-flask-table-storage.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-restore.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-scale.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-security.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-staged-publishing.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-traffic-manager-custom-domain-name.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\web-sites-transform-extend.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\websites-dotnet-deploy-webjobs.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\app-service-web\websites-webjobs-resources.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-certificates.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-configuring.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-connections.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-create-runbook-from-samples.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-creating-importing-runbook.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-credentials.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-dsc-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-edit-textual-runbook.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-first-runbook-textual.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-intro.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-managing-data.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-powershell-workflow.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-runbook-execution.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-runbook-gallery.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-runbook-types.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-schedules.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-solution-startstopvm-psworkflow.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-starting-a-runbook.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-testing-runbook.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\automation\automation-variables.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\automation-manage-hdinsights.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-administer-use-command-line.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-administer-use-management-portal-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-administer-use-powershell.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-analyze-flight-delay-data.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-apache-storm-tutorial-get-started.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-article-index-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-component-versioning-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-component-versioning.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-connect-excel-hive-odbc-driver.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-connect-excel-power-query.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-connect-hive-jdbc-driver.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-debug-jobs.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-extend-hadoop-virtual-network.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-access-yarn-app-logs.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-collect-debug-heap-dumps.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-customize-cluster-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-customize-cluster.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-develop-deploy-streaming-jobs.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-emulator-get-started.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-giraph-install-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-giraph-install.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-introduction.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-mapreduce-scalding.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-optimize-hive-query-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-optimize-hive-query.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-powershell-cmdlet-cheat-sheet.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-r-scripts.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-script-actions.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-solr-install-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-solr-install.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-templeton-webhcat-debug-errors.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-tutorial-get-started-windows-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-tutorial-get-started-windows.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-use-blob-storage.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-use-hive-curl.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-use-hive-powershell.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-use-hive-query-console.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-use-hive-visual-studio.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-use-mapreduce-curl.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-use-mapreduce-powershell.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-use-pig-curl.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-use-pig-dotnet-sdk-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-use-pig-dotnet-sdk.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hadoop-visual-studio-tools-get-started.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hbase-geo-replication-configure-vnets.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hbase-geo-replication.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hbase-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hbase-phoenix-squirrel.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hbase-provision-vnet-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hbase-provision-vnet.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hbase-tutorial-get-started-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hbase-tutorial-get-started.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-high-availability.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-hive-analyze-website-log.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-learn-hadoop-use-sample-gallery.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-mahout.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-provision-clusters-v1.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-provision-clusters.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-python.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-release-notes.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-sample-10gb-graysort.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-sample-csharp-streaming.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-sample-pi-estimator.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-sample-wordcount.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-storm-deploy-monitor-topology.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-storm-develop-csharp-event-hub-topology.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-storm-develop-java-event-hub-topology.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-storm-develop-java-topology.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-storm-develop-python-topology.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-storm-example-topology.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-storm-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-storm-sensor-data-analysis.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-submit-hadoop-jobs-programmatically.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-upload-data.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-use-hive.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-use-mapreduce.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-use-oozie-coordinator-time.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-use-oozie.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-use-pig.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-use-sqoop.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\hdinsight\hdinsight-using-json-in-hive.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\meda-services-managing-multiple-storage-accounts.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-azure-media-customize-ame-presets.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-azure-media-encoder-formats.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-build-smooth-streaming-apps.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-castlabs-integration.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-check-job-progress.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-concepts.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-configure-elemental-live-encoder.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-configure-fmle-live-encoder.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-configure-tricaster-live-encoder.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-configure-wirecast-live-encoder.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-content-protection-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-copying-existing-blob.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-create-account.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-deliver-asset-download.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-deliver-content-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-deliver-streaming-content.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-develop-video-players.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-configure-asset-delivery-policy.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-configure-content-key-auth-policy.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-connect_programmatically.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-create-contentkey.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-creating-live-encoder-enabled-channel.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-dynamic-manifest.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-encode-asset.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-encode-with-media-encoder-standard.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-generate-thumbnail-with-mes.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-get-started.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-how-to-use.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-live-encode-with-onpremises-encoders.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-long-operations.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-manage-entities.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dotnet-upload-files.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dynamic-manifest-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-dynamic-packaging-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-embed-mpeg-dash-in-html5.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-encode-asset.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-encode-with-dolby-digital-plus.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-fmp4-live-ingest-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-frequently-asked-questions.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-get-media-processor.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-how-to-scale.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-index-content.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-inserting-ads-on-client-side.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-java-how-to-use.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-jobs.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-licenses-partner-integration.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-live-encoders-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-live-streaming-workflow.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-manage-assets.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-manage-channels-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-manage-content.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-manage-live-encoder-enabled-channels.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-manage-origins.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-manage-with-powershell.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-media-encoder-standard-formats.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-monitor-services-account.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-playback-content-with-existing-players.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-playready-license-template-overview.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-portal-configure-content-key-auth-policy.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-portal-creating-live-encoder-enabled-channel.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-portal-encoding-units.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-portal-get-started-with-live.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-portal-get-started.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-protect-with-aes128.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-protect-with-drm.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-quotas-and-limitations.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-release-notes.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-check-job-progress.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-configure-asset-delivery-policy.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-configure-content-key-auth-policy.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-connect_programmatically.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-create-contentkey.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-deliver-streaming-content.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-dynamic-manifest.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-encode-asset.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-get-media-processor.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-get-started.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-how-to-use.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-manage-entities.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-rest-upload-files.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-roll-storage-access-keys.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-set-up-computer.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-static-packaging.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-use-osmf-smooth-streaming-client-plugin.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\media-services\media-services-video-on-demand-workflow.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\redis-cache\cache-howto-manage-redis-cache-powershell.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\redis-cache\cache-redis-cache-arm-provision.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\redis-cache\cache-web-app-arm-with-redis-cache-provision.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\virtual-network\resource-groups-networking.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\virtual-network\virtual-network-nsg-manage-log.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\virtual-network\virtual-networks-create-site-to-site-cross-premises-connectivity.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\virtual-network\virtual-networks-create-vnet-classic-portal.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\virtual-network\virtual-networks-setup-lobapp-hybrid-cloud-testing.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\virtual-network\virtual-networks-setup-sharepoint-hybrid-cloud-testing.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\articles\virtual-network\virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\configure-ssl-web-site.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\create-account-and-websites-and-vms-note.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\create-account-and-websites-note.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\custom-dns-web-site-enable-on-traffic-manager.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\custom-dns-web-site-enable-on-web-site.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\hdinsight-maven-mapreduce-selector.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\hdinsight-oozie-selector.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\hdinsight-portal-management-selector.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\hdinsight-run-samples-selector.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\hdinsight-selector-heap-dump.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\hdinsight-selector-mahout.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\hdinsight-selector-use-hive.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\hdinsight-selector-use-mapreduce.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\hdinsight-selector-use-pig.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\hdinsight-selector-use-sqoop.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\redis-cache-service-limits.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\virtual-networks-create-nsg-selectors-arm-include.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\virtual-networks-create-vnet-selectors-arm-include.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\virtual-networks-create-vnet-selectors-classic-include.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\virtual-networks-static-private-ip-selectors-arm-include.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\virtual-networks-static-private-ip-selectors-classic-include.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\web-sites-python-customizing-runtime.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\web-sites-python-troubleshooting-virtual-environment.md" />
+    <Content Include="customizationTool\static\customizationTool\input\trainingSet\includes\websites-custom-domain-selector.md" />
+    <Content Include="landingPage\static\landingPage\img.zip" />
+    <Content Include="landingPage\static\landingPage\img\add-icon-614x460.png" />
+    <Content Include="landingPage\static\landingPage\img\ArmVMsAzureCLI_960.jpg" />
+    <Content Include="landingPage\static\landingPage\img\Azure 云服务高级功能.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure-Advanced-Storage-Introduction.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure-Cloud Services-Advanced-Features.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure-Mobile Services-Data Management.png" />
+    <Content Include="landingPage\static\landingPage\img\azure-mysql-mvp-talk.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure-VM-Advanced-Usage.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure-Websites-Extended-Features.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure媒体服务动态打包介绍.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure移动服务的数据管理.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure管理存储文件及管理工具.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure网站的Webjob功能.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure网站的扩展功能.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure虚拟机高级使用技巧.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure虚拟网络介绍.png" />
+    <Content Include="landingPage\static\landingPage\img\Azure高级存储简介.png" />
+    <Content Include="landingPage\static\landingPage\img\beauty.jpg" />
+    <Content Include="landingPage\static\landingPage\img\Create-Delete-VM-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\delete.png" />
+    <Content Include="landingPage\static\landingPage\img\Deploy-Azure-Sites.png" />
+    <Content Include="landingPage\static\landingPage\img\Edit.png" />
+    <Content Include="landingPage\static\landingPage\img\HDInsight Introduction.png" />
+    <Content Include="landingPage\static\landingPage\img\HDInsight（云上Hadoop）介绍.png" />
+    <Content Include="landingPage\static\landingPage\img\icons-misc.svg" />
+    <Content Include="landingPage\static\landingPage\img\images.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Active Directory-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-And-Use-Notification hubs.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Backup Services-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-CDN-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-HDInsight-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Media Services-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Mobile Services-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Networking-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Notification hus-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Scheduler-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Service Bus-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-SQL-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Storage File-And-Management Tools.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Traffic Manager-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Use-VM.png" />
+    <Content Include="landingPage\static\landingPage\img\Manage-Websites-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Mange-Storage-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\img\Media Services-Dynamically-Package.png" />
+    <Content Include="landingPage\static\landingPage\img\Migrate-SQL-To-Azure.png" />
+    <Content Include="landingPage\static\landingPage\img\MySQL Database on Azure MVP Talk.png" />
+    <Content Include="landingPage\static\landingPage\img\Networking-introduction.png" />
+    <Content Include="landingPage\static\landingPage\img\SQL-Firewall-Rule-Introduction.png" />
+    <Content Include="landingPage\static\landingPage\img\sql数据库迁移到云端.png" />
+    <Content Include="landingPage\static\landingPage\img\sql数据库防火墙规则介绍.png" />
+    <Content Include="landingPage\static\landingPage\img\Use-Azure-Mobile Services-To-Develop-Multi-Apps.png" />
+    <Content Include="landingPage\static\landingPage\img\Use-PowerShell-To-Manage-Traffic Manager.png" />
+    <Content Include="landingPage\static\landingPage\img\Use-Service-Bus-In-Application.png" />
+    <Content Include="landingPage\static\landingPage\img\Use-Visual Studio-To-Deploy-Application-To-Cloud Services.png" />
+    <Content Include="landingPage\static\landingPage\img\VideoPlay.png" />
+    <Content Include="landingPage\static\landingPage\img\VideoPlay.svg" />
+    <Content Include="landingPage\static\landingPage\img\Websites-Webjob-functionality.png" />
+    <Content Include="landingPage\static\landingPage\img\WhatsNewinAzureResourceManagerwithThiagarajan_960.jpg" />
+    <Content Include="landingPage\static\landingPage\img\WhatsNewinComputeTemplateswithThiagarajan_960.jpg" />
+    <Content Include="landingPage\static\landingPage\img\使用Azure移动服务开发多个平台应用.png" />
+    <Content Include="landingPage\static\landingPage\img\使用PowerShelll管理Traffic Manager.png" />
+    <Content Include="landingPage\static\landingPage\img\使用Visual Studio部署应用程序到Azure云服务.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中创建和删除虚拟机.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理Active Directory.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理CDN.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理HDInsight（云上的Hadoop）.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理Service Bus.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理sql数据库.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理Traffic Manager.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理备份服务.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理媒体服务.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理存储.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理移动服务.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理网站.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理虚拟机网络.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理计划程序.png" />
+    <Content Include="landingPage\static\landingPage\img\在Azure门户中管理通知中心.png" />
+    <Content Include="landingPage\static\landingPage\img\在应用中使用Service Bus.png" />
+    <Content Include="landingPage\static\landingPage\img\管理与使用Azure虚拟机.png" />
+    <Content Include="landingPage\static\landingPage\img\管理和使用通知中心功能.png" />
+    <Content Include="landingPage\static\landingPage\img\部署Azure网站.png" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\application-gateway.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\automation.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\backup.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\batch.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\cdn.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\cloud-services.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\event-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\expressroute.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\hdinsight.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\identity.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\media-services.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\mobile-services.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\multi-factor-authentication.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\mysql.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\networking.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\notification-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\redis-cache.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\scheduler.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\service-bus.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\site-recovery.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\sql-databases.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\storage.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\stream-analytics.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\traffic-manager.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\virtual-machines.json" />
+    <Content Include="landingPage\static\landingPage\json\contentJson\web-sites.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\application-gateway.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\automation.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\backup.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\batch.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\cdn.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\cloud-services.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\event-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\expressroute.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\hdinsight.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\identity.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\media-services.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\mobile-services.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\multi-factor-authentication.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\mysql.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\networking.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\notification-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\redis-cache.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\scheduler.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\service-bus.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\site-recovery.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\sql-databases.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\storage.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\stream-analytics.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\traffic-manager.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\virtual-machines.json" />
+    <Content Include="landingPage\static\landingPage\json\metaJson\web-sites.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\application-gateway.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\automation.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\backup.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\batch.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\cdn.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\cloud-services.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\event-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\expressroute.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\hdinsight.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\identity.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\media-services.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\mobile-services.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\multi-factor-authentication.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\mysql.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\networking.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\notification-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\redis-cache.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\scheduler.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\service-bus.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\site-recovery.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\sql-databases.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\storage.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\stream-analytics.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\traffic-manager.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\virtual-machines.json" />
+    <Content Include="landingPage\static\landingPage\json\navigationJson\web-sites.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\application-gateway.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\automation.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\backup.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\batch.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\cdn.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\cloud-services.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\event-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\expressroute.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\hdinsight.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\identity.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\media-services.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\mobile-services.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\multi-factor-authentication.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\mysql.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\networking.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\notification-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\redis-cache.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\scheduler.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\service-bus.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\site-recovery.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\sql-databases.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\storage.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\stream-analytics.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\traffic-manager.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\virtual-machines.json" />
+    <Content Include="landingPage\static\landingPage\json\recentUpdateJson\web-sites.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\application-gateway.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\automation.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\backup.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\batch.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\cdn.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\cloud-services.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\event-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\expressroute.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\hdinsight.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\identity.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\media-services.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\mobile-services.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\multi-factor-authentication.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\mysql.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\networking.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\notification-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\redis-cache.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\scheduler.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\service-bus.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\site-recovery.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\sql-databases.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\storage.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\stream-analytics.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\traffic-manager.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\virtual-machines.json" />
+    <Content Include="landingPage\static\landingPage\json\tutorialOptionsJson\web-sites.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\application-gateway.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\automation.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\backup.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\batch.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\cdn.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\cloud-services.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\event-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\expressroute.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\hdinsight.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\identity.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\media-services.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\mobile-services.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\multi-factor-authentication.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\mysql.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\networking.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\notification-hubs.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\redis-cache.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\scheduler.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\service-bus.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\site-recovery.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\sql-databases.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\storage.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\stream-analytics.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\traffic-manager.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\virtual-machines.json" />
+    <Content Include="landingPage\static\landingPage\json\videoLinkJson\web-sites.json" />
+    <Content Include="landingPage\static\landingPage\script\jquery-2.1.4.js" />
+    <Content Include="landingPage\static\landingPage\script\responsive.js" />
+    <Content Include="landingPage\static\landingPage\style\frame.css" />
+    <Content Include="landingPage\static\landingPage\style\frame2.css" />
+    <Content Include="landingPage\static\landingPage\video-center.htm" />
+    <Content Include="landingPage\static\landingPage\video-center_files\azuremediaplayer.min.css" />
+    <Content Include="landingPage\static\landingPage\video-center_files\azuremediaplayer.min.js" />
+    <Content Include="landingPage\static\landingPage\video-center_files\corecss.css" />
+    <Content Include="landingPage\static\landingPage\video-center_files\corecss2.css" />
+    <Content Include="landingPage\static\landingPage\video-center_files\corejs.js" />
+    <Content Include="landingPage\static\landingPage\video-center_files\Microsoft%2520logo-75X14.png" />
+    <Content Include="landingPage\static\landingPage\video-center_files\newlandingpagecorecss.css" />
+    <Content Include="landingPage\static\landingPage\video-center_files\new_21x18.png" />
+    <Content Include="landingPage\static\landingPage\video-center_files\pricing-reduction.gif" />
+    <Content Include="landingPage\static\landingPage\video-center_files\sql数据库迁移到云端.png" />
+    <Content Include="landingPage\static\landingPage\video-center_files\sql数据库防火墙规则介绍.png" />
+    <Content Include="landingPage\static\landingPage\video-center_files\videocenter.js" />
+    <Content Include="landingPage\static\landingPage\video-center_files\在Azure门户中管理sql数据库.png" />
+    <Content Include="landingPage\static\landingPage\虚拟机.htm" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\Azure-VM-Advanced-Usage.png" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\azuremediaplayer.min.css" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\corecss.css" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\corecss2.css" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\Create-Delete-VM-In-Portal.png" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\github.png" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\header.png" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\landingpageazuremediaplayer.min.css" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\landingpagecorecss.css" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\landingpagecorecss2.css" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\landingpageframe.css" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\Manage-Use-VM.png" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\Microsoft logo-75X14.png" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\newlandingpagecorecss.css" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\new_21x18.png" />
+    <Content Include="landingPage\static\landingPage\虚拟机_files\VideoPlay.svg" />
+    <Content Include="landingPage\templates\landingPage\frame.html" />
+    <Content Include="landingPage\templates\landingPage\frame_edit.html" />
+    <Content Include="landingPage\templates\landingPage\index.html" />
+    <Content Include="landingPage\templates\landingPage\newTutorialOptionTemplate.html" />
+    <Content Include="landingPage\templates\landingPage\page.html" />
+    <Content Include="landingPage\templates\landingPage\selectListTemplate.html" />
+    <Content Include="landingPage\templates\landingPage\updateEditTemplate.html" />
+    <Content Include="landingPage\templates\landingPage\videoEditTemplate.html" />
+    <Content Include="landingPage\templates\landingPage\xmlPageGenerator.html" />
+    <Content Include="landingPage\templates\landingPage\xmlTemplate.xml" />
+    <Content Include="requirements.txt" />
+    <Content Include="db.sqlite3" />
+    <Content Include="app\static\app\content\bootstrap.css" />
+    <Content Include="app\static\app\content\bootstrap.min.css" />
+    <Content Include="app\static\app\content\site.css" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\static\app\scripts\bootstrap.js" />
+    <Content Include="app\static\app\scripts\bootstrap.min.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.min.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.min.map" />
+    <Content Include="app\static\app\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.min.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="app\static\app\scripts\modernizr-2.6.2.js" />
+    <Content Include="app\static\app\scripts\respond.js" />
+    <Content Include="app\static\app\scripts\respond.min.js" />
+    <Content Include="app\static\app\scripts\_references.js" />
+    <Content Include="app\templates\app\about.html" />
+    <Content Include="app\templates\app\contact.html" />
+    <Content Include="app\templates\app\index.html" />
+    <Content Include="app\templates\app\layout.html" />
+    <Content Include="app\templates\app\login.html" />
+    <Content Include="app\templates\app\loginpartial.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.mht">
+      <SubType>WebBrowser</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>{b67c672c-f273-4db0-b5e2-26de33681cd1}</Id>
+      <BaseInterpreter>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</BaseInterpreter>
+      <Version>3.4</Version>
+      <Description>env (Python 3.4)</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <LibraryPath>Lib\</LibraryPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X86</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
