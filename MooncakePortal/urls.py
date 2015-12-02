@@ -43,6 +43,7 @@ urlpatterns = patterns('',
     url(r'newTutorialOption/(?P<counter>[0-9]+)/$', 'landingPage.views.newTutorialOption', name='newTutorialOption'),
     url(r'regenJson/$', 'landingPage.views.regenJson', name='regenJson'),
     url(r'updateEncoding/$', 'landingPage.views.updateEncoding', name='updateEncoding'),
+    url(r'ut/$', 'UT.views.mainpage', name='UTmainpage'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
