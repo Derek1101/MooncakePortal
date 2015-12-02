@@ -65,6 +65,25 @@
     <Compile Include="MooncakePortal\settings.py" />
     <Compile Include="MooncakePortal\urls.py" />
     <Compile Include="MooncakePortal\wsgi.py" />
+    <Compile Include="QA\admin.py" />
+    <Compile Include="QA\migrations\__init__.py" />
+    <Compile Include="QA\models.py" />
+    <Compile Include="QA\tests.py" />
+    <Compile Include="QA\views.py" />
+    <Compile Include="QA\__init__.py" />
+    <Compile Include="reports\admin.py" />
+    <Compile Include="reports\migrations\__init__.py" />
+    <Compile Include="reports\models.py" />
+    <Compile Include="reports\tests.py" />
+    <Compile Include="reports\views.py" />
+    <Compile Include="reports\__init__.py" />
+    <Compile Include="UT\admin.py" />
+    <Compile Include="UT\migrations\0001_initial.py" />
+    <Compile Include="UT\migrations\__init__.py" />
+    <Compile Include="UT\models.py" />
+    <Compile Include="UT\tests.py" />
+    <Compile Include="UT\views.py" />
+    <Compile Include="UT\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
@@ -112,6 +131,14 @@
     <Folder Include="landingPage\templates\" />
     <Folder Include="landingPage\templates\landingPage\" />
     <Folder Include="MooncakePortal\" />
+    <Folder Include="QA\" />
+    <Folder Include="QA\migrations\" />
+    <Folder Include="reports\" />
+    <Folder Include="reports\migrations\" />
+    <Folder Include="UT\" />
+    <Folder Include="UT\migrations\" />
+    <Folder Include="UT\templates\" />
+    <Folder Include="UT\templates\UT\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="customizationTool\static\customizationTool\input\keywordException\app-service-web.txt" />
@@ -718,6 +745,7 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="UT\templates\UT\mainpage.html" />
     <None Include="wacnmooncakeportal - FTP.pubxml" />
     <None Include="wacnmooncakeportal - Web Deploy.pubxml" />
   </ItemGroup>

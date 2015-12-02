@@ -24,11 +24,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'landingPage' %}">Landing Page</a></li>
-                    <li><a href="{% url 'contact' %}">Customization Tool</a></li>
-                    <li><a href="{% url 'about' %}">Reports</a></li>
-                    <li><a href="{% url 'contact' %}">UT</a></li>
-                    <li><a href="{% url 'about' %}">Quality Analysis</a></li>
+                    <li><a href="{% url 'landingPageIndex' %}">Landing Page</a></li>
+                    <li><a href="{% url 'customizationToolmainpage' %}">Customization Tool</a></li>
+                    <li><a href="{% url 'UTmainpage' %}">Reports</a></li>
+                    <li><a href="{% url 'reportsmainpage' %}">UT</a></li>
+                    <li><a href="{% url 'QAmainpage' %}">Quality Analysis</a></li>
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>
@@ -39,7 +39,7 @@
 {% block content %}{% endblock %}
         <hr/>
         <footer>
-            <p>&copy; {{ year }} - My Django Application</p>
+            <p>&copy; {{ year }} - Mooncake Portal</p>
         </footer>
     </div>
 
