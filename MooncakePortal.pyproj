@@ -6,6 +6,7 @@
     <RootNamespace>MooncakePortal</RootNamespace>
     <InterpreterId>{b67c672c-f273-4db0-b5e2-26de33681cd1}</InterpreterId>
     <InterpreterVersion>3.4</InterpreterVersion>
+    <NameOfLastUsedPublishProfile>wacnmooncakeportal - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -717,6 +718,8 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
+    <None Include="wacnmooncakeportal - FTP.pubxml" />
+    <None Include="wacnmooncakeportal - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.mht">

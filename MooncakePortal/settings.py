@@ -21,10 +21,10 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'wacn.mooncakePortalDatabase',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'JACK-PC',
+        'NAME': 'wacn_mooncakeportaldb',
+        'USER': 'bbetstcw',
+        'PASSWORD': '1987hH01',
+        'HOST': 'l7xmb3z5uk.database.chinacloudapi.cn',
         'PORT': '5432',
         'OPTIONS': {
                 'driver': 'SQL Server Native Client 11.0',

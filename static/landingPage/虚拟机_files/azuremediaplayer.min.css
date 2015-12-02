@@ -1,0 +1,1704 @@
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: azuremediaplayer;
+	src: url(fonts/azuremediaplayer.woff) format("woff"), url(fonts/azuremediaplayer.ttf) format("truetype"), url(fonts/azuremediaplayer.svg#icomoon) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -91px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 100px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 76px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.default-box-sizing {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin {
+	color: rgb(255, 255, 255); line-height: normal; box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin div {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin span {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin h1 {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin h2 {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin h3 {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin ul {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin li {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin div::before {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin span::before {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin div::after {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin span::after {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.amp-default-skin .vjs-slider {
+	padding: 0px; outline: 0px; position: relative; cursor: pointer; background-color: rgb(108, 115, 122);
+}
+.amp-default-skin .vjs-slider-handle {
+	left: 0px; top: 0px; position: absolute;
+}
+.amp-default-skin .vjs-slider-handle::before {
+	left: 0px; top: 0px; font-family: "azuremediaplayer"; font-size: 16px; position: absolute; content: "§ê";
+}
+.amp-default-skin .vjs-seek-handle {
+	z-index: 10; -moz-transform: translateY(-2px);
+}
+.amp-default-skin .vjs-seek-handle::before {
+	left: -7px; top: -6px;
+}
+.amp-default-skin:hover .vjs-seek-handle::before {
+	left: -7px; top: -2px; height: 12px; content: "§c";
+}
+.amp-default-skin .vjs-control-bar {
+	padding: 1.5px 2px; left: 0px; height: 3em; right: 0px; bottom: 0px; display: none; position: absolute; background-color: rgb(60, 69, 79);
+}
+.amp-default-skin.vjs-has-started .vjs-control-bar {
+	transition:visibility 0.1s, opacity 0.1s; display: block; visibility: visible; opacity: 1; -webkit-transition: visibility .1s, opacity .1s; -moz-transition: visibility .1s, opacity .1s; -o-transition: visibility .1s, opacity .1s;
+}
+.amp-default-skin.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar {
+	transition:visibility 1s, opacity 1s; display: block; visibility: hidden; opacity: 0; -webkit-transition: visibility 1s, opacity 1s; -moz-transition: visibility 1s, opacity 1s; -o-transition: visibility 1s, opacity 1s;
+}
+.amp-default-skin.vjs-controls-disabled .vjs-control-bar {
+	display: none;
+}
+.amp-default-skin.vjs-using-native-controls .vjs-control-bar {
+	display: none;
+}
+.amp-default-skin.vjs-error .vjs-control-bar {
+	display: none;
+}
+.vjs-audio.amp-default-skin.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar {
+	visibility: visible; opacity: 1;
+}
+@media 
+{
+.amp-default-skin.vjs-user-inactive.vjs-playing .vjs-control-bar ::before {
+	content: "";
+}
+}
+.amp-default-skin .vjs-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-default-skin .vjs-control::before {
+	left: 0px; top: 0px; width: 100%; height: 100%; text-align: center; line-height: 2; font-family: "azuremediaplayer"; font-size: 11px; position: absolute;
+}
+.amp-default-skin .vjs-control-text {
+	margin: -1px; padding: 0px; border: 0px currentColor; border-image: none; width: 1px; height: 1px; overflow: hidden; position: absolute; clip: rect(0px, 0px, 0px, 0px);
+}
+.amp-default-skin .vjs-play-control {
+	cursor: pointer;
+}
+.amp-default-skin .vjs-play-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-play-control::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§[";
+}
+.amp-default-skin.vjs-playing .vjs-play-control::before {
+	content: "§\";
+}
+.amp-default-skin .vjs-playback-rate .vjs-playback-rate-value {
+	left: 0px; top: 0px; width: 100%; height: 100%; text-align: center; line-height: 2; font-size: 1.5em; position: absolute; text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+.amp-default-skin .vjs-playback-rate.vjs-menu-button .vjs-menu .vjs-menu-content {
+	list-style: none; left: -2em; width: 4em;
+}
+.amp-default-skin .vjs-mute-control {
+	float: right;
+}
+.amp-default-skin .vjs-volume-menu-button.vjs-menu-button.vjs-control {
+	float: right;
+}
+.amp-default-skin .vjs-mute-control::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§_";
+}
+.amp-default-skin .vjs-volume-menu-button::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§_";
+}
+.amp-default-skin .vjs-mute-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-volume-menu-button:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-mute-control.vjs-vol-0::before {
+	content: "§`";
+}
+.amp-default-skin .vjs-volume-menu-button.vjs-vol-0::before {
+	content: "§`";
+}
+.amp-default-skin .vjs-mute-control.vjs-vol-1::before {
+	content: "§_";
+}
+.amp-default-skin .vjs-volume-menu-button.vjs-vol-1::before {
+	content: "§_";
+}
+.amp-default-skin .vjs-mute-control.vjs-vol-2::before {
+	content: "§_";
+}
+.amp-default-skin .vjs-volume-menu-button.vjs-vol-2::before {
+	content: "§_";
+}
+.amp-default-skin .vjs-volume-control {
+	width: 5em; float: right;
+}
+.amp-default-skin .vjs-volume-bar {
+	margin: 12px auto; width: 62px; height: 4px;
+}
+.amp-default-skin .vjs-volume-level {
+	background: rgb(113, 177, 209); left: 0px; top: 0px; width: 100%; height: 4px; position: absolute;
+}
+.amp-default-skin .vjs-volume-bar .vjs-volume-handle {
+	left: 100%; overflow: visible;
+}
+.amp-default-skin .vjs-volume-bar .vjs-volume-handle::before {
+	margin: 0px; padding: 0px; left: -12px; top: 3px; width: 10px; height: 4px; text-align: left; line-height: 1em; font-size: 16px; content: "§d"; transform: rotate(270deg); -webkit-transform: rotate(270deg); -moz-transform: rotate(270deg); -webkit-backface-visibility: hidden; -o-transform: rotate(270deg);
+}
+.amp-default-skin .vjs-volume-menu-button .vjs-menu {
+	width: 0px; height: 0px; border-top-color: transparent; display: none;
+}
+.amp-default-skin .vjs-volume-menu-button:hover .vjs-menu {
+	display: block;
+}
+.amp-default-skin .vjs-volume-menu-button .vjs-menu .vjs-menu-content {
+	width: 0px; height: 0px;
+}
+.amp-default-skin .vjs-volume-menu-button .vjs-menu div.vjs-menu-content {
+	border-color: transparent; margin-bottom: 27px; margin-left: 0px; box-shadow: none; transform: rotate(270deg); background-color: rgba(60, 69, 79, 0.8); -webkit-transform: rotate(270deg); -moz-transform: rotate(270deg); -o-transform: rotate(270deg);
+}
+.amp-default-skin .vjs-volume-menu-button .vjs-menu div.vjs-menu-content::after {
+	left: -12px; top: 0px; width: 12px; height: 100%; display: block; position: absolute; z-index: 10; content: "";
+}
+.amp-default-skin .vjs-volume-menu-button:hover .vjs-menu div.vjs-menu-content {
+	overflow: visible;
+}
+.amp-default-skin .vjs-volume-menu-button:hover .vjs-menu .vjs-menu-content {
+	width: 86px; height: 31px;
+}
+.amp-default-skin .vjs-volume-menu-button .vjs-menu.vjs-lock-showing .vjs-menu-content {
+	width: 86px; height: 31px;
+}
+.amp-default-skin .vjs-progress-control {
+	left: 0px; top: -1em; width: auto; height: 1em; right: 0px; overflow: hidden; font-size: 4px; position: absolute;
+}
+.amp-default-skin:hover .vjs-progress-control {
+	font-size: 12px;
+}
+.amp-default-skin .vjs-progress-holder {
+	height: 100%;
+}
+.amp-default-skin .vjs-progress-holder .vjs-play-progress {
+	margin: 0px; padding: 0px; left: 0px; top: 0px; width: 0px; height: 100%; display: block; position: absolute;
+}
+.amp-default-skin .vjs-progress-holder .vjs-load-progress {
+	margin: 0px; padding: 0px; left: 0px; top: 0px; width: 0px; height: 100%; display: block; position: absolute;
+}
+.amp-default-skin .vjs-progress-holder .vjs-load-progress div {
+	margin: 0px; padding: 0px; left: 0px; top: 0px; width: 0px; height: 100%; display: block; position: absolute;
+}
+.amp-default-skin .vjs-play-progress {
+	background-color: rgb(113, 177, 209);
+}
+.amp-default-skin .vjs-load-progress {
+	background-color: rgb(143, 156, 168);
+}
+.amp-default-skin .vjs-load-progress div {
+	background-color: rgb(143, 156, 168);
+}
+.amp-default-skin.vjs-live .vjs-time-controls {
+	display: none;
+}
+.amp-default-skin.vjs-live .vjs-time-divider {
+	display: none;
+}
+.amp-default-skin.vjs-live .vjs-progress-control {
+	display: none;
+}
+.amp-default-skin.vjs-live .vjs-live-display {
+	display: block;
+}
+.amp-default-skin .vjs-live-display {
+	width: 100px; line-height: 2.5em; overflow: hidden; font-size: 11px; display: none; max-width: 100px;
+}
+.amp-default-skin .vjs-live-controls {
+	width: 100px; line-height: 2.5em; overflow: hidden; font-size: 11px; display: none; max-width: 100px;
+}
+.amp-time-control {
+	width: 50px; line-height: 2.5em; overflow: hidden; font-size: 11px; max-width: 50px;
+}
+.amp-time-box-centered {
+	left: 50%; position: absolute;
+}
+.amp-default-skin .vjs-time-controls {
+	width: 75px; line-height: 2.5em; overflow: hidden; font-size: 11px; max-width: 75px;
+}
+.amp-default-skin .vjs-current-time {
+	text-align: right; right: 50%; position: absolute;
+}
+.amp-default-skin .vjs-time-divider {
+	left: 50%; width: 10px; text-align: center; line-height: 2.5em; overflow: hidden; font-size: 11px; position: absolute; max-width: 50px;
+}
+.amp-default-skin .vjs-duration {
+	left: 50%; text-align: left; margin-left: 10px; position: absolute;
+}
+.amp-default-skin .vjs-remaining-time {
+	left: 50%; display: none; position: absolute;
+}
+.amp-default-skin .vjs-fullscreen-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: right; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-default-skin .vjs-fullscreen-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-fullscreen-control::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§a";
+}
+.amp-default-skin.vjs-fullscreen .vjs-fullscreen-control::before {
+	content: "§b";
+}
+.amp-default-skin .vjs-big-play-button {
+	border: 0.1em solid rgb(59, 66, 73); transition:0.4s; border-image: none; left: 0.5em; top: 0.5em; width: 4em; height: 2.6em; text-align: center; font-size: 3em; vertical-align: middle; display: block; position: absolute; z-index: 2; cursor: pointer; opacity: 1; box-shadow: 0px 0px 1em rgba(255,255,255,0.25); background-color: rgba(7, 20, 30, 0.7); -webkit-transition: all .4s; -moz-transition: all .4s; -webkit-box-shadow: 0 0 1em rgba(255, 255, 255, .25); -moz-box-shadow: 0 0 1em rgba(255, 255, 255, .25); -o-transition: all .4s;
+}
+.amp-default-skin.amp-big-play-centered .vjs-big-play-button {
+	left: 50%; top: 50%; margin-top: -1.4em; margin-left: -2.1em;
+}
+.amp-default-skin.vjs-controls-disabled .vjs-big-play-button {
+	display: none;
+}
+.amp-default-skin.vjs-has-started .vjs-big-play-button {
+	display: none;
+}
+.amp-default-skin.vjs-using-native-controls .vjs-big-play-button {
+	display: none;
+}
+.amp-default-skin:hover .vjs-big-play-button {
+	border-color: rgb(255, 255, 255); outline: 0px; transition:all; box-shadow: 0px 0px 3em #fff; background-color: rgba(50, 50, 50, 0.75); -webkit-transition: all 0s; -moz-transition: all 0s; -webkit-box-shadow: 0 0 3em #fff; -moz-box-shadow: 0 0 3em #fff; -o-transition: all 0s;
+}
+.amp-default-skin .vjs-big-play-button:focus {
+	border-color: rgb(255, 255, 255); outline: 0px; transition:all; box-shadow: 0px 0px 3em #fff; background-color: rgba(50, 50, 50, 0.75); -webkit-transition: all 0s; -moz-transition: all 0s; -webkit-box-shadow: 0 0 3em #fff; -moz-box-shadow: 0 0 3em #fff; -o-transition: all 0s;
+}
+.amp-default-skin .vjs-big-play-button::before {
+	left: 0px; width: 100%; height: 100%; text-align: center; line-height: 2.6em; font-family: "azuremediaplayer"; position: absolute; content: "§["; text-shadow: 0.05em 0.05em 0.1em #000;
+}
+.vjs-error .vjs-big-play-button {
+	display: none;
+}
+.amp-default-skin.vjs-loading .vjs-big-play-button {
+	display: none;
+}
+.vjs-error-display {
+	display: none;
+}
+.amp-default-skin.vjs-error .vjs-error-display {
+	left: 0px; top: 0px; width: 100%; height: 100%; display: block; position: absolute; background-color: rgb(0, 0, 0);
+}
+.amp-default-skin.vjs-error .vjs-error-display::before {
+	left: 50%; top: 50%; color: rgb(113, 177, 209); font-family: "azuremediaplayer"; font-size: 80px; margin-top: -40px; margin-left: -40px; position: absolute; content: "§h";
+}
+.amp-default-skin.vjs-error .vjs-error-display div {
+	background: none; top: 65%; width: 100%; height: 33%; text-align: center; font-size: 14px; position: absolute;
+}
+.amp-default-skin.vjs-error a {
+	color: rgb(244, 164, 96);
+}
+.amp-default-skin.vjs-error a:visited {
+	color: rgb(244, 164, 96);
+}
+.amp-default-skin .vjs-loading-spinner {
+	background: url("icons/buffering-rainbow-bg.png"); left: 50%; top: 50%; width: 96px; height: 96px; margin-top: -48px; margin-left: -48px; display: none; position: absolute;
+}
+.amp-default-skin .vjs-loading-spinner::before {
+	content: url('icons/buffering-rainbow.gif');
+}
+.vjs-loading .vjs-loading-spinner {
+	display: block;
+}
+.vjs-waiting .vjs-loading-spinner {
+	display: block;
+}
+.vjs-seeking .vjs-loading-spinner {
+	display: block;
+}
+.vjs-error .vjs-loading-spinner {
+	display: none;
+}
+.amp-default-skin .vjs-menu-button {
+	float: left; cursor: pointer;
+}
+.amp-default-skin .vjs-menu {
+	left: 0px; width: 0px; height: 0px; bottom: 0px; margin-bottom: 3em; border-top-color: rgba(7, 40, 50, 0.5); border-right-color: transparent; border-left-color: transparent; border-top-width: 1.55em; border-right-width: 2em; border-left-width: 2em; border-top-style: solid; border-right-style: solid; border-left-style: solid; display: none; position: absolute;
+}
+.amp-default-skin .vjs-menu-button .vjs-menu .vjs-menu-content {
+	margin: 0px; padding: 0px; left: -5em; width: 10em; bottom: 1.5em; overflow: auto; display: block; position: absolute; max-height: 15em; box-shadow: -0.2em -0.2em 0.3em rgba(255,255,255,0.2); background-color: rgb(60, 69, 79); -webkit-box-shadow: -.2em -.2em .3em rgba(255, 255, 255, .2); -moz-box-shadow: -.2em -.2em .3em rgba(255, 255, 255, .2);
+}
+.amp-default-skin .vjs-menu-button:hover .vjs-control-content .vjs-menu {
+	display: block;
+}
+.amp-default-skin .vjs-control-content .vjs-menu.vjs-lock-showing {
+	display: block;
+}
+.amp-default-skin.vjs-scrubbing .vjs-menu-button:hover .vjs-control-content .vjs-menu {
+	display: none;
+}
+.amp-default-skin .vjs-menu-button ul li {
+	list-style: none; margin: 0px; padding: 0.3em 0px; text-align: center; text-transform: lowercase; line-height: 1.4em; font-size: 1.2em;
+}
+.amp-default-skin .vjs-menu-button ul li.vjs-selected {
+	background-color: rgb(0, 0, 0);
+}
+.amp-default-skin .vjs-menu-button ul li:focus {
+	outline: 0px; color: rgb(17, 17, 17); box-shadow: 0px 0px 1em #fff; background-color: rgba(255, 255, 255, 0.75); -webkit-box-shadow: 0 0 1em #fff; -moz-box-shadow: 0 0 1em #fff;
+}
+.amp-default-skin .vjs-menu-button ul li:hover {
+	outline: 0px; color: rgb(17, 17, 17); box-shadow: 0px 0px 1em #fff; background-color: rgba(255, 255, 255, 0.75); -webkit-box-shadow: 0 0 1em #fff; -moz-box-shadow: 0 0 1em #fff;
+}
+.amp-default-skin .vjs-menu-button ul li.vjs-selected:focus {
+	outline: 0px; color: rgb(17, 17, 17); box-shadow: 0px 0px 1em #fff; background-color: rgba(255, 255, 255, 0.75); -webkit-box-shadow: 0 0 1em #fff; -moz-box-shadow: 0 0 1em #fff;
+}
+.amp-default-skin .vjs-menu-button ul li.vjs-selected:hover {
+	outline: 0px; color: rgb(17, 17, 17); box-shadow: 0px 0px 1em #fff; background-color: rgba(255, 255, 255, 0.75); -webkit-box-shadow: 0 0 1em #fff; -moz-box-shadow: 0 0 1em #fff;
+}
+.amp-default-skin .vjs-menu-button ul li.vjs-menu-title {
+	margin: 0px 0px 0.3em; padding: 0px; text-align: center; text-transform: uppercase; line-height: 2em; font-size: 1em; font-weight: bold; cursor: default;
+}
+.amp-default-skin .vjs-subtitles-button::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§e";
+}
+.amp-default-skin .vjs-subtitles-button:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-captions-button::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§f";
+}
+.amp-default-skin .vjs-captions-button:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-chapters-button::before {
+	content: "";
+}
+.amp-default-skin .vjs-chapters-button.vjs-menu-button .vjs-menu .vjs-menu-content {
+	left: -12em; width: 24em;
+}
+.amp-default-skin .vjs-captions-button:focus .vjs-control-content::before {
+	box-shadow: 0px 0px 1em #fff; -webkit-box-shadow: 0 0 1em #fff; -moz-box-shadow: 0 0 1em #fff;
+}
+.amp-default-skin .vjs-captions-button:hover .vjs-control-content::before {
+	box-shadow: 0px 0px 1em #fff; -webkit-box-shadow: 0 0 1em #fff; -moz-box-shadow: 0 0 1em #fff;
+}
+.azuremediaplayer {
+	padding: 0px; font-family: "Segoe UI semibold","Segoe UI",Arial,sans-serif; font-size: 9.3px; font-style: normal; font-weight: normal; vertical-align: middle; position: relative; -ms-user-select: none; background-color: rgb(0, 0, 0); -webkit-user-select: none; -moz-user-select: none; user-select: none;
+}
+.azuremediaplayer .vjs-tech {
+	left: 0px; top: 0px; width: 100%; height: 100%; position: absolute;
+}
+body.vjs-full-window {
+	margin: 0px; padding: 0px; height: 100%; -ms-overflow-y: auto;
+}
+.azuremediaplayer.vjs-fullscreen {
+	left: 0px; top: 0px; width: 100% !important; height: 100% !important; right: 0px; bottom: 0px; overflow: hidden; position: fixed; z-index: 1000; _position: absolute;
+}
+.azuremediaplayer.vjs-fullscreen.vjs-user-inactive {
+	cursor: none;
+}
+.vjs-poster {
+	background-position: 50% 50%; margin: 0px; padding: 0px; left: 0px; top: 0px; right: 0px; bottom: 0px; position: absolute; cursor: pointer; background-repeat: no-repeat; background-size: contain;
+}
+.vjs-poster img {
+	margin: 0px auto; padding: 0px; width: 100%; display: block; max-height: 100%;
+}
+.azuremediaplayer.vjs-has-started .vjs-poster {
+	display: none;
+}
+.azuremediaplayer.vjs-audio.vjs-has-started .vjs-poster {
+	display: block;
+}
+.azuremediaplayer.vjs-controls-disabled .vjs-poster {
+	display: none;
+}
+.azuremediaplayer.vjs-using-native-controls .vjs-poster {
+	display: none;
+}
+.azuremediaplayer .vjs-text-track-display {
+	left: 0px; top: 0px; right: 0px; bottom: 3em; position: absolute; pointer-events: none;
+}
+.vjs-caption-settings {
+	margin: 0px auto; padding: 0.5em; top: 1em; width: 40em; height: 15em; color: rgb(255, 255, 255); font-family: Arial,Helvetica,sans-serif; font-size: 12px; position: relative; opacity: 0.75; background-color: rgb(0, 0, 0);
+}
+.vjs-caption-settings .vjs-tracksettings {
+	left: 0px; top: 0px; right: 0px; bottom: 2em; overflow: auto; position: absolute;
+}
+.vjs-caption-settings .vjs-tracksettings-colors {
+	float: left;
+}
+.vjs-caption-settings .vjs-tracksettings-font {
+	float: left;
+}
+.vjs-caption-settings .vjs-tracksettings-colors::after {
+	clear: both;
+}
+.vjs-caption-settings .vjs-tracksettings-font::after {
+	clear: both;
+}
+.vjs-caption-settings .vjs-tracksettings-controls::after {
+	clear: both;
+}
+.vjs-caption-settings .vjs-tracksettings-controls {
+	right: 1em; bottom: 1em; position: absolute;
+}
+.vjs-caption-settings .vjs-tracksetting {
+	margin: 5px; padding: 3px; min-height: 40px;
+}
+.vjs-caption-settings .vjs-tracksetting label {
+	width: 100px; margin-bottom: 5px; display: block;
+}
+.vjs-caption-settings .vjs-tracksetting span {
+	margin-left: 5px; display: inline;
+}
+.vjs-caption-settings .vjs-tracksetting > div {
+	margin-bottom: 5px; min-height: 20px;
+}
+.vjs-caption-settings .vjs-tracksetting > div:last-child {
+	padding-bottom: 0px; margin-bottom: 0px; min-height: 0px;
+}
+.vjs-caption-settings label > input {
+	margin-right: 10px;
+}
+.vjs-caption-settings input[type='button'] {
+	width: 40px; height: 40px; color: rgb(0, 0, 0);
+}
+.vjs-caption-settings button {
+	color: rgb(0, 0, 0);
+}
+.vjs-caption-settings select {
+	color: rgb(0, 0, 0);
+}
+.vjs-hidden {
+	display: none;
+}
+.vjs-lock-showing {
+	display: block !important; visibility: visible; opacity: 1;
+}
+.amp-no-js {
+	margin: 0px auto; padding: 2em; width: 30em; height: 15em; text-align: center; color: rgb(204, 204, 204); font-family: Arial,sans-serif; font-size: 1.8em; background-color: rgb(51, 51, 51);
+}
+.amp-no-js a {
+	color: rgb(244, 164, 96);
+}
+.amp-no-js a:visited {
+	color: rgb(244, 164, 96);
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -91px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 100px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 76px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§à";
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu {
+	border-color: transparent; left: -91px; top: -12px; width: 100%;
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu::after {
+	left: 0px; top: -14px; width: 100px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 76px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .amp-menu-header:hover {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .amp-menu-header:focus {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .vjs-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .vjs-menu-item:focus {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-audiotracks-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -101px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 110px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 86px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§ë";
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu {
+	border-color: transparent; left: -101px; top: -12px; width: 100%;
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu::after {
+	left: 0px; top: -14px; width: 110px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 86px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .amp-menu-header:hover {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .amp-menu-header:focus {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .vjs-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .vjs-menu-item:focus {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-casttodevice-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -126px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 135px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 111px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu {
+	border-color: transparent; left: -126px; top: -12px; width: 100%;
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu::after {
+	left: 0px; top: -14px; width: 135px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 150px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .amp-menu-header:hover {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .amp-menu-header:focus {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .vjs-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 2px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .vjs-menu-item:focus {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-closedcaption-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-controlbaricons-left {
+	float: left;
+}
+.amp-default-skin .vjs-control-bar .amp-controlbaricons-left .vjs-control {
+	float: left;
+}
+.amp-default-skin .vjs-control-bar .amp-controlbaricons-right {
+	float: right;
+}
+.amp-default-skin .vjs-control-bar .amp-controlbaricons-right .vjs-control {
+	float: left;
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -91px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 100px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 76px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-live-control {
+	color: rgb(255, 255, 255); text-indent: 8px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; font-weight: bold; display: block;
+}
+.amp-default-skin .vjs-control-bar .amp-live-control::before {
+	margin: 6px 0px 0px -8px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§Ä";
+}
+.amp-default-skin .vjs-control-bar .amp-live-control.amp-live-on {
+	color: rgb(181, 226, 245);
+}
+.amp-default-skin .vjs-control-bar .amp-live-control.amp-live-on::before {
+	content: "§Å";
+}
+.amp-default-skin .vjs-control-bar .amp-live-control .vjs-live-display {
+	text-align: left; text-indent: 17px; display: block;
+}
+.amp-default-skin .vjs-control-bar .vjs-current-time .vjs-current-time-display {
+	display: block;
+}
+.amp-default-skin .vjs-control-bar .vjs-current-time .amp-livetimeindicator {
+	text-transform: uppercase;
+}
+.amp-default-skin .vjs-control-bar .vjs-current-time.amp-live-on .vjs-current-time-display {
+	display: none;
+}
+.amp-default-skin .vjs-control-bar .vjs-current-time.amp-live-on .amp-livetimeindicator {
+	display: block;
+}
+.amp-default-skin .vjs-control-bar .amp-live-edge-progress {
+	width: 36px; height: 100%; float: right; display: none; position: relative; z-index: 1; background-image: url("icons/live-edge-hover.gif");
+}
+.amp-default-skin .vjs-control-bar .amp-live-edge-progress.amp-live-on {
+	display: block;
+}
+.amp-default-skin .amp-logo {
+	width: 130px; height: 32px; overflow: hidden; position: absolute; z-index: 5; background-image: url("icons/amslogo.png"); background-repeat: no-repeat;
+}
+.amp-default-skin .amp-logo img {
+	max-height: 100%; max-width: 100%;
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -151px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 160px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 136px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .vjs-menu-button.amp-control-disabled {
+	width: 0px; height: 0px;
+}
+.amp-default-skin .vjs-control-bar .vjs-control.amp-control-disabled {
+	width: 0px; height: 0px;
+}
+.amp-default-skin .vjs-control-bar .vjs-menu-button.vjs-control.amp-control-disabled {
+	width: 0px; height: 0px;
+}
+.amp-default-skin .vjs-control-bar .vjs-menu-button.amp-control-disabled::before {
+	content: "";
+}
+.amp-default-skin .vjs-control-bar .vjs-control.amp-control-disabled::before {
+	content: "";
+}
+.amp-default-skin .vjs-control-bar .vjs-menu-button.vjs-control.amp-control-disabled::before {
+	content: "";
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control {
+	float: right;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§g";
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu {
+	border-color: transparent; left: -151px; top: -12px; width: 100%;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu::after {
+	left: 0px; top: -14px; width: 160px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 180px; z-index: 10; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .amp-menu-header:hover {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .amp-menu-header:focus {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item {
+	width: 100%; height: 16px; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 25px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item:focus {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item::before {
+	margin: 2.5px 0px 0px -25px; color: rgba(255, 255, 255, 0.7); overflow: visible; opacity: 0.7;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover {
+	color: rgb(255, 255, 255); opacity: 1;
+}
+.amp-default-skin .vjs-control-bar .amp-moreoptions-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover::before {
+	color: rgb(255, 255, 255); opacity: 1;
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -91px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 100px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 76px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-previoustrackbutton:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-nexttrackbutton:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-previoustrackbutton::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§v";
+}
+.amp-default-skin .vjs-control-bar .amp-nexttrackbutton::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§s";
+}
+.amp-default-skin .vjs-control-bar .amp-skipbackwardbutton:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-skipforwardbutton:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-skipbackwardbutton::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§u";
+}
+.amp-default-skin .vjs-control-bar .amp-skipforwardbutton::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§t";
+}
+.amp-default-skin .vjs-control-bar .amp-rewindbutton:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-fastforwardbutton:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-rewindbutton::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§w";
+}
+.amp-default-skin .vjs-control-bar .amp-rewindbutton.speed2x::before {
+	content: "§x";
+}
+.amp-default-skin .vjs-control-bar .amp-rewindbutton.speed4x::before {
+	content: "§y";
+}
+.amp-default-skin .vjs-control-bar .amp-rewindbutton.speed8x::before {
+	content: "§z";
+}
+.amp-default-skin .vjs-control-bar .amp-rewindbutton.speed16x::before {
+	content: "§{";
+}
+.amp-default-skin .vjs-control-bar .amp-rewindbutton.speed32x::before {
+	content: "§|";
+}
+.amp-default-skin .vjs-control-bar .amp-rewindbutton.speed64x::before {
+	content: "§}";
+}
+.amp-default-skin .vjs-control-bar .amp-rewindbutton.speed128x::before {
+	content: "§~";
+}
+.amp-default-skin .vjs-control-bar .amp-fastforwardbutton::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§i";
+}
+.amp-default-skin .vjs-control-bar .amp-fastforwardbutton.speed2x::before {
+	content: "§j";
+}
+.amp-default-skin .vjs-control-bar .amp-fastforwardbutton.speed4x::before {
+	content: "§k";
+}
+.amp-default-skin .vjs-control-bar .amp-fastforwardbutton.speed8x::before {
+	content: "§l";
+}
+.amp-default-skin .vjs-control-bar .amp-fastforwardbutton.speed16x::before {
+	content: "§m";
+}
+.amp-default-skin .vjs-control-bar .amp-fastforwardbutton.speed32x::before {
+	content: "§n";
+}
+.amp-default-skin .vjs-control-bar .amp-fastforwardbutton.speed64x::before {
+	content: "§o";
+}
+.amp-default-skin .vjs-control-bar .amp-fastforwardbutton.speed128x::before {
+	content: "§p";
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -77px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 86px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 62px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-playbackspeed-control::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§ä";
+}
+.amp-default-skin .vjs-control-bar .amp-playbackspeed-control.off::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§ä";
+}
+.amp-default-skin .vjs-control-bar .amp-playbackspeed-control.on::before {
+	color: rgb(181, 226, 245);
+}
+.amp-default-skin .vjs-control-bar .amp-playbackspeed-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-playbackspeed-control .vjs-menu {
+	border-color: transparent; left: -77px; top: -12px; width: 100%;
+}
+.amp-default-skin .vjs-control-bar .amp-playbackspeed-control .vjs-menu::after {
+	left: 0px; top: -14px; width: 86px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-default-skin .vjs-control-bar .amp-playbackspeed-control .vjs-menu .vjs-menu-content {
+	padding: 0px 12px; left: 0px; width: 62px; margin-bottom: 29px; margin-left: 29px; box-shadow: none; transform: rotate(270deg); background-color: rgba(60, 69, 79, 0.8); -webkit-transform: rotate(270deg); -moz-transform: rotate(270deg); -o-transform: rotate(270deg);
+}
+.amp-default-skin .vjs-control-bar .amp-playbackspeed-control .vjs-menu .vjs-playbackspeed-bar {
+	margin: 12px auto; width: 62px; height: 4px;
+}
+.amp-default-skin .vjs-control-bar .amp-playbackspeed-control .vjs-menu .vjs-playbackspeed-bar .vjs-playbackspeed-handle {
+	left: 46.97%; -moz-transform: translateX(-1px);
+}
+.amp-default-skin .vjs-control-bar .amp-playbackspeed-control .vjs-menu .vjs-playbackspeed-bar .vjs-playbackspeed-handle::before {
+	margin: 0px; padding: 0px; left: -12px; top: 0px; width: 16px; height: 4px; text-align: left; line-height: 1em; font-size: 16px; content: "§d"; transform: rotate(270deg); -webkit-transform: rotate(270deg); -moz-transform: rotate(270deg); -o-transform: rotate(270deg);
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -126px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 135px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 111px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control.quality-1::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§Ç";
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control.quality-2::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§É";
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control.quality-3::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§Ñ";
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control.quality-4::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§Ö";
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu {
+	border-color: transparent; left: -126px; top: -12px; width: 100%;
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu::after {
+	left: 0px; top: -14px; width: 135px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 111px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .amp-menu-header:hover {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .amp-menu-header:focus {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .vjs-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 2px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .vjs-menu-item:focus {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-quality-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -81px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 90px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 66px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-share-control::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px; content: "§ã";
+}
+.amp-default-skin .vjs-control-bar .amp-share-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu {
+	border-color: transparent; left: -81px; top: -12px; width: 100%;
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu::after {
+	left: 0px; top: -14px; width: 90px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 66px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .amp-menu-header:hover {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .amp-menu-header:focus {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .vjs-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .vjs-menu-item:focus {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover {
+	color: rgb(255, 255, 255);
+}
+.amp-default-skin .vjs-control-bar .amp-share-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-control {
+	margin: 0px; padding: 0px; width: 28px; height: 28px; text-align: center; vertical-align: middle; float: left; position: relative; cursor: pointer; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.amp-control-overlay {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-control-content {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-menu {
+	border-color: transparent; left: -81px; top: -12px; width: 100%;
+}
+.amp-menu::after {
+	left: 0px; top: -14px; width: 90px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 66px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-menu-header:hover {
+	
+}
+.amp-menu-header:focus {
+	
+}
+.amp-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 12px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-menu-item:hover {
+	background-color: transparent;
+}
+.amp-menu-item:focus {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-menu-item-selected {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control::before {
+	margin: 6px 0px 0px 6px; padding: 0px; width: 22px; height: 22px; text-align: left; line-height: 1em; font-size: 16px;
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu {
+	border-color: transparent; left: -81px; top: -12px; width: 100%;
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu::after {
+	left: 0px; top: -14px; width: 90px; height: 12px; display: block; position: relative; z-index: 10; content: "";
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content {
+	padding: 25px 12px 8px; left: 0px; width: 80px; box-shadow: none; background-color: rgba(60, 69, 79, 0.8);
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .amp-menu-header {
+	top: 5px; text-transform: uppercase; font-family: "Segoe UI"; font-size: 11px; font-weight: bold; position: absolute; pointer-events: none;
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .amp-menu-header:hover {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .amp-menu-header:focus {
+	
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .vjs-menu-item {
+	width: 100%; text-align: left; color: rgba(255, 255, 255, 0.7); text-transform: none; line-height: 14px; text-indent: 12px; overflow: hidden; padding-right: 2px; font-family: "Segoe UI semibold","Segoe UI"; font-size: 11px; -ms-text-overflow: ellipsis; box-shadow: none; -o-text-overflow: ellipsis;
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	color: rgb(255, 255, 255);
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected::before {
+	left: 1px; width: 0px; height: 0px; overflow: visible; font-family: "azuremediaplayer"; font-size: 8px; position: absolute; content: "§á";
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .vjs-menu-item:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .vjs-menu-item:focus {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:hover {
+	background-color: transparent;
+}
+.amp-default-skin .vjs-control-bar .amp-subtitles-control .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-selected:focus {
+	background-color: transparent;
+}
+.amp-default-skin .amp-timeline-marker {
+	width: 4px; height: 100%; float: left; display: inline-block; position: absolute;
+}
+.amp-default-skin .vjs-control-bar.outline-enabled .outline-enabled-control:focus {
+	box-shadow: inset 0px 0px 0px 2px #fff !important;
+}

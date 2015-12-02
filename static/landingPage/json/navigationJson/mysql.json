@@ -1,0 +1,75 @@
+{
+    "service": " MySQL Database on Azure",
+    "navigation": [
+        {
+            "articles": [
+                {
+                    "title": " 了解服务层和版本 ",
+                    "link": "/documentation/articles/mysql-database-performance-guidance-asdb-test-result",
+                    "id": "link_1_1"
+                },
+                {
+                    "title": " MySQL Database on Azure数据库入门 ",
+                    "link": "/documentation/articles/mysql-database-get-started",
+                    "id": "link_1_2"
+                },
+                {
+                    "title": " 了解MySQL Database on Azure服务限制 ",
+                    "link": "/documentation/articles/mysql-database-operation-limitation",
+                    "id": "link_1_3"
+                },
+                {
+                    "title": " 技术常见问题 ",
+                    "link": "/documentation/articles/mysql-database-tech-faq",
+                    "id": "link_1_4"
+                }
+            ],
+            "group": "探究",
+            "id": "area_1_overview"
+        },
+        {
+            "articles": [
+                {
+                    "title": " 使用MySQL Database on Azure来部署WordPress ",
+                    "link": "/documentation/articles/mysql-database-wordpress-setup",
+                    "id": "link_2_1"
+                }
+            ],
+            "group": "部署",
+            "id": "area_2_get_started"
+        },
+        {
+            "articles": [
+                {
+                    "title": "SSL安全访问MySQL Database on Azure",
+                    "link": "/documentation/articles/mysql-database-ssl-connection",
+                    "id": "link_3_1"
+                },
+                {
+                    "title": "如何高效连接到MySQL Database on Azure",
+                    "link": "/documentation/articles/mysql-database-connection-pool",
+                    "id": "link_3_2"
+                }
+            ],
+            "group": "开发",
+            "id": "area_3_tell_me_how_it_works"
+        },
+        {
+            "articles": [
+                {
+                    "title": "监控 MySQL Database on Azure数据库",
+                    "link": "/documentation/articles/mysql-database-operation-monitoring-metrics",
+                    "id": "link_4_1"
+                },
+                {
+                    "title": "定制MySQL Database on Azure服务器参数",
+                    "link": "/documentation/articles/mysql-database-advanced-settings",
+                    "id": "link_learningpath"
+                }
+            ],
+            "group": "管理",
+            "id": "area_4_develop_applications"
+        }
+    ],
+    "id": "AzureMySQL"
+}

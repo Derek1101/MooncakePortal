@@ -355,26 +355,42 @@
             else if(type == "video"){
                 if(!editting[id]){
                     edit_video = document.getElementById(id);
-                    link = edit_video.getElementsByTagName("a")[0];
-                    thumbnail = link.getElementsByClassName("thumbnail")[0];
-                    dateAndDuration = link.getElementsByClassName("date")[0].getElementsByTagName("span");
-                    descr = edit_video.getElementsByTagName("p")[0];
-                    video = new Object();
-                    video.VideoUrl = link.href;
-                    video.Duration = dateAndDuration[1].textContent.trim();
-                    video.Title = link.title;
-                    video.PublishTime = dateAndDuration[0].textContent.trim();
-                    video.ImageUrl = thumbnail.src;
-                    video.Description = descr.textContent.trim();
+                    edit_video.style.display = "none";
+                    des_edit_video = document.getElementById("des_"+id);
+                    des_edit_video.style.display = "none";
+                    edit_video_fields = document.getElementById("video_editing_"+id.substring(10, id.length));
+                    edit_video_fields.style.display = "block";
+                    editting[id] = true;
                 }
                 else{
-                    
+                    link = document.getElementById(id);
+                    thumbnail = link.getElementsByClassName("thumbnail")[0];
+                    dateAndDuration = link.getElementsByClassName("date")[0].getElementsByTagName("span");
+                    descr = document.getElementById("des_"+id);
+                    video_counter_str = id.substring(10, id.length);
+                    link.href = document.getElementById("video_url_"+video_counter_str).value;
+                    dateAndDuration[1].innerHTML = document.getElementById("video_publishDate_"+video_counter_str).value;
+                    link.title = document.getElementById("video_title_"+video_counter_str).value;
+                    dateAndDuration[0].innerHTML = document.getElementById("video_duration_"+video_counter_str).value;
+                    thumbnail.src = "{{imgLink}}" + document.getElementById("video_image_title_"+video_counter_str).value+".png";
+                    descr.innerHTML = document.getElementById("video_description_"+video_counter_str).value;
+                    link.style.display = "block";
+                    descr.style.display = "block";
+                    document.getElementById("video_editing_"+id.substring(10, id.length)).style.display = "none";
+                    editting[id] = false;
                 }
             }
         }
         function deleteField(id){
             element = document.getElementById(id);
             element.parentElement.removeChild(element);
+        }
+
+        var video_count = {{videoLinks|length }};
+        var next_video = {{videoLinks|length }};
+        function add_video(){
+            videoContainer = document.getElementById("video_container");
+            
         }
         
         function submitPage(){
@@ -383,7 +399,27 @@
             recentUpdateJsonStr = getRecentUpdateJsonStr();
             metaJsonStr = getMetaJsonStr();
             tutorialOptionsJsonStr = getTutorialOptionsJson();
-            alert(tutorialOptionsJsonStr)
+            videoLinkJsonStr = getVideoLinkJson();
+            document.write(videoLinkJsonStr);
+        }
+
+        function getVideoLinkJson(){
+            alert(next_video);
+            videoLinkJson = [];
+            for(i=0; i<next_video; i++){
+                title = document.getElementById("video_title_"+i);
+                if(title != null){
+                    video = new Object();
+                    video.Title = title.value;
+                    video.ImageUrl = document.getElementById("video_image_title_"+i).value;
+                    video.VideoUrl = document.getElementById("video_url_"+i).value;
+                    video.Description = document.getElementById("video_description_"+i).value;
+                    video.PublishTime = document.getElementById("video_description_"+i).value;
+                    video.Duration = document.getElementById("video_duration_"+i).value;
+                    videoLinkJson.push(video);
+                }
+            }
+            return JSON.stringify(videoLinkJson);
         }
 
         function getTutorialOptionsJson(){
@@ -549,10 +585,10 @@
                             {{service_name}}视频
                         </h2>
                     </div>
-                    <div class="wa-content wa-content-3up">
+                    <div class="wa-content wa-content-3up" id="video_container">
                         {% for videoLink in videoLinks%}
-                            <div class="wa-spacer" id="edit_video{{forloop.counter}}">
-                                <a href="{{videoLink.video_url}}" data-control="" data-expanding="false" class="wa-video-thumbnail _storage-video-popup" title="{{videoLink.title}}">
+                            <div class="wa-spacer" id="edit_video_full{{forloop.counter}}">
+                                <a  id="edit_video{{forloop.counter}}" href="{{videoLink.video_url}}" data-control="" data-expanding="false" class="wa-video-thumbnail _storage-video-popup" title="{{videoLink.title}}">
                                     <img src="{{imgLink}}{{videoLink.image_title}}.png" alt="{{videoLink.title}}" class="thumbnail" />
                                     {% if azure %}
                                     <img class="play-icon" src="{{imgLink}}VideoPlay.png" />
@@ -566,37 +602,42 @@
                                         </span>
                                     </span>
                                 </a>
-                                <p>
+                                <p  id="des_edit_video{{forloop.counter}}">
                                     {{videoLink.description}}
                                 </p>
+                                <div id="video_editing_{{forloop.counter}}" style="display:none">
+                                    <div>
+                                        <div>标题</div><textarea style="width:300px;height:20px" id="video_title_{{forloop.counter}}">{{videoLink.title}}</textarea>
+                                    </div>
+                                    <div>
+                                        <div>缩略图标题</div><textarea style="width:300px" id="video_image_title_{{forloop.counter}}">{{videoLink.image_title}}</textarea>
+                                    </div>
+                                    <div>
+                                        <div>链接</div><textarea style="width:300px" id="video_url_{{forloop.counter}}">{{videoLink.video_url}}</textarea>
+                                    </div>
+                                    <div>
+                                        <div>描述</div><textarea style="width:300px" id="video_description_{{forloop.counter}}">{{videoLink.description}}</textarea>
+                                    </div>
+                                    <div>
+                                        <div>发布时间</div><textarea style="width:300px" id="video_publishDate_{{forloop.counter}}">{{videoLink.publish_time}}</textarea>
+                                    </div>
+                                    <div>
+                                        <div>时长</div><textarea style="width:300px" id="video_duration_{{forloop.counter}}">{{videoLink.duration}}</textarea>
+                                    </div>
+                            </div>
                                 <a href="javascript:editField('edit_video{{forloop.counter}}', 'video')" title="编辑">
                                     <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>
                                 </a>
-                                <a href="javascript:deleteField('edit_video{{forloop.counter}}')" title="删除">
+                                <a href="javascript:deleteField('edit_video_full{{forloop.counter}}')" title="删除">
                                         <img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>
                                     </a>
+                                
                             </div>
-                            <div id="video_editing_{{forloop.counter}}" style="display:none">
-                                <div>
-                                    <div>标题</div><textarea id="video_title_{{forloop.counter}}">{{metaKeywords}}</textarea>
-                                </div>
-                                <div>
-                                    <div>链接</div><textarea id="video_url_{{forloop.counter}}">{{metaDescription}}</textarea>
-                                </div>
-                                <div>
-                                    <div>描述</div><textarea id="video_description_{{forloop.counter}}">{{metaDescription}}</textarea>
-                                </div>
-                                <div>
-                                    <div>发布时间</div><textarea id="video_publishDate_{{forloop.counter}}">{{metaKeywords}}</textarea>
-                                </div>
-                                <div>
-                                    <div>时长</div><textarea id="video_title_{{forloop.counter}}">{{metaDescription}}</textarea>
-                                </div>
-                            </div>
+                            
                         {% endfor %}
                         {% if videoLinks|length < 3 %}
                             <div class="wa-spacer" id="edit_video_add">
-                                <a href="" title="增加视频">
+                                <a href="javascript:add_video()" title="增加视频">
                                     <img src="{{imgLink}}add-icon-614x460.png" alt="增加视频" class="thumbnail" />
                                     
                                 </a>
