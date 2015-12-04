@@ -1,11 +1,168 @@
-<!DOCTYPE html>
+﻿{% extends "app/layout.html" %}
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+{% block content %}
+<script>
+    function updateArticleList() {
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("article_select_list").innerHTML = xmlhttp.responseText;
+                document.getElementById("cover").style.display = "none";
+            }
+        }
+        service = document.getElementById("service_select_list");
+        xmlhttp.open("GET", "/ut/updatearticles/" + service.value + "/", true);
+        xmlhttp.send();
+        document.getElementById("cover").style.display = "block";
+    }
 
-</body>
-</html>
+    function addArticles() {
+        article_select_list = document.getElementById("article_select_list");
+        selected_article_list = document.getElementById("selected_article_list");
+        for (i = 0; i < article_select_list.selectedOptions.length; i++) {
+            option = document.createElement("option");
+            option.value = article_select_list.selectedOptions[i].value;
+            option.innerHTML = article_select_list.selectedOptions[i].innerHTML;
+            selected_article_list.appendChild(option);
+        }
+    }
+    function removeArticles() {
+        selected_article_list = document.getElementById("selected_article_list");
+        child_list = [];
+        for (i = 0; i < selected_article_list.selectedOptions.length; i++) {
+            child_list.push(selected_article_list.selectedOptions[i]);
+        }
+        for (i = 0; i < child_list.length; i++) {
+            selected_article_list.removeChild(child_list[i]);
+        }
+    }
+    function updateArticleIds() {
+        selected_article_list = document.getElementById("selected_article_list");
+        selected_article_ids = document.getElementById("article_ids");
+        ids = "";
+        for (i = 0; i < selected_article_list.options.length; i++) {
+            ids += "" + selected_article_list.options[i].value + ",";
+        }
+        selected_article_ids.value = ids;
+        document.getElementById("cover").style.display = "block";
+    }
+</script>
+<style>
+#cover {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   opacity: 0.80;
+   background: #aaa;
+   z-index: 10;
+   display: none;
+}
+</style>
+<div id="cover">
+    Getting article list...
+</div>
+<h2>{{ title }}</h2>
+<h4>Labor Search</h4>
+<div>
+    <span>Start Date: <input type="date"/></span>
+    <span>End Date: <input type="date"/></span>
+    <span>Labor For: <select disabled><option>{{username}}</option></select></span>
+    <span>Labor Type: <select><option>Deliverable</option><option>Undeliverable</option></select></span>
+    <span><input onclick="alert('Sorry, not implemented yet.')" type="button" value="Search"/></span>
+</div>
+<div>
+    <span>Labor Reporting Chart: </span>
+    <span>[TODO]</span>
+</div>
+<p></p>
+<!-- TODO -->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h4>New Report:</h4>
+<form action="{% url 'submitReport' %}" method="post">
+    {% csrf_token %}
+    <div>
+        <span style="margin:10px 10px">Service: 
+            <select id="service_select_list" onchange="updateArticleList()">
+                {% for service in services  %}
+                <option value="{{service.id}}">{{ service.name }}</option>
+                {% endfor %}
+            </select>
+        </span>
+        <span style="margin:10px 10px">Articles: 
+            <select multiple id="article_select_list" onfocus="this.style.height='400px'" onblur="this.style.height='100px'">
+                {% for article in articles %}
+                <option value="{{article.id}}">{{article.filename}}</option>
+                {% endfor %}
+            </select>
+        </span>
+        <span style="margin:10px 10px"><input onclick="addArticles()" type="button" value="Add"/></span>
+        <span style="margin:10px 10px">Duration: <input id="duration" name="duration" type="number" style="width:50px"/> minutes</span>
+        <span style="margin:10px 10px">Labor Type: 
+            <select id="labor_type" name="labor_type">
+                {% for labor_type in labor_types %}
+                <option value="{{labor_type.id}}">{{labor_type.type_name}}</option>
+                {% endfor %}
+            </select>
+        </span>
+    </div>
+    <br />
+    <div>
+        <span style="margin:10px 10px">Articles selected: 
+            <select multiple id="selected_article_list">
+                
+            </select>
+        </span>
+        <input id="article_ids" name="article_ids" type="hidden" value="">
+        <span style="margin:10px 10px"><input onclick="removeArticles()" type="button" value="Delete"/></span>
+        <span style="margin:10px 10px">Submit Date: <input id="submitDate" name="submitDate" type="date"/></span>
+    </div>
+    <br />
+    <div>
+        <span style="margin:10px 10px">Comments: <textarea id="comments" name="comments" style="width:100%"></textarea></span>
+    </div>
+    <br />
+    <div style="border-bottom:solid; border-width:1px; padding-bottom:5px; text-align:right">
+        <span style="margin:10px 10px"><input onclick="updateArticleIds()" type="submit" value="Save"/></span>
+    </div>
+</form>
+<br />
+<br />
+<h4>Log:</h4>
+{% for record in records %}
+<h5>Report {{forloop.counter}}</h5>
+<div>
+    <span style="margin:10px 10px">Duration: {{record.duration}} minutes</span>
+    <span style="margin:10px 10px">Labor Type: {{record.labor_type.type_name}}</span>
+    <span style="margin:10px 10px">Owner: {{record.creater.username}}</span>
+    <span style="margin:10px 10px">Submit Date: {{record.submit_time}}</span>
+</div>
+<br />
+<div>
+    <span style="margin:10px 10px">Articles: 
+        {% for record_article in record.record_article_set.all %}
+            {{record_article.article.filename}},
+        {% endfor %}
+    </span>
+</div>
+<br />
+<div style="border-bottom:dashed; border-width:1px; padding-bottom:5px">
+    <span>Comments: {{record.comments}}</span>
+</div>
+<br />
+{% endfor %}
+{% endblock %}

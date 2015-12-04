@@ -22,9 +22,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
         'NAME': 'wacn_mooncakeportaldb',
-        'USER': 'bbetstcw',
-        'PASSWORD': '1987hH01',
-        'HOST': 'l7xmb3z5uk.database.chinacloudapi.cn',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'JACK-PC',
         'PORT': '5432',
         'OPTIONS': {
                 'driver': 'SQL Server Native Client 11.0',
@@ -111,6 +111,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
