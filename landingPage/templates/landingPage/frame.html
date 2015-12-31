@@ -92,173 +92,6 @@
             });
         });
     </script>
-    <script>
-        var editting = {};
-        function editField(id, type) {
-            element = document.getElementById(id);
-            if(type == "text"){
-                if(!editting[id]){
-                    textField = document.createElement("textarea");
-                    textField.addEventListener("click", function(e){
-                        if ( e && e.stopPropagation ) 
-                            e.stopPropagation(); 
-                        else
-                            window.event.cancelBubble = true; 
-                    });
-                    textField.setAttribute("style","width:85%;")
-                    for (var i = 0; i<element.childNodes.length; i++){
-                        if(element.childNodes[i].nodeValue!=null && element.childNodes[i].nodeValue.trim()!=""){
-                            textField.value = element.childNodes[i].nodeValue.trim();
-                            editting[id]={"element":element, "textField":textField, "text":element.childNodes[i]}
-                            element.replaceChild(textField, element.childNodes[i]);
-                            break;
-                        }
-                    }
-                }
-                else{
-                    editting[id].text.nodeValue = editting[id].textField.value;
-                    a = editting[id].element.replaceChild(editting[id].text, editting[id].textField);
-                    editting[id] = false;
-                }
-            }
-            else if(type == "link"){
-                if(!editting[id]){
-                    container = document.createElement("span");
-                    textField1 = document.createElement("textarea");
-                    textField1.setAttribute("style","width:85%;")
-                    textField2 = document.createElement("textarea");
-                    textField2.setAttribute("style","width:85%;")
-                    for (var i = 0; i<element.childNodes.length; i++){
-                        if(element.childNodes[i].nodeValue!=null && element.childNodes[i].nodeValue.trim()!=""){
-                            textField1.value = element.childNodes[i].nodeValue.trim();
-                            textField2.value = element.href;
-                            editting[id]={"element":element, "container":container, "title":textField1, "link":textField2, "text":element.childNodes[i]}
-                            container.appendChild(textField1);
-                            container.appendChild(textField2);
-                            element.parentElement.insertBefore(container, element);
-                            element.childNodes[i].nodeValue = "";
-                            break
-                        }
-                    }
-                    
-                }
-                else{
-                    editting[id].element.tagName = "a";
-                    editting[id].text.nodeValue = editting[id].title.value;
-                    editting[id].element.href = editting[id].link.value
-                    editting[id].container.parentElement.replaceChild(editting[id].element, editting[id].container);
-                    editting[id] = false;
-                }
-            }
-            else if(type == "select_list"){
-                
-                if(!editting[id]){
-                    var xmlhttp2;
-                    if (window.XMLHttpRequest)
-                    {// code for IE7+, Firefox, Chrome, Opera, Safari
-                        xmlhttp2=new XMLHttpRequest();
-                    }
-                    else
-                    {// code for IE6, IE5
-                        xmlhttp2=new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    xmlhttp2.onreadystatechange=function()
-                    {
-                        if (xmlhttp2.readyState==4 && xmlhttp2.status==200)
-                        {
-                            
-                            editSelectList = document.createElement("div");
-                            editSelectList.innerHTML = xmlhttp2.responseText;
-                            editting[id]={"element":element, "editSelectList":editSelectList}
-                            element.parentElement.replaceChild(editSelectList, element);
-                        }
-                    }
-                    options = element.getElementsByTagName("option");
-                    optionsJson = [];
-                    
-                    for(var i = 0; i<options.length; i++){
-                        option = {"title":options[i].innerHTML.trim(), "link":options[i].value.trim()};
-                        optionsJson[i]=option;
-                        
-                    }
-                    optionsJsonStr = JSON.stringify(optionsJson);
-                    xmlhttp2.open("POST","/editTutorialSelectList/activeDirectory/",true);//TODO
-                    xmlhttp2.setRequestHeader("options", optionsJsonStr)
-                    xmlhttp2.send();
-                    
-                }
-                else{
-                    editting[id].editSelectList.parentElement.replaceChild(editting[id].element, editting[id].editSelectList);
-                    divList = editting[id].editSelectList.getElementsByTagName("div");
-                    options = editting[id].element.getElementsByTagName("option");
-                    if(divList.length>options.length){
-                        for(var i = 0; i<divList.length-options.length; i++){
-                            newOption = options[0].cloneNode(true);
-                            options[0].parentElement.appendChild(newOption);
-                        }
-                        options = editting[id].element.getElementsByTagName("option");
-                    }
-                    else if(divList.length<options.length){
-                        for(var i = 0; i<options.length-divList.length; i++){
-                            options[i].parentElement.removeChild(options[i]);
-                        }
-                        options = editting[id].element.getElementsByTagName("option");
-                    }
-                    for(var i = 0; i<divList.length; i++){
-                        textareas = divList[i].getElementsByTagName("textarea");
-                        options[i].value = textareas[1].value;
-                        options[i].innerHTML = textareas[0].value;
-                    }
-                    editting[id] = false;
-                }
-            }
-            else if(type == "video"){
-                if(!editting[id]){
-                    var xmlhttp4;
-                    if (window.XMLHttpRequest)
-                    {// code for IE7+, Firefox, Chrome, Opera, Safari
-                        xmlhttp4=new XMLHttpRequest();
-                    }
-                    else
-                    {// code for IE6, IE5
-                        xmlhttp4=new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    xmlhttp4.onreadystatechange=function()
-                    {
-                        if (xmlhttp4.readyState==4 && xmlhttp4.status==200)
-                        {
-                            
-                            editSelectList = document.createElement("div");
-                            editSelectList.innerHTML = xmlhttp4.responseText;
-                            editting[id]={"element":element, "editSelectList":editSelectList}
-                            element.parentElement.replaceChild(editSelectList, element);
-                        }
-                    }
-                    aLink = element.getElementsByClassName("wa-video-thumbnail _storage-video-popup")[0];
-                    bgImage = aLink.getElementsByClassName("thumbnail")[0];
-                    description = element.getElementsByTagName("p")[0].innerHTML.trim();
-                    content = {"title":bgImage.alt, };
-                    
-                    for(var i = 0; i<options.length; i++){
-                        option = {"title":options[i].innerHTML.trim(), "link":options[i].value.trim()};
-                        optionsJson[i]=option;
-                        
-                    }
-                    optionsJsonStr = JSON.stringify(optionsJson);
-                    xmlhttp4.open("GET","/editVideo/activeDirectory/?Content="+optionsJsonStr,true);//TODO
-                    xmlhttp4.send();
-                }
-                else{
-                    
-                }
-            }
-        }
-        function deleteField(id){
-            element = document.getElementById(id);
-            element.parentElement.removeChild(element);
-        }
-        
-    </script>
     <style>
         .old-main-container {
             width: 100% !important;
@@ -359,12 +192,14 @@
                                 <p class="article-date">
                                     {{recent.date}}
                                 </p>
+                                {% autoescape off %}
                                 <p>
                                     {{recent.description}}
                                 </p>
                                 <p class="article-content" style="display:none">
                                     {{recent.detail}}
                                 </p>
+                                {% endautoescape %}
                                 <a class="wa-arrowLink wa-arrowLink-blue" href="javascript:void(0);">了解更多</a>
                             </div>
                             <a href=""></a>
@@ -380,4 +215,17 @@
         </section>
     </div>
 
+{% endblock %}
+{% block buttons %}
+    <div style="float:right">
+        <form method="get" action="{% url 'landingPageEdit' service_id %}">
+            <input type="submit" value="编辑" />
+        </form>
+        <form method="get" action="{% url 'xmlnavgenerator' service_id %}">
+            <input type="submit" value="生成导航xml" />
+        </form>
+        <form method="get" action="{% url 'xmlpagegenerator' service_id %}">
+            <input type="submit" value="生成页面xml" />
+        </form>
+    </div>
 {% endblock %}

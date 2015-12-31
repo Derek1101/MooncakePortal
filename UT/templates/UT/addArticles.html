@@ -1,0 +1,25 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<h2>Add Articles to the Database</h2>
+<br />
+<div style="border-bottom:dashed; border-width:1px; padding-bottom:5px">Please use the relative path of the articles in azure-content-mooncake-pr or azure-content-pr.</div>
+<br />
+<h4>Example:</h4>
+<div>articles/app-service-web/web-sites-configure.md</div>
+<br />
+<div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div>
+            <textarea style="height:350px;width:100%" name="article_list"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="add"/>
+        </div>
+    </form>
+    {% for log in logs %}
+    <div>{{log}}</div>
+    {% endfor %}
+</div>
+{% endblock %}

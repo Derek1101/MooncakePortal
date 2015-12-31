@@ -15,7 +15,9 @@
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 document.getElementById("article_select_list").innerHTML = xmlhttp.responseText;
+                document.getElementById("all_articles").innerHTML = xmlhttp.responseText;
                 document.getElementById("cover").style.display = "none";
+                document.getElementById("search_key").value = "";
             }
         }
         service = document.getElementById("service_select_list");
@@ -26,16 +28,25 @@
 
     function addArticles() {
         article_select_list = document.getElementById("article_select_list");
-        selected_article_list = document.getElementById("selected_article_list");
+        selected_article_list = document.getElementById("article_selected_list");
         for (i = 0; i < article_select_list.selectedOptions.length; i++) {
-            option = document.createElement("option");
-            option.value = article_select_list.selectedOptions[i].value;
-            option.innerHTML = article_select_list.selectedOptions[i].innerHTML;
-            selected_article_list.appendChild(option);
+            isIn = false;
+            for (j = 0; j < selected_article_list.options.length; j++) {
+                if (selected_article_list.options[j].value == article_select_list.selectedOptions[i].value) {
+                    isIn = true;
+                    break;
+                }
+            }
+            if (!isIn) {
+                option = document.createElement("option");
+                option.value = article_select_list.selectedOptions[i].value;
+                option.innerHTML = article_select_list.selectedOptions[i].innerHTML;
+                selected_article_list.appendChild(option);
+            }
         }
     }
     function removeArticles() {
-        selected_article_list = document.getElementById("selected_article_list");
+        selected_article_list = document.getElementById("article_selected_list");
         child_list = [];
         for (i = 0; i < selected_article_list.selectedOptions.length; i++) {
             child_list.push(selected_article_list.selectedOptions[i]);
@@ -45,7 +56,7 @@
         }
     }
     function updateArticleIds() {
-        selected_article_list = document.getElementById("selected_article_list");
+        selected_article_list = document.getElementById("article_selected_list");
         selected_article_ids = document.getElementById("article_ids");
         ids = "";
         for (i = 0; i < selected_article_list.options.length; i++) {
@@ -54,18 +65,137 @@
         selected_article_ids.value = ids;
         document.getElementById("cover").style.display = "block";
     }
+
+    function updateSelectedArticles(){
+        selected_article_list = document.getElementById("article_selected_list");
+        ul = document.getElementById("selected_articles");
+        while (ul.firstChild) {
+            ul.removeChild(ul.firstChild);
+        }
+        for (i = 0; i < selected_article_list.options.length; i++) {
+            li = document.createElement("li");
+            li.value = selected_article_list.options[i].value;
+            li.innerHTML = selected_article_list.options[i].innerHTML;
+            ul.appendChild(li);
+        }
+        document.getElementById("cover2").style.display = "none";
+        document.getElementById("select_dia").style.display = "none";
+    }
+    function cancelSelectedArticles() {
+        selected_article_list = document.getElementById("article_selected_list");
+        while (selected_article_list.firstChild) {
+            selected_article_list.removeChild(selected_article_list.firstChild)
+        }
+        ul = document.getElementById("selected_articles");
+        lis = ul.getElementsByTagName("li");
+        for (i = 0; i < lis.length; i++) {
+            if (lis[i].value) {
+                option = document.createElement("option");
+                option.value = lis[i].value;
+                option.innerHTML = lis[i].innerHTML;
+                selected_article_list.appendChild(option);
+            }
+        }
+        document.getElementById("cover2").style.display = "none";
+        document.getElementById("select_dia").style.display = "none";
+    }
+    function editArticles() {
+        document.getElementById("cover2").style.display = "block";
+        document.getElementById("select_dia").style.display = "block";
+    }
+    function updateSearch() {
+        search_key = document.getElementById("search_key").value.trim();
+        article_select_list = document.getElementById("article_select_list");
+        all_articles = document.getElementById("all_articles");
+        while (article_select_list.firstChild) {
+            article_select_list.removeChild(article_select_list.firstChild);
+        }
+        if (search_key == "") {
+            for (i = 0; i < all_articles.options.length; i++) {
+                article_select_list.appendChild(all_articles.options[i].cloneNode(true));
+            }
+        }
+        else {
+            for (i = 0; i < all_articles.options.length; i++) {
+                if (all_articles.options[i].innerHTML.indexOf(search_key) > -1)
+                    article_select_list.appendChild(all_articles.options[i].cloneNode(true));
+            }
+        }
+    }
+    function getRecordSearch() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("searchResult").innerHTML = xmlhttp.responseText;
+                document.getElementById("cover").style.display = "none";
+                document.getElementById("search_key").value = "";
+            }
+        }
+        startDate = document.getElementById("startDate").value;
+        endDate = document.getElementById("endDate").value;
+        laborId = document.getElementById("laborId").value;
+        laborType = document.getElementById("laborType").value;
+        xmlhttp.open("GET", "/ut/recordsearch/" + laborId + "/from" + startDate + "to" + endDate + "/" + laborType + "/", true);
+        xmlhttp.send();
+        document.getElementById("cover").style.display = "block";
+    }
+    function getRecords(user_id, record_num){
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("recordDisplay").innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET", "/ut/getlogs/" + user_id + "/" + record_num + "/", true);
+        xmlhttp.send();
+    }
 </script>
 <style>
 #cover {
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
+   position: fixed;
+   padding:0;
+   margin:0;
+   top:0;
+   left:0;
+   width: 100%;
+   height: 100%;
+   opacity: 0.80;
+   background: #aaa;
+   z-index: 12;
+   display:none;
+}
+#cover2 {
+   position:fixed;
+   padding:0;
+   margin:0;
+   top:0;
+   left:0;
+   width: 100%;
+   height: 100%;
    opacity: 0.80;
    background: #aaa;
    z-index: 10;
-   display: none;
+   display:none;
+}
+
+#select_dia {
+   position: absolute;
+   background: white;
+   z-index: 11;
+   width:960px;
+   display:none;
 }
 </style>
 <div id="cover">
@@ -74,15 +204,27 @@
 <h2>{{ title }}</h2>
 <h4>Labor Search</h4>
 <div>
-    <span>Start Date: <input type="date"/></span>
-    <span>End Date: <input type="date"/></span>
-    <span>Labor For: <select disabled><option>{{username}}</option></select></span>
-    <span>Labor Type: <select><option>Deliverable</option><option>Undeliverable</option></select></span>
-    <span><input onclick="alert('Sorry, not implemented yet.')" type="button" value="Search"/></span>
+    <span>Start Date: <input type="date" id="startDate" value="{{start_day}}"/></span>
+    <span>End Date: <input type="date" id="endDate" value="{{today}}"/></span>
+    <span>Labor For:
+        <select id="laborId" {% if disabled %} disabled {% endif %}>
+            {% for user in users %}
+            <option value="{{user.id}}" {% ifequal user.id user_id %} selected {% endifequal  %}>{{user.username}}</option>
+            {% endfor %}
+        </select>
+    </span>
+    <span>Labor Type: 
+        <select id="laborType">
+            <option value="all">all</option>
+            <option value="Deliverable">Deliverable</option>
+            <option value="Undeliverable">Undeliverable</option>
+        </select>
+    </span>
+    <span><input onclick="getRecordSearch()" type="button" value="Search"/></span>
 </div>
 <div>
-    <span>Labor Reporting Chart: </span>
-    <span>[TODO]</span>
+    <div>Labor Reporting: </div>
+    <div id="searchResult">None</div>
 </div>
 <p></p>
 <!-- TODO -->
@@ -96,21 +238,55 @@
 <form action="{% url 'submitReport' %}" method="post">
     {% csrf_token %}
     <div>
-        <span style="margin:10px 10px">Service: 
-            <select id="service_select_list" onchange="updateArticleList()">
-                {% for service in services  %}
-                <option value="{{service.id}}">{{ service.name }}</option>
-                {% endfor %}
-            </select>
-        </span>
-        <span style="margin:10px 10px">Articles: 
-            <select multiple id="article_select_list" onfocus="this.style.height='400px'" onblur="this.style.height='100px'">
-                {% for article in articles %}
-                <option value="{{article.id}}">{{article.filename}}</option>
-                {% endfor %}
-            </select>
-        </span>
-        <span style="margin:10px 10px"><input onclick="addArticles()" type="button" value="Add"/></span>
+        <div id="cover2">
+            Getting article list...
+        </div>
+        <div id="select_dia">
+            <div style="margin:10px 10px">
+                <span>Service: 
+                    <select id="service_select_list" onchange="updateArticleList()">
+                        {% for service in services  %}
+                        <option value="{{service.id}}">{{ service.name }}</option>
+                        {% endfor %}
+                    </select>
+                </span>
+                <span>Search:
+                    <input type="text" id="search_key"/>
+                    <input type="button" value="ok" onclick="updateSearch()"/>
+                </span>
+                <span style="float:right">
+                    <a href="javascript:cancelSelectedArticles()" title="cancel"><img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/></a>
+                </span>
+            </div>
+            <div>
+                <div style="margin:10px 10px;float:left;height:400px;width:30%">
+                    <div>Articles:</div>
+                    <select multiple id="article_select_list" style="height:350px;width:100%">
+                        {% for article in articles %}
+                        <option value="{{article.id}}">{{article.filename}}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="all_articles" style="display:none">
+                        {% for article in articles %}
+                        <option value="{{article.id}}">{{article.filename}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div style="float:left; margin-top:200px">
+                    <a href="javascript:removeArticles()" title="remove"><img style="width:40px;height:40px;margin-bottom:0px" src="/static/UT/left.png"/></a>
+                    <a href="javascript:addArticles()" title="add"><img style="width:40px;height:40px;margin-bottom:0px" src="/static/UT/right.png"/></a>
+                </div>
+                <div style="margin:10px 10px;float:left;height:400px;width:30%">
+                    <div>selected: <input onclick='alert("To be implemented")' type="button" value="Add articles with text"/></div>
+                    <select multiple id="article_selected_list" style="height:350px;width:100%">
+                    </select>
+                </div>
+                <div style="float:left; margin-top:350px">
+                    <input type="button" onclick="updateSelectedArticles()" value="ok"/>
+                    <input type="button" onclick="cancelSelectedArticles()" value="cancel"/>
+                </div>
+            </div>
+        </div>
         <span style="margin:10px 10px">Duration: <input id="duration" name="duration" type="number" style="width:50px"/> minutes</span>
         <span style="margin:10px 10px">Labor Type: 
             <select id="labor_type" name="labor_type">
@@ -119,17 +295,14 @@
                 {% endfor %}
             </select>
         </span>
+        <span style="margin:10px 10px">UT Date: <input id="submitDate" name="submitDate" type="date" value="{{today}}"/></span>
     </div>
     <br />
     <div>
-        <span style="margin:10px 10px">Articles selected: 
-            <select multiple id="selected_article_list">
-                
-            </select>
-        </span>
-        <input id="article_ids" name="article_ids" type="hidden" value="">
-        <span style="margin:10px 10px"><input onclick="removeArticles()" type="button" value="Delete"/></span>
-        <span style="margin:10px 10px">Submit Date: <input id="submitDate" name="submitDate" type="date"/></span>
+        <span style="margin:10px 10px">Articles selected: <input onclick="editArticles()" type="button" value="edit"/></span>
+        <ul id="selected_articles">
+            <li>to be added</li>
+        </ul>
     </div>
     <br />
     <div>
@@ -137,32 +310,19 @@
     </div>
     <br />
     <div style="border-bottom:solid; border-width:1px; padding-bottom:5px; text-align:right">
-        <span style="margin:10px 10px"><input onclick="updateArticleIds()" type="submit" value="Save"/></span>
+        <span style="margin:10px 10px">
+            <input type="hidden" id="article_ids" name="article_ids" value=""/>
+            <input onclick="updateArticleIds()" type="submit" value="Save"/>
+        </span>
     </div>
 </form>
 <br />
 <br />
 <h4>Log:</h4>
-{% for record in records %}
-<h5>Report {{forloop.counter}}</h5>
-<div>
-    <span style="margin:10px 10px">Duration: {{record.duration}} minutes</span>
-    <span style="margin:10px 10px">Labor Type: {{record.labor_type.type_name}}</span>
-    <span style="margin:10px 10px">Owner: {{record.creater.username}}</span>
-    <span style="margin:10px 10px">Submit Date: {{record.submit_time}}</span>
+<script>
+    getRecords({{user_id}}, 10);
+</script>
+<div id="recordDisplay">
+    loading...
 </div>
-<br />
-<div>
-    <span style="margin:10px 10px">Articles: 
-        {% for record_article in record.record_article_set.all %}
-            {{record_article.article.filename}},
-        {% endfor %}
-    </span>
-</div>
-<br />
-<div style="border-bottom:dashed; border-width:1px; padding-bottom:5px">
-    <span>Comments: {{record.comments}}</span>
-</div>
-<br />
-{% endfor %}
 {% endblock %}

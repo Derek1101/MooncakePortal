@@ -79,6 +79,34 @@
                 deleteImage.src = "/static/landingPage/img/delete.png";
                 deleteButt.appendChild(deleteImage);
                 groupTitle.appendChild(deleteButt);
+                moveUpButt = document.createElement("a");
+                moveUpButt.href = "javascript:moveUpField('"+groupLi.id+"')";
+                moveUpButt.title = "上移";
+                moveUpButt.addEventListener("click", function(e){
+                    if ( e && e.stopPropagation ) 
+                        e.stopPropagation(); 
+                    else
+                        window.event.cancelBubble = true; 
+                });
+                moveUpImage = document.createElement("img");
+                moveUpImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+                moveUpImage.src = "/static/landingPage/img/moveUp.png";
+                moveUpButt.appendChild(moveUpImage);
+                groupTitle.appendChild(moveUpButt);
+                moveDownButt = document.createElement("a");
+                moveDownButt.href = "javascript:moveDownField('"+groupLi.id+"')";
+                moveDownButt.title = "下移";
+                moveDownButt.addEventListener("click", function(e){
+                    if ( e && e.stopPropagation ) 
+                        e.stopPropagation(); 
+                    else
+                        window.event.cancelBubble = true; 
+                });
+                moveDownImage = document.createElement("img");
+                moveDownImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+                moveDownImage.src = "/static/landingPage/img/moveDown.png";
+                moveDownButt.appendChild(moveDownImage);
+                groupTitle.appendChild(moveDownButt);
                 groupLi.appendChild(groupTitle);
                 groupUl = document.createElement("ul");
                 groupUl.id = navigationJson.navigation[i].id;
@@ -122,8 +150,44 @@
                     deleteImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
                     deleteButt.appendChild(deleteImage);
                     articleLink.appendChild(deleteButt);
+                    moveUpButt = document.createElement("a");
+                    moveUpButt.href = "javascript:moveUpField('"+articleLi.id+"')";
+                    moveUpButt.title = "上移";
+                    moveUpButt.addEventListener("click", function(e){
+                        if ( e && e.stopPropagation ) 
+                            e.stopPropagation(); 
+                        else
+                            window.event.cancelBubble = true; 
+                    });
+                    moveUpImage = document.createElement("img");
+                    moveUpImage.src = "/static/landingPage/img/moveUp.png";
+                    moveUpImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+                    moveUpButt.appendChild(moveUpImage);
+                    articleLink.appendChild(moveUpButt);
+                    moveDownButt = document.createElement("a");
+                    moveDownButt.href = "javascript:moveDownField('"+articleLi.id+"')";
+                    moveDownButt.title = "下移";
+                    moveDownButt.addEventListener("click", function(e){
+                        if ( e && e.stopPropagation ) 
+                            e.stopPropagation(); 
+                        else
+                            window.event.cancelBubble = true; 
+                    });
+                    moveDownImage = document.createElement("img");
+                    moveDownImage.src = "/static/landingPage/img/moveDown.png";
+                    moveDownImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+                    moveDownButt.appendChild(moveDownImage);
+                    articleLink.appendChild(moveDownButt);
                     articleLi.appendChild(articleLink);
                 }
+                addli = document.createElement("li");
+                addli.name = "addNavigationLink";
+                addLink = document.createElement("input");
+                addLink.type = "button";
+                addLink.setAttribute("onclick", "addNavigationLink(this)");
+                addLink.value = "添加链接";
+                addli.appendChild(addLink);
+                groupUl.appendChild(addli);
             }
             if (activeActicleId == null) {
                 document.getElementById(navigationJson.navigation[0].id + "_header").className = "active open";
@@ -141,7 +205,176 @@
                     }
                 }
             }
+            addli = document.createElement("li");
+            addli.name = "addNavigationGroup";
+            addGroupLink = document.createElement("input");
+            addGroupLink.type = "button";
+            addGroupLink.setAttribute("onclick", "addNavigationGroup(this)");
+            addGroupLink.value = "添加组";
+            addli.appendChild(addGroupLink);
+            mainUl.appendChild(addli);
         }
+
+        var newGroupCount = {{newGroupCount}};
+        function addNavigationGroup(addGroup){
+            mainUl = addGroup.parentNode.parentNode;
+            groupLi = document.createElement("li");
+            groupLi.id = "new_group_header"+newGroupCount;
+            groupLi.setAttribute("data-control", "toggle");
+            groupLi.setAttribute("data-tag-name", "new_group"+newGroupCount);
+            groupLi.setAttribute("data-service-name", navigationJson.id);
+            mainUl.insertBefore(groupLi, addGroup.parentNode);
+            groupTitle = document.createElement("a");
+            groupTitle.setAttribute("onclick", "show('new_group_header" + newGroupCount + "')");
+            groupTitle.innerHTML = "请输入";
+            groupTitle.className = "toggler";
+            groupTitle.id = "new_group_title"+newGroupCount;
+            editButt = document.createElement("a");
+            editButt.href = "javascript:editField('"+groupTitle.id+"', 'text')";
+            editButt.title = "编辑";
+            editButt.addEventListener("click", function(e){
+                if ( e && e.stopPropagation ) 
+                    e.stopPropagation(); 
+                else
+                    window.event.cancelBubble = true; 
+            });
+            editImage = document.createElement("img");
+            editImage.src = "/static/landingPage/img/edit.png";
+            editImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+            editButt.appendChild(editImage);
+            groupTitle.appendChild(editButt);
+            deleteButt = document.createElement("a");
+            deleteButt.href = "javascript:deleteField('"+groupLi.id+"')";
+            deleteButt.title = "删除";
+            deleteButt.addEventListener("click", function(e){
+                if ( e && e.stopPropagation ) 
+                    e.stopPropagation(); 
+                else
+                    window.event.cancelBubble = true; 
+            });
+            deleteImage = document.createElement("img");
+            deleteImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+            deleteImage.src = "/static/landingPage/img/delete.png";
+            deleteButt.appendChild(deleteImage);
+            groupTitle.appendChild(deleteButt);
+            moveUpButt = document.createElement("a");
+            moveUpButt.href = "javascript:moveUpField('"+groupLi.id+"')";
+            moveUpButt.title = "上移";
+            moveUpButt.addEventListener("click", function(e){
+                if ( e && e.stopPropagation ) 
+                    e.stopPropagation(); 
+                else
+                    window.event.cancelBubble = true; 
+            });
+            moveUpImage = document.createElement("img");
+            moveUpImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+            moveUpImage.src = "/static/landingPage/img/moveUp.png";
+            moveUpButt.appendChild(moveUpImage);
+            groupTitle.appendChild(moveUpButt);
+            moveDownButt = document.createElement("a");
+            moveDownButt.href = "javascript:moveDownField('"+groupLi.id+"')";
+            moveDownButt.title = "下移";
+            moveDownButt.addEventListener("click", function(e){
+                if ( e && e.stopPropagation ) 
+                    e.stopPropagation(); 
+                else
+                    window.event.cancelBubble = true; 
+            });
+            moveDownImage = document.createElement("img");
+            moveDownImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+            moveDownImage.src = "/static/landingPage/img/moveDown.png";
+            moveDownButt.appendChild(moveDownImage);
+            groupTitle.appendChild(moveDownButt);
+            groupLi.appendChild(groupTitle);
+            groupUl = document.createElement("ul");
+            groupUl.id = "new_group"+newGroupCount;
+            groupUl.className = "toggled";
+            groupLi.appendChild(groupUl);
+            addli = document.createElement("li");
+            addli.name = "addNavigationLink";
+            addLink = document.createElement("input");
+            addLink.type = "button";
+            addLink.setAttribute("onclick", "addNavigationLink(this)");
+            addLink.value = "添加链接";
+            addli.appendChild(addLink);
+            groupUl.appendChild(addli);
+            newGroupCount++;
+        }
+
+        var newLinkCount = {{newLinkCount}};
+        function addNavigationLink(addLink){
+            groupUl = addLink.parentNode.parentNode;
+        
+            articleLi = document.createElement("li");
+            articleLi.id = "newLink_li"+newLinkCount;
+            groupUl.insertBefore(articleLi, addLink.parentNode);
+            articleLink = document.createElement("a");
+            articleLink.href = "#";
+            
+            articleLink.innerHTML = "请输入";
+            articleLink.id = "newLink"+newLinkCount;
+            articleLink.setAttribute("data-link-service-name", groupUl.parentNode.getAttribute("data-service-name"));
+            articleLink.setAttribute("data-link-tag-name", "newLink"+newLinkCount);
+            editButt = document.createElement("a");
+            editButt.href = "javascript:editField('"+articleLink.id+"', 'link')";
+            editButt.addEventListener("click", function(e){
+                if ( e && e.stopPropagation ) 
+                    e.stopPropagation(); 
+                else
+                    window.event.cancelBubble = true; 
+            });
+            editButt.title = "编辑";
+            editImage = document.createElement("img");
+            editImage.src = "/static/landingPage/img/edit.png";
+            editImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+            editButt.appendChild(editImage);
+            articleLink.appendChild(editButt);
+            deleteButt = document.createElement("a");
+            deleteButt.href = "javascript:deleteField('"+articleLi.id+"')";
+            deleteButt.title = "删除";
+            deleteButt.addEventListener("click", function(e){
+                if ( e && e.stopPropagation ) 
+                    e.stopPropagation(); 
+                else
+                    window.event.cancelBubble = true; 
+            });
+            deleteImage = document.createElement("img");
+            deleteImage.src = "/static/landingPage/img/delete.png";
+            deleteImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+            deleteButt.appendChild(deleteImage);
+            articleLink.appendChild(deleteButt);
+            moveUpButt = document.createElement("a");
+            moveUpButt.href = "javascript:moveUpField('"+articleLi.id+"')";
+            moveUpButt.title = "上移";
+            moveUpButt.addEventListener("click", function(e){
+                if ( e && e.stopPropagation ) 
+                    e.stopPropagation(); 
+                else
+                    window.event.cancelBubble = true; 
+            });
+            moveUpImage = document.createElement("img");
+            moveUpImage.src = "/static/landingPage/img/moveUp.png";
+            moveUpImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+            moveUpButt.appendChild(moveUpImage);
+            articleLink.appendChild(moveUpButt);
+            moveDownButt = document.createElement("a");
+            moveDownButt.href = "javascript:moveDownField('"+articleLi.id+"')";
+            moveDownButt.title = "下移";
+            moveDownButt.addEventListener("click", function(e){
+                if ( e && e.stopPropagation ) 
+                    e.stopPropagation(); 
+                else
+                    window.event.cancelBubble = true; 
+            });
+            moveDownImage = document.createElement("img");
+            moveDownImage.src = "/static/landingPage/img/moveDown.png";
+            moveDownImage.setAttribute("style", "width:20px;height:20px;margin-bottom:0px");
+            moveDownButt.appendChild(moveDownImage);
+            articleLink.appendChild(moveDownButt);
+            articleLi.appendChild(articleLink);
+            newLinkCount++;
+        }
+
         function dropdownSelectChange() {
             dropdownSelect = document.getElementById('dropdown-cta');
             contentSelected = document.getElementById('wa-dropdown-value');
@@ -158,78 +391,48 @@
         });
         
         var recentUpdateCount = {{recentUpdates|length}};
+        String.prototype.replaceAll = function(target, replacement) {
+            return this.split(target).join(replacement);
+        };
+
+        var newUpdateTemplate = '<div class="wa-serviceUpdate">\n<h4 id="edit_recent_title@@counter@@"><textarea style="width:85%;" placeholder="请输入更新的标题"></textarea>\n<a title="编辑" href="javascript:editField(\'edit_recent_title@@counter@@\', \'text\')">\n<img style="width:20px;height:20px;margin-bottom:0px" src="/static/landingPage/img/edit.png">\n</a>\n<a title="删除" href="javascript:deleteField(\'edit_recent_update@@counter@@\')">\n<img style="width:20px;height:20px;margin-bottom:0px" src="/static/landingPage/img/delete.png">\n</a>\n</h4>\n<p class="article-date" id="edit_recent_date@@counter@@"><textarea style="width:85%;" placeholder="请输入更新的日期， 如：2015年03月31日"></textarea>\n<a title="编辑" href="javascript:editField(\'edit_recent_date@@counter@@\', \'text\')">\n<img style="width:20px;height:20px;margin-bottom:0px" src="/static/landingPage/img/edit.png">\n</a>\n</p>\n<p id="edit_recent_description@@counter@@"><textarea style="width:85%;" placeholder="请输入更新的描述"></textarea>\n<a title="编辑" href="javascript:editField(\'edit_recent_description@@counter@@\', \'text\')">\n<img style="width:20px;height:20px;margin-bottom:0px" src="/static/landingPage/img/edit.png">\n</a>\n</p>\n<p class="article-content" id="edit_recent_detail@@counter@@"><textarea style="width:85%;" placeholder="请输入更新的细节"></textarea>\n<a title="编辑" href="javascript:editField(\'edit_recent_detail@@counter@@\', \'text\')">\n<img style="width:20px;height:20px;margin-bottom:0px" src="/static/landingPage/img/edit.png">\n</a>\n</p>\n<a class="wa-arrowLink wa-arrowLink-blue" style="display:none" href="javascript:void(0);">了解更多</a>\n</div>'
         function addNewUpdate(){
-            var xmlhttp;
-            if (window.XMLHttpRequest)
-            {// code for IE7+, Firefox, Chrome, Opera, Safari
-                xmlhttp=new XMLHttpRequest();
-            }
-            else
-            {// code for IE6, IE5
-                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xmlhttp.onreadystatechange=function()
-            {
-                if (xmlhttp.readyState==4 && xmlhttp.status==200)
-                {
-                    addRecentUpdate = document.getElementById("add_new_update");
-                    newRecentUpdate = document.createElement("div");
-                    newRecentUpdate.className = "wa-content wa-content-3up";
-                    newRecentUpdate.id = "edit_recent_update"+(recentUpdateCount+1);
-                    newRecentUpdate.innerHTML = xmlhttp.responseText;
-                    insertAfter(newRecentUpdate, addRecentUpdate);
-                    element = document.getElementById("edit_recent_title"+(recentUpdateCount+1));
+            addRecentUpdate = document.getElementById("add_new_update");
+            newRecentUpdate = document.createElement("div");
+            newRecentUpdate.className = "wa-content wa-content-3up";
+            newRecentUpdate.id = "edit_recent_update"+(recentUpdateCount+1);
+            newRecentUpdate.innerHTML = newUpdateTemplate.replaceAll("@@counter@@", recentUpdateCount+1);
+            insertAfter(newRecentUpdate, addRecentUpdate);
+            element = document.getElementById("edit_recent_title"+(recentUpdateCount+1));
 
-                    textArea = element.getElementsByTagName("textarea")[0];
-                    editting["edit_recent_title"+(recentUpdateCount+1)] = {"element":element, "textField": textArea, "text":document.createTextNode("")};
+            textArea = element.getElementsByTagName("textarea")[0];
+            editting["edit_recent_title"+(recentUpdateCount+1)] = {"element":element, "textField": textArea, "text":document.createTextNode("")};
 
-                    element = document.getElementById("edit_recent_date"+(recentUpdateCount+1));
-                    textArea = element.getElementsByTagName("textarea")[0];
-                    editting["edit_recent_date"+(recentUpdateCount+1)] = {"element":element, "textField": textArea, "text":document.createTextNode("")};
+            element = document.getElementById("edit_recent_date"+(recentUpdateCount+1));
+            textArea = element.getElementsByTagName("textarea")[0];
+            editting["edit_recent_date"+(recentUpdateCount+1)] = {"element":element, "textField": textArea, "text":document.createTextNode("")};
 
-                    element = document.getElementById("edit_recent_description"+(recentUpdateCount+1));
-                    textArea = element.getElementsByTagName("textarea")[0];
-                    editting["edit_recent_description"+(recentUpdateCount+1)] = {"element":element, "textField": textArea, "text":document.createTextNode("")};
+            element = document.getElementById("edit_recent_description"+(recentUpdateCount+1));
+            textArea = element.getElementsByTagName("textarea")[0];
+            editting["edit_recent_description"+(recentUpdateCount+1)] = {"element":element, "textField": textArea, "text":document.createTextNode("")};
 
-                    element = document.getElementById("edit_recent_detail"+(recentUpdateCount+1));
-                    textArea = element.getElementsByTagName("textarea")[0];
-                    editting["edit_recent_detail"+(recentUpdateCount+1)] = {"element":element, "textField": textArea, "text":document.createTextNode("")};
-                    recentUpdateCount++;
-                }
-            }
-            xmlhttp.open("GET","/newrecentupdate/"+(recentUpdateCount+1)+"/",true);
-            xmlhttp.send();
+            element = document.getElementById("edit_recent_detail"+(recentUpdateCount+1));
+            textArea = element.getElementsByTagName("textarea")[0];
+            editting["edit_recent_detail"+(recentUpdateCount+1)] = {"element":element, "textField": textArea, "text":document.createTextNode("")};
+            recentUpdateCount++;
         }
         function insertAfter(newNode, referenceNode) {
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         }
         var tutorialOptionCount = {{options|length}};
+        var newTutorialOptionTemplate = '<textarea placeholder="请输入教程标题"></textarea>\n<textarea placeholder="请输入教程链接"></textarea>\n<a href="javascript:deleteField(\'edit_option_@@counter@@\')" title="删除">\n<img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>\n</a>'
         function addTutorialOption(id){
-            element = document.getElementById(id);
-            var xmlhttp3;
-            if (window.XMLHttpRequest)
-            {// code for IE7+, Firefox, Chrome, Opera, Safari
-                xmlhttp3=new XMLHttpRequest();
-            }
-            else
-            {// code for IE6, IE5
-                xmlhttp3=new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xmlhttp3.onreadystatechange=function()
-            {
-                if (xmlhttp3.readyState==4 && xmlhttp3.status==200)
-                {
                     editSelectList = document.createElement("div");
                     editSelectList.id = "edit_option_"+(tutorialOptionCount+1);
-                    editSelectList.innerHTML = xmlhttp3.responseText;
-                    element.parentElement.insertBefore(editSelectList, element);
+                    editSelectList.innerHTML = newTutorialOptionTemplate.replace("@@counter@@", tutorialOptionCount+1);
+                    addButt = document.getElementById(id);
+                    addButt.parentElement.insertBefore(editSelectList, addButt);
                     tutorialOptionCount++;
-                }
-            }
-                    
-            xmlhttp3.open("GET","/newTutorialOption/"+(tutorialOptionCount+1)+"/",true);
-            xmlhttp3.send();
-            
         }
     </script>
     <script>
@@ -246,18 +449,86 @@
                             window.event.cancelBubble = true; 
                     });
                     textField.setAttribute("style","width:85%;")
-                    for (var i = 0; i<element.childNodes.length; i++){
-                        if(element.childNodes[i].nodeValue!=null && element.childNodes[i].nodeValue.trim()!=""){
-                            textField.value = element.childNodes[i].nodeValue.trim();
-                            editting[id]={"element":element, "textField":textField, "text":element.childNodes[i]}
-                            element.replaceChild(textField, element.childNodes[i]);
-                            break;
+                    as = element.getElementsByTagName("a");
+                    clone_e = [];
+                    edit_butt = null;
+                    delete_butt = null;
+                    moveUp_butt = null;
+                    moveDown_butt = null;
+                    for (var i = 0; i<as.length; i++){
+                        if(as[i].title.trim()=="编辑"){
+                            clonedNode = as[i].cloneNode(true);
+                            clonedNode.addEventListener("click", function(e){
+                                if ( e && e.stopPropagation ) 
+                                    e.stopPropagation(); 
+                                else
+                                    window.event.cancelBubble = true; 
+                            });
+                            clone_e.push(clonedNode);
+                            edit_butt = as[i];
+                        }
+                        if(as[i].title.trim()=="删除"){
+                            clonedNode = as[i].cloneNode(true);
+                            clonedNode.addEventListener("click", function(e){
+                                if ( e && e.stopPropagation ) 
+                                    e.stopPropagation(); 
+                                else
+                                    window.event.cancelBubble = true; 
+                            });
+                            clone_e.push(clonedNode);
+                            delete_butt = as[i];
+                        }
+                        if(as[i].title.trim()=="上移"){
+                            clonedNode = as[i].cloneNode(true);
+                            clonedNode.addEventListener("click", function(e){
+                                if ( e && e.stopPropagation ) 
+                                    e.stopPropagation(); 
+                                else
+                                    window.event.cancelBubble = true; 
+                            });
+                            clone_e.push(clonedNode);
+                            moveUp_butt = as[i];
+                        }
+                        if(as[i].title.trim()=="下移"){
+                            clonedNode = as[i].cloneNode(true);
+                            clonedNode.addEventListener("click", function(e){
+                                if ( e && e.stopPropagation ) 
+                                    e.stopPropagation(); 
+                                else
+                                    window.event.cancelBubble = true; 
+                            });
+                            clone_e.push(clonedNode);
+                            moveDown_butt = as[i];
                         }
                     }
+                    if(edit_butt!=null)
+                        element.removeChild(edit_butt);
+                    if(delete_butt!=null)
+                        element.removeChild(delete_butt);
+                    if(moveUp_butt!=null)
+                        element.removeChild(moveUp_butt);
+                    if(moveDown_butt!=null)
+                        element.removeChild(moveDown_butt);
+                    textField.value = element.innerHTML.trim();
+                    element.innerHTML = "";
+                    element.appendChild(textField);
+                    for(var i=0; i<clone_e.length; i++)
+                        element.appendChild(clone_e[i]);
+                    editting[id] = true;
                 }
                 else{
-                    editting[id].text.nodeValue = editting[id].textField.value;
-                    a = editting[id].element.replaceChild(editting[id].text, editting[id].textField);
+                    nodeValue = element.getElementsByTagName("textarea")[0].value;
+                    element.removeChild(element.getElementsByTagName("textarea")[0]);
+                    element.innerHTML = nodeValue+element.innerHTML;
+                    as = element.getElementsByTagName("a");
+                    for (var i = 0; i<as.length; i++){
+                        as[i].addEventListener("click", function(e){
+                            if ( e && e.stopPropagation ) 
+                                e.stopPropagation(); 
+                            else
+                                window.event.cancelBubble = true; 
+                        });
+                    }
                     editting[id] = false;
                 }
             }
@@ -291,64 +562,37 @@
                 }
             }
             else if(type == "select_list"){
-                
                 if(!editting[id]){
-                    var xmlhttp2;
-                    if (window.XMLHttpRequest)
-                    {// code for IE7+, Firefox, Chrome, Opera, Safari
-                        xmlhttp2=new XMLHttpRequest();
-                    }
-                    else
-                    {// code for IE6, IE5
-                        xmlhttp2=new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    xmlhttp2.onreadystatechange=function()
-                    {
-                        if (xmlhttp2.readyState==4 && xmlhttp2.status==200)
-                        {
-                            
-                            editSelectList = document.createElement("div");
-                            editSelectList.innerHTML = xmlhttp2.responseText;
-                            editting[id]={"element":element, "editSelectList":editSelectList}
-                            element.parentElement.replaceChild(editSelectList, element);
-                        }
-                    }
-                    options = element.getElementsByTagName("option");
-                    optionsJson = [];
-                    
-                    for(var i = 0; i<options.length; i++){
-                        option = {"title":options[i].innerHTML.trim(), "link":options[i].value.trim()};
-                        optionsJson[i]=option;
-                        
-                    }
-                    optionsJsonStr = JSON.stringify(optionsJson);
-                    xmlhttp2.open("POST","/editTutorialSelectList/activeDirectory/",true);//TODO
-                    xmlhttp2.setRequestHeader("options", optionsJsonStr)
-                    xmlhttp2.send();
-                    
+                    editSelectList = document.getElementById("editSelectList");
+                    editSelectList.style.display = "block";
+                    edit_tutorial_select_list = document.getElementById("edit_tutorial_select_list");
+                    edit_tutorial_select_list.style.display = "none";
+                    editting[id] = true;
                 }
                 else{
-                    editting[id].editSelectList.parentElement.replaceChild(editting[id].element, editting[id].editSelectList);
-                    divList = editting[id].editSelectList.getElementsByTagName("div");
-                    options = editting[id].element.getElementsByTagName("option");
-                    if(divList.length>options.length){
-                        for(var i = 0; i<divList.length-options.length; i++){
-                            newOption = options[0].cloneNode(true);
-                            options[0].parentElement.appendChild(newOption);
-                        }
-                        options = editting[id].element.getElementsByTagName("option");
+                    editSelectList = document.getElementById("editSelectList");
+                    editSelectList.style.display = "none";
+                    edit_tutorial_select_list = document.getElementById("edit_tutorial_select_list");
+                    edit_tutorial_select_list.style.display = "";
+                    options_div = editSelectList.getElementsByTagName("div");
+                    select_list = document.getElementById("dropdown-cta");
+
+                    while (select_list.firstChild) {
+                        select_list.removeChild(select_list.firstChild);
                     }
-                    else if(divList.length<options.length){
-                        for(var i = 0; i<options.length-divList.length; i++){
-                            options[i].parentElement.removeChild(options[i]);
-                        }
-                        options = editting[id].element.getElementsByTagName("option");
+
+                    for(i=0; i<options_div.length; i++){
+                        textAreas = options_div[i].getElementsByTagName("textarea");
+                        title = textAreas[0].value;
+                        link = textAreas[1].value;
+                        option = document.createElement("option");
+                        option.innerHTML = title;
+                        option.value = link;
+                        select_list.appendChild(option);
                     }
-                    for(var i = 0; i<divList.length; i++){
-                        textareas = divList[i].getElementsByTagName("textarea");
-                        options[i].value = textareas[1].value;
-                        options[i].innerHTML = textareas[0].value;
-                    }
+                    
+                    document.getElementById("wa-dropdown-value").innerHTML = options_div[0].getElementsByTagName("textarea")[0].value;
+                    document.getElementById("wa-button-link").href = options_div[0].getElementsByTagName("textarea")[1].value;
                     editting[id] = false;
                 }
             }
@@ -384,29 +628,85 @@
         function deleteField(id){
             element = document.getElementById(id);
             element.parentElement.removeChild(element);
+            if(id.indexOf("edit_video_full")>-1){
+                if(video_count==3){
+                    document.getElementById("edit_video_add").style.display="block";
+                }
+                video_count--;
+                
+            }
+        }
+
+        function moveUpField(id){
+            element = document.getElementById(id);
+            index = -1;
+            for(i=0; i<element.parentElement.childNodes.length-1; i++){
+                if(element.parentElement.childNodes[i].id == id){
+                    index = i;
+                    break;
+                }
+            }
+            if(index == 0 || index == -1){
+                alert("cannot move up");
+            }
+            else{
+                element.parentElement.insertBefore(element, element.parentElement.childNodes[i-1]);
+            }
+        }
+        function moveDownField(id){
+            element = document.getElementById(id);
+            
+            index = -1;
+            for(i=0; i<element.parentElement.childNodes.length-1; i++){
+                if(element.parentElement.childNodes[i].id == id){
+                    index = i;
+                    break;
+                }
+            }
+            
+            if(index == element.parentElement.childNodes.length-2 || index == -1){
+                alert("cannot move down");
+            }
+            else{
+                element.parentElement.insertBefore(element, element.parentElement.childNodes[i+2]);
+            }
         }
 
         var video_count = {{videoLinks|length }};
         var next_video = {{videoLinks|length }};
+        var newVideoTemplate = '<a style="display:none" id="edit_video@@forloop.counter@@" href="" data-control="" data-expanding="false" class="wa-video-thumbnail _storage-video-popup" title="">\n<img src="" alt="" class="thumbnail" />\n<img class="play-icon" src="{{imgLink}}VideoPlay.png" />\n<span class="metadata">\n<span class="date">\n<span></span>\n<span></span>\n</span>\n</span>\n</a>\n<p style="display:none" id="des_edit_video@@forloop.counter@@">\n</p>\n<div id="video_editing_@@forloop.counter@@" style="display:block">\n<div>\n<div>标题</div><textarea style="width:300px;height:20px" id="video_title_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>缩略图标题</div><textarea style="width:300px" id="video_image_title_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>链接</div><textarea style="width:300px" id="video_url_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>描述</div><textarea style="width:300px" id="video_description_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>发布时间</div><textarea style="width:300px" id="video_publishDate_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>时长</div><textarea style="width:300px" id="video_duration_@@forloop.counter@@"></textarea>\n</div>\n</div>\n<a href="javascript:editField(\'edit_video@@forloop.counter@@\', \'video\')" title="编辑">\n<img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>\n</a>\n<a href="javascript:deleteField(\'edit_video_full@@forloop.counter@@\')" title="删除">\n<img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>\n</a>'
         function add_video(){
-            videoContainer = document.getElementById("video_container");
             
+            edit_video_add = document.getElementById("edit_video_add");
+            div = document.createElement("div");
+            div.className = "wa-spacer";
+            div.id = "edit_video_full"+(next_video+1);
+            div.innerHTML = newVideoTemplate.replaceAll("@@forloop.counter@@", next_video+1)
+            next_video++;
+            video_count++;
+            edit_video_add.parentElement.insertBefore(div, edit_video_add);
+            if(video_count>=3){
+                edit_video_add.style.display="none";
+            }
         }
         
         function submitPage(){
-            navigationJsonStr = getNavigationJsonStr();
-            contentJsonStr = getContentJsonStr();
-            recentUpdateJsonStr = getRecentUpdateJsonStr();
-            metaJsonStr = getMetaJsonStr();
-            tutorialOptionsJsonStr = getTutorialOptionsJson();
-            videoLinkJsonStr = getVideoLinkJson();
-            document.write(videoLinkJsonStr);
+            send_content = new Object();
+            send_content.navigation = getNavigationJsonStr();
+            send_content.content = getContentJsonStr();
+            send_content.recentUpdate = getRecentUpdateJsonStr();
+            send_content.meta = getMetaJsonStr();
+            send_content.tutorialOptions = getTutorialOptionsJson();
+            send_content.videoLink = getVideoLinkJson();
+            document.getElementById("wholeJson").value = JSON.stringify(send_content);
+            document.getElementById("newGroupCount").value = newGroupCount;
+            document.getElementById("newLinkCount").value = newLinkCount;
+            document.getElementById("cover").style.display = "block";
         }
 
         function getVideoLinkJson(){
-            alert(next_video);
             videoLinkJson = [];
-            for(i=0; i<next_video; i++){
+            for(i=1; i<=next_video; i++){
                 title = document.getElementById("video_title_"+i);
                 if(title != null){
                     video = new Object();
@@ -414,12 +714,12 @@
                     video.ImageUrl = document.getElementById("video_image_title_"+i).value;
                     video.VideoUrl = document.getElementById("video_url_"+i).value;
                     video.Description = document.getElementById("video_description_"+i).value;
-                    video.PublishTime = document.getElementById("video_description_"+i).value;
+                    video.PublishTime = document.getElementById("video_publishDate_"+i).value;
                     video.Duration = document.getElementById("video_duration_"+i).value;
                     videoLinkJson.push(video);
                 }
             }
-            return JSON.stringify(videoLinkJson);
+            return videoLinkJson;
         }
 
         function getTutorialOptionsJson(){
@@ -431,14 +731,14 @@
                 option.link = selectList.options[i].value;
                 tutorialOptionsJson.push(option)
             }
-            return JSON.stringify(tutorialOptionsJson);
+            return tutorialOptionsJson;
         }
 
         function getMetaJsonStr(){
             metaJson = new Object();
             metaJson.metat_keywords = document.getElementById("metat_keywords").textContent.trim();
             metaJson.meta_description = document.getElementById("meta_description").textContent.trim();
-            return JSON.stringify(metaJson);
+            return metaJson;
         }
 
         function getRecentUpdateJsonStr(){
@@ -447,9 +747,25 @@
                 try{
                     update = new Object();
                     update.update_title = document.getElementById("edit_recent_title"+i).textContent.trim();
-                    update.update_description = document.getElementById("edit_recent_description"+i).textContent.trim();
+                    edit_recent_description = document.getElementById("edit_recent_description"+i);
+                    update_detail = document.getElementById("edit_recent_detail"+i);
+                    as = edit_recent_description.getElementsByTagName("a");
+                    for(j=0; j<=as.length; j++){
+                        if(as[j].title=="编辑"){
+                            edit_recent_description.removeChild(as[j]);
+                            break;
+                        }
+                    }
+                    as = update_detail.getElementsByTagName("a");
+                    for(j=0; j<=as.length; j++){
+                        if(as[j].title=="编辑"){
+                            update_detail.removeChild(as[j]);
+                            break;
+                        }
+                    }
+                    update.update_description = edit_recent_description.innerHTML.trim();
                     update.update_date = document.getElementById("edit_recent_date"+i).textContent.trim();
-                    update.update_detail = document.getElementById("edit_recent_detail"+i).textContent.trim();
+                    update.update_detail = update_detail.innerHTML.trim();
                     update.link = "#";
                     recentUpdateJson.push(update);
                 }
@@ -457,7 +773,7 @@
                 
                 }
             }
-            return JSON.stringify(recentUpdateJson);
+            return recentUpdateJson;
         }
 
         function getContentJsonStr(){
@@ -465,7 +781,7 @@
             contentJson.subtitle = document.getElementById("edit_subtitle").textContent.trim();
             contentJson.tutorial_message =  document.getElementById("edit_tutorial_message").textContent.trim();
             contentJson.update_search_links = "/what-is-new/";
-            return JSON.stringify(contentJson);
+            return contentJson;
         }
 
         function getNavigationJsonStr(){
@@ -476,13 +792,19 @@
             navigationJson.service = rootTag.textContent.trim();
             ulTag = navigation.getElementsByTagName("ul")[0];
             navigationJson.navigation = [];
+            
             for(i=0; i<ulTag.childNodes.length; i++){
+                if(ulTag.childNodes[i].name == "addNavigationGroup"){
+                    continue;
+                }
                 group = new Object();
                 group.id = ulTag.childNodes[i].getAttribute("data-tag-name");
                 group.group = ulTag.childNodes[i].getElementsByTagName("a")[0].textContent.trim();
                 group.articles = [];
                 articleUlTag = ulTag.childNodes[i].getElementsByTagName("ul")[0];
                 for(j=0; j<articleUlTag.childNodes.length; j++){
+                    if(articleUlTag.childNodes[j].name == "addNavigationLink")
+                        continue;
                     article = new Object();
                     aTag = articleUlTag.childNodes[j].getElementsByTagName("a")[0];
                     article.id = aTag.id;
@@ -492,7 +814,7 @@
                 }
                 navigationJson.navigation.push(group);
             }
-            return JSON.stringify(navigationJson);
+            return navigationJson;
         }
 
         function metaEditField(){
@@ -548,19 +870,20 @@
                                 <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>
                             </a>
                         </label>
-                        {% if options|length == 1 %}
-                            <p class="tutorial-label">
-                                <span id="edit_tutorial_list">
-                                {{first_option_title}}
+                            <div style="display:none" id="editSelectList">
+                                {% for option in options %}
+                                <div id="edit_option_{{forloop.counter}}">
+                                    <textarea >{{option.title}}</textarea>
+                                    <textarea >{{option.link}}</textarea>
+                                    <a href="javascript:deleteField('edit_option_{{forloop.counter}}')" title="删除">
+                                        <img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                                <span id="add_option_butt">
+                                    <a href="javascript:addTutorialOption('add_option_butt')">增加选项</a>
                                 </span>
-                                <a href="javascript:editField('edit_tutorial_list', 'text')" title="编辑">
-                                    <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>
-                                </a>
-                                <a class="wa-button wa-button-primary wa-button-mini" href="{{first_option_link}}" data-linker="cta">
-                                    入门教程
-                                </a>
-                            </p>
-                        {% else %}
+                            </div>
                             <div class="wa-dropdown-container wa-dropdown-medium" id="edit_tutorial_select_list">
                                 <select id="dropdown-cta" class="wa-dropdown" data-control="dropdown dropdown-linker" data-linker="cta" onchange="dropdownSelectChange()">
                                     {% for option in options %}
@@ -578,7 +901,6 @@
                                 <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>
                             </a>
                             <a id="wa-button-link" data-service-name="virtual-machines" href="{{first_option_link}}" class="wa-button wa-button-primary wa-button-mini" data-linker="cta">入门教程</a>
-                        {% endif %}
                     </div>
                     <div class="wa-content wa-content-divided sub-hero-heading">
                         <h2>
@@ -624,7 +946,7 @@
                                     <div>
                                         <div>时长</div><textarea style="width:300px" id="video_duration_{{forloop.counter}}">{{videoLink.duration}}</textarea>
                                     </div>
-                            </div>
+                                </div>
                                 <a href="javascript:editField('edit_video{{forloop.counter}}', 'video')" title="编辑">
                                     <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>
                                 </a>
@@ -635,16 +957,13 @@
                             </div>
                             
                         {% endfor %}
-                        {% if videoLinks|length < 3 %}
-                            <div class="wa-spacer" id="edit_video_add">
+                            <div class="wa-spacer" id="edit_video_add" {% if videoLinks|length >= 3 %} style="display:none" {% endif %}>
                                 <a href="javascript:add_video()" title="增加视频">
                                     <img src="{{imgLink}}add-icon-614x460.png" alt="增加视频" class="thumbnail" />
-                                    
                                 </a>
                                 <p>
                                 </p>
                             </div>
-                        {% endif %}
                     </div>
                     <div class="wa-content">
                         <a href="/video-center/" class="wa-arrowLink">观看更多视频</a>
@@ -659,35 +978,37 @@
                             <a href="javascript:addNewUpdate()">增加更新</a>
                         </div>
                     {% for recent in recentUpdates %}
-                        <div class="wa-content wa-content-3up" id="edit_recent_update{{forloop.counter}}">
+                        <div class="wa-content wa-content-3up" id="edit_recent_update{{forloop.revcounter}}">
                             <div class="wa-serviceUpdate">
-                                <h4 id="edit_recent_title{{forloop.counter}}">
+                                <h4 id="edit_recent_title{{forloop.revcounter}}">
                                     {{recent.title}}
-                                    <a href="javascript:editField('edit_recent_title{{forloop.counter}}', 'text')" title="编辑">
+                                    <a href="javascript:editField('edit_recent_title{{forloop.revcounter}}', 'text')" title="编辑">
                                         <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>
                                     </a>
-                                    <a href="javascript:deleteField('edit_recent_update{{forloop.counter}}')" title="删除">
+                                    <a href="javascript:deleteField('edit_recent_update{{forloop.revcounter}}')" title="删除">
                                         <img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>
                                     </a>
                                 </h4>
-                                <p class="article-date" id="edit_recent_date{{forloop.counter}}">
+                                <p class="article-date" id="edit_recent_date{{forloop.revcounter}}">
                                     {{recent.date}}
-                                    <a href="javascript:editField('edit_recent_date{{forloop.counter}}', 'text')" title="编辑">
+                                    <a href="javascript:editField('edit_recent_date{{forloop.revcounter}}', 'text')" title="编辑">
                                         <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>
                                     </a>
                                 </p>
-                                <p id="edit_recent_description{{forloop.counter}}">
+                                {% autoescape off %}
+                                <p id="edit_recent_description{{forloop.revcounter}}">
                                     {{recent.description}}
-                                    <a href="javascript:editField('edit_recent_description{{forloop.counter}}', 'text')" title="编辑">
+                                    <a href="javascript:editField('edit_recent_description{{forloop.revcounter}}', 'text')" title="编辑">
                                         <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>
                                     </a>
                                 </p>
-                                <p class="article-content" style="display:none"  id="edit_recent_detail{{forloop.counter}}">
+                                <p class="article-content" style="display:none"  id="edit_recent_detail{{forloop.revcounter}}">
                                     {{recent.detail}}
-                                    <a href="javascript:editField('edit_recent_detail{{forloop.counter}}', 'text')" title="编辑">
+                                    <a href="javascript:editField('edit_recent_detail{{forloop.revcounter}}', 'text')" title="编辑">
                                         <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>
                                     </a>
                                 </p>
+                                {% endautoescape %}
                                 <a class="wa-arrowLink wa-arrowLink-blue" href="javascript:void(0);">了解更多</a>
                             </div>
                             <a href=""></a>
@@ -701,9 +1022,32 @@
                 </div>
             </div>
         </section>
-        <div style="float:right;">
-            <input onclick="submitPage()" type="button" value="保存" />
-        </div>
+        <form method="post" action="{% url 'submitpage' service_id %}">
+            {% csrf_token %}
+            <input type="hidden" id="wholeJson" name="wholeJson" value="" />
+            <input type="hidden" id="service_id" name="service_id" value="{{service_id}}"/>
+            <input type="hidden" id="newGroupCount" name="newGroupCount" value="">
+            <input type="hidden" id="newLinkCount" name="newLinkCount" value="">
+            <div style="float:right;">
+                <input onclick="submitPage()" type="submit" value="保存" />
+            </div>
+        </form>
+        <style>
+#cover {
+   position: fixed;
+   padding:0;
+   margin:0;
+   top:0;
+   left:0;
+   width: 100%;
+   height: 100%;
+   opacity: 0.80;
+   background: #aaa;
+   z-index: 12;
+   display:none;
+}
+        </style>
     </div>
+<div id="cover">updating...</div>
 
 {% endblock %}

@@ -1,0 +1,8 @@
+HiredisError
+Reader
+ProtocolError
+__all__
+ReplyError
+version
+__version__
+hiredis

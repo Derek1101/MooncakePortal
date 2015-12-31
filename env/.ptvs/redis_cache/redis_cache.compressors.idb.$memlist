@@ -1,0 +1,6 @@
+BZip2Compressor
+bz2
+ZLibCompressor
+NoopCompressor
+BaseCompressor
+zlib

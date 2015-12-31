@@ -7,7 +7,7 @@
       ]]>
     </bodyText>
     <umbracoNaviHide>0</umbracoNaviHide>
-    <pageTitle>虚拟机</pageTitle>
+    <pageTitle>{{html_title}}</pageTitle>
     <metaKeywords>{{metaKeywords}}</metaKeywords>
     <metaDescription><![CDATA[{{metaDescription}}]]></metaDescription>
     <linkid>case-studies-Aile</linkid>

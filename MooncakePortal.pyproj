@@ -6,7 +6,7 @@
     <RootNamespace>MooncakePortal</RootNamespace>
     <InterpreterId>{b67c672c-f273-4db0-b5e2-26de33681cd1}</InterpreterId>
     <InterpreterVersion>3.4</InterpreterVersion>
-    <NameOfLastUsedPublishProfile>wacnmooncakeportal - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>wacnmooncakeportal-stage - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,6 +46,9 @@
     <Compile Include="customizationTool\replaceInclude.py" />
     <Compile Include="customizationTool\tests.py" />
     <Compile Include="customizationTool\views.py" />
+    <Compile Include="customizationTool\jsonModel.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="customizationTool\__init__.py" />
     <Compile Include="landingPage\admin.py" />
     <Compile Include="landingPage\migrations\0001_initial.py" />
@@ -55,12 +58,33 @@
     <Compile Include="landingPage\migrations\0003_update_image_titles.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="landingPage\migrations\0004_change_navigation_encoding.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="landingPage\migrations\0005_change_navigation_encoding.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="landingPage\migrations\0006_change_navigation_encoding.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="landingPage\migrations\0007_update_mysql_page.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="landingPage\migrations\__init__.py" />
     <Compile Include="landingPage\models.py" />
     <Compile Include="landingPage\tests.py" />
     <Compile Include="landingPage\views.py" />
+    <Compile Include="landingPage\xmlModel.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="landingPage\__init__.py" />
     <Compile Include="manage.py" />
+    <Compile Include="MooncakePortal\clearCache.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MooncakePortal\timezone.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MooncakePortal\__init__.py" />
     <Compile Include="MooncakePortal\settings.py" />
     <Compile Include="MooncakePortal\urls.py" />
@@ -79,9 +103,15 @@
     <Compile Include="reports\__init__.py" />
     <Compile Include="UT\admin.py" />
     <Compile Include="UT\migrations\0001_initial.py" />
+    <Compile Include="UT\migrations\0003_add_2_services.py" />
     <Compile Include="UT\migrations\0002_init_data.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UT\migrations\0006_remove_duplicate_articles.py" />
+    <Compile Include="UT\migrations\0005_update_ut_time.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UT\migrations\0004_record_ut_time.py" />
     <Compile Include="UT\migrations\__init__.py" />
     <Compile Include="UT\models.py" />
     <Compile Include="UT\tests.py" />
@@ -143,6 +173,9 @@
     <Folder Include="reports\migrations\" />
     <Folder Include="UT\" />
     <Folder Include="UT\migrations\" />
+    <Folder Include="UT\static\" />
+    <Folder Include="UT\static\UT\" />
+    <Folder Include="UT\static\UT\img\" />
     <Folder Include="UT\templates\" />
     <Folder Include="UT\templates\UT\" />
   </ItemGroup>
@@ -719,6 +752,7 @@
     <Content Include="landingPage\templates\landingPage\selectListTemplate.html" />
     <Content Include="landingPage\templates\landingPage\updateEditTemplate.html" />
     <Content Include="landingPage\templates\landingPage\videoEditTemplate.html" />
+    <Content Include="landingPage\templates\landingPage\xmlNavGenerator.html" />
     <Content Include="landingPage\templates\landingPage\xmlPageGenerator.html" />
     <Content Include="landingPage\templates\landingPage\xmlTemplate.xml" />
     <Content Include="requirements.txt" />
@@ -751,8 +785,15 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="UT\static\UT\img\left.png" />
+    <Content Include="UT\static\UT\img\right.png" />
     <Content Include="UT\templates\UT\articleList.html" />
+    <Content Include="UT\templates\UT\addArticles.html" />
+    <Content Include="UT\templates\UT\records.html" />
     <Content Include="UT\templates\UT\mainpage.html" />
+    <Content Include="UT\templates\UT\reportTable.html" />
+    <None Include="wacnmooncakeportal-stage - FTP.pubxml" />
+    <None Include="wacnmooncakeportal-stage - Web Deploy.pubxml" />
     <None Include="wacnmooncakeportal - FTP.pubxml" />
     <None Include="wacnmooncakeportal - Web Deploy.pubxml" />
   </ItemGroup>

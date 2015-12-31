@@ -1,0 +1,22 @@
+﻿{% for record in records %}
+<h5>Record {{forloop.counter}}</h5>
+<div>
+    <span style="margin:10px 10px">Duration: {{record.duration}} minutes</span>
+    <span style="margin:10px 10px">Labor Type: {{record.labor_type.type_name}}</span>
+    <span style="margin:10px 10px">Owner: {{record.creater.username}}</span>
+    <span style="margin:10px 10px">UT Date: {{record.UT_time}}</span>
+</div>
+<br />
+<div>
+    <span style="margin:10px 10px">Articles: 
+        {% for record_article in record.record_article_set.all %}
+            {{record_article.article.filename}},
+        {% endfor %}
+    </span>
+</div>
+<br />
+<div style="border-bottom:dashed; border-width:1px; padding-bottom:5px">
+    <span>Comments: {{record.comments}}</span>
+</div>
+<br />
+{% endfor %}

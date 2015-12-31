@@ -1,0 +1,12 @@
+PickleSerializer
+MSGPackSerializer
+BaseSerializer
+YAMLSerializer
+smart_bytes
+json
+DummySerializer
+smart_text
+pickle
+yaml
+JSONSerializer
+msgpack

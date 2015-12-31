@@ -59,3 +59,7 @@ class Article(models.Model):
     service = models.ForeignKey(Service)
     name = models.CharField(max_length=255)
     status = models.CharField(max_length=30)
+    mooncakeText = models.TextField(default="")
+    mooncakeStructure = models.TextField(default="")
+    globalText = models.TextField(default="")
+    globalStructure = models.TextField(default="")

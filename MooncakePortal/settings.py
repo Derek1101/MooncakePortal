@@ -22,16 +22,33 @@ DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
         'NAME': 'wacn_mooncakeportaldb',
-        'USER': '',
+        'USER': 'bbetstcw',
         'PASSWORD': '',
-        'HOST': 'JACK-PC',
+        'HOST': 'l7xmb3z5uk.database.chinacloudapi.cn',
         'PORT': '5432',
         'OPTIONS': {
                 'driver': 'SQL Server Native Client 11.0',
                 'MARS_Connection': 'True',
-        }
+        },
+        'ATOMIC_REQUESTS':True,
     }
 }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': 'wacnmooncakeportalcache.redis.cache.chinacloudapi.cn:6379',
+        'OPTIONS': {
+            'DB': 1,
+            'PASSWORD': 'zfM0JPaV36yGKlpeuy0TX8j8Ux5C9rjhn9BZ2rvhbYw=',
+            'PARSER_CLASS': 'redis.connection.HiredisParser',
+            'CONNECTION_POOL_CLASS': 'redis.BlockingConnectionPool',
+            'PICKLE_VERSION': -1,
+        },
+    },
+}
+CACHE_MIDDLEWARE_SECONDS = 60*60*15
+CACHE_MIDDLEWARE_KEY_PREFIX = "mooncake3"
 
 LOGIN_URL = '/login'
 
@@ -42,7 +59,7 @@ LOGIN_URL = '/login'
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Asia/Shanghai'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -106,7 +123,9 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

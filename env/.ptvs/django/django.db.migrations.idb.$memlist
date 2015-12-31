@@ -8,7 +8,7 @@ operations
 models
 AlterField
 executor
-RenameField
+AddField
 state
 AlterModelOptions
 writer
@@ -26,7 +26,7 @@ RunPython
 swappable_dependency
 RunSQL
 loader
-AddField
+RenameField
 AlterModelManagers
 questioner
 AlterUniqueTogether

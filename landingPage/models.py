@@ -25,6 +25,8 @@ class Landing_page(models.Model):
     subtitle = models.CharField(max_length=255)
     tutorial_message = models.TextField()
     update_search_link = models.CharField(max_length=255)
+    newLinkCount = models.IntegerField(default=1)
+    newGroupCount = models.IntegerField(default=0)
 
 
 class Navigation(models.Model):
