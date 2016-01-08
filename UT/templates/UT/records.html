@@ -1,5 +1,8 @@
-﻿{% for record in records %}
-<h5>Record {{forloop.counter}}</h5>
+﻿{% ifequal records|length 0 %}
+Empty
+{% else %}
+{% for record in records %}
+<h5>Record</h5>
 <div>
     <span style="margin:10px 10px">Duration: {{record.duration}} minutes</span>
     <span style="margin:10px 10px">Labor Type: {{record.labor_type.type_name}}</span>
@@ -20,3 +23,14 @@
 </div>
 <br />
 {% endfor %}
+<div>
+    <span>page: </span>
+    {% for page in range %}
+    {% ifequal page currentpage %}
+    <span>{{page}}</span>
+    {% else %}
+    <span><a href="javascript:getRecordsDuration({{user_id}}, '{{start}}', '{{end}}', {{page}}-1)">{{page}}</a></span>
+    {% endifequal %}
+    {% endfor %}
+</div>
+{% endifequal %}

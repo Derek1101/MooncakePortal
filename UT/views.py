@@ -1,5 +1,5 @@
 ﻿from django.shortcuts import render, redirect
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseBadRequest
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime, timezone, timedelta
@@ -8,8 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from django.db.models import Sum
 from django.views.decorators.cache import never_cache
-from math import floor
+from math import floor, ceil
 from MooncakePortal.clearCache import expire_cache
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 @login_required
@@ -65,7 +66,6 @@ def submitReport(request):
         record_article = Record_article(record=record, article_id=id)
         print("article: "+str(id))
         record_article.save()
-    expire_cache('UT.views.getLog', args=[request.user.id, 10], HOSTNAME=request.META['HTTP_HOST'])
     return redirect("/ut/")
 
 @never_cache
@@ -78,22 +78,32 @@ def recordSearch(request, labor_id, start_date, end_date, labor_type):
     start = datetime.strptime(start_date + " +0800", "%Y-%m-%d %z")
     end = datetime.strptime(end_date + " +0800", "%Y-%m-%d %z")
     delta = end - start
-    days = delta.days+1
+    days = delta.days
     holiday = 0
-    if start.weekday()==5:
+    startWeekday = start.weekday()
+    endWeekday = end.weekday()
+    if startWeekday==5:
         holiday+=2
         days-=2
-    elif start.weekday()==6:
+        startWeekday=0
+    elif startWeekday==6:
         holiday+=1
         days-=1
-    if end.weekday()==5:
+        startWeekday=0
+    if endWeekday==5:
         holiday+=1
         days-=1
-    elif end.weekday()==6:
+        endWeekday=4
+    elif endWeekday==6:
         holiday+=2
         days-=2
+        endWeekday=4
     weeks = floor(days/7.0)
+    if startWeekday>endWeekday:
+        weeks+=1
     holiday+= weeks*2
+    print(holiday)
+    end = end + timedelta(0, 86399)
     exceptions = Work_date_exception.objects.filter(date__gte=start, date__lte=end)
     for exception in exceptions:
         if exception.holiday:
@@ -136,12 +146,51 @@ def getLog(request, user_id, record_num):
     records = Record.objects.filter(creater=user).order_by("-id")[:int(record_num)]
     for record in records:
         record.UT_time = datetime.strftime(record.UT_time.astimezone(timezone(timedelta(0, 28800))), "%b. %d, %Y")
+    if Group.objects.get(name="Administrator") in currentUser.groups.all():
+        isAdmin = True
+        users = Group.objects.get(name="User").user_set.all()
+    else:
+        isAdmin = False
+        users = []
     return render(
         request,
         'UT/records.html',
         context_instance = RequestContext(request,
         {
             "records":records,
+            "isAdmin":isAdmin,
+            "users":users,
+            "start":0,
+            "end":10,
+        })
+    )
+
+@login_required
+@never_cache
+def getLogByDuration(request, user_id, start, end, page):
+    currentUser = request.user
+    user = User.objects.get(id=int(user_id))
+    page=int(page)
+    if not(Group.objects.get(name="Administrator") in currentUser.groups.all() or user.id == currentUser.id):
+        return HttpResponse("Sorry, you don't have permission to view %s's records"%user.username)
+    start_date = datetime.strptime(start + " +0800", "%Y-%m-%d %z")
+    end_date = datetime.strptime(end + " +0800", "%Y-%m-%d %z") + timedelta(0, 86399)
+    records = Record.objects.filter(creater=user, UT_time__gte=start_date, UT_time__lte=end_date).order_by("-id")
+    pageCount = ceil(len(records)/10.0)
+    records = records[page*10:(page+1)*10]
+    for record in records:
+        record.UT_time = datetime.strftime(record.UT_time.astimezone(timezone(timedelta(0, 28800))), "%b. %d, %Y")
+    return render(
+        request,
+        'UT/records.html',
+        context_instance = RequestContext(request,
+        {
+            "records":records,
+            "user_id":user_id,
+            "start":start,
+            "end":end,
+            "range":range(1,pageCount+1),
+            "currentpage":page+1,
         })
     )
 
@@ -154,21 +203,23 @@ def _add(article):
         relative_path = path[0]+"/"
         filename = path[1]
     else:
-        return article+": relative path error"
+        return article+": relative path error", -1
     if filename[len(filename)-3:]==".md" or filename[len(filename)-3:]==".MD":
         filename = filename[:len(filename)-3]
-    
-    articles = Article.object.filter(filename=filename)
+    if relative_path == "articles/HDInsight/":
+        relative_path = "articles/hdinsight/"
+    articles = Article.objects.filter(filename=filename)
     try:
         service = Service.objects.get(relative_path=relative_path)
     except ObjectDoesNotExist:
-        return article+": no service with this relative path"
+        return article+": no service with this relative path", -1
     if len(articles)>0:
-        "TODO"
         for exist_article in articles:
             if exist_article.service.name != "Includes":
-                return article+": is already in "+exist_article.service.name
-    return article+": added"
+                return article+": is already in "+exist_article.service.name, -1
+    new_article = Article(service=service, status="unknown", filename=filename)
+    new_article.save()
+    return article+": added", service.id
 
 @never_cache
 @login_required
@@ -184,15 +235,94 @@ def addArticles(request):
             })
         )
     articles = list(set([article.strip() for article in article_list.split("\n")]));
-    print(len(articles))
     messages = []
+    updated_service_ids = []
     for article in articles:
-        messages.append(_add(article))
+        message, service_id = _add(article)
+        messages.append(message)
+        if service_id!=-1:
+            updated_service_ids.append(service_id)
+    updated_service_ids = list(set(updated_service_ids))
+    for service_id in updated_service_ids:
+        print(expire_cache("UT.views.updatearticles", args=[service_id], HOSTNAME=request.META['HTTP_HOST']))
     return render(
             request,
             'UT/addArticles.html',
             context_instance = RequestContext(request,
             {
                 "logs":messages,
+            })
+        )
+
+def _getArticle(article):
+    print(article)
+    path = article.split("/")
+    if len(path)==3:
+        relative_path = path[0]+"/"+path[1]+"/"
+        filename = path[2]
+    elif len(path)==2:
+        relative_path = path[0]+"/"
+        filename = path[1]
+    else:
+        return None, -1
+    if filename[len(filename)-3:]==".md" or filename[len(filename)-3:]==".MD":
+        filename = filename[:len(filename)-3]
+    type = path[0]
+    if type == "articles":
+        articles = Article.objects.filter(filename=filename)
+        if len(articles) > 0:
+            for exitArticle in articles:
+                if exitArticle.service.name != "Includes":
+                    return exitArticle, -1
+        _add(article)
+        try:
+            articleObject = Article.objects.get(filename=filename)
+        except ObjectDoesNotExist:
+            return None, -1
+        return articleObject, articleObject.service.id
+    elif type == "includes":
+        articles = Article.objects.filter(filename=filename)
+        if len(articles) > 0:
+            for exitArticle in articles:
+                if exitArticle.service.name == "Includes":
+                    return exitArticle, -1
+        _add(article)
+        try:
+            articleObject = Article.objects.get(filename=filename)
+        except ObjectDoesNotExist:
+            return None, -1
+        return articleObject, articleObject.service.id
+    else:
+        return None, -1
+
+@csrf_exempt
+@login_required
+@never_cache
+def selectArticlesWithText(request):
+    try:
+        article_list = request.META["HTTP_TEXT"]
+    except KeyError:
+        return HttpResponseBadRequest()
+    articles = list(set([article.strip() for article in article_list.split("%%n%%")]));
+    print()
+    messages = []
+    updated_service_ids = []
+    articlesObjects = []
+    for article in articles:
+        articleObject, service_id = _getArticle(article)
+        if articleObject != None:
+            articlesObjects.append(articleObject)
+        if service_id!=-1:
+            updated_service_ids.append(service_id)
+    updated_service_ids = list(set(updated_service_ids))
+    for service_id in updated_service_ids:
+        print(expire_cache("UT.views.updatearticles", args=[service_id], HOSTNAME=request.META['HTTP_HOST']))
+    print(len(articlesObjects))
+    return render(
+            request,
+            'UT/selectArticles.html',
+            context_instance = RequestContext(request,
+            {
+                "articles":list(set(articlesObjects)),
             })
         )

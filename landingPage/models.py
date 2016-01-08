@@ -9,6 +9,9 @@ class Service(models.Model):
     class Meta:
         unique_together = (("service_id"),)
 
+    def __str__(self):
+        return self.service_name
+
 
 class Meta_data(models.Model):
     service = models.ForeignKey(Service)
@@ -17,6 +20,9 @@ class Meta_data(models.Model):
 
     class Meta:
         unique_together = (("service"),)
+
+    def __str__(self):
+        return "keywords: " +self.meta_keywords + "; description: " + self.meta_description
 
 
 class Landing_page(models.Model):
@@ -28,6 +34,8 @@ class Landing_page(models.Model):
     newLinkCount = models.IntegerField(default=1)
     newGroupCount = models.IntegerField(default=0)
 
+    def __str__(self):
+        return self.service.service_name
 
 class Navigation(models.Model):
     service = models.ForeignKey(Service)
@@ -36,12 +44,18 @@ class Navigation(models.Model):
     class Meta:
         unique_together = (("service"),)
 
+    def __str__(self):
+        return self.service.service_name
+
 
 class Navigation_group(models.Model):
     navigation = models.ForeignKey(Navigation)
     group = models.CharField(max_length=255)
     html_id = models.CharField(max_length=255)
     order = models.IntegerField()
+
+    def __str__(self):
+        return self.group
 
 
 class Navigation_article(models.Model):
@@ -51,6 +65,8 @@ class Navigation_article(models.Model):
     html_id = models.CharField(max_length=255)
     order = models.IntegerField()
 
+    def __str__(self):
+        return self.title
 
 class Tutorial_option(models.Model):
     landing_page = models.ForeignKey(Landing_page)
@@ -60,6 +76,9 @@ class Tutorial_option(models.Model):
 
     class Meta:
         unique_together = (("title", "landing_page"),)
+
+    def __str__(self):
+        return self.title
 
 
 class Video_link(models.Model):
@@ -72,6 +91,8 @@ class Video_link(models.Model):
     duration = models.CharField(max_length=30)
     description = models.TextField()
 
+    def __str__(self):
+        return self.title
 
 class Recent_update(models.Model):
     landing_page = models.ForeignKey(Landing_page)
@@ -80,3 +101,6 @@ class Recent_update(models.Model):
     date = models.CharField(max_length=255)
     description = models.TextField()
     detail = models.TextField()
+
+    def __str__(self):
+        return self.title

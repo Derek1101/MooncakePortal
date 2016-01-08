@@ -73,6 +73,7 @@
     <Compile Include="landingPage\migrations\__init__.py" />
     <Compile Include="landingPage\models.py" />
     <Compile Include="landingPage\tests.py" />
+    <Compile Include="landingPage\urls.py" />
     <Compile Include="landingPage\views.py" />
     <Compile Include="landingPage\xmlModel.py">
       <SubType>Code</SubType>
@@ -103,6 +104,8 @@
     <Compile Include="reports\__init__.py" />
     <Compile Include="UT\admin.py" />
     <Compile Include="UT\migrations\0001_initial.py" />
+    <Compile Include="UT\migrations\0010_remove_duplicate_articles.py" />
+    <Compile Include="UT\migrations\0009_add_relative_path.py" />
     <Compile Include="UT\migrations\0003_add_2_services.py" />
     <Compile Include="UT\migrations\0002_init_data.py">
       <SubType>Code</SubType>
@@ -112,6 +115,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UT\migrations\0004_record_ut_time.py" />
+    <Compile Include="UT\migrations\0007_auto_20151230_1146.py" />
+    <Compile Include="UT\migrations\0008_service_relative_path.py" />
     <Compile Include="UT\migrations\__init__.py" />
     <Compile Include="UT\models.py" />
     <Compile Include="UT\tests.py" />
@@ -787,6 +792,7 @@
     <Content Include="app\templates\app\loginpartial.html" />
     <Content Include="UT\static\UT\img\left.png" />
     <Content Include="UT\static\UT\img\right.png" />
+    <Content Include="UT\templates\UT\selectArticles.html" />
     <Content Include="UT\templates\UT\articleList.html" />
     <Content Include="UT\templates\UT\addArticles.html" />
     <Content Include="UT\templates\UT\records.html" />

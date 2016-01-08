@@ -3,6 +3,7 @@ Django settings for MooncakePortal project.
 """
 
 from os import path
+from os import environ
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 
 DEBUG = True
@@ -17,14 +18,21 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
+defualt_host = environ.get("MOONCAKEDB")
+if defualt_host == None:
+    defualt_host = "localhost"
+    default_user = ""
+    default_password = ""
+else:
+    default_user = environ.get("MOONCAKEDBUSER")
+    default_password = environ.get("MOONCAKEDBPW")
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
         'NAME': 'wacn_mooncakeportaldb',
-        'USER': 'bbetstcw',
-        'PASSWORD': '',
-        'HOST': 'l7xmb3z5uk.database.chinacloudapi.cn',
+        'USER': default_user,
+        'PASSWORD': default_password,
+        'HOST': defualt_host,
         'PORT': '5432',
         'OPTIONS': {
                 'driver': 'SQL Server Native Client 11.0',
@@ -34,21 +42,29 @@ DATABASES = {
     }
 }
 
+
+defualt_redis_host = environ.get("REDIS_HOST")
+if defualt_redis_host == None:
+    defualt_redis_host = "localhost:6379"
+    default_redis_password = ""
+else:
+    defualt_redis_host+=":6379"
+    default_redis_password = environ.get("REDIS_KEY")
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': 'wacnmooncakeportalcache.redis.cache.chinacloudapi.cn:6379',
+        'LOCATION': defualt_redis_host,
         'OPTIONS': {
             'DB': 1,
-            'PASSWORD': 'zfM0JPaV36yGKlpeuy0TX8j8Ux5C9rjhn9BZ2rvhbYw=',
+            'PASSWORD': default_redis_password,
             'PARSER_CLASS': 'redis.connection.HiredisParser',
             'CONNECTION_POOL_CLASS': 'redis.BlockingConnectionPool',
             'PICKLE_VERSION': -1,
         },
     },
 }
-CACHE_MIDDLEWARE_SECONDS = 60*60*15
-CACHE_MIDDLEWARE_KEY_PREFIX = "mooncake3"
+CACHE_MIDDLEWARE_SECONDS = 15
+CACHE_MIDDLEWARE_KEY_PREFIX = "mooncake1"
 
 LOGIN_URL = '/login'
 

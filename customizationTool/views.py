@@ -1,4 +1,4 @@
-﻿from django.shortcuts import render
+﻿from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 # Create your views here.
 
@@ -6,3 +6,6 @@ from django.http import Http404, HttpResponse
 def mainpage(request):
 
     return HttpResponse("Currently under maintainance.")
+
+def documentation(request):
+    return redirect("http://www.windowsazure.cn"+request.path)

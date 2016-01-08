@@ -123,16 +123,16 @@
         }
     }
     function getRecordSearch() {
-        var xmlhttp;
+        var xmlhttp2;
         if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
+            xmlhttp2 = new XMLHttpRequest();
         }
         else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            xmlhttp2 = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("searchResult").innerHTML = xmlhttp.responseText;
+        xmlhttp2.onreadystatechange = function () {
+            if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+                document.getElementById("searchResult").innerHTML = xmlhttp2.responseText;
                 document.getElementById("cover").style.display = "none";
                 document.getElementById("search_key").value = "";
             }
@@ -141,25 +141,74 @@
         endDate = document.getElementById("endDate").value;
         laborId = document.getElementById("laborId").value;
         laborType = document.getElementById("laborType").value;
-        xmlhttp.open("GET", "/ut/recordsearch/" + laborId + "/from" + startDate + "to" + endDate + "/" + laborType + "/", true);
-        xmlhttp.send();
+        xmlhttp2.open("GET", "/ut/recordsearch/" + laborId + "/from" + startDate + "to" + endDate + "/" + laborType + "/", true);
+        xmlhttp2.send();
         document.getElementById("cover").style.display = "block";
     }
     function getRecords(user_id, record_num){
-        var xmlhttp;
+        var xmlhttp3;
         if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
+            xmlhttp3 = new XMLHttpRequest();
         }
         else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            xmlhttp3 = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("recordDisplay").innerHTML = xmlhttp.responseText;
+        xmlhttp3.onreadystatechange = function () {
+            if (xmlhttp3.readyState == 4 && xmlhttp3.status == 200) {
+                document.getElementById("recordDisplayContainer").innerHTML = xmlhttp3.responseText;
             }
         }
-        xmlhttp.open("GET", "/ut/getlogs/" + user_id + "/" + record_num + "/", true);
-        xmlhttp.send();
+        xmlhttp3.open("GET", "/ut/getlogs/" + user_id + "/" + record_num + "/", true);
+        xmlhttp3.send();
+    }
+    function getRecordsDuration(user_id, start, end, page){
+        var xmlhttp5;
+        if (window.XMLHttpRequest) {
+            xmlhttp5 = new XMLHttpRequest();
+        }
+        else {
+            xmlhttp5 = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp5.onreadystatechange = function () {
+            if (xmlhttp5.readyState == 4 && xmlhttp5.status == 200) {
+                document.getElementById("recordDisplayContainer").innerHTML = xmlhttp5.responseText;
+            }
+        }
+        recordDisplayContainer = document.getElementById("recordDisplayContainer");
+        recordDisplayContainer.innerHTML = "Loading...";
+        xmlhttp5.open("GET", "/ut/getlogs/" + user_id + "/from" + start + "to" + end + "/" + page + "/", true);
+        xmlhttp5.send();
+    }
+    function selectWithText(){
+        document.getElementById("select_text").style.display = "block";
+        document.getElementById("cover3").style.display = "block";
+    }
+    function cancelSelectWithText(){
+        document.getElementById("select_text").style.display = "none";
+        document.getElementById("cover3").style.display = "none";
+        document.getElementById("select_article_text_area").value = "";
+    }
+    function updateSelectWithText(){
+        var xmlhttp4;
+        if (window.XMLHttpRequest) {
+            xmlhttp4 = new XMLHttpRequest();
+        }
+        else {
+            xmlhttp4 = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp4.onreadystatechange = function () {
+            if (xmlhttp4.readyState == 4 && xmlhttp4.status == 200) {
+                document.getElementById("article_selected_list").innerHTML = xmlhttp4.responseText;
+                document.getElementById("cover").style.display = "none";
+                cancelSelectWithText();
+            }
+        }
+        xmlhttp4.open("POST", "/ut/selectarticleswithtext/", true);
+        textArea = document.getElementById("select_article_text_area");
+        text_list = textArea.value.replace(/\n/g, "%%n%%");
+        xmlhttp4.setRequestHeader("text", text_list);
+        xmlhttp4.send();
+        document.getElementById("cover").style.display = "block";
     }
 </script>
 <style>
@@ -173,7 +222,7 @@
    height: 100%;
    opacity: 0.80;
    background: #aaa;
-   z-index: 12;
+   z-index: 14;
    display:none;
 }
 #cover2 {
@@ -190,11 +239,32 @@
    display:none;
 }
 
+#cover3 {
+   position:fixed;
+   padding:0;
+   margin:0;
+   top:0;
+   left:0;
+   width: 100%;
+   height: 100%;
+   opacity: 0.80;
+   background: #aaa;
+   z-index: 12;
+   display:none;
+}
+
 #select_dia {
    position: absolute;
    background: white;
    z-index: 11;
    width:960px;
+   display:none;
+}
+#select_text {
+   position: absolute;
+   background: white;
+   z-index: 13;
+   width:400px;
    display:none;
 }
 </style>
@@ -277,7 +347,23 @@
                     <a href="javascript:addArticles()" title="add"><img style="width:40px;height:40px;margin-bottom:0px" src="/static/UT/right.png"/></a>
                 </div>
                 <div style="margin:10px 10px;float:left;height:400px;width:30%">
-                    <div>selected: <input onclick='alert("To be implemented")' type="button" value="Add articles with text"/></div>
+                    <div id="cover3"></div>
+                    <div id="select_text">
+                        <div style="margin:10px">
+                            <textarea id="select_article_text_area" style="height:350px;width:100%" maxlength="20000"></textarea>
+                            <span style="float:right">
+                                <a href="javascript:cancelSelectWithText()" title="cancel"><img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/></a>
+                            </span>
+                        </div>
+                        <div>
+                            Example: articles/app-service-web/web-sites-configure.md
+                        </div>
+                        <div style="margin:10px">
+                            <input type="button" onclick="updateSelectWithText()" value="ok">
+                            <input type="button" onclick="cancelSelectWithText()" value="cancel">
+                        </div>
+                    </div>
+                    <div>selected: <input onclick='selectWithText()' type="button" value="Select articles with text"/></div>
                     <select multiple id="article_selected_list" style="height:350px;width:100%">
                     </select>
                 </div>
@@ -303,6 +389,7 @@
         <ul id="selected_articles">
             <li>to be added</li>
         </ul>
+        <div><a href="{% url 'addArticles' %}">Add Articles to Database</a></div>
     </div>
     <br />
     <div>
@@ -312,17 +399,33 @@
     <div style="border-bottom:solid; border-width:1px; padding-bottom:5px; text-align:right">
         <span style="margin:10px 10px">
             <input type="hidden" id="article_ids" name="article_ids" value=""/>
-            <input onclick="updateArticleIds()" type="submit" value="Save"/>
+            <input onclick="updateArticleIds();" type="submit" value="Save"/>
         </span>
     </div>
 </form>
 <br />
 <br />
 <h4>Log:</h4>
-<script>
-    getRecords({{user_id}}, 10);
-</script>
-<div id="recordDisplay">
-    loading...
+
+<div>
+    <span>Labor for: 
+        <select id="laborIdForLog" {% if disabled %} disabled {% endif %}>
+            {% for user in users %}
+            <option value="{{user.id}}" {% ifequal user.id user_id %} selected {% endifequal  %}>{{user.username}}</option>
+            {% endfor %}
+        </select>
+    </span>
+    <span>Start: <input type="date" id="startForLog" value="{{today}}"/></span>
+    <span>End: <input type="date" id="endForLog" value="{{today}}"/></span>
+    <span><input type="button" value="ok" onclick="getRecordsDuration(document.getElementById('laborIdForLog').value, document.getElementById('startForLog').value, document.getElementById('endForLog').value, 0)"/></span>
 </div>
+<div id="recordDisplayContainer">
+</div>
+<script>
+    {% if disabled %}
+    getRecordsDuration({{user_id}}, "{{today}}", "{{today}}", 0);
+    {% else %}
+    getRecordsDuration(1, "{{today}}", "{{today}}", 0);
+    {% endif %}
+</script>
 {% endblock %}

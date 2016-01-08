@@ -34,17 +34,10 @@ urlpatterns = patterns('',
             'next_page': '/',
         },
         name='logout'),
-    url(r'^landingpage/(?P<service_id>[^/]+)/$', 'landingPage.views.landingPage', name='landingPage'),
-    url(r'^landingpage/(?P<service_id>[^/]+)/edit/$', 'landingPage.views.landingPageEdit', name='landingPageEdit'),
-    url(r'^landingpage/$', 'landingPage.views.index', name='landingPageIndex'),
-    url(r'^xmlpagegenerator/(?P<service_id>[^/]+)/$', 'landingPage.views.xmlpagegenerator', name='xmlpagegenerator'),
-    url(r'^xmlnavgenerator/(?P<service_id>[^/]+)/$', 'landingPage.views.xmlnavgenerator', name='xmlnavgenerator'),
-    url(r'^submitpage/(?P<service_id>[^/]+)/$', 'landingPage.views.submitpage', name='submitpage'),
-    url(r'^editVideo/(?P<service_id>[^/]+)/$', 'landingPage.views.editVideo', name='editVideo'),
-    url(r'^regenJson/$', 'landingPage.views.regenJson', name='regenJson'),
-    url(r'^updateEncoding/$', 'landingPage.views.updateEncoding', name='updateEncoding'),
+
     url(r'^customizationtool/$', 'customizationTool.views.mainpage', name='customizationToolmainpage'),
-    
+    url(r'^documentation/', 'customizationTool.views.documentation', name='documentationRedirect'),
+    url(r'^home/features/', 'customizationTool.views.documentation', name='homeFeatureRedirect'),
     url(r'^reports/$', 'reports.views.mainpage', name='reportsmainpage'),
     url(r'^QA/$', 'QA.views.mainpage', name='QAmainpage'),
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -52,5 +45,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^ut/', include('UT.urls')),
+    url(r'^landingpage/', include('landingPage.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )

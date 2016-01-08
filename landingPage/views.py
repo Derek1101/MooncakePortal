@@ -255,3 +255,4 @@ def submitpage(request, service_id):
     expire_cache('landingPage.views.xmlnavgenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     expire_cache('landingPage.views.xmlpagegenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     return redirect("/landingpage/"+service_id)
+
