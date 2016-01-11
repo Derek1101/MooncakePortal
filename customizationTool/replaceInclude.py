@@ -1,4 +1,4 @@
-import glob
+﻿import glob
 import re
 
 folders = [
@@ -8,7 +8,8 @@ folders = [
     "articles/media-services/",
     "articles/redis-cache/",
     "articles/traffic-manager/",
-    "articles/virtual-network/"
+    "articles/virtual-network/",
+    "articles/virtual-machines/"
   ]
 inputPath = "./static/customizationTool/input/trainingSet/"
 path = "C:/Users/Administrator/Documents/GitHub/azure-content-pr/"

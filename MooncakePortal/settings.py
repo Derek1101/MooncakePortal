@@ -63,7 +63,10 @@ CACHES = {
         },
     },
 }
-CACHE_MIDDLEWARE_SECONDS = 15
+try:
+    CACHE_MIDDLEWARE_SECONDS = int(environ["REDIS_TIMEOUT"])
+except:
+    CACHE_MIDDLEWARE_SECONDS = 15
 CACHE_MIDDLEWARE_KEY_PREFIX = "mooncake1"
 
 LOGIN_URL = '/login'

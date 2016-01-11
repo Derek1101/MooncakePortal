@@ -1,7 +1,7 @@
 ﻿import re
 import nltk
 from bs4 import BeautifulSoup, NavigableString, Comment, Doctype
-from customizationTool.keywordExtract import run
+from keywordExtract import run
 from markdown import markdown
 
 
@@ -28,19 +28,24 @@ def mdPreprocess(md, fullMd):
         md = md.replace(link[0], "["+link[1]+"]("+url+")")
     return md
 
-def handelNotCode(md):
+def handleNotCode(md):
     lines = md.split("\n")
+    result = ''
     for line in lines:
         if line.strip() == "":
-            continue
+            line = ""
         else:
-            if line[0] in [" ", "\t"]:
-                line
+            if line[0] == " ":
+                line = line[4:]
+            elif line[0] == "\t":
+                line = line[1:]
+        result += line+'\n'
+    return result
 
 def checkEqual(html_plaintext, md, fullMd, isCode):
     md = mdPreprocess(md, fullMd)
-    if not isCode:
-        md = handleNotCode(md)
+    #if not isCode:
+    #    md = handleNotCode(md)
     md_html = markdown("\n"+md+"\n")
     soup = BeautifulSoup(md_html, "html.parser")
     h_l = len(html_plaintext)

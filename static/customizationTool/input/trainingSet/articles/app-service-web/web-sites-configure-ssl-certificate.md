@@ -1,9 +1,25 @@
-deletion:
+<properties
+	pageTitle="Enable HTTPS for a web app in Azure App Service"
+	description="Learn how to enable SSL with an Azure App Service."
+	services="app-service"
+	documentationCenter=".net"
+	authors="cephalin"
+	manager="wpickett"
+	editor="jimbe"
+	tags="top-support-issue"/>
 
-deleted:
+<tags
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="10/23/2015"
+	ms.author="cephalin"/>
 
-		> [AZURE.NOTE] Although this article refers to web apps, it also applies to API apps and mobile apps.
 
+#Enable HTTPS for an app in Azure App Service
 
-reason: (terminology: Azure App Service Web)
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
+[AZURE.INCLUDE [configure-ssl-web-site](../../includes/configure-ssl-web-site.md)]
