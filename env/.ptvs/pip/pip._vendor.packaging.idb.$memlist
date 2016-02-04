@@ -1,13 +1,14 @@
-_structures
 specifiers
+__copyright__
 __version__
 __email__
 __author__
+markers
 version
 __title__
 __license__
 __all__
-__copyright__
+_structures
 print_function
 division
 __summary__

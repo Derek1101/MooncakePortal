@@ -19,13 +19,16 @@
 
 #How to set up endpoints to a virtual machine
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 All virtual machines that you create in Azure can automatically communicate using a private network channel with other virtual machines in the same cloud service or virtual network. However, computers on the Internet or other virtual networks require endpoints to direct the inbound network traffic to a virtual machine.
 
 When you create a virtual machine in the Azure classic portal, endpoints for Remote Desktop, Windows PowerShell Remoting, and Secure Shell (SSH) are automatically created. You can configure additional endpoints while creating the virtual machine or afterwards as needed.
 
-[AZURE.INCLUDE [service-management-pointer-to-resource-manager](../../includes/service-management-pointer-to-resource-manager.md)]
+### Azure Service Management and Azure Resource Manager
+		 
+		This article is for a resource created in Service Management. Microsoft recommends Resource Manager for new Azure resources. For an explanation of the advantages of Resource Manager, see [Azure Compute, Network & Storage Providers under Azure Resource Manager](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md). To do the same task with Resource Manager, see the following article:
+		
 
 - [About network security groups](virtual-networks-nsg.md)
 

@@ -21,7 +21,7 @@
 
 A "LAMP" stack is a group of open source software that is typically installed together to enable a server to host dynamic websites and web applications. This term is actually an acronym that represents the Linux operating system with the Apache web server. The site data is stored in a MySQL database, and dynamic content is processed by PHP.  
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md). This article covers using both models, but Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 In this guide, we'll get a LAMP stack installed on a Linux image and deploy it on Microsoft Azure.  

@@ -19,7 +19,7 @@
 
 # Deploy SharePoint farms with Azure Resource Manager templates
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model. You can't create this resource with the classic deployment model.
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the classic deployment model. You can't create this resource with the classic deployment model.
 
 Use the instructions in this article to deploy a new three-server or nine-server SharePoint Server 2013 farm using Resource Manager templates.
 

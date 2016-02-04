@@ -19,7 +19,7 @@ ms.author="bbenz" />
 #Miscellaneous considerations for Oracle virtual machine images
 
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 This article covers considerations for Oracle virtual machines in Azure, which are based on Oracle software images provided by Microsoft, with Windows Server as the operating system.  

@@ -19,7 +19,7 @@
 
 # Frequently asked question about Azure Virtual Machines created with the classic deployment model
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 This article addresses some common questions users ask about Azure virtual machines created with the classic deployment model.

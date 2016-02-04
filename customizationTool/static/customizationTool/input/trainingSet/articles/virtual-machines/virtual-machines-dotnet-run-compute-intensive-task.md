@@ -21,7 +21,7 @@
 
 With Azure, you can use a virtual machine to handle compute-intensive tasks. For example, a virtual machine can handle tasks and deliver results to client machines or mobile applications. After completing the tutorial, you will understand how to create a virtual machine that runs a compute-intensive .NET application that can be monitored by another .NET application.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 This tutorial assumes you know how to create .NET console applications. No knowledge of Azure is assumed.
@@ -44,7 +44,9 @@ The following is an example of the .NET application monitoring the compute-inten
 
 ![Traveling Salesman Problem client][client_output]
 
-[AZURE.INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
+> [AZURE.NOTE]
+		> To complete this tutorial, you need an Azure account. You can <a href="http://www.windowsazure.com/pricing/member-offers/msdn-benefits-details/" target="_blank">activate your MSDN subscriber benefits</a> or <a href="http://www.windowsazure.com/pricing/free-trial/" target="_blank">sign up for a free trial</a>.
+		
 
 ## To create a virtual machine
 

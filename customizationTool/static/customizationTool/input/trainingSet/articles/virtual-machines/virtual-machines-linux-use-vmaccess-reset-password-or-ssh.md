@@ -19,7 +19,7 @@
 
 # How to Reset a Password or SSH for Linux Virtual Machines #
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 If you can't connect to a Linux virtual machine because of a forgotten password, an incorrect Secure Shell (SSH) key, or a problem with the SSH configuration, use the Azure portal or the  VMAccessForLinux extension to reset the password or SSH key or fix the SSH configuration. Note that this article applies to the virtual machines created using the **Classic** deployment model.

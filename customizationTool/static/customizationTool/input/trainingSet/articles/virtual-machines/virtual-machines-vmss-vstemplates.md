@@ -18,7 +18,7 @@
 	ms.author="guybo"/>
 
 # Deploying Virtual Machine Scale Set Templates in Visual Studio
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-create-windows-powershell-service-manager.md).
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the [classic deployment model](virtual-machines-create-windows-powershell-service-manager.md).
 
 This article shows you how to deploy an Azure Virtual Machine Scale Set using a Visual Studio Resource Group Deployment.
 

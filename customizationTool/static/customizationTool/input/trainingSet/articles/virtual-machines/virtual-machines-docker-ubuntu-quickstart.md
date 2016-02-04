@@ -18,7 +18,7 @@
 
 # How to Get Started Quickly with Docker in the Azure Marketplace
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
  
 
 The fastest way to get started using [Docker] is to go to the Azure Marketplace and create a VM using the **Docker on Ubuntu Server** image template created by [Canonical] in conjunction with [MSOpenTech]. This creates an Ubuntu Server VM and automatically installs the [Docker VM Extension](virtual-machines-docker-vm-extension.md) along with the **latest** Docker engine pre-installed and running on on Azure.  

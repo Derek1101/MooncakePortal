@@ -19,7 +19,7 @@
 
 # Redis cluster with a Resource Manager template
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the classic deployment model.
 
 
 Redis is an open-source key-value cache and store, where keys can contain data structures such as strings, hashes, lists, sets and sorted sets. Redis supports a set of atomic operations on these data types.  With the release of Redis version 3.0, Redis Cluster is now available in the latest stable version of Redis.  Redis Cluster is a distributed implementation of Redis where data is automatically sharded across multiple Redis nodes, with the ability to continue operations when a subset of nodes is experiencing failures.
@@ -38,9 +38,130 @@ The Redis Cluster template for the “Medium” t-shirt size creates this config
 
 Before diving into more details related to Azure Resource Manager and the template we will use for this deployment, make sure you have Azure PowerShell or the Azure CLI configured correctly.
 
-[AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
+## Setting up PowerShell for Resource Manager templates
+		
+		Before you can use Azure PowerShell with Resource Manager, you will need to have the right Windows PowerShell and Azure PowerShell versions.
+		
+		### Verify PowerShell versions
+		
+		Verify you have Windows PowerShell version 3.0 or 4.0. To find the version of Windows PowerShell, type this command at a Windows PowerShell command prompt.
+		
+			$PSVersionTable
+		
+		You will receive the following type of information:
+		
+			Name                           Value
+			----                           -----
+			PSVersion                      3.0
+			WSManStackVersion              3.0
+			SerializationVersion           1.1.0.1
+			CLRVersion                     4.0.30319.18444
+			BuildVersion                   6.2.9200.16481
+			PSCompatibleVersions           {1.0, 2.0, 3.0}
+			PSRemotingProtocolVersion      2.2
+		
+		
+		Verify that the value of **PSVersion** is 3.0 or 4.0. If not, see [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) or [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
+		
+		### Set your Azure account and subscription
+		
+		If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) or sign up for a [free trial](http://azure.microsoft.com/pricing/free-trial/).
+		
+		Open an Azure PowerShell command prompt and log on to Azure with this command.
+		
+			Login-AzureRmAccount
+		
+		If you have multiple Azure subscriptions, you can list your Azure subscriptions with this command.
+		
+			Get-AzureRmSubscription
+		
+		You will receive the following type of information:
+		
+			SubscriptionId            : fd22919d-eaca-4f2b-841a-e4ac6770g92e
+			SubscriptionName          : Visual Studio Ultimate with MSDN
+			Environment               : AzureCloud
+			SupportedModes            : AzureServiceManagement,AzureResourceManager
+			DefaultAccount            : johndoe@contoso.com
+			Accounts                  : {johndoe@contoso.com}
+			IsDefault                 : True
+			IsCurrent                 : True
+			CurrentStorageAccountName :
+			TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
+		
+		You can set the current Azure subscription by running these commands at the Azure PowerShell command prompt. Replace everything within the quotes, including the < and > characters, with the correct name.
+		
+			$subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
+			Select-AzureRmSubscription -SubscriptionName $subscr -Current
+		
+		For more information about Azure subscriptions and accounts, see [How to: Connect to your subscription](powershell-install-configure.md#Connect).
+		
 
-[AZURE.INCLUDE [xplat-getting-set-up-arm](../../includes/xplat-getting-set-up-arm.md)]
+<properties services="virtual-machines" title="Using Azure CLI with Azure Resource Manager" authors="squillace" solutions="" manager="timlt" editor="tysonn" />
+		
+		<tags
+		   ms.service="virtual-machine"
+		   ms.devlang="na"
+		   ms.topic="article"
+		   ms.tgt_pltfrm="linux"
+		   ms.workload="infrastructure"
+		   ms.date="04/13/2015"
+		   ms.author="rasquill" />
+		
+		## Using Azure CLI with Azure Resource Manager (ARM)
+		
+		Before you can use the Azure CLI with Resource Manager commands and templates to deploy Azure resources and workloads using resource groups, you will need an account with Azure (of course). If you do not have an account, you can get a [free Azure trial here](http://azure.microsoft.com/pricing/free-trial/).
+		
+		> [AZURE.NOTE] If you don't already have an Azure account but you do have a subscription to MSDN subscription, you can get free Azure credits by activating your [MSDN subscriber benefits here](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) -- or you can use the free account. Either will work for Azure access.
+		
+		### Step 1: Verify the Azure CLI version
+		
+		To use Azure CLI for imperative commands and ARM templates, you need to have at least version 0.8.17. To verify your version, type `azure --version`. You should see something like:
+		
+		    $ azure --version
+		    0.8.17 (node: 0.10.25)
+		
+		If you need to update your version of Azure CLI, see [Azure CLI](https://github.com/Azure/azure-xplat-cli).
+		
+		### Step 2: Verify you are using a work or school identity with Azure
+		
+		You can only use the ARM command mode if you are using an [Azure Active Directory tenant](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) or a [Service Principal Name](https://msdn.microsoft.com/library/azure/dn132633.aspx). (These are also called *organizational ids*.)
+		
+		To see if you have one, log in by typing `azure login` and using your work or school username and password when prompted. If you do have one, you should see something like the following:
+		
+		    $ azure login
+		    info:    Executing command login
+		    warn:    Please note that currently you can login only via Microsoft organizational account or service principal. For instructions on how to set them up, please read http://aka.ms/Dhf67j.
+		    Username: ahmet@contoso.onmicrosoft.com
+		    Password: *********
+		    |info:    Added subscription Visual Studio Ultimate with MSDN
+		    info:    Setting subscription Visual Studio Ultimate with MSDN as default
+		    info:    Added subscription Azure Free Trial
+		    +
+		    info:    login command OK
+		
+		If you do not see this, you must create a new tenant (or service principal) with your Microsoft account identity. (This is often the case with personal MSDN subscriptions or free trial subscriptions.) To create a work or school id from your Azure account created with a Microsoft id, see [Associate an Azure AD Directory with a new Azure Subscription](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant). If you think you should have an organizational id already, you may need to talk with the person who created the account for you.
+		
+		### Step 3: Choose your Azure subscription
+		
+		If you have only one subscription in your Azure account, Azure CLI associates itself with that subscription by default. If you have more than one subscription, you need to select the subscription you want to use by typing `azure account set <subscription id or name> true` where _subscription id or name_ is either the subscription id or the subscription name that you would like to work with in the current session.
+		
+		You should see something like the following:
+		
+		    $ azure account set "Azure Free Trial" true
+		    info:    Executing command account set
+		    info:    Setting subscription to "Azure Free Trial" with id "2lskd82-434-4730-9df9-akd83lsk92sa".
+		    info:    Changes saved
+		    info:    account set command OK
+		
+		### Step 4: Place your Azure CLI in the ARM mode
+		
+		To use the Azure Resource Management (ARM) mode with the Azure CLI, type `azure config mode arm`. You should see something like the following:
+		
+		    $ azure config mode arm
+		    info:    New mode is arm
+		
+		> [AZURE.NOTE] You can switch back to use Azure service management commands by typing `azure config mode asm`.
+		
 
 ## Deploy a Redis cluster by using a Resource Manager template
 

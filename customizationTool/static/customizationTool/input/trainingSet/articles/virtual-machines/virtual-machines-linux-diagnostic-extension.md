@@ -35,7 +35,7 @@ For version 2.0, the data includes:
 - All system data specified in this [document](https://scx.codeplex.com/wikipage?title=xplatproviders").
 - User specified log files.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 ## How to enable the extension

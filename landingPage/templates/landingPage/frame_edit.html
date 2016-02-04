@@ -17,6 +17,7 @@
         var navigationJsonStr = '{% autoescape off %}{{navigationJson}}{% endautoescape %}'
 		var activeActicleId = null;
         var pageId = null;
+        var textareanotclosed = 0;
         function renderNavigation(navigationJsonStr, activeActicleId) {
             navigationJson = JSON.parse(navigationJsonStr);
             mainDiv = document.getElementById("wa-navigationLeft");
@@ -441,6 +442,7 @@
             element = document.getElementById(id);
             if(type == "text"){
                 if(!editting[id]){
+                    textareanotclosed++;
                     textField = document.createElement("textarea");
                     textField.addEventListener("click", function(e){
                         if ( e && e.stopPropagation ) 
@@ -529,11 +531,13 @@
                                 window.event.cancelBubble = true; 
                         });
                     }
+                    textareanotclosed--;
                     editting[id] = false;
                 }
             }
             else if(type == "link"){
                 if(!editting[id]){
+                    textareanotclosed++;
                     container = document.createElement("span");
                     textField1 = document.createElement("textarea");
                     textField1.setAttribute("style","width:85%;")
@@ -554,6 +558,7 @@
                     
                 }
                 else{
+                    textareanotclosed--;
                     editting[id].element.tagName = "a";
                     editting[id].text.nodeValue = editting[id].title.value;
                     editting[id].element.href = editting[id].link.value
@@ -563,6 +568,7 @@
             }
             else if(type == "select_list"){
                 if(!editting[id]){
+                    textareanotclosed++;
                     editSelectList = document.getElementById("editSelectList");
                     editSelectList.style.display = "block";
                     edit_tutorial_select_list = document.getElementById("edit_tutorial_select_list");
@@ -570,6 +576,7 @@
                     editting[id] = true;
                 }
                 else{
+                    textareanotclosed--;
                     editSelectList = document.getElementById("editSelectList");
                     editSelectList.style.display = "none";
                     edit_tutorial_select_list = document.getElementById("edit_tutorial_select_list");
@@ -598,6 +605,7 @@
             }
             else if(type == "video"){
                 if(!editting[id]){
+                    textareanotclosed++;
                     edit_video = document.getElementById(id);
                     edit_video.style.display = "none";
                     des_edit_video = document.getElementById("des_"+id);
@@ -607,6 +615,7 @@
                     editting[id] = true;
                 }
                 else{
+                    textareanotclosed--;
                     link = document.getElementById(id);
                     thumbnail = link.getElementsByClassName("thumbnail")[0];
                     dateAndDuration = link.getElementsByClassName("date")[0].getElementsByTagName("span");
@@ -691,6 +700,10 @@
         }
         
         function submitPage(){
+            if(textareanotclosed>0){
+                alert("TextArea not closed");
+                return false;
+            }
             send_content = new Object();
             send_content.navigation = getNavigationJsonStr();
             send_content.content = getContentJsonStr();
@@ -702,6 +715,7 @@
             document.getElementById("newGroupCount").value = newGroupCount;
             document.getElementById("newLinkCount").value = newLinkCount;
             document.getElementById("cover").style.display = "block";
+            return true;
         }
 
         function getVideoLinkJson(){
@@ -819,10 +833,14 @@
 
         function metaEditField(){
             meta_data_fields = document.getElementById("mata_data_editing");
-            if(meta_data_fields.style.display == "none")
+            if(meta_data_fields.style.display == "none"){
                 meta_data_fields.style.display = "block";
-            else
+                textareanotclosed = true;
+            }
+            else{
                 meta_data_fields.style.display = "none";
+                textareanotclosed = false;
+            }
         }
     </script>
     <style>
@@ -1022,14 +1040,14 @@
                 </div>
             </div>
         </section>
-        <form method="post" action="{% url 'submitpage' service_id %}">
+        <form method="post" action="{% url 'submitpage' service_id %}" onsubmit="return submitPage();">
             {% csrf_token %}
             <input type="hidden" id="wholeJson" name="wholeJson" value="" />
             <input type="hidden" id="service_id" name="service_id" value="{{service_id}}"/>
             <input type="hidden" id="newGroupCount" name="newGroupCount" value="">
             <input type="hidden" id="newLinkCount" name="newLinkCount" value="">
             <div style="float:right;">
-                <input onclick="submitPage()" type="submit" value="保存" />
+                <input type="submit" value="保存" />
             </div>
         </form>
         <style>

@@ -22,7 +22,7 @@
 
 Injecting a script or other data into an Azure virtual machine when it is being provisioned is a very common scenario, regardless of whether the operating system is Windows or a Linux distribution. 
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 This topic describes how to:

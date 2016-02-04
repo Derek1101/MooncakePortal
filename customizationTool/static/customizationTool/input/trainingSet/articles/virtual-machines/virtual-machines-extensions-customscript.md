@@ -25,7 +25,7 @@ Virtual machine (VM) extensions are built by Microsoft and trusted third-party p
 [Azure VM extensions and features](virtual-machines-extensions-features.md).
 
 Link:
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-extensions-customscript%20-with%20template.md).
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the [Resource Manager model](virtual-machines-extensions-customscript%20-with%20template.md).
 
 
 ## Custom Script extension overview

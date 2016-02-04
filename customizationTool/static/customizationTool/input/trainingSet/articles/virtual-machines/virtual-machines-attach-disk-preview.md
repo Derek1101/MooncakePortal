@@ -19,7 +19,7 @@
 
 # How to attach a data disk in the Azure portal
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](storage-windows-attach-disk.md).
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the [classic deployment model](storage-windows-attach-disk.md).
 
 This article shows you how to attach both new and existing disks to a virtual machine through the Azure portal. Before you do this, review these tips:
 

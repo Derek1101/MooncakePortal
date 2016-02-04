@@ -19,7 +19,7 @@
 
 # Create a MongoDB cluster on Ubuntu using a Azure Resource Manager template
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the classic deployment model.
 
 
 MongoDB is an open-source document database that provides high performance, high availability, and automatic scaling. MongoDB can be installed as a stand-alone database or within a cluster, leveraging built-in replication capabilities. In some cases, you can use replication to increase read capacity. Clients have the ability to send read and write operations to different servers. You can also maintain copies in different data centers to increase the locality and availability of data for distributed applications. With MongoDB, replication also provides redundancy and increases data availability. With multiple copies of data on different database servers, replication protects a database from the loss of a single server. Replication also allows you to recover from hardware failure and service interruptions. With additional copies of the data, you can dedicate one to disaster recovery, reporting, or backup.
@@ -36,9 +36,80 @@ Once the deployment is complete you can access the Jumpbox using the configured 
 
 Before diving into more details related to the Azure Resource Manager and the template we will use for this deployment, make sure you have Azure PowerShell or the Azure CLI configured correctly.
 
-[AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/powershell-preview-inline-include.md)]
+Azure PowerShell is currently available in two releases - 1.0 and 0.9.8. If you have existing scripts and do not want to change them right now, you can continue using the 0.9.8 release. When using the 1.0 release, you should carefully test your scripts in pre-production environments before using them in production to avoid unexpected impacts.
+		
+		1.0 cmdlets follow the naming pattern {verb}-AzureRm{noun}; whereas, the 0.9.8 names do not include **Rm** (for example, New-AzureRmResourceGroup instead of New-AzureResourceGroup). When using Azure PowerShell 0.9.8, you must first enable the Resource Manager mode by running the **Switch-AzureMode AzureResourceManager** command. This command is not necessary in 1.0.
+		
+		New features will be added to only the 1.0 release. For information about the 1.0 release, including how to install and uninstall the release, see [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/).
+		
+		
 
-[AZURE.INCLUDE [xplat-getting-set-up-arm](../../includes/xplat-getting-set-up-arm.md)]
+<properties services="virtual-machines" title="Using Azure CLI with Azure Resource Manager" authors="squillace" solutions="" manager="timlt" editor="tysonn" />
+		
+		<tags
+		   ms.service="virtual-machine"
+		   ms.devlang="na"
+		   ms.topic="article"
+		   ms.tgt_pltfrm="linux"
+		   ms.workload="infrastructure"
+		   ms.date="04/13/2015"
+		   ms.author="rasquill" />
+		
+		## Using Azure CLI with Azure Resource Manager (ARM)
+		
+		Before you can use the Azure CLI with Resource Manager commands and templates to deploy Azure resources and workloads using resource groups, you will need an account with Azure (of course). If you do not have an account, you can get a [free Azure trial here](http://azure.microsoft.com/pricing/free-trial/).
+		
+		> [AZURE.NOTE] If you don't already have an Azure account but you do have a subscription to MSDN subscription, you can get free Azure credits by activating your [MSDN subscriber benefits here](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) -- or you can use the free account. Either will work for Azure access.
+		
+		### Step 1: Verify the Azure CLI version
+		
+		To use Azure CLI for imperative commands and ARM templates, you need to have at least version 0.8.17. To verify your version, type `azure --version`. You should see something like:
+		
+		    $ azure --version
+		    0.8.17 (node: 0.10.25)
+		
+		If you need to update your version of Azure CLI, see [Azure CLI](https://github.com/Azure/azure-xplat-cli).
+		
+		### Step 2: Verify you are using a work or school identity with Azure
+		
+		You can only use the ARM command mode if you are using an [Azure Active Directory tenant](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) or a [Service Principal Name](https://msdn.microsoft.com/library/azure/dn132633.aspx). (These are also called *organizational ids*.)
+		
+		To see if you have one, log in by typing `azure login` and using your work or school username and password when prompted. If you do have one, you should see something like the following:
+		
+		    $ azure login
+		    info:    Executing command login
+		    warn:    Please note that currently you can login only via Microsoft organizational account or service principal. For instructions on how to set them up, please read http://aka.ms/Dhf67j.
+		    Username: ahmet@contoso.onmicrosoft.com
+		    Password: *********
+		    |info:    Added subscription Visual Studio Ultimate with MSDN
+		    info:    Setting subscription Visual Studio Ultimate with MSDN as default
+		    info:    Added subscription Azure Free Trial
+		    +
+		    info:    login command OK
+		
+		If you do not see this, you must create a new tenant (or service principal) with your Microsoft account identity. (This is often the case with personal MSDN subscriptions or free trial subscriptions.) To create a work or school id from your Azure account created with a Microsoft id, see [Associate an Azure AD Directory with a new Azure Subscription](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant). If you think you should have an organizational id already, you may need to talk with the person who created the account for you.
+		
+		### Step 3: Choose your Azure subscription
+		
+		If you have only one subscription in your Azure account, Azure CLI associates itself with that subscription by default. If you have more than one subscription, you need to select the subscription you want to use by typing `azure account set <subscription id or name> true` where _subscription id or name_ is either the subscription id or the subscription name that you would like to work with in the current session.
+		
+		You should see something like the following:
+		
+		    $ azure account set "Azure Free Trial" true
+		    info:    Executing command account set
+		    info:    Setting subscription to "Azure Free Trial" with id "2lskd82-434-4730-9df9-akd83lsk92sa".
+		    info:    Changes saved
+		    info:    account set command OK
+		
+		### Step 4: Place your Azure CLI in the ARM mode
+		
+		To use the Azure Resource Management (ARM) mode with the Azure CLI, type `azure config mode arm`. You should see something like the following:
+		
+		    $ azure config mode arm
+		    info:    New mode is arm
+		
+		> [AZURE.NOTE] You can switch back to use Azure service management commands by typing `azure config mode asm`.
+		
 
 ## Create a MongoDB cluster with a Resource Manager template
 

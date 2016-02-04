@@ -24,7 +24,7 @@
 
 The Linux images in the Azure Gallery or Marketplace are provided by a number of partners, and we are working with various Linux communities to add even more flavors to the Endorsed Distribution list. In the meantime, for distributions not available from the Gallery you can always Bring-Your-Own-Linux by following the guidelines on [this page](virtual-machines-linux-create-upload-vhd.md).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md). This article covers using both models, but Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 ## Supported Distributions & Versions ##
@@ -37,14 +37,14 @@ The Azure Linux Agent is already pre-installed on the Azure Gallery images and a
 
 Distribution|Version|Drivers|Agent
 ---|---|---|---
-CentOS by OpenLogic |CentOS 6.3+, 7.0+| CentOS 6.3: [LIS Download](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4+: In Kernel|Package: In <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">OpenLogic repo under "WALinuxAgent"<p><p>Source Code: [GitHub](https://github.com/Azure/WALinuxAgent)
+CentOS by OpenLogic |CentOS 6.3+, 7.0+| CentOS 6.3: [LIS Download](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p/>CentOS 6.4+: In Kernel|Package: In <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">OpenLogic repo under "WALinuxAgent"<p/><p/>Source Code: [GitHub](https://github.com/Azure/WALinuxAgent)
 [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)|494.4.0+ |In Kernel|Source Code: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent)
-Debian by Credativ |Debian 7.9+, 8.2+|In Kernel|Package: In repo under "waagent" <p><p>Source Code: [GitHub](https://github.com/Azure/WALinuxAgent)
-Oracle Linux| 6.4+, 7.0+|In Kernel|Package: In repo under "WALinuxAgent"<p><p>Source Code: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
-Red Hat Enterprise Linux |RHEL 6.7+, 7.1+|In Kernel|Package: In repo under "WALinuxAgent" <p><p>Source Code: [GitHub](https://github.com/Azure/WALinuxAgent)
-SUSE Linux Enterprise |SLES 11 SP3+, SLES 12+ and  <p><p> SLES for SAP 11.3+ |In Kernel|Package: In [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) repo under "WALinuxAgent"<p><p>Source Code: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
-openSUSE |openSUSE 13.1+|In Kernel|Package: In [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) repo under "WALinuxAgent" <p><p>Source Code: [GitHub](https://github.com/Azure/WALinuxAgent)
-Ubuntu|Ubuntu 12.04, 14.04, 15.04 and 15.10|In Kernel|Package: In repo under "walinuxagent" <p><p>Source Code: [GitHub](https://github.com/Azure/WALinuxAgent)
+Debian by Credativ |Debian 7.9+, 8.2+|In Kernel|Package: In repo under "waagent" <p/><p/>Source Code: [GitHub](https://github.com/Azure/WALinuxAgent)
+Oracle Linux| 6.4+, 7.0+|In Kernel|Package: In repo under "WALinuxAgent"<p/><p/>Source Code: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
+Red Hat Enterprise Linux |RHEL 6.7+, 7.1+|In Kernel|Package: In repo under "WALinuxAgent" <p/><p/>Source Code: [GitHub](https://github.com/Azure/WALinuxAgent)
+SUSE Linux Enterprise |SLES 11 SP3+, SLES 12+ and  <p/><p/> SLES for SAP 11.3+ |In Kernel|Package: In [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) repo under "WALinuxAgent"<p/><p/>Source Code: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
+openSUSE |openSUSE 13.1+|In Kernel|Package: In [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) repo under "WALinuxAgent" <p/><p/>Source Code: [GitHub](https://github.com/Azure/WALinuxAgent)
+Ubuntu|Ubuntu 12.04, 14.04, 15.04 and 15.10|In Kernel|Package: In repo under "walinuxagent" <p/><p/>Source Code: [GitHub](https://github.com/Azure/WALinuxAgent)
 ## Partners
 
 ### OpenLogic

@@ -21,7 +21,7 @@
 
 The inclusion of Compute, Network & Storage capabilities with the Azure Resource Manager will fundamentally simplify the deployment and management of complex applications running on IaaS. Many applications require a combination of resources, including a Virtual Network, Storage Account, Virtual Machine, and a Network Interface. The Azure Resource Manager offers the ability to construct a JSON template to deploy and manage all these resources together as a single application.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md). This article covers using both models, but Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 ## Advantages of integrating Compute, Network, and Storage under the Azure Resource Manager

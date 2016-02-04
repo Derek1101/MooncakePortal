@@ -19,7 +19,7 @@ ms.author="bbenz" />
 
 #List of Oracle virtual machine images
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md). This article covers using both models, but Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 To create virtual machines based on Oracle images, sign in to the [Azure portal](https://ms.portal.azure.com/), click **Marketplace**, click **Compute**, and then type **Oracle** into the Search box. Select an image and follow the instructions to set up the image on Microsoft Azure. Note that Oracle images by Microsoft on the [Azure portal](https://ms.portal.azure.com/) run on Windows, and Oracle images by Oracle run on Oracle Linux.

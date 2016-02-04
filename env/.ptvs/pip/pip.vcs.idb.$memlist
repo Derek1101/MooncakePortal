@@ -1,5 +1,6 @@
 subversion
 display_path
+vcs
 BadCommand
 VcsSupport
 os
@@ -12,8 +13,8 @@ absolute_import
 __all__
 logging
 git
-vcs
-find_command
+errno
+call_subprocess
 shutil
 backup_dir
 VersionControl

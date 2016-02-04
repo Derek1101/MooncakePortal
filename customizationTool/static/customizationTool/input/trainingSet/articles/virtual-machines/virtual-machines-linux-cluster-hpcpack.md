@@ -20,7 +20,7 @@
 
 This article shows you how to use an Azure PowerShell script to set up a Microsoft HPC Pack cluster in Azure which contains a head node running Windows Server and several compute nodes running a Linux distribution. We also show several ways to move data files to the Linux compute nodes. You can use this cluster to run Linux HPC workloads in Azure.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 At a high level the following diagram shows the HPC Pack cluster you'll create.

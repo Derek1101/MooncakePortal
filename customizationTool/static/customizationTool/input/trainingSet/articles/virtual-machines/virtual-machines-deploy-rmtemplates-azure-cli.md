@@ -29,7 +29,7 @@
 
 This article shows you how to use Azure Resource Manager templates and the Azure CLI to do the following common tasks for deploying and managing Azure virtual machines. For more templates you can use, see [Azure Quickstart templates](http://azure.microsoft.com/documentation/templates/) and [Application frameworks using templates](virtual-machines-app-frameworks.md).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model. You can't use templates in the classic deployment model.
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the classic deployment model. You can't use templates in the classic deployment model.
 
 - [Quick-create a virtual machine in Azure](#quick-create-a-vm-in-azure)
 - [Deploy a virtual machine in Azure from a template](#deploy-a-vm-in-azure-from-a-template)

@@ -19,7 +19,7 @@
 
 # Deploy a high-availability line of business application in Azure
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the classic deployment model.
 
 This article contains links to the step-by-step instructions for deploying a high-availability, intranet-only, web-based line of business application with SQL Server AlwaysOn Availability Groups in Azure infrastructure services. The application is hosted on these computers:
 

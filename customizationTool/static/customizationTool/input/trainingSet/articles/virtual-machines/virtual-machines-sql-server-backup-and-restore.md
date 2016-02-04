@@ -23,7 +23,7 @@
 
 Backing up data in SQL Server databases is an important part of the strategy in protecting against data loss due to application or user errors. This is equally true for SQL Server running on Azure Virtual Machines (VMs).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 For SQL Server running in Azure VMs, you can use native backup and restore techniques using attached disks for the destination of the backup files. However, there is a limit to the number of disks you can attach to an Azure virtual machine, based on the [size of the virtual machine](virtual-machines-size-specs.md). There is also the overhead of disk management to consider.
 

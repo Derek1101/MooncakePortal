@@ -19,7 +19,7 @@
 
 # SharePoint Intranet Farm Workload Phase 2: Configure domain controllers
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the classic deployment model.
 
 In this phase of deploying an intranet-only SharePoint 2013 farm with SQL Server AlwaysOn Availability Groups in Azure infrastructure services, you configure two domain controllers in the Azure virtual network. Client web requests for SharePoint farm resources can then be authenticated in the Azure virtual network, rather than sending that authentication traffic across the site-to-site VPN or Azure ExpressRoute connection to your on-premises network.
 

@@ -1,9 +1,7 @@
 ﻿import re
 import nltk
 from bs4 import BeautifulSoup, NavigableString, Comment, Doctype
-from keywordExtract import run
-from markdown import markdown
-
+from customizationTool.keywordExtract import run
 
 sentenceTokenizer = nltk.data.load("tokenizers/punkt/english.pickle")
 titleMul = 5.0
@@ -12,140 +10,15 @@ openingMul = 2.5
 childMul = 0.5
 endingMul = 2.0
 
-url_reg = r"\[%s\]:[ \t]*([^\"|^\n]+)[ \t]*(\"[^\"|^\n]*\")"
-def findUrl(text, fullMd):
-    result = re.findall(url_reg%text, fullMd, flags=re.I)
-    return result[0][0].strip()
-
-link_reg = r"(\[([^\]]*)\](?!\(.+\))(\[([^\]]*)\])?)"
-def mdPreprocess(md, fullMd):
-    links = list(set([link for link in re.findall(link_reg, md) if link[1].strip() not in ["AZURE.NOTE", "WACN.NOTE", "AZURE.WARNING", "AZURE.IMPORTANT", "AZURE.TIP"]]))
-    for link in links:
-        if link[3].strip() != "":
-            url = findUrl(link[3], fullMd)
-        else:
-            url = findUrl(link[1], fullMd)
-        md = md.replace(link[0], "["+link[1]+"]("+url+")")
-    return md
-
-def handleNotCode(md):
-    lines = md.split("\n")
-    result = ''
-    for line in lines:
-        if line.strip() == "":
-            line = ""
-        else:
-            if line[0] == " ":
-                line = line[4:]
-            elif line[0] == "\t":
-                line = line[1:]
-        result += line+'\n'
-    return result
-
-def checkEqual(html_plaintext, md, fullMd, isCode):
-    md = mdPreprocess(md, fullMd)
-    #if not isCode:
-    #    md = handleNotCode(md)
-    md_html = markdown("\n"+md+"\n")
-    soup = BeautifulSoup(md_html, "html.parser")
-    h_l = len(html_plaintext)
-    m_l = len(soup.get_text(" ", strip=True))
-    if(m_l>h_l):
-        print("html:\n"+html_plaintext)
-        print("\n\n\n\nmd: \n"+soup.get_text(" ", strip=True))
-        print("\n\n\n\nmd: \n"+md_html)
-        print("\n\n\n\nmd: \n"+md)
-        raise Exception("md is greater than html")
-    return h_l == m_l
-
-def getMatchingMd(html, md, fullMd):
-    soup = BeautifulSoup(html, "html.parser")
-    if len(soup.contents)==0:
-        return 0
-    currentEnd = soup
-    extra = ""
-    while True:
-        try:
-            currentEnd2 = currentEnd.contents[len(currentEnd.contents) - 1]
-            backward = 2
-            while str(currentEnd2).strip() == "":
-                currentEnd2 = currentEnd.contents[len(currentEnd.contents) - backward]
-                backward += 1
-            if str(currentEnd2).strip() == "]":
-               includes = re.findall("\[AZURE\.INCLUDE[ \t]*\<a[ \t]*href=\"../(../)?includes/([^\]|^\n]+)\"\>[^\]|^\n]+\</a\>\]",html,flags=re.I)
-               currentEnd2 = includes[len(includes)-1][1]+")]"
-            elif str(currentEnd2).strip() in [".", ",", "?", "!", ":", ";"]:
-                extra = str(currentEnd2).strip()
-                currentEnd2 = currentEnd.contents[len(currentEnd.contents) - backward]
-            currentEnd = currentEnd2
-        except IndexError:
-            if currentEnd.name == "img":
-                try:
-                    currentEnd = "!["+currentEnd["alt"]
-                except KeyError:
-                    currentEnd = "!["
-                break;
-        except AttributeError:
-            break;
-    end = str(currentEnd).strip()
-    currentIndex = 0
-    while True:
-        deltaIndex = md[currentIndex:].find(end)
-        if deltaIndex == -1:
-            print("end:"+end)
-            raise Exception("cannot find:\n"+html+"\nin:\n"+md)
-        currentIndex += deltaIndex+len(end)
-        if currentIndex == len(md):
-            return currentIndex
-        if md[currentIndex] == "]":
-            currentIndex += 1
-            if currentIndex == len(md):
-                return currentIndex
-            if md[currentIndex] == "[":
-                while md[currentIndex] !="]":
-                    currentIndex+=1
-                currentIndex+=1
-            elif md[currentIndex] == "(":
-                right = 1
-                currentIndex+=1
-                while right!=0:
-                    if md[currentIndex] == "(":
-                        right+=1
-                    elif md[currentIndex] == ")":
-                        right-=1
-                    currentIndex+=1
-                
-            elif len(md)>=currentIndex+2 and md[currentIndex:currentIndex+2] == "</":
-                currentIndex += md[currentIndex:].find(">")
-        for content in soup.contents:
-            try:
-                if content.name == "pre":
-                    isCode = True
-                else:
-                    isCode = False
-            except KeyError:
-                continue
-        if checkEqual(soup.get_text(" ", strip=True), md[:currentIndex]+extra, fullMd, isCode):
-            if extra != "":
-                delta = md[currentIndex:].find(extra)
-                currentIndex += delta + len(extra)
-            head_remain = re.findall("([ \t]*\#+[ \t]*\n)", md[currentIndex:])
-            if len(head_remain)>0:
-                if md[currentIndex:].find(head_remain[0][0]) == 0:
-                    currentIndex += len(head_remain[0][0]) 
-            return currentIndex
-
 class ArticleNode(object):
     """
     the super class
     """
-    def __init__(self, parent, children, html, md, fullMd):
+    def __init__(self, parent, children, html):
         self.parent = parent
         self.children = children
         self.html = html
         self.keywords = None
-        self.md = md
-        self.fullMd = fullMd
 
     def getKeywords(self):
         if self.keywords == None:
@@ -161,74 +34,50 @@ class ArticleNode(object):
 
 class Article(ArticleNode):
     tagsReg = r"(\<p\>\s*\<tags\s*\n?(\s*\w+\..+\n?)+\s*/\>\s*\</p\>)"
-    def __init__(self, html, md, fullMd):
+    def __init__(self, html):
         soup = BeautifulSoup(html,"html.parser")
         self.opening = []
         try:
-            self.title = Sentence(self,soup.properties["pagetitle"], soup.properties["pagetitle"], fullMd)
+            self.title = Sentence(self,soup.properties["pagetitle"])
         except (TypeError, KeyError):
-            self.title = ArticleNode(self, [], "", "", fullMd)
+            self.title = ArticleNode(self, [], "")
         try:
-            self.description = Sentence(self, soup.properties["description"], soup.properties["description"], fullMd)
-            soup.properties.extract()
-            soup.tags.extract()
-            html = re.sub("(\<properties[^\>]+/\>)", "", html, flags=re.I)
-            html = re.sub("\<tags[^\>]+/\>", "", html, flags=re.I)
-            html = html.replace("<p></p>","")
-            html = html.replace("<!-- not suitable for Mooncake -->","")
-            md = re.sub("\<properties[^\>]+/\>", "", md, flags=re.I)
-            md = re.sub("\<tags[^\>]+/\>", "", md, flags=re.I)
-            md = md.replace("<!-- not suitable for Mooncake -->","")
+            self.description = Sentence(self,soup.properties["description"])
         except (TypeError, KeyError):
-            self.description = ArticleNode(self, [], "", "", fullMd)
+            self.description = ArticleNode(self, [], "")
         hasHead = False
         for i in range(1,7):
             if len(soup.find_all("h"+str(i))) != 0:
-                children = self.__contentInit(soup, html, i, md, fullMd)
+                children = self.__contentInit(soup, html, i)
                 hasHead = True
                 break
-        
         if not hasHead:
-            opening = []
-            for p in soup.contents:
-                p_html = str(p).strip()
-                if p_html!="":
-                    mdIndex = getMatchingMd(p_html, md, fullMd)
-                    opening.append(structuralize(self, str(p).strip(), md[:mdIndex], fullMd))
-                    md = md[mdIndex:]
+            opening = [structuralize(self, str(p).strip()) for p in soup.contents if str(p).strip()!=""]
             self.opening = []
             children = []
             for o in opening:
                 if len(o) > 0:
                     children.extend(o)
-        return super().__init__(None, children, html, md, fullMd)
+        return super().__init__(None, children, html)
 
-    def __contentInit(self, soup, html, headNum, md, fullMd):
+    def __contentInit(self, soup, html, headNum):
         block_titles = soup.find_all("h"+str(headNum))
-        tags = re.findall(Article.tagsReg, html, flags=re.I)
+        tags = re.findall(Article.tagsReg, html)
         if len(tags) == 0:
             beginIndex = 0
         else:
             beginIndex = html.find(tags[0][0])+len(tags[0][0])
         endIndex = html.find("<h"+str(headNum))
-        open_html = html[beginIndex:endIndex].strip()
-        mdIndex = getMatchingMd(open_html, md, fullMd)
-        self.opening = structuralize(self, open_html, md[:mdIndex], fullMd)
-        
-        md = md[mdIndex:]
+        self.opening = structuralize(self, html[beginIndex:endIndex].strip())
         beginIndex = endIndex
         endIndex = html[beginIndex+3:].find("<h"+str(headNum))
         children = []
-        
         while endIndex != -1:
-            block_html = html[beginIndex:beginIndex+endIndex+3].strip()
-            md_index = getMatchingMd(block_html, md, fullMd)
-            block = Block(self, block_html, headNum, md[:md_index], fullMd)
-            md = md[md_index:]
+            block = Block(self, html[beginIndex:beginIndex+endIndex+3].strip(), headNum)
             children.append(block)
             beginIndex += endIndex+3
             endIndex = html[beginIndex+3:].find("<h"+str(headNum))
-        block = Block(self, html[beginIndex:].strip(), headNum, md, fullMd)
+        block = Block(self, html[beginIndex:].strip(), headNum)
         children.append(block)
         return children
 
@@ -270,19 +119,14 @@ class Article(ArticleNode):
         return self.keywords
 
 class Block(ArticleNode):
-    def __init__(self, parent, html, headNum, md, fullMd):
+    def __init__(self, parent, html, headNum):
         soup = BeautifulSoup(html,"html.parser")
-        block_title = soup.find_all("h"+str(headNum))[0]
-        title_html = "".join([str(x).strip() for x in block_title.contents])
-        block_title.extract()
-        md_index = getMatchingMd(title_html, md, fullMd)
-        self.title = Sentence(self, title_html, md[:md_index], fullMd)
-        md = md[md_index:]
+        self.title = Sentence(self, "".join([str(x).strip() for x in soup.find_all("h"+str(headNum))[0].contents]))
         self.opening = []
         hasHead = False
         for i in range(headNum+1,7):
             if len(soup.find_all("h"+str(i))) != 0:
-                children = self.__contentInit(soup, html, i, headNum, md, fullMd)
+                children = self.__contentInit(soup, html, i, headNum)
                 self.ending = []
                 hasHead = True
                 break
@@ -290,13 +134,7 @@ class Block(ArticleNode):
             olIndex = html.find("<ol")
             ulIndex = html.find("<ul")
             if olIndex == -1 and ulIndex == -1:
-                opening = []
-                for p in soup.contents:
-                    p_html = str(p).strip()
-                    if p_html!="":
-                        mdIndex = getMatchingMd(p_html, md, fullMd)
-                        opening.append(structuralize(self, str(p).strip(), md[:mdIndex], fullMd))
-                        md = md[mdIndex:]
+                opening = [structuralize(self, str(p).strip()) for p in soup.contents if str(p).strip()!=""]
                 self.opening = []
                 children = []
                 for o in opening:
@@ -324,34 +162,24 @@ class Block(ArticleNode):
                         elif len(p.find_all("ol")) != 0 or len(p.find_all("ul")) != 0:
                             addTo = children
                             listCount += len(p.find_all("ol")) + len(p.find_all("ul"))
-                        p_html = str(p).strip()
-                        if p_html!="":
-                            mdIndex = getMatchingMd(p_html, md, fullMd)
-                            addTo.extend(structuralize(self, p_html, md[:mdIndex], fullMd))
-                            md = md[mdIndex:]
+                        addTo.extend(structuralize(self, str(p)))
                         if listCount >= olCount+ulCount:
                             addTo = self.ending
-        return super().__init__(parent, children, html, md, fullMd)
+        return super().__init__(parent, children, html)
 
-    def __contentInit(self, soup, html, headNum, parentHeadNum, md, fullMd):
+    def __contentInit(self, soup, html, headNum, parentHeadNum):
         block_titles = soup.find_all("h"+str(headNum))
         beginIndex = html.find("</h"+str(parentHeadNum)+">")+5
         endIndex = html.find("<h"+str(headNum))
-        open_html = html[beginIndex:endIndex].strip()
-        mdIndex = getMatchingMd(open_html, md, fullMd)
-        self.opening = structuralize(self, open_html, md[:mdIndex], fullMd)
-        md = md[mdIndex:]
+        self.opening = structuralize(self, html[beginIndex:endIndex].strip())
         beginIndex = endIndex
         endIndex = html[beginIndex+3:].find("<h"+str(headNum))
         children = []
         while endIndex != -1:
-            block_html = html[beginIndex:beginIndex+endIndex+3].strip()
-            md_index = getMatchingMd(block_html, md, fullMd)
-            children.append(Block(self, block_html, headNum, md[:md_index], fullMd))
-            md = md[md_index:]
+            children.append(Block(self, html[beginIndex:beginIndex+endIndex+3].strip(), headNum))
             beginIndex += endIndex+3
             endIndex = html[beginIndex+3:].find("<h"+str(headNum))
-        children.append(Block(self, html[beginIndex:].strip(), headNum, md, fullMd))
+        children.append(Block(self, html[beginIndex:].strip(), headNum))
         return children
 
     def getKeywords(self):
@@ -397,59 +225,37 @@ class Block(ArticleNode):
         return self.keywords
 
 class Steps(ArticleNode):
-    def __init__(self, parent, html, md, fullMd):
+    def __init__(self, parent, html):
         soup = BeautifulSoup(html, "html.parser")
-        children = []
-        for li in soup.contents:
-            try:
-                if li.name == "li":
-                    li_html = "".join([str(x).strip() for x in li.contents])
-                    mdIndex = getMatchingMd(li_html, md, fullMd)
-                    children.append(ListItem(self, li_html, md[:mdIndex], fullMd))
-                    md = md[mdIndex:]
-            except KeyError:
-                pass
-        return super().__init__(parent, children, html, md, fullMd)
+        children = [ListItem(self, "".join([str(x).strip() for x in li.contents])) for li in soup.find_all("li")]
+        return super().__init__(parent, children, html)
 
 class UnorderList(ArticleNode):
-    def __init__(self, parent, html, md, fullMd):
+    def __init__(self, parent, html):
         soup = BeautifulSoup(html, "html.parser")
-        children = []
-        for li in soup.contents:
-            try:
-                if li.name == "li":
-                    li_html = "".join([str(x).strip() for x in li.contents])
-                    mdIndex = getMatchingMd(li_html, md, fullMd)
-                    children.append(ListItem(self, li_html, md[:mdIndex], fullMd))
-                    md = md[mdIndex:]
-            except KeyError:
-                pass
-        return super().__init__(parent, children, html, md, fullMd)
+        children = [ListItem(self, "".join([str(x).strip() for x in li.contents])) for li in soup.find_all("li")]
+        return super().__init__(parent, children, html)
 
 class ListItem(ArticleNode):
-    def __init__(self, parent, html, md, fullMd):
+    def __init__(self, parent, html):
         soup = BeautifulSoup(html, "html.parser")
         if len(soup.find_all("p")) > 0 or len(soup.find_all("ul")) > 0 or len(soup.find_all("ol")) > 0:
-            children = structuralize(self, html, md, fullMd)
+            children = structuralize(self, html)
         else:
-            children = []
-            for sentence in sentenceTokenizer.tokenize(html):
-                mdIndex = getMatchingMd(sentence, md, fullMd)
-                children.append(Sentence(self, sentence, md[:mdIndex], fullMd))
-                md = md[mdIndex:]
-        return super().__init__(parent, children, html, md, fullMd)
+            children = [Sentence(self, sentence) for sentence in sentenceTokenizer.tokenize(html)]
+        return super().__init__(parent, children, html)
 
 class BlockQuote(ArticleNode):
-    def __init__(self, parent, html, md, fullMd):
+    def __init__(self, parent, html):
         soup = BeautifulSoup(html, "html.parser")
         if len(soup.find_all("p")) > 1 or len(soup.find_all("ul")) > 0 or len(soup.find_all("ol")) > 0:
-            children = structuralize(self, html, md, fullMd)
+            children = structuralize(self, html)
         else:
-            children = [Paragraph(self, "".join([str(x).strip() for x in soup.p.contents]), md, fullMd)]
-        return super().__init__(parent, children, html, md, fullMd)
+            children = [Paragraph(self, "".join([str(x).strip() for x in soup.p.contents]))]
+        return super().__init__(parent, children, html)
 
 class Paragraph(ArticleNode):
-    def __init__(self, parent, html, md, fullMd):
+    def __init__(self, parent, html):
         if html.count("|")>=4:
             table = "<table>\n"
             lines = html.split("\n")
@@ -468,71 +274,65 @@ class Paragraph(ArticleNode):
             html = table+"</table>"
         soup = BeautifulSoup(html, "html.parser")
         if len(soup.find_all("table")) > 0 or len(soup.find_all("ul")) > 0 or len(soup.find_all("ol")) > 0:
-            children = structuralize(self, html, md, fullMd)
+            children = structuralize(self, html)
         else:
             sent = sentenceTokenizer.tokenize(html)
-            children = []
-            for sentence in sent:
-                mdIndex = getMatchingMd(sentence, md, fullMd)
-                children.append(Sentence(self, sentence, md[:mdIndex], fullMd))
-                md = md[mdIndex:]
-        return super().__init__(parent, children, html, md, fullMd)
+            children = [Sentence(self, sentence) for sentence in sent]
+        return super().__init__(parent, children, html)
 
 class Table(ArticleNode):
-    def __init__(self, parent, html, md, fullMd):
+    def __init__(self, parent, html):
         soup = BeautifulSoup(html, "html.parser")
         children = []
-        md = md.strip()
-        lines = md.split("\n")
-        for i in range(0,len(soup.contents)):
-             if "".join([str(x).strip() for x in soup.contents[i].contents])!="":
-                children.append(Sentence(self, soup.contents[i].get_text("; ", strip=True), lines[i], fullMd))
-        return super().__init__(parent, children, html, md, fullMd)
+        for tr in soup.contents:
+             if "".join([str(x).strip() for x in tr.contents])!="":
+                children.append(Sentence(self, tr.get_text("; ", strip=True)))
+        return super().__init__(parent, children, html)
 
 class Sentence(ArticleNode):
-    def __init__(self, parent, html, md, fullMd):
+    def __init__(self, parent, html):
         soup = BeautifulSoup(html, "html.parser")
         text = soup.get_text(" ", strip=True)
         if text != "":
             self.terms = run(text)
         else:
             self.terms = {}
-        return super().__init__(parent, [], html, md, fullMd)
+        return super().__init__(parent, [], html)
 
     def getKeywords(self):
         return self.terms
 
 class Code(ArticleNode):
-    def __init__(self, parent, html, md, fullMd):
-        return super().__init__(parent, [], html, md, fullMd)
+    def __init__(self, parent, html):
+        return super().__init__(parent, [], html)
 
     def getKeywords(self):
         return {}
 
-def structuralize(parent, html, md, fullMd):
+def structuralize(parent, html):
     soup = BeautifulSoup(html, "html.parser")
     l = len(soup.contents)
     if l == 0:
         return []
     elif l == 1:
         if soup.contents[0].name == "ol":
-            return [Steps(parent, "".join([str(x).strip() for x in soup.ol.contents]), md, fullMd)]
+            return [Steps(parent, "".join([str(x).strip() for x in soup.ol.contents]))]
         elif soup.contents[0].name == "ul":
-            return [UnorderList(parent, "".join([str(x).strip() for x in soup.ul.contents]), md, fullMd)]
+            return [UnorderList(parent, "".join([str(x).strip() for x in soup.ul.contents]))]
         elif soup.contents[0].name == "li":
-            return [ListItem(parent, "".join([str(x).strip() for x in soup.li.contents]), md, fullMd)]
+            return [ListItem(parent, "".join([str(x).strip() for x in soup.li.contents]))]
         elif soup.contents[0].name == "p":
-            return [Paragraph(parent, "".join([str(x).strip() for x in soup.p.contents]), md, fullMd)]
+            return [Paragraph(parent, "".join([str(x).strip() for x in soup.p.contents]))]
         elif soup.contents[0].name == "table":
-            return [Table(parent, "".join([str(x).strip() for x in soup.table.contents]), md, fullMd)]
+            return [Table(parent, "".join([str(x).strip() for x in soup.table.contents]))]
         elif soup.contents[0].name == "pre":
-            return [Code(parent, "".join([str(x).strip() for x in soup.pre.contents]), md, fullMd)]
+            return [Code(parent, "".join([str(x).strip() for x in soup.pre.contents]))]
         elif soup.contents[0].name == "blockquote":
-            return [BlockQuote(parent, "".join([str(x).strip() for x in soup.blockquote.contents]), md, fullMd)]
+            return [BlockQuote(parent, "".join([str(x).strip() for x in soup.blockquote.contents]))]
         else:
-            return [Sentence(parent, html, md, fullMd)]
+            return [Sentence(parent, html)]
     else:
-        part = Article(html, md, fullMd)
+        part = Article(html)
         part.opening.extend(part.children)
         return part.opening
 

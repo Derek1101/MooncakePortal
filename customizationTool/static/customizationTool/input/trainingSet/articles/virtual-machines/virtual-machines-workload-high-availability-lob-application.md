@@ -19,7 +19,7 @@
 
 # Azure Infrastructure Services Workload: High-availability line of business application
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the classic deployment model.
 
 
 Set up your first or next web-based, intranet-only line of business application in Microsoft Azure and take advantage of ease of configuration and the ability to quickly expand the application to include new capacity.

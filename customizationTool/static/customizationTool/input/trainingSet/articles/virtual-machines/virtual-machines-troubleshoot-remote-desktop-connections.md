@@ -22,7 +22,7 @@
 
 There can be various causes of Remote Desktop (RDP) errors while trying to connect to your Windows-based Azure virtual machine. The issue can be with the RDP software on VM, the underlying host computer, the network connection or on the client side from where connecting. This article will help you find out the causes and correct them.  
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md). This article covers using both models, but Microsoft recommends that most new deployments use the Resource Manager model.
 
 This article only applies to Azure virtual machines running Windows. For Azure virtual machines running Linux, see [Troubleshoot SSH connection to an Azure VM](virtual-machines-troubleshoot-ssh-connections.md).
 

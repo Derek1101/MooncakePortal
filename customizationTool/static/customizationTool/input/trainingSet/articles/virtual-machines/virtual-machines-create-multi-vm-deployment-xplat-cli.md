@@ -19,7 +19,7 @@
 
 # Create a multi-VM deployment with the Azure CLI
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
  
 
 The following script will show you how to configure a multi-VM multi-cloud service deployment in a VNET using Azure Command-Line Interface (Azure CLI).

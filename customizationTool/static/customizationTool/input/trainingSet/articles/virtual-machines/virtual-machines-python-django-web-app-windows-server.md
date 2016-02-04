@@ -27,7 +27,7 @@
 
 <br>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
  
 
 This tutorial describes how to host a Django-based website on Microsoft
@@ -45,7 +45,9 @@ A screenshot of the completed application appears next.
 
 ![A browser window displaying the hello world page on Azure][1]
 
-[AZURE.INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
+> [AZURE.NOTE]
+		> To complete this tutorial, you need an Azure account. You can <a href="http://www.windowsazure.com/pricing/member-offers/msdn-benefits-details/" target="_blank">activate your MSDN subscriber benefits</a> or <a href="http://www.windowsazure.com/pricing/free-trial/" target="_blank">sign up for a free trial</a>.
+		
 
 ## Creating and configuring an Azure virtual machine to host Django
 

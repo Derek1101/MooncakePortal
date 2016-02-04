@@ -1,0 +1,50 @@
+azure
+virtual machine
+article
+classic deployment model
+azure virtual machine
+resource
+
+resource manager
+step
+microsoft azure
+vm
+microsoft
+sql server
+new deployment
+different deployment model
+azure cli
+template
+linux
+azure powershell
+create
+command
+image
+resource manager model
+information
+application
+virtual network
+resource manager deployment model
+phase
+example
+cloud service
+window
+azure.note azure
+cluster
+next step
+azure portal
+linux virtual machine
+learn
+azure.important azure
+deployment
+azure.note
+azure classic portal
+line
+vms
+value
+resource manager template
+name
+window server
+powershell
+azure resource manager
+sharepoint server

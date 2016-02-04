@@ -22,7 +22,7 @@
 
 There could be various causes of SSH errors while trying to connect to a Linux-based Azure virtual machine. This article will help you find and correct them.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md). This article covers using both models, but Microsoft recommends that most new deployments use the Resource Manager model.
 
 This article only applies to Azure virtual machines running Linux. For Azure virtual machines running Windows, see [Troubleshoot Remote Desktop connection to an Azure VM](virtual-machines-troubleshoot-remote-desktop-connections.md).
 

@@ -4,7 +4,7 @@ servers
 wsgi
 handlers
 serializers
-cache
+management
 exceptions
 checks
 validators
@@ -13,4 +13,4 @@ paginator
 files
 context_processors
 mail
-management
+cache

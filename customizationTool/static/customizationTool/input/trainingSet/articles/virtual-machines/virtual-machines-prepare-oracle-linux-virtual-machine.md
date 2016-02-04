@@ -18,7 +18,7 @@ ms.author="bbenz" />
 
 #Prepare an Oracle Linux virtual machine for Azure
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md). This article covers using both models, but Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 -   [Prepare an Oracle Linux 6.4+ virtual machine for Azure](virtual-machines-linux-create-upload-vhd-oracle.md)

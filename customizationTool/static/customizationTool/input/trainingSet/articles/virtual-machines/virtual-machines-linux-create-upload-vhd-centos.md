@@ -23,7 +23,7 @@
 - [Prepare a CentOS 6.x Virtual Machine for Azure](#centos6)
 - [Prepare a CentOS 7.0+ Virtual Machine for Azure](#centos7)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md). This article covers using both models, but Microsoft recommends that most new deployments use the Resource Manager model.
 
 ##Prerequisites##
 

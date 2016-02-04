@@ -21,7 +21,7 @@
 
 The Azure Virtual Machine Agent (VM Agent) is used to install, configure, manage and run Azure Virtual Machine Extensions (VM Extensions). VM Extensions provide dynamic features that Microsoft and other third parties provide. The agent and extensions are added primarily through the Management Portal, but you can also use the [Powershell](../install-configure-powershell.md) cmdlets or the [Azure CLI](xplat-install.md) to add and configure either when you create a VM or with existing VMs.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 

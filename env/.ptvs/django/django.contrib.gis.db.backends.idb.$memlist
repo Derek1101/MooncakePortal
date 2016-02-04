@@ -1,7 +1,7 @@
 spatialite
 util
-oracle
 mysql
+oracle
 postgis
 base
 utils

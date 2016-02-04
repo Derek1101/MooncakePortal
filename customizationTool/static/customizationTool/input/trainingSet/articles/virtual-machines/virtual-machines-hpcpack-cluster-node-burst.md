@@ -18,7 +18,7 @@ ms.service="virtual-machines"
 
 # Add on-demand "burst" nodes (worker role instances) as compute resources to an HPC Pack cluster in Azure
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager model.
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
 
 
 This article shows you how to add Azure "burst" nodes (worker role instances

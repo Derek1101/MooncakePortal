@@ -19,7 +19,7 @@
 
 # Enable diagnostics in a Azure virtual machine running Windows using PowerShell
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)] 
+> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md). This article covers using both models, but Microsoft recommends that most new deployments use the Resource Manager model. 
 
 You can collect diagnostic data like application logs, performance counter etc. from a Azure Virtual machine running Windows using the Azure Diagnostics extension. This article describes how to enable the Azure Diagnostics extension for a Virtual Machine using PowerShell.  See [How to install and configure Azure PowerShell](powershell-install-configure.md) for the prerequisites needed for this article.
 
