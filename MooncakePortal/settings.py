@@ -50,6 +50,7 @@ if defualt_redis_host == None:
 else:
     defualt_redis_host+=":6379"
     default_redis_password = environ.get("REDIS_KEY")
+
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
@@ -66,7 +67,7 @@ CACHES = {
 try:
     CACHE_MIDDLEWARE_SECONDS = int(environ["REDIS_TIMEOUT"])
 except:
-    CACHE_MIDDLEWARE_SECONDS = 15
+    CACHE_MIDDLEWARE_SECONDS = 1
 CACHE_MIDDLEWARE_KEY_PREFIX = "mooncake2"
 
 LOGIN_URL = '/login'

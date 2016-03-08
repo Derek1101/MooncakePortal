@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from landingPage.xmlModel import parseJsonToXml
 from django.views.decorators.cache import never_cache
 from MooncakePortal.clearCache import expire_cache
+from landingPage.htmlToJsonParser import navigationParse
 
 RELATIVE_PATH = "/static/landingPage/"
 BLOB_PATH = "http://wacndevelop.blob.core.chinacloudapi.cn/tech-content/"
@@ -110,7 +111,7 @@ def xmlpagegenerator(request, service_id):
     body = Template("")
     header.nodelist = html_header
     body.nodelist = html_body
-    html_header = header.render(Context({"cssLink":"http://wacndevelop.blob.core.chinacloudapi.cn/tech-content/css/landingpageframe.css","jqueryLink":"http://wacndevelop.blob.core.chinacloudapi.cn/tech-content/js/landingpagejquery-2.1.4.js","jsLink":"http://wacndevelop.blob.core.chinacloudapi.cn/tech-content/js/landingpageresponsive.js"}))
+    html_header = header.render(Context({"cssLink":"https://wacndevelop.blob.core.chinacloudapi.cn/tech-content/css/landingpageframe.css","jqueryLink":"https://wacndevelop.blob.core.chinacloudapi.cn/tech-content/js/landingpagejquery-2.1.4.js","jsLink":"https://wacndevelop.blob.core.chinacloudapi.cn/tech-content/js/landingpageresponsive.js"}))
     navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
     html_body = body.render(Context({"service_name":service.service_name,
                                 "subtitle":landingpage.subtitle, 
@@ -256,3 +257,45 @@ def submitpage(request, service_id):
     expire_cache('landingPage.views.xmlpagegenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     return redirect("/landingpage/"+service_id)
 
+@login_required
+@csrf_exempt
+def new_landingpage(request):
+    return render_to_response('landingPage/newlandingpage.html',{})
+
+@login_required
+@csrf_exempt
+def addlandingpage(request):
+    service_name = request.POST["service_name"]
+    service_id = request.POST["service_id"]
+    left_navigation = request.POST["left_navigation"]
+    meta_keywords = request.POST["meta_keywords"]
+    meta_description = request.POST["meta_description"]
+    subtitle = request.POST["subtitle"]
+    tutorial_message = request.POST["tutorial_message"]
+    what_is_new = request.POST["what_is_new"]
+    tutorial_count = int(request.POST["tutorial_count"])
+    titles = []
+    orders = []
+    links = []
+    for i in range(1, tutorial_count+1):
+        try:
+            title = request.POST["tutorial_title"+str(i)]
+            order = request.POST["tutorial_order"+str(i)]
+            link = request.POST["tutorial_link"+str(i)]
+            titles.append(title)
+            orders.append(int(order))
+            links.append(link)
+        except:
+            continue
+    service = Service(service_name=service_name, service_id=service_id)
+    service.save()
+    navigationJson = navigationParse(left_navigation, service_name, service_id)
+    landingpage = Landing_page(service=service, navigationJson=navigationJson, subtitle=subtitle, tutorial_message=tutorial_message, update_search_link=what_is_new)
+    landingpage.save()
+    meta_data = Meta_data(service=service, meta_keywords=meta_keywords, meta_description=meta_description)
+    meta_data.save()
+    print(titles)
+    for i in range(0, len(titles)):
+        tutorial = Tutorial_option(landing_page=landingpage, title=titles[i], order=orders[i], link=links[i])
+        tutorial.save()
+    return redirect("/landingpage/"+service.service_id)

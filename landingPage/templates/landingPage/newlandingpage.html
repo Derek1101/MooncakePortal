@@ -1,0 +1,157 @@
+﻿
+
+{% extends "landingPage\page.html" %}
+
+{% block content %}
+<script>
+    var tutorial_count = 3;
+    function addNewTutorial() {
+        
+        add_tutorial_butt_row = document.getElementById("add_tutorial_butt_row");
+        tutorial_count++;
+        tutorial_row = document.createElement("tr");
+        tutorial_row.id = "tutorial_row" + tutorial_count;
+        tutorial = document.createElement("td");
+        tutorial.innerHTML = "Tutorial " + tutorial_count + ":";
+        tutorial_row.appendChild(tutorial);
+        tutorial_title = document.createElement("td");
+        tutorial_title.innerHTML = "Title: ";
+        tutorial_title_input = document.createElement("input");
+        tutorial_title_input.name = "tutorial_title" + tutorial_count;
+        tutorial_title_input.type = "text";
+        tutorial_title_input.style.border = "2px";
+        tutorial_title_input.style.borderBottomStyle = "dashed";
+        tutorial_title_input.style.width = "200px";
+        tutorial_title.appendChild(tutorial_title_input);
+        tutorial_row.appendChild(tutorial_title);
+        
+        tutorial_order = document.createElement("td");
+        tutorial_order.innerHTML = "Order: ";
+        tutorial_order_input = document.createElement("input");
+        tutorial_order_input.name = "tutorial_order" + tutorial_count;
+        tutorial_order_input.type = "number";
+        tutorial_order_input.style.width = "100px";
+        tutorial_order_input.value = tutorial_count - 1;
+        tutorial_order.appendChild(tutorial_order_input);
+        tutorial_row.appendChild(tutorial_order);
+        
+        tutorial_link = document.createElement("td");
+        tutorial_link.innerHTML = "Link: ";
+        tutorial_link_input = document.createElement("textarea");
+        tutorial_link_input.name = "tutorial_link" + tutorial_count;
+        tutorial_link.appendChild(tutorial_link_input);
+        tutorial_row.appendChild(tutorial_link);
+        
+        tutorial_delete = document.createElement("td");
+        tutorial_delete_a = document.createElement("a");
+        tutorial_delete_a.href = "javascript:removeTutorialRow(" + tutorial_count + ")";
+        tutorial_delete_a.title = "删除";
+        tutorial_delete_image = document.createElement("img");
+        tutorial_delete_image.src = "/static/landingPage/img/delete.png";
+        tutorial_delete_image.style.width = "20px";
+        tutorial_delete_image.style.height = "20px"
+        tutorial_delete_image.style.marginBottom ="0px";
+        tutorial_delete_a.appendChild(tutorial_delete_image);
+        tutorial_delete.appendChild(tutorial_delete_a);
+        tutorial_row.appendChild(tutorial_delete);
+        
+        add_tutorial_butt_row.parentElement.insertBefore(tutorial_row, add_tutorial_butt_row);
+        document.getElementsByName("tutorial_count")[0].value = tutorial_count;
+    }
+    function removeTutorialRow(row_num) {
+        row = document.getElementById("tutorial_row" + row_num);
+        row.parentElement.removeChild(row);
+    }
+</script>
+<form method="post" action="{% url 'addlandingpage' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Service Name:</td>
+            <td colspan="4"><input name="service_name" type="text" style="border:2px; border-bottom-style:dashed;width:800px"/></td>
+        </tr>
+        <tr>
+            <td>Service ID (needed to construct the service URL):</td>
+            <td colspan="4"><input name="service_id" type="text" style="border:2px; border-bottom-style:dashed;width:800px"/></td>
+        </tr>
+        <tr>
+            <td>Left Navigation:</td>
+            <td colspan="4"><textarea name="left_navigation" style="width:800px"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                Note: Please copy the html of the left navigation from the global site, e.g. &lt;ul class="toggled"&gt;...&lt;/ul&gt;
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <span hidden>empty line</span><br />
+            </td>
+        </tr>
+        <tr>
+            <td>Meta Keywords:</td>
+            <td colspan="4"><textarea name="meta_keywords" style="width:800px"></textarea></td>
+        </tr>
+        <tr>
+            <td>Meta Description:</td>
+            <td colspan="4"><textarea name="meta_description" style="width:800px"></textarea></td>
+        </tr>
+        <tr>
+            <td>Subtitle:</td>
+            <td colspan="4"><textarea name="subtitle" style="width:800px"></textarea></td>
+        </tr>
+        <tr>
+            <td>Tutorial message:</td>
+            <td colspan="4"><textarea name="tutorial_message" style="width:800px"></textarea></td>
+        </tr>
+        <tr id="tutorial_row1">
+            <td>Tutorial 1:</td>
+            <td>Title: <input name="tutorial_title1" type="text" style="border:2px; border-bottom-style:dashed;width:200px"></td>
+            <td>Order: <input name="tutorial_order1" type="number" value="0" style="width:100px"></td>
+            <td>Link: <textarea name="tutorial_link1"></textarea></td>
+            <td>
+                <a href="javascript:removeTutorialRow(1)" title="删除">
+                    <img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>
+                </a>
+            </td>
+        </tr>
+        <tr id="tutorial_row2">
+            <td>Tutorial 2:</td>
+            <td>Title: <input name="tutorial_title2" type="text" style="border:2px; border-bottom-style:dashed;width:200px"></td>
+            <td>Order: <input name="tutorial_order2" type="number" value="1" style="width:100px"></td>
+            <td>Link: <textarea name="tutorial_link2"></textarea></td>
+            <td>
+                <a href="javascript:removeTutorialRow(2)" title="删除">
+                    <img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>
+                </a>
+            </td>
+        </tr>
+        <tr id="tutorial_row3">
+            <td>Tutorial 3:</td>
+            <td>Title: <input name="tutorial_title3" type="text" style="border:2px; border-bottom-style:dashed;width:200px"></td>
+            <td>Order: <input name="tutorial_order3" type="number" value="2" style="width:100px"></td>
+            <td>Link: <textarea name="tutorial_link3"></textarea></td>
+            <td>
+                <a href="javascript:removeTutorialRow(3)" title="删除">
+                    <img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>
+                </a>
+            </td>
+        </tr>
+        <tr id="add_tutorial_butt_row">
+            <td>
+                <input type="button" value="Add Tutorial" onclick="addNewTutorial()"/>
+                <input name="tutorial_count" type="hidden" value="3" />
+            </td>
+        </tr>
+        <tr>
+            <td>Update search link:</td>
+            <td colspan="4"><input type="text" name="what_is_new" value="/what-is-new/" style="border:2px; border-bottom-style:dashed;width:400px"/></td>
+        </tr>
+    </table>
+    <input type="submit" value="OK"/>
+</form>
+{% endblock %}
+
+{% block title %}
+    <title>New Landing Page | Azure</title>
+{% endblock %}
