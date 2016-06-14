@@ -11,9 +11,9 @@
 
 {% block content %}
     <script>
-        amp.options.flashSS.swf = "http://amp.azure.net/libs/amp/1.1.1/techs/StrobeMediaPlayback.2.0.swf";
-        amp.options.flashSS.plugin = "http://amp.azure.net/libs/amp/1.1.1/techs/MSAdaptiveStreamingPlugin-osmf2.0.swf";
-        amp.options.silverlightSS.xap = "http://amp.azure.net/libs/amp/1.1.1/techs/SmoothStreamingPlayer.xap";
+        amp.options.flashSS.swf = "//amp.azure.net/libs/amp/1.1.1/techs/StrobeMediaPlayback.2.0.swf";
+        amp.options.flashSS.plugin = "//amp.azure.net/libs/amp/1.1.1/techs/MSAdaptiveStreamingPlugin-osmf2.0.swf";
+        amp.options.silverlightSS.xap = "//amp.azure.net/libs/amp/1.1.1/techs/SmoothStreamingPlayer.xap";
         var navigationJsonStr = '{% autoescape off %}{{navigationJson}}{% endautoescape %}'
 		var activeActicleId = null;
         var pageId = null;
@@ -177,9 +177,14 @@
                         <a href="/video-center/" class="wa-arrowLink">观看更多视频</a>
                     </div>
                     {% endif %}
+                    {%if recentUpdates|length > 0 %}
                     <div class="wa-content wa-content-divided">
                         <h2>
+                            {% ifequal service_name "移动服务"%}
+                            {{service_name}}更新 <a href=""><span class="wa-icon wa-icon-misc-rss"></span></a>
+                            {% else %}
                             {{service_name}}服务更新 <a href=""><span class="wa-icon wa-icon-misc-rss"></span></a>
+                            {% endifequal %}
                         </h2>
                     </div>
                     <div class="wa-content wa-content-3up">
@@ -210,6 +215,7 @@
                     <div class="wa-content">
                         <a href="{{update_search_link}}" class="wa-arrowLink">查看更多服务更新</a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </section>
@@ -221,11 +227,14 @@
         <form method="get" action="{% url 'landingPageEdit' service_id %}">
             <input type="submit" value="编辑" />
         </form>
-        <form method="get" action="{% url 'xmlnavgenerator' service_id %}">
-            <input type="submit" value="生成导航xml" />
+        <form method="get" action="{% url 'jsonnavgenerator' service_id %}">
+            <input type="submit" value="生成导航json" />
         </form>
         <form method="get" action="{% url 'xmlpagegenerator' service_id %}">
             <input type="submit" value="生成页面xml" />
+        </form>
+        <form method="get" action="{% url 'xmlpagegenerator_old' service_id %}">
+            <input type="submit" value="生成旧页面xml" />
         </form>
     </div>
 {% endblock %}

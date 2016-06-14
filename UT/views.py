@@ -115,15 +115,23 @@ def recordSearch(request, labor_id, start_date, end_date, labor_type):
                                    UT_time__lte=end)
     if labor_type != "all":
         query = query.filter(labor_type=int(labor_type))
+    
+    query2 = query.filter(labor_type=7)
     totalminutes = query.aggregate(Sum("duration"))['duration__sum']
+    stackoverflowminutes = query2.aggregate(Sum("duration"))['duration__sum']
+    if stackoverflowminutes==None:
+        stackoverflowminutes = 0
     if totalminutes==None:
         totalminutes = 0
     totalhours = totalminutes/60.0
+    contenthours = (totalminutes - stackoverflowminutes)/60.0
     username = user.username
     if workdays<=0:
         percentage = "N/A"
+        contentpercentage = "N/A"
     else:
         percentage = "{:10.2f}".format(totalhours*100/(workdays*8.0))
+        contentpercentage = "{:10.2f}".format(contenthours*100/(workdays*8.0))
     return render(
         request,
         'UT/reportTable.html',
@@ -134,6 +142,8 @@ def recordSearch(request, labor_id, start_date, end_date, labor_type):
             "username":username,
             "workdays":workdays,
             "percentage":percentage,
+            "contenthours":"{:10.2f}".format(contenthours),
+            "contentpercentage":contentpercentage,
         })
     )
 

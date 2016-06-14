@@ -398,6 +398,7 @@
 
         var newUpdateTemplate = '<div class="wa-serviceUpdate">\n<h4 id="edit_recent_title@@counter@@"><textarea style="width:85%;" placeholder="请输入更新的标题"></textarea>\n<a title="编辑" href="javascript:editField(\'edit_recent_title@@counter@@\', \'text\')">\n<img style="width:20px;height:20px;margin-bottom:0px" src="/static/landingPage/img/edit.png">\n</a>\n<a title="删除" href="javascript:deleteField(\'edit_recent_update@@counter@@\')">\n<img style="width:20px;height:20px;margin-bottom:0px" src="/static/landingPage/img/delete.png">\n</a>\n</h4>\n<p class="article-date" id="edit_recent_date@@counter@@"><textarea style="width:85%;" placeholder="请输入更新的日期， 如：2015年03月31日"></textarea>\n<a title="编辑" href="javascript:editField(\'edit_recent_date@@counter@@\', \'text\')">\n<img style="width:20px;height:20px;margin-bottom:0px" src="/static/landingPage/img/edit.png">\n</a>\n</p>\n<p id="edit_recent_description@@counter@@"><textarea style="width:85%;" placeholder="请输入更新的描述"></textarea>\n<a title="编辑" href="javascript:editField(\'edit_recent_description@@counter@@\', \'text\')">\n<img style="width:20px;height:20px;margin-bottom:0px" src="/static/landingPage/img/edit.png">\n</a>\n</p>\n<p class="article-content" id="edit_recent_detail@@counter@@"><textarea style="width:85%;" placeholder="请输入更新的细节"></textarea>\n<a title="编辑" href="javascript:editField(\'edit_recent_detail@@counter@@\', \'text\')">\n<img style="width:20px;height:20px;margin-bottom:0px" src="/static/landingPage/img/edit.png">\n</a>\n</p>\n<a class="wa-arrowLink wa-arrowLink-blue" style="display:none" href="javascript:void(0);">了解更多</a>\n</div>'
         function addNewUpdate(){
+            textareanotclosed+=4;
             addRecentUpdate = document.getElementById("add_new_update");
             newRecentUpdate = document.createElement("div");
             newRecentUpdate.className = "wa-content wa-content-3up";
@@ -428,6 +429,7 @@
         var tutorialOptionCount = {{options|length}};
         var newTutorialOptionTemplate = '<textarea placeholder="请输入教程标题"></textarea>\n<textarea placeholder="请输入教程链接"></textarea>\n<a href="javascript:deleteField(\'edit_option_@@counter@@\')" title="删除">\n<img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>\n</a>'
         function addTutorialOption(id){
+            textareanotclosed+=2;
                     editSelectList = document.createElement("div");
                     editSelectList.id = "edit_option_"+(tutorialOptionCount+1);
                     editSelectList.innerHTML = newTutorialOptionTemplate.replace("@@counter@@", tutorialOptionCount+1);
@@ -537,7 +539,7 @@
             }
             else if(type == "link"){
                 if(!editting[id]){
-                    textareanotclosed++;
+                    textareanotclosed+=2;
                     container = document.createElement("span");
                     textField1 = document.createElement("textarea");
                     textField1.setAttribute("style","width:85%;")
@@ -558,7 +560,7 @@
                     
                 }
                 else{
-                    textareanotclosed--;
+                    textareanotclosed-=2;
                     editting[id].element.tagName = "a";
                     editting[id].text.nodeValue = editting[id].title.value;
                     editting[id].element.href = editting[id].link.value
@@ -568,22 +570,21 @@
             }
             else if(type == "select_list"){
                 if(!editting[id]){
-                    textareanotclosed++;
                     editSelectList = document.getElementById("editSelectList");
                     editSelectList.style.display = "block";
                     edit_tutorial_select_list = document.getElementById("edit_tutorial_select_list");
+                    textareanotclosed += edit_tutorial_select_list.getElementsByTagName("option").length*2;
                     edit_tutorial_select_list.style.display = "none";
                     editting[id] = true;
                 }
                 else{
-                    textareanotclosed--;
                     editSelectList = document.getElementById("editSelectList");
                     editSelectList.style.display = "none";
                     edit_tutorial_select_list = document.getElementById("edit_tutorial_select_list");
                     edit_tutorial_select_list.style.display = "";
                     options_div = editSelectList.getElementsByTagName("div");
                     select_list = document.getElementById("dropdown-cta");
-
+                    textareanotclosed-=options_div.length*2;
                     while (select_list.firstChild) {
                         select_list.removeChild(select_list.firstChild);
                     }
@@ -605,7 +606,7 @@
             }
             else if(type == "video"){
                 if(!editting[id]){
-                    textareanotclosed++;
+                    textareanotclosed+=6;
                     edit_video = document.getElementById(id);
                     edit_video.style.display = "none";
                     des_edit_video = document.getElementById("des_"+id);
@@ -615,7 +616,7 @@
                     editting[id] = true;
                 }
                 else{
-                    textareanotclosed--;
+                    textareanotclosed-=6;
                     link = document.getElementById(id);
                     thumbnail = link.getElementsByClassName("thumbnail")[0];
                     dateAndDuration = link.getElementsByClassName("date")[0].getElementsByTagName("span");
@@ -636,6 +637,8 @@
         }
         function deleteField(id){
             element = document.getElementById(id);
+            textareaChild = element.getElementsByTagName("textarea");
+            textareanotclosed-=textareaChild.length;
             element.parentElement.removeChild(element);
             if(id.indexOf("edit_video_full")>-1){
                 if(video_count==3){
@@ -685,7 +688,7 @@
         var next_video = {{videoLinks|length }};
         var newVideoTemplate = '<a style="display:none" id="edit_video@@forloop.counter@@" href="" data-control="" data-expanding="false" class="wa-video-thumbnail _storage-video-popup" title="">\n<img src="" alt="" class="thumbnail" />\n<img class="play-icon" src="{{imgLink}}VideoPlay.png" />\n<span class="metadata">\n<span class="date">\n<span></span>\n<span></span>\n</span>\n</span>\n</a>\n<p style="display:none" id="des_edit_video@@forloop.counter@@">\n</p>\n<div id="video_editing_@@forloop.counter@@" style="display:block">\n<div>\n<div>标题</div><textarea style="width:300px;height:20px" id="video_title_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>缩略图标题</div><textarea style="width:300px" id="video_image_title_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>链接</div><textarea style="width:300px" id="video_url_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>描述</div><textarea style="width:300px" id="video_description_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>发布时间</div><textarea style="width:300px" id="video_publishDate_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>时长</div><textarea style="width:300px" id="video_duration_@@forloop.counter@@"></textarea>\n</div>\n</div>\n<a href="javascript:editField(\'edit_video@@forloop.counter@@\', \'video\')" title="编辑">\n<img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>\n</a>\n<a href="javascript:deleteField(\'edit_video_full@@forloop.counter@@\')" title="删除">\n<img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>\n</a>'
         function add_video(){
-            
+            textareanotclosed+=6;
             edit_video_add = document.getElementById("edit_video_add");
             div = document.createElement("div");
             div.className = "wa-spacer";

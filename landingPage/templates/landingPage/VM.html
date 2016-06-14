@@ -1,0 +1,42 @@
+{% extends "landingPage\page.html" %}
+{% block title %}
+    <title>{{service_name}}文档 | Azure</title>
+{% endblock %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{{cssLink}}" />
+    <script type="text/javascript" src="{{jqueryLink}}"></script>
+    <script type="text/javascript" src="{{jsLink}}"></script>
+{% endblock %}
+
+{% block content %}
+
+<section style="padding-top: 50px; padding-bottom: 50px; margin-top: 34px;">
+    <div class="row">
+        <div class="column no-left-nav">
+            <h1 style="margin-bottom: 12px;">虚拟机文档</h1>
+            <h3 style="margin-bottom: 0px;">了解如何设置、迁移和管理虚拟机</h3>
+        </div>
+    </div>
+    <div class="row" style="width: 1205px; margin-top: 50px;">
+        <div class="column large-5" style="width: 39.58%; margin-right: 1.04%; float: left;">
+            <h2 style="margin-bottom: 12px;">Windows 虚拟机</h2>
+            <p style="margin-top: 10px; margin-bottom: 10px;">了解如何在 Azure 上创建并管理 Windows Server、SQL Server、SharePoint 和更多 Windows 虚拟机。</p>
+            <a class="wa-button wa-button-primary wa-button-mini" style="color: rgb(255, 255, 255) !important; padding-right: 30px; background-color: rgb(165, 206, 0);" href="/documentation/services/virtual-machines/windows/" ms.pgarea="content" ms.cmpgrp="body" ms.cmptyp="link" ms.cmpnm="Windows 虚拟机" ms.title="" ms.interactiontype="1">Windows 虚拟机</a>
+        </div>
+        <div class="column large-5 large-offset-2" style="width: 39.58%; margin-left: 17.7%; float: left;">
+            <h2 style="margin-bottom: 12px;">Linux 虚拟机</h2>
+            <p style="margin-top: 10px; margin-bottom: 10px;">了解如何在 Azure 上创建并管理 Ubuntu、Red Hat、SUSE 和更多 Linux 虚拟机。</p>
+            <a class="wa-button wa-button-primary wa-button-mini" style="color: rgb(255, 255, 255) !important; padding-right: 30px; background-color: rgb(165, 206, 0);" href="/documentation/services/virtual-machines/linux/" ms.pgarea="content" ms.cmpgrp="body" ms.cmptyp="link" ms.cmpnm="Linux 虚拟机" ms.title="" ms.interactiontype="1">Linux 虚拟机</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+{% block buttons %}
+<div style="float:right">
+        <form method="get" action="{% url 'xmlpagegenerator' service_id %}">
+            <input type="submit" value="生成页面xml" />
+        </form>
+</div>
+{% endblock %}

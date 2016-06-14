@@ -1,10 +1,10 @@
 FIRST_LEVEL_SPLIT_PATTERN = '(\<li [^\>|^\<]*\> \<a [^\>|^\<]*\>[^\>|^\<]+\<\/a\> \<ul [^\>|^\<]*\> (\<li\> \<a [^\>|^\<]*\>[^\>|^\<]+\<\/a\> \<\/li\> )+\<\/ul\> \<\/li\>)+'
 
-SECOND_LEVEL_REG = r'^\<li [^\>|^\<]*\> \<a [^\>|^\<]*ms\.top="(?P<groupID>[^\>|^\<|^"]*)"[^\>|^\<]*\>(?P<groupName>[^\>|^\<]+)\<\/a\>.+'
+SECOND_LEVEL_REG = r'^\<li [^\>|^\<]*\> \<a [^\>|^\<]*ms\.cmpnm="(?P<groupID>[^\>|^\<|^"]*)"[^\>|^\<]*\>(?P<groupName>[^\>|^\<]+)\<\/a\>.+'
 
 SECOND_LEVEL_SPLIT_PATTERN = '(\<li\> \<a [^\>|^\<]*\>[^\>|^\<]+\<\/a\> \<\/li\>)+'
 
-THIRD_LEVEL_REG = r'^\<li\> \<a [^\>|^\<]*href="(?P<link>[^\>|^\<|^"]*)"[^\>|^\<]*ms\.top="(?P<articleID>[^\>|^\<|^"]*)"[^\>|^\<]*\>(?P<articleTitle>[^\>|^\<]+)\<\/a\> \<\/li\>$'
+THIRD_LEVEL_REG = r'^\<li\> \<a [^\>|^\<]*(href="(?P<link>[^\>|^\<|^"]*)"[^\>|^\<]*ms\.cmpnm="(?P<articleID>[^\>|^\<|^"]*)"|ms\.cmpnm="(?P<articleID2>[^\>|^\<|^"]*)"[^\>|^\<]*href="(?P<link2>[^\>|^\<|^"]*)")[^\>|^\<]*\>(?P<articleTitle>[^\>|^\<]+)\<\/a\> \<\/li\>$'
 
 import re
 import json
@@ -27,11 +27,18 @@ def navigationParse(line, service_name, service_id):
         secondLevelList = re.findall(SECOND_LEVEL_SPLIT_PATTERN, l[0].strip())
         articles = []
         for articleL in secondLevelList:
-            m = re.match(THIRD_LEVEL_REG, articleL)
-            dict = m.groupdict()
+            print(articleL)
+            m2 = re.match(THIRD_LEVEL_REG, articleL)
+            dict = m2.groupdict()
             article = {}
-            article["link"] = dict["link"]
-            article["id"] = dict["articleID"]
+            if dict["link"]:
+                article["link"] = dict["link"]
+            else:
+                article["link"] = dict["link2"]
+            if dict["articleID"]:
+                article["id"] = dict["articleID"]
+            else:
+                article["id"] = dict["articleID2"]
             article["title"] = dict["articleTitle"]
             articles.append(article)
         

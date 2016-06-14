@@ -5,7 +5,7 @@
     {% for service in services %}
     <li>
         <a href="{% url 'landingPage' service.service_id %}">{{service.service_name}}</a>
-        <a href="{% url 'xmlnavgenerator' service.service_id %}" title="生成导航xml代码">
+        <a href="{% url 'jsonnavgenerator' service.service_id %}" title="生成导航json代码">
             <img src="/static/landingPage/img/navigation.png" style="width:20px;height:20px;margin-bottom:0px"/>
         </a>
         <a href="{% url 'xmlpagegenerator' service.service_id %}" title="生成页面xml代码">

@@ -14,10 +14,18 @@ from MooncakePortal.clearCache import expire_cache
 from landingPage.htmlToJsonParser import navigationParse
 
 RELATIVE_PATH = "/static/landingPage/"
-BLOB_PATH = "http://wacndevelop.blob.core.chinacloudapi.cn/tech-content/"
+BLOB_PATH = "//wacndevelop.blob.core.chinacloudapi.cn/tech-content/"
 
 @login_required
 def landingPage(request, service_id):
+    if service_id == "virtual-machines":
+        return render_to_response('landingPage/VM.html', {"service_name":"虚拟机",
+                                                          "service_id":"virtual-machines",
+                                                                     "cssLink":RELATIVE_PATH+"style/frame2.css",
+                                                                     "jqueryLink":RELATIVE_PATH+"script/jquery-2.1.4.js",
+                                                                     "jsLink":RELATIVE_PATH+"script/responsive.js",
+                                                                     "imgLink":RELATIVE_PATH+"img/"})
+
     service = get_object_or_404(Service, service_id=service_id)
     metaData = service.meta_data_set.all()[0]
     landingpage = service.landing_page_set.all()[0]
@@ -91,6 +99,13 @@ def xmlnavgenerator(request, service_id):
     return render_to_response('landingPage/xmlNavGenerator.html',{"xmlContent":navxml.strip()})
 
 @login_required
+def jsonnavgenerator(request, service_id):
+    service = get_object_or_404(Service, service_id=service_id)
+    landingpage = service.landing_page_set.all()[0]
+    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
+    return render_to_response('landingPage/jsonNavGenerator.html',{"jsonContent":navigationJson.strip()})
+
+@login_required
 def xmlpagegenerator(request, service_id):
     service = get_object_or_404(Service, service_id=service_id)
     metaData = service.meta_data_set.all()[0]
@@ -99,7 +114,10 @@ def xmlpagegenerator(request, service_id):
     first_option_title = tutorial_options[0].title
     first_option_link = tutorial_options[0].link
     template = loader.get_template('landingPage/xmlTemplate.xml')
-    frame = loader.get_template('landingPage/frame.html')
+    if service_id == "virtual-machines":
+        frame = loader.get_template('landingPage/VM.html')
+    else:
+        frame = loader.get_template('landingPage/frame2.html')
     for node in frame.template.nodelist:
         for child_node in node.nodelist:
             if type(child_node) == BlockNode:
@@ -111,10 +129,71 @@ def xmlpagegenerator(request, service_id):
     body = Template("")
     header.nodelist = html_header
     body.nodelist = html_body
-    html_header = header.render(Context({"cssLink":"https://wacndevelop.blob.core.chinacloudapi.cn/tech-content/css/landingpageframe.css","jqueryLink":"https://wacndevelop.blob.core.chinacloudapi.cn/tech-content/js/landingpagejquery-2.1.4.js","jsLink":"https://wacndevelop.blob.core.chinacloudapi.cn/tech-content/js/landingpageresponsive.js"}))
-    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
-    html_body = body.render(Context({"service_name":service.service_name,
+    html_header = header.render(Context({"cssLink":"//wacndevelop.blob.core.chinacloudapi.cn/tech-content/css/landingpageframe.css","jqueryLink":"//wacndevelop.blob.core.chinacloudapi.cn/tech-content/js/landingpagejquery-2.1.4.js","jsLink":"//wacndevelop.blob.core.chinacloudapi.cn/tech-content/js/landingpageresponsive.js"}))
+    if service_id == "virtual-machines":
+        html_body = body.render(Context({"service_name":"虚拟机",
+                                "cssLink":BLOB_PATH+"css/landingpageframe.css",
+                                "jqueryLink":BLOB_PATH+"js/landingpagejquery-2.1.4.js",
+                                "jsLink":BLOB_PATH+"js/landingpageresponsive.js",
+                                "imgLink":BLOB_PATH+"media/"}))
+    else:
+        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+        html_body = body.render(Context({"service_name":service.service_name,
                                 "subtitle":landingpage.subtitle, 
+                                "service_id":service.service_id,
+                                "ms_service":landingpage.ms_service,
+                                "tutorial_message":landingpage.tutorial_message,
+                                "update_search_link":landingpage.update_search_link,
+                                "navigationJson":navigationJson,
+                                "first_option_title":first_option_title,
+                                "first_option_link":first_option_link,
+                                "options":tutorial_options,
+                                "videoLinks":landingpage.video_link_set.all().order_by("order"),
+                                "recentUpdates":landingpage.recent_update_set.all().order_by("order"),
+                                "cssLink":BLOB_PATH+"css/landingpageframe.css",
+                                "jqueryLink":BLOB_PATH+"js/landingpagejquery-2.1.4.js",
+                                "jsLink":BLOB_PATH+"js/landingpageresponsive.js",
+                                "imgLink":BLOB_PATH+"media/"}))
+    
+    return render_to_response('landingPage/xmlPageGenerator.html',{"xmlContent":template.render({"html_header":html_header, "html_body":html_body, "html_title":service.service_name, "metaKeywords":metaData.meta_keywords, "metaDescription":metaData.meta_description})})
+
+@login_required
+def xmlpagegenerator_old(request, service_id):
+    service = get_object_or_404(Service, service_id=service_id)
+    metaData = service.meta_data_set.all()[0]
+    landingpage = service.landing_page_set.all()[0]
+    tutorial_options = landingpage.tutorial_option_set.all().order_by("order")
+    first_option_title = tutorial_options[0].title
+    first_option_link = tutorial_options[0].link
+    template = loader.get_template('landingPage/xmlTemplate_old.xml')
+    if service_id == "virtual-machines":
+        frame = loader.get_template('landingPage/VM.html')
+    else:
+        frame = loader.get_template('landingPage/frame.html')
+    for node in frame.template.nodelist:
+        for child_node in node.nodelist:
+            if type(child_node) == BlockNode:
+                if child_node.name == 'header':
+                    html_header = child_node
+                elif child_node.name == 'content':
+                    html_body = child_node
+    header = Template("")
+    body = Template("")
+    header.nodelist = html_header
+    body.nodelist = html_body
+    html_header = header.render(Context({"cssLink":"//wacndevelop.blob.core.chinacloudapi.cn/tech-content/css/landingpageframe.css","jqueryLink":"//wacndevelop.blob.core.chinacloudapi.cn/tech-content/js/landingpagejquery-2.1.4.js","jsLink":"//wacndevelop.blob.core.chinacloudapi.cn/tech-content/js/landingpageresponsive.js"}))
+    if service_id == "virtual-machines":
+        html_body = body.render(Context({"service_name":"虚拟机",
+                                "cssLink":BLOB_PATH+"css/landingpageframe.css",
+                                "jqueryLink":BLOB_PATH+"js/landingpagejquery-2.1.4.js",
+                                "jsLink":BLOB_PATH+"js/landingpageresponsive.js",
+                                "imgLink":BLOB_PATH+"media/"}))
+    else:
+        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+        html_body = body.render(Context({"service_name":service.service_name,
+                                "subtitle":landingpage.subtitle, 
+                                "service_id":service.service_id,
+                                "ms_service":landingpage.ms_service,
                                 "tutorial_message":landingpage.tutorial_message,
                                 "update_search_link":landingpage.update_search_link,
                                 "navigationJson":navigationJson,
@@ -158,6 +237,13 @@ def updateEncoding(request):
 def submitpage(request, service_id):
     sending = json.loads(request.POST["wholeJson"])
     navigationJson = json.dumps(sending["navigation"]).encode('utf-8').decode("unicode-escape")
+    nav = json.loads(navigationJson)
+    for i in range(len(nav["navigation"])):
+            nav["navigation"][i]["id"] = "left_nav_first_level_"+service_id+"_"+str(i)
+            for j in range(len(nav["navigation"][i]["articles"])):
+                nav["navigation"][i]["articles"][j]["id"] = "left_nav_second_level_"+service_id+"_"+str(i)+"_"+str(j)
+    navigationJson = json.dumps(nav).encode('utf-8').decode("unicode-escape")
+
     content = sending["content"]
     recentUpdates = sending["recentUpdate"]
     meta = sending["meta"]
@@ -254,6 +340,7 @@ def submitpage(request, service_id):
     expire_cache('landingPage.views.landingPage', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     expire_cache('landingPage.views.landingPageEdit', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     expire_cache('landingPage.views.xmlnavgenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
+    expire_cache('landingPage.views.jsonnavgenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     expire_cache('landingPage.views.xmlpagegenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     return redirect("/landingpage/"+service_id)
 
@@ -290,7 +377,7 @@ def addlandingpage(request):
     service = Service(service_name=service_name, service_id=service_id)
     service.save()
     navigationJson = navigationParse(left_navigation, service_name, service_id)
-    landingpage = Landing_page(service=service, navigationJson=navigationJson, subtitle=subtitle, tutorial_message=tutorial_message, update_search_link=what_is_new)
+    landingpage = Landing_page(service=service, ms_service=service_id, navigationJson=navigationJson, subtitle=subtitle, tutorial_message=tutorial_message, update_search_link=what_is_new)
     landingpage.save()
     meta_data = Meta_data(service=service, meta_keywords=meta_keywords, meta_description=meta_description)
     meta_data.save()

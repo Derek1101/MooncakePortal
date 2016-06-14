@@ -73,6 +73,9 @@
     <Compile Include="landingPage\migrations\0007_update_mysql_page.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="landingPage\migrations\0008_auto_20151207_1348.py" />
+    <Compile Include="landingPage\migrations\0010_update_ms_service.py" />
+    <Compile Include="landingPage\migrations\0009_landing_page_ms_service.py" />
     <Compile Include="landingPage\migrations\__init__.py" />
     <Compile Include="landingPage\models.py" />
     <Compile Include="landingPage\tests.py" />
@@ -105,8 +108,19 @@
     <Compile Include="reports\tests.py" />
     <Compile Include="reports\views.py" />
     <Compile Include="reports\__init__.py" />
+    <Compile Include="SOTracker\admin.py" />
+    <Compile Include="SOTracker\apps.py" />
+    <Compile Include="SOTracker\migrations\__init__.py" />
+    <Compile Include="SOTracker\models.py" />
+    <Compile Include="SOTracker\tests.py" />
+    <Compile Include="SOTracker\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SOTracker\views.py" />
+    <Compile Include="SOTracker\__init__.py" />
     <Compile Include="UT\admin.py" />
     <Compile Include="UT\migrations\0001_initial.py" />
+    <Compile Include="landingPage\migrations\0008_update_left_nav_id.py" />
     <Compile Include="UT\migrations\0010_remove_duplicate_articles.py" />
     <Compile Include="UT\migrations\0009_add_relative_path.py" />
     <Compile Include="UT\migrations\0003_add_2_services.py" />
@@ -179,6 +193,10 @@
     <Folder Include="QA\migrations\" />
     <Folder Include="reports\" />
     <Folder Include="reports\migrations\" />
+    <Folder Include="SOTracker\" />
+    <Folder Include="SOTracker\migrations\" />
+    <Folder Include="SOTracker\templates\" />
+    <Folder Include="SOTracker\templates\SOTracker\" />
     <Folder Include="UT\" />
     <Folder Include="UT\migrations\" />
     <Folder Include="UT\static\" />
@@ -752,6 +770,7 @@
     <Content Include="landingPage\static\landingPage\虚拟机_files\newlandingpagecorecss.css" />
     <Content Include="landingPage\static\landingPage\虚拟机_files\new_21x18.png" />
     <Content Include="landingPage\static\landingPage\虚拟机_files\VideoPlay.svg" />
+    <Content Include="landingPage\templates\landingPage\frame2.html" />
     <Content Include="landingPage\templates\landingPage\frame.html" />
     <Content Include="landingPage\templates\landingPage\frame_edit.html" />
     <Content Include="landingPage\templates\landingPage\index.html" />
@@ -763,6 +782,7 @@
     <Content Include="landingPage\templates\landingPage\xmlNavGenerator.html" />
     <Content Include="landingPage\templates\landingPage\newlandingpage.html" />
     <Content Include="landingPage\templates\landingPage\xmlPageGenerator.html" />
+    <Content Include="landingPage\templates\landingPage\xmlTemplate_old.xml" />
     <Content Include="landingPage\templates\landingPage\xmlTemplate.xml" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
@@ -794,6 +814,7 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="SOTracker\templates\SOTracker\index.html" />
     <Content Include="UT\static\UT\img\left.png" />
     <Content Include="UT\static\UT\img\right.png" />
     <Content Include="UT\templates\UT\selectArticles.html" />

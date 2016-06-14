@@ -1,0 +1,74 @@
+{% extends "landingPage\page.html" %}
+{% block title %}
+    <title>{{service_name}}文档 | Azure</title>
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <tags ms.service="{{ms_service}}" ms.date="09/30/2015" wacn.date="11/27/2015"></tags>
+<!-- Begin : LandingPage Title -->
+<div class="content-title">
+    <h1>{{service_name}}</h1>
+    <p>{{subtitle}}</p>
+    <p>{{tutorial_message}}</p>
+</div>
+<!-- End : LandingPage Title -->
+<!-- Begin : LandingPage LinkGroup -->
+<div class="link-group">
+    <ul>
+        {% for option in options %}
+        <li>
+            <a href="{{option.link}}" id="landing_page_{{service_id}}_tutorial_{{forloop.counter}}">{{option.title}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<!-- End : LandingPage LinkGroup -->
+<!-- Begin : AzureMediaPlayer -->
+{%if videoLinks|length > 0 %}
+<div class="video-content">
+    <h1>{{service_name}}视频</h1>
+    <ul class="list-video">
+        {% for videoLink in videoLinks%}
+        <li>
+            <a href="{{videoLink.video_url}}" id="landing_page_{{service_id}}_video_{{forloop.counter}}" class="video-content" data-media="azmedia" data-name="azuremediaplayer1">
+                <img src="{{imgLink}}{{videoLink.image_title}}.png" alt="{{videoLink.title}}" />
+                <span class="video-play"><i></i></span>
+                <div class="video-data">{{videoLink.publish_time}}<span>{{videoLink.duration}}</span></div>
+            </a>
+            <div class="video-tips">( 建议在 wifi 环境下观看 )</div>
+            <p>{{videoLink.description}}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <p><a href="/video-center/" id="landing_page_{{service_id}}_more_video" class="single-link">观看更多视频<i class="icon icon-arrow-right-thin"></i></a></p>
+</div>
+{% endif %}
+<!-- End : AzureMediaPlayer -->
+<!-- Begin : LandingPage Text Content -->
+{%if recentUpdates|length > 0 %}
+<div class="content-txt">
+    {% ifequal service_name "移动服务"%}
+    <h1>{{service_name}}更新</h1>
+    {% else %}
+    <h1>{{service_name}}服务更新</h1>
+    {% endifequal %}
+    {% for recent in recentUpdates %}
+    <section>
+        <h2>{{recent.title}}</h2>
+        <div class="tags-date">
+            <div class="wacn-date">{{recent.date}}</div>
+        </div>
+        <p>{{recent.description}}</p>
+        <p>{{recent.detail}}</p>
+    </section>
+    {% endfor %}
+    <p><a href="{{update_search_link}}" id="landing_page_{{service_id}}_more_update" class="single-link">查看更多服务更新<i class="icon icon-arrow-right-thin"></i></a></p>
+</div>
+{% endif %}
+<!-- End : LandingPage Text Content -->
+{% endblock %}
+{% block buttons %}
+{% endblock %}

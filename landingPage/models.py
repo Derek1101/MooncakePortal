@@ -27,6 +27,7 @@ class Meta_data(models.Model):
 
 class Landing_page(models.Model):
     service = models.ForeignKey(Service)
+    ms_service = models.CharField(max_length=255, default="1")
     navigationJson = models.TextField()
     subtitle = models.CharField(max_length=255)
     tutorial_message = models.TextField()

@@ -11,6 +11,8 @@ TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = (
     'localhost',
+    '10.168.174.195',
+    'test.com',
 )
 
 ADMINS = (
@@ -178,6 +180,7 @@ INSTALLED_APPS = (
     'landingPage',
     'customizationTool',
     "UT",
+    "SOTracker",
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
