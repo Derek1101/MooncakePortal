@@ -9,14 +9,12 @@ commands_order
 _sort_commands
 list
 SearchCommand
-unzip
 ListCommand
 ShowCommand
 download
 FreezeCommand
 show
 CompletionCommand
-zip
 UninstallCommand
 install
 search

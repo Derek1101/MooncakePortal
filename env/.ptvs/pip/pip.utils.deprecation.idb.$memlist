@@ -9,4 +9,3 @@ RemovedInPip9Warning
 logging
 Python26DeprecationWarning
 _showwarning
-RemovedInPip7Warning

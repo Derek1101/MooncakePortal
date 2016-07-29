@@ -8,42 +8,40 @@ THIRD_LEVEL_REG = r'^\<li\> \<a [^\>|^\<]*(href="(?P<link>[^\>|^\<|^"]*)"[^\>|^\
 
 import re
 import json
+import bs4
 
 def navigationParse(line, service_name, service_id):
     navigationJson = {}
     navigationJson["service"]= service_name;
-
-    firstLevelList = re.findall(FIRST_LEVEL_SPLIT_PATTERN, line)
-    navigationJson["id"]= service_id
-
+    navigationJson["id"]= "left_nav_top_level_"+service_id
     navigation = []
-    for l in firstLevelList:
-        m = re.match(SECOND_LEVEL_REG, l[0].strip())
-        dict = m.groupdict()
+    soup = bs4.BeautifulSoup(line, "html.parser")
+    soup.at
+    group_i = 0
+    group_children = list(list(soup.children)[0].children)
+    for child in group_children[:len(group_children)-2]:
+        if str(child) == ' ':
+            continue
         group = {}
-        group["group"] = dict["groupName"]
-        group["id"] = dict["groupID"]
-
-        secondLevelList = re.findall(SECOND_LEVEL_SPLIT_PATTERN, l[0].strip())
+        li = list(child.children)
+        a = li[1]
+        group["group"]=a.contents[0]
+        group["id"] = "left_nav_first_level_"+service_id+"_"+str(group_i)
+        ul = li[3]
         articles = []
-        for articleL in secondLevelList:
-            print(articleL)
-            m2 = re.match(THIRD_LEVEL_REG, articleL)
-            dict = m2.groupdict()
+        article_i = 0
+        for gantchild in ul.children:
+            if str(gantchild) == ' ':
+                continue
             article = {}
-            if dict["link"]:
-                article["link"] = dict["link"]
-            else:
-                article["link"] = dict["link2"]
-            if dict["articleID"]:
-                article["id"] = dict["articleID"]
-            else:
-                article["id"] = dict["articleID2"]
-            article["title"] = dict["articleTitle"]
+            article_a = list(gantchild.children)[1]
+            article["title"] = article_a.contents[0]
+            article["id"] = "left_nav_second_level_"+service_id+"_"+str(group_i)+"_"+str(article_i)
+            article["link"] = article_a.attrs["href"]
             articles.append(article)
-        
-        group["articles"] = articles
+            article_i+=1
+        group_i+=1
+        group["articles"]=articles
         navigation.append(group)
-
     navigationJson["navigation"] = navigation
     return json.dumps(navigationJson).encode('utf-8').decode("unicode-escape")

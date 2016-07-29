@@ -3,7 +3,6 @@ colorama
 requests
 html5lib
 pkg_resources
-certifi
 os
 ipaddress
 six

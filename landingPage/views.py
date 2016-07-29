@@ -12,6 +12,7 @@ from landingPage.xmlModel import parseJsonToXml
 from django.views.decorators.cache import never_cache
 from MooncakePortal.clearCache import expire_cache
 from landingPage.htmlToJsonParser import navigationParse
+from translate import Translator
 
 RELATIVE_PATH = "/static/landingPage/"
 BLOB_PATH = "//wacndevelop.blob.core.chinacloudapi.cn/tech-content/"
@@ -34,6 +35,12 @@ def landingPage(request, service_id):
     first_option_link = tutorial_options[0].link
     template_file = 'landingPage/frame.html'
     navigationJson = re.sub(r"(\"https?://azure.microsoft.com(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"https://www.windowsazure.cn/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+    #navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", navigationJson)
+    #navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", navigationJson)
+    recentUpdates = list(landingpage.recent_update_set.all().order_by("order"))
+    #for i in range(len(recentUpdates)):
+    #    recentUpdates[i].detail = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", recentUpdates[i].detail)
+    #    recentUpdates[i].detail = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", recentUpdates[i].detail)
     return render_to_response(template_file, {"service_name":service.service_name,
                                               "service_id":service.service_id,
                                                                      "subtitle":landingpage.subtitle, 
@@ -44,7 +51,7 @@ def landingPage(request, service_id):
                                                                      "first_option_link":first_option_link,
                                                                      "options":tutorial_options,
                                                                      "videoLinks":landingpage.video_link_set.all().order_by("order")[:3],
-                                                                     "recentUpdates":landingpage.recent_update_set.all().order_by("order"),
+                                                                     "recentUpdates":recentUpdates,
                                                                      "cssLink":RELATIVE_PATH+"style/frame2.css",
                                                                      "jqueryLink":RELATIVE_PATH+"script/jquery-2.1.4.js",
                                                                      "jsLink":RELATIVE_PATH+"script/responsive.js",
@@ -64,6 +71,12 @@ def landingPageEdit(request, service_id):
     first_option_link = tutorial_options[0].link
     template_file = 'landingPage/frame_edit.html'
     navigationJson = re.sub(r"(\"https?://azure.microsoft.com(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"https://www.windowsazure.cn/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+    #navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", navigationJson)
+    #navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", navigationJson)
+    recentUpdates = list(landingpage.recent_update_set.all().order_by("order"))
+    #for i in range(len(recentUpdates)):
+    #    recentUpdates[i].detail = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", recentUpdates[i].detail)
+    #    recentUpdates[i].detail = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", recentUpdates[i].detail)
     return render_to_response(template_file, {"service_name":service.service_name,
                                               "service_id":service.service_id,
                                                                      "subtitle":landingpage.subtitle, 
@@ -74,7 +87,7 @@ def landingPageEdit(request, service_id):
                                                                      "first_option_link":first_option_link,
                                                                      "options":tutorial_options,
                                                                      "videoLinks":landingpage.video_link_set.all().order_by("order")[:3],
-                                                                     "recentUpdates":landingpage.recent_update_set.all().order_by("order"),
+                                                                     "recentUpdates":recentUpdates,
                                                                      "cssLink":RELATIVE_PATH+"style/frame2.css",
                                                                      "jqueryLink":RELATIVE_PATH+"script/jquery-2.1.4.js",
                                                                      "jsLink":RELATIVE_PATH+"script/responsive.js",
@@ -94,7 +107,7 @@ def index(request):
 def xmlnavgenerator(request, service_id):
     service = get_object_or_404(Service, service_id=service_id)
     landingpage = service.landing_page_set.all()[0]
-    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
+    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn|127.0.0.1:8000|10.168.174.195:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
     navxml = parseJsonToXml(navigationJson)
     return render_to_response('landingPage/xmlNavGenerator.html',{"xmlContent":navxml.strip()})
 
@@ -102,7 +115,9 @@ def xmlnavgenerator(request, service_id):
 def jsonnavgenerator(request, service_id):
     service = get_object_or_404(Service, service_id=service_id)
     landingpage = service.landing_page_set.all()[0]
-    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
+    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn|127.0.0.1:8000|10.168.174.195:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
+    navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", navigationJson)
+    navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", navigationJson)
     return render_to_response('landingPage/jsonNavGenerator.html',{"jsonContent":navigationJson.strip()})
 
 @login_required
@@ -137,7 +152,7 @@ def xmlpagegenerator(request, service_id):
                                 "jsLink":BLOB_PATH+"js/landingpageresponsive.js",
                                 "imgLink":BLOB_PATH+"media/"}))
     else:
-        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn|127.0.0.1:8000|10.168.174.195:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
         html_body = body.render(Context({"service_name":service.service_name,
                                 "subtitle":landingpage.subtitle, 
                                 "service_id":service.service_id,
@@ -155,7 +170,11 @@ def xmlpagegenerator(request, service_id):
                                 "jsLink":BLOB_PATH+"js/landingpageresponsive.js",
                                 "imgLink":BLOB_PATH+"media/"}))
     
-    return render_to_response('landingPage/xmlPageGenerator.html',{"xmlContent":template.render({"html_header":html_header, "html_body":html_body, "html_title":service.service_name, "metaKeywords":metaData.meta_keywords, "metaDescription":metaData.meta_description})})
+    xml_text = template.render({"html_header":html_header, "html_body":html_body, "html_title":service.service_name, "metaKeywords":metaData.meta_keywords, "metaDescription":metaData.meta_description})
+    #xml_text = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", xml_text)
+    #xml_text = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", xml_text)
+    #print(html_body)
+    return render_to_response('landingPage/xmlPageGenerator.html',{"xmlContent":xml_text})
 
 @login_required
 def xmlpagegenerator_old(request, service_id):
@@ -237,11 +256,38 @@ def updateEncoding(request):
 def submitpage(request, service_id):
     sending = json.loads(request.POST["wholeJson"])
     navigationJson = json.dumps(sending["navigation"]).encode('utf-8').decode("unicode-escape")
+    print(navigationJson)
     nav = json.loads(navigationJson)
+    translator = Translator(to_lang="en",from_lang="zh")
     for i in range(len(nav["navigation"])):
-            nav["navigation"][i]["id"] = "left_nav_first_level_"+service_id+"_"+str(i)
-            for j in range(len(nav["navigation"][i]["articles"])):
-                nav["navigation"][i]["articles"][j]["id"] = "left_nav_second_level_"+service_id+"_"+str(i)+"_"+str(j)
+        group_name = None
+        if nav["navigation"][i]["id"][:9] == "new_group":
+            try:
+                group_name = re.sub("[^a-z|A-Z|0-9]+","-",translator.translate(nav["navigation"][i]["group"]))
+            except:
+                group_name = nav["navigation"][i]["id"][:9]
+            print(group_name)
+            nav["navigation"][i]["id"] = "left_nav_first_level_"+service_id+"_"+group_name
+        for j in range(len(nav["navigation"][i]["articles"])):
+            if nav["navigation"][i]["articles"][j]["id"][:7] == "newLink":
+                if group_name == None:
+                    group_name = nav["navigation"][i]["id"].split("_")[5]
+                    try:
+                        int(group_name)
+                        group_name = re.sub("[^a-z|A-Z|0-9]+","-",translator.translate(nav["navigation"][i]["group"]))
+                    except:
+                        print("")
+                try:
+                    article_name = re.sub("[^a-z|A-Z|0-9]+","-",translator.translate(nav["navigation"][i]["articles"][j]["title"]))
+                except:
+                    article_name = nav["navigation"][i]["articles"][j]["id"]
+                print(group_name)
+                print(article_name)
+                nav["navigation"][i]["articles"][j]["id"] = "left_nav_second_level_"+service_id+"_"+group_name+"_"+article_name
+    #for i in range(len(nav["navigation"])):
+    #        nav["navigation"][i]["id"] = "left_nav_first_level_"+service_id+"_"+str(i)
+    #        for j in range(len(nav["navigation"][i]["articles"])):
+    #            nav["navigation"][i]["articles"][j]["id"] = "left_nav_second_level_"+service_id+"_"+str(i)+"_"+str(j)
     navigationJson = json.dumps(nav).encode('utf-8').decode("unicode-escape")
 
     content = sending["content"]
