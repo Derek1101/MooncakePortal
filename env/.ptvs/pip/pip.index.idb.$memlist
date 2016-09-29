@@ -1,4 +1,4 @@
-supported_tags
+RemovedInPip10Warning
 SECURE_ORIGINS
 cgi
 urllib_request
@@ -7,7 +7,7 @@ SSLError
 ARCHIVE_EXTENSIONS
 RemovedInPip9Warning
 logger
-HAS_TLS
+url_to_path
 namedtuple
 HTMLPage
 __all__
@@ -24,14 +24,15 @@ cached_property
 DistributionNotFound
 canonicalize_name
 mimetypes
+parse_version
 re
-splitext
+supported_tags
 itertools
 FormatControl
 path_to_url
 Link
 warnings
-url_to_path
+HAS_TLS
 sys
 fmt_ctl_formats
 fmt_ctl_no_use_wheel
@@ -49,4 +50,4 @@ normalize_path
 ipaddress
 requests
 html5lib
-parse_version
+splitext

@@ -1,6 +1,5 @@
-HTTPError
-batchclient
 HTTPResponse
-requestsclient
-httpclient
+batchclient
 HTTPRequest
+HTTPError
+httpclient

@@ -1,3 +1,4 @@
+sys
 InstallRequirement
 get_file_content
 process_line
@@ -8,7 +9,7 @@ join_lines
 SUPPORTED_OPTIONS_REQ_DEST
 COMMENT_RE
 optparse
-RequirementsFileParseError
+pip
 filterfalse
 SUPPORTED_OPTIONS
 urllib_parse
@@ -22,7 +23,7 @@ warnings
 break_args_options
 preprocess
 SUPPORTED_OPTIONS_REQ
-pip
 SCHEME_RE
+RequirementsFileParseError
 shlex
 absolute_import

@@ -1,8 +1,11 @@
+xml_unescape
+QueueMessageFormat
+b64encode
+_validate_message_type_bytes
 Queue
-_list_of
-EnumResultsBase
-QueueEnumResults
+_validate_message_type_text
 QueueMessage
-WindowsAzureData
-QueueMessagesList
-QueueSharedAccessPermissions
+_ERROR_MESSAGE_NOT_BASE64
+xml_escape
+QueuePermissions
+b64decode

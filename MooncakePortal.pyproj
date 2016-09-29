@@ -4,9 +4,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>MooncakePortal</Name>
     <RootNamespace>MooncakePortal</RootNamespace>
-    <InterpreterId>{b67c672c-f273-4db0-b5e2-26de33681cd1}</InterpreterId>
+    <InterpreterId>{11fcb356-48b5-4e4c-abd4-e6a40c099e7d}</InterpreterId>
     <InterpreterVersion>3.4</InterpreterVersion>
-    <NameOfLastUsedPublishProfile>wacnmooncakeportal-stage - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>acncontentteam - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -51,6 +51,9 @@
     </Compile>
     <Compile Include="customizationTool\__init__.py" />
     <Compile Include="landingPage\admin.py" />
+    <Compile Include="landingPage\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="landingPage\htmlToJsonParser.py">
       <SubType>Code</SubType>
     </Compile>
@@ -206,6 +209,8 @@
     <Folder Include="UT\templates\UT\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="acncontentteam - Web Deploy.pubxml" />
+    <None Include="acncontentteam - FTP.pubxml" />
     <Content Include="customizationTool\static\customizationTool\input\keywordException\app-service-web.txt" />
     <Content Include="customizationTool\static\customizationTool\input\setting.json" />
     <Content Include="customizationTool\static\customizationTool\input\setting2.json" />
@@ -778,6 +783,7 @@
     <Content Include="landingPage\templates\landingPage\page.html" />
     <Content Include="landingPage\templates\landingPage\selectListTemplate.html" />
     <Content Include="landingPage\templates\landingPage\updateEditTemplate.html" />
+    <Content Include="landingPage\templates\landingPage\uploadImage.html" />
     <Content Include="landingPage\templates\landingPage\videoEditTemplate.html" />
     <Content Include="landingPage\templates\landingPage\xmlNavGenerator.html" />
     <Content Include="landingPage\templates\landingPage\newlandingpage.html" />
@@ -835,7 +841,7 @@
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
-      <Id>{b67c672c-f273-4db0-b5e2-26de33681cd1}</Id>
+      <Id>{11fcb356-48b5-4e4c-abd4-e6a40c099e7d}</Id>
       <BaseInterpreter>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</BaseInterpreter>
       <Version>3.4</Version>
       <Description>env (Python 3.4)</Description>

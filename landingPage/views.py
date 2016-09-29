@@ -1,6 +1,6 @@
 ﻿# Create your views here.
 from django.http import Http404, HttpResponse
-from django.shortcuts import render_to_response, get_object_or_404, redirect
+from django.shortcuts import render_to_response, get_object_or_404, redirect, RequestContext
 from landingPage.models import Landing_page, Navigation, Navigation_article, Navigation_group, Recent_update, Service, Tutorial_option, Video_link, Meta_data
 from django.template import loader, Template, Context
 from django.template.loader_tags import BlockNode, TextNode
@@ -13,9 +13,28 @@ from django.views.decorators.cache import never_cache
 from MooncakePortal.clearCache import expire_cache
 from landingPage.htmlToJsonParser import navigationParse
 from translate import Translator
+from landingPage.forms import PNGForm
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+import os
+from azure.storage.blob.blockblobservice import BlockBlobService
+from os import environ
+from azure.storage.blob import ContentSettings
+
+default_storage_account = environ.get("STORAGE_ACCOUNT")
+if default_storage_account == None:
+    default_storage_account = "devstoreaccount1"
+    default_storage_key = ""
+    BLOB_URL = "//127.0.0.1:10000/devstoreaccount1/"
+    blob_service = BlockBlobService(connection_string="UseDevelopmentStorage=true")
+else:
+    default_storage_key = environ.get("STORAGE_KEY")
+    BLOB_URL = "//acncontentteam.blob.core.windows.net/"
+    blob_service = BlockBlobService(account_name=default_storage_account, account_key=default_storage_key)
 
 RELATIVE_PATH = "/static/landingPage/"
-BLOB_PATH = "//wacndevelop.blob.core.chinacloudapi.cn/tech-content/"
+BLOB_PATH = "//resource.cdn.azure.cn/tech-content/"
+
 
 @login_required
 def landingPage(request, service_id):
@@ -55,6 +74,7 @@ def landingPage(request, service_id):
                                                                      "cssLink":RELATIVE_PATH+"style/frame2.css",
                                                                      "jqueryLink":RELATIVE_PATH+"script/jquery-2.1.4.js",
                                                                      "jsLink":RELATIVE_PATH+"script/responsive.js",
+                                                                     "imgLink2":BLOB_URL+"img/",
                                                                      "imgLink":RELATIVE_PATH+"img/",
                                                                      "azure":True,
                                                                      "metaKeywords":metaData.meta_keywords,
@@ -77,8 +97,12 @@ def landingPageEdit(request, service_id):
     #for i in range(len(recentUpdates)):
     #    recentUpdates[i].detail = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", recentUpdates[i].detail)
     #    recentUpdates[i].detail = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", recentUpdates[i].detail)
+    images = [f.name for f in blob_service.list_blobs('img')]
+    form = PNGForm()
     return render_to_response(template_file, {"service_name":service.service_name,
                                               "service_id":service.service_id,
+                                              'images':images,
+                                              'form': form,
                                                                      "subtitle":landingpage.subtitle, 
                                                                      "tutorial_message":landingpage.tutorial_message,
                                                                      "update_search_link":landingpage.update_search_link,
@@ -91,6 +115,7 @@ def landingPageEdit(request, service_id):
                                                                      "cssLink":RELATIVE_PATH+"style/frame2.css",
                                                                      "jqueryLink":RELATIVE_PATH+"script/jquery-2.1.4.js",
                                                                      "jsLink":RELATIVE_PATH+"script/responsive.js",
+                                                                     "imgLink2":BLOB_URL+"img/",
                                                                      "imgLink":RELATIVE_PATH+"img/",
                                                                      "azure":True,
                                                                      "metaKeywords":metaData.meta_keywords,
@@ -107,7 +132,7 @@ def index(request):
 def xmlnavgenerator(request, service_id):
     service = get_object_or_404(Service, service_id=service_id)
     landingpage = service.landing_page_set.all()[0]
-    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn|127.0.0.1:8000|10.168.174.195:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
+    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8000|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
     navxml = parseJsonToXml(navigationJson)
     return render_to_response('landingPage/xmlNavGenerator.html',{"xmlContent":navxml.strip()})
 
@@ -115,7 +140,7 @@ def xmlnavgenerator(request, service_id):
 def jsonnavgenerator(request, service_id):
     service = get_object_or_404(Service, service_id=service_id)
     landingpage = service.landing_page_set.all()[0]
-    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn|127.0.0.1:8000|10.168.174.195:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
+    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8000|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
     navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", navigationJson)
     navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", navigationJson)
     return render_to_response('landingPage/jsonNavGenerator.html',{"jsonContent":navigationJson.strip()})
@@ -152,7 +177,7 @@ def xmlpagegenerator(request, service_id):
                                 "jsLink":BLOB_PATH+"js/landingpageresponsive.js",
                                 "imgLink":BLOB_PATH+"media/"}))
     else:
-        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn|127.0.0.1:8000|10.168.174.195:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8000|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
         html_body = body.render(Context({"service_name":service.service_name,
                                 "subtitle":landingpage.subtitle, 
                                 "service_id":service.service_id,
@@ -208,7 +233,7 @@ def xmlpagegenerator_old(request, service_id):
                                 "jsLink":BLOB_PATH+"js/landingpageresponsive.js",
                                 "imgLink":BLOB_PATH+"media/"}))
     else:
-        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|wacnmooncakeportal.chinacloudsites.cn)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8000|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
         html_body = body.render(Context({"service_name":service.service_name,
                                 "subtitle":landingpage.subtitle, 
                                 "service_id":service.service_id,
@@ -256,7 +281,7 @@ def updateEncoding(request):
 def submitpage(request, service_id):
     sending = json.loads(request.POST["wholeJson"])
     navigationJson = json.dumps(sending["navigation"]).encode('utf-8').decode("unicode-escape")
-    print(navigationJson)
+    #print(navigationJson)
     nav = json.loads(navigationJson)
     translator = Translator(to_lang="en",from_lang="zh")
     for i in range(len(nav["navigation"])):
@@ -266,7 +291,7 @@ def submitpage(request, service_id):
                 group_name = re.sub("[^a-z|A-Z|0-9]+","-",translator.translate(nav["navigation"][i]["group"]))
             except:
                 group_name = nav["navigation"][i]["id"][:9]
-            print(group_name)
+            #print(group_name)
             nav["navigation"][i]["id"] = "left_nav_first_level_"+service_id+"_"+group_name
         for j in range(len(nav["navigation"][i]["articles"])):
             if nav["navigation"][i]["articles"][j]["id"][:7] == "newLink":
@@ -281,8 +306,8 @@ def submitpage(request, service_id):
                     article_name = re.sub("[^a-z|A-Z|0-9]+","-",translator.translate(nav["navigation"][i]["articles"][j]["title"]))
                 except:
                     article_name = nav["navigation"][i]["articles"][j]["id"]
-                print(group_name)
-                print(article_name)
+                #print(group_name)
+                #print(article_name)
                 nav["navigation"][i]["articles"][j]["id"] = "left_nav_second_level_"+service_id+"_"+group_name+"_"+article_name
     #for i in range(len(nav["navigation"])):
     #        nav["navigation"][i]["id"] = "left_nav_first_level_"+service_id+"_"+str(i)
@@ -427,8 +452,45 @@ def addlandingpage(request):
     landingpage.save()
     meta_data = Meta_data(service=service, meta_keywords=meta_keywords, meta_description=meta_description)
     meta_data.save()
-    print(titles)
+    #print(titles)
     for i in range(0, len(titles)):
         tutorial = Tutorial_option(landing_page=landingpage, title=titles[i], order=orders[i], link=links[i])
         tutorial.save()
     return redirect("/landingpage/"+service.service_id)
+
+@login_required
+@csrf_exempt
+def uploadimage(request, service_id, count):
+    # Handle file upload
+    images = [f.name for f in blob_service.list_blobs('img')]
+    if request.method == 'POST':
+        form = PNGForm(request.POST, request.FILES)
+        if form.is_valid():
+            docfile=request.FILES['docfile']
+            path = default_storage.save(str(docfile), ContentFile(docfile.read()))
+            file_name=str(docfile)
+            i = 0
+            while file_name in images:
+                i+=1
+                file_name=str(i)+"_"+str(docfile)
+            blob_service.create_blob_from_path(
+                'img',
+                file_name,
+                file_name,
+                content_settings=ContentSettings(content_type='image/png')
+            )
+            expire_cache('landingPage.views.landingPageEdit', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
+            # Redirect to the document list after POST
+            return redirect("/landingpage/"+service_id+"/edit/")
+    else:
+        form = PNGForm()  # A empty, unbound form
+
+    return render_to_response(
+        'landingPage/uploadImage.html',
+        {'images':images,
+         'form': form,
+         'count': count,
+         'service_id': service_id,
+         'imgLink': '/static/landingPage/img/'
+         }
+    )

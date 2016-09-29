@@ -1,5 +1,5 @@
 common
 storage
-mgmt
-servicebus
 servicemanagement
+servicebus
+mgmt

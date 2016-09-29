@@ -1,0 +1,58 @@
+
+<a style="display:none" id="edit_video{{count}}" href="" data-control="" data-expanding="false" class="wa-video-thumbnail _storage-video-popup" title="">
+    <img src="" alt="" class="thumbnail" />
+    <img class="play-icon" src="{{imgLink}}VideoPlay.png" />
+    <span class="metadata">
+        <span class="date">
+            <span></span>
+            <span></span>
+        </span>
+    </span>
+</a>
+<p style="display:none" id="des_edit_video{{count}}">
+</p>
+<div id="video_editing_{{count}}" style="display:block">
+    <div>
+        <div>标题</div><textarea style="width:300px;height:20px" id="video_title_{{count}}"></textarea>
+    </div>
+    <div>
+        <div>缩略图</div>
+<select id="uploaded_images{{count}}" onchange="viewSelectedImage({{count}})">
+    {% for image in images %}
+    <option>{{ image }}</option>
+    {% endfor %}
+</select>
+<br/>
+<img id="imageViewer{{count}}" src="/static/landingPage/img/{{ images|first }}" width="300"/>
+<form action="{% url "uploadimage" service_id count %}" method="post" enctype="multipart/form-data">
+    <p>{{ form.non_field_errors }}</p>
+
+    <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+
+    <p>
+        {{ form.docfile.errors }}
+        {{ form.docfile }}
+    </p>
+
+    <p><input type="submit" value="Upload"/></p>
+</form>
+    </div>
+    <div>
+        <div>链接</div><textarea style="width:300px" id="video_url_{{count}}"></textarea>
+    </div>
+    <div>
+        <div>描述</div><textarea style="width:300px" id="video_description_{{count}}"></textarea>
+    </div>
+    <div>
+        <div>发布时间</div><textarea style="width:300px" id="video_publishDate_{{count}}"></textarea>
+    </div>
+    <div>
+        <div>时长</div><textarea style="width:300px" id="video_duration_{{count}}"></textarea>
+    </div>
+</div>
+<a href="javascript:editField('edit_video{{count}}', 'video')" title="编辑">
+    <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px" />
+</a>
+<a href="javascript:deleteField('edit_video_full{{count}}')" title="删除">
+    <img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px" />
+</a>

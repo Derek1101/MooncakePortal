@@ -114,12 +114,14 @@
                         <h1>
                             {{service_name}}文档
                         </h1>
+                        {% autoescape off %}
                         <h5>
                             {{subtitle}}
                         </h5>
                         <label for="dropdown-cta" class="wa-dropdown-label">
                             {{tutorial_message}}
                         </label>
+                        {% endautoescape %}
                         {% if options|length == 1 %}
                             <p class="tutorial-label">
                                 {{first_option_title}}
@@ -154,7 +156,7 @@
                         {% for videoLink in videoLinks%}
                             <div class="wa-spacer">
                                 <a href="{{videoLink.video_url}}" data-control="" data-expanding="false" class="wa-video-thumbnail _storage-video-popup" title="{{videoLink.title}}">
-                                    <img src="{{imgLink}}{{videoLink.image_title}}.png" alt="{{videoLink.title}}" class="thumbnail" />
+                                    <img src="{{imgLink2}}{{videoLink.image_title}}" alt="{{videoLink.title}}" class="thumbnail" />
                                     {% if azure %}
                                     <img class="play-icon" src="{{imgLink}}VideoPlay.png" />
                                     {% else %}

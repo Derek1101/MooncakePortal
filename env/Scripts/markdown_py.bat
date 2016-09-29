@@ -1,1 +1,1 @@
-@"C:\Users\Administrator\Documents\GitHub\MooncakePortal\env\Scripts\python.exe" "C:\Users\Administrator\Documents\GitHub\MooncakePortal\env\Scripts\markdown_py" %*
+@"E:\GitHub\MooncakePortal\env\Scripts\python.exe" "E:\GitHub\MooncakePortal\env\Scripts\markdown_py" %*

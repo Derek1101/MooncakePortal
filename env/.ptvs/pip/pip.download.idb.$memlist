@@ -1,8 +1,10 @@
 user_agent
 _get_used_vcs_backend
+CONTENT_CHUNK_SIZE
 PyPI
 PipXmlrpcTransport
 _copy_file
+auto_decode
 is_archive_file
 CacheControlAdapter
 DownloadProgressSpinner
@@ -22,9 +24,9 @@ unpack_http_url
 urllib3
 splitext
 urllib_request
-os
+tempfile
 is_url
-_download_http_url
+os
 re
 FileCache
 _scheme_re
@@ -35,7 +37,7 @@ LockError
 mimetypes
 platform
 is_file_url
-rmtree
+unpack_url
 email
 get_file_content
 unpack_file
@@ -53,8 +55,8 @@ _check_download_dir
 _download_url
 HTTPBasicAuth
 unpack_file_url
-backup_dir
 is_dir_url
+backup_dir
 HTTPAdapter
 HAS_TLS
 format_size
@@ -66,7 +68,7 @@ absolute_import
 SafeFileCache
 getpass
 url_to_path
-tempfile
+_download_http_url
 write_delete_marker_file
 InstallationError
 check_path_owner
@@ -75,7 +77,7 @@ SETUPTOOLS_SHIM
 ARCHIVE_EXTENSIONS
 _copy_dist_from_dir
 BaseAdapter
-unpack_url
+rmtree
 display_path
 logger
 requests

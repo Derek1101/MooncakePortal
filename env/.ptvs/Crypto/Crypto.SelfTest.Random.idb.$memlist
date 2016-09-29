@@ -1,9 +1,9 @@
 test_random
 test_rpoolcompat
 test__UserFriendlyRNG
-Fortuna
+OSRNG
 __revision__
 suite
 get_tests
-OSRNG
+Fortuna
 unittest

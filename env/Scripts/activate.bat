@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=C:\Users\Administrator\Documents\GitHub\MooncakePortal\env"
+set "VIRTUAL_ENV=E:\GitHub\MooncakePortal\env"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"

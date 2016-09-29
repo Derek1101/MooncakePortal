@@ -1,4 +1,4 @@
-#!C:\Users\Administrator\Documents\GitHub\MooncakePortal\env\Scripts\python.exe
+#!E:\GitHub\MooncakePortal\env\Scripts\python.exe
 from django.core import management
 
 if __name__ == "__main__":

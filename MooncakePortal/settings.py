@@ -20,21 +20,25 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-defualt_host = environ.get("MOONCAKEDB")
-if defualt_host == None:
-    defualt_host = "localhost"
+
+
+default_host = environ.get("MOONCAKEDB")
+if default_host == None:
+    default_host = "localhost\\SQLEXPRESS"
     default_user = ""
     default_password = ""
+    default_name = 'wacn_mooncakeportaldb'
 else:
     default_user = environ.get("MOONCAKEDBUSER")
     default_password = environ.get("MOONCAKEDBPW")
+    default_name = environ.get("MOONCAKEDBNAME")
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'wacn_mooncakeportaldb',
+        'NAME': default_name,
         'USER': default_user,
         'PASSWORD': default_password,
-        'HOST': defualt_host,
+        'HOST': default_host,
         'PORT': '5432',
         'OPTIONS': {
                 'driver': 'SQL Server Native Client 11.0',
@@ -45,18 +49,18 @@ DATABASES = {
 }
 
 
-defualt_redis_host = environ.get("REDIS_HOST")
-if defualt_redis_host == None:
-    defualt_redis_host = "localhost:6379"
+default_redis_host = environ.get("REDIS_HOST")
+if default_redis_host == None:
+    default_redis_host = "localhost:6379"
     default_redis_password = ""
 else:
-    defualt_redis_host+=":6379"
+    default_redis_host+=":6379"
     default_redis_password = environ.get("REDIS_KEY")
 
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': defualt_redis_host,
+        'LOCATION': default_redis_host,
         'OPTIONS': {
             'DB': 1,
             'PASSWORD': default_redis_password,

@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^updateEncoding/$', views.updateEncoding, name='updateEncoding'),
     url(r'^new/$', views.new_landingpage, name='new_landingpage'),
     url(r'^addlandingpage/$', views.addlandingpage, name='addlandingpage'),
+    url(r'^uploadimage/(?P<service_id>[^/]+)/(?P<count>[0-9]+)/$', views.uploadimage, name='uploadimage'),
     url(r'^(?P<service_id>[^/]+)/$', views.landingPage, name='landingPage'),
     url(r'^(?P<service_id>[^/]+)/edit/$', views.landingPageEdit, name='landingPageEdit'),
 ]

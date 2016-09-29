@@ -20,9 +20,9 @@ absolute_import
 shutil
 check_compatibility
 dist_info_re
-StringIO
-call_subprocess
 canonicalize_name
+PIP_DELETE_MARKER_FILENAME
+call_subprocess
 re
 hashlib
 Parser
@@ -52,7 +52,7 @@ tempfile
 urlsafe_b64encode
 uninstallation_paths
 ScriptMaker
-PIP_DELETE_MARKER_FILENAME
+StringIO
 pep425tags
 stat
 SETUPTOOLS_SHIM

@@ -34,7 +34,7 @@
         {% for videoLink in videoLinks%}
         <li>
             <a href="{{videoLink.video_url}}" id="landing_page_{{service_id}}_video_{{forloop.counter}}" class="video-content" data-media="azmedia" data-name="azuremediaplayer1">
-                <img src="{{imgLink}}{{videoLink.image_title}}.png" alt="{{videoLink.title}}" />
+                <img src="{{imgLink}}{{videoLink.image_title}}" alt="{{videoLink.title}}" />
                 <span class="video-play"><i></i></span>
                 <div class="video-data">{{videoLink.publish_time}}<span>{{videoLink.duration}}</span></div>
             </a>

@@ -606,7 +606,7 @@
             }
             else if(type == "video"){
                 if(!editting[id]){
-                    textareanotclosed+=6;
+                    textareanotclosed+=5;
                     edit_video = document.getElementById(id);
                     edit_video.style.display = "none";
                     des_edit_video = document.getElementById("des_"+id);
@@ -616,7 +616,7 @@
                     editting[id] = true;
                 }
                 else{
-                    textareanotclosed-=6;
+                    textareanotclosed-=5;
                     link = document.getElementById(id);
                     thumbnail = link.getElementsByClassName("thumbnail")[0];
                     dateAndDuration = link.getElementsByClassName("date")[0].getElementsByTagName("span");
@@ -626,7 +626,7 @@
                     dateAndDuration[1].innerHTML = document.getElementById("video_publishDate_"+video_counter_str).value;
                     link.title = document.getElementById("video_title_"+video_counter_str).value;
                     dateAndDuration[0].innerHTML = document.getElementById("video_duration_"+video_counter_str).value;
-                    thumbnail.src = "{{imgLink}}" + document.getElementById("video_image_title_"+video_counter_str).value+".png";
+                    thumbnail.src = "{{imgLink}}" + document.getElementById("uploaded_images"+video_counter_str).value;
                     descr.innerHTML = document.getElementById("video_description_"+video_counter_str).value;
                     link.style.display = "block";
                     descr.style.display = "block";
@@ -641,6 +641,10 @@
             textareanotclosed-=textareaChild.length;
             element.parentElement.removeChild(element);
             if(id.indexOf("edit_video_full")>-1){
+                video_block = id.replace("edit_video_full", "edit_video");
+                if(!editting[video_block]){
+                    textareanotclosed+=textareaChild.length;
+                }
                 if(video_count==3){
                     document.getElementById("edit_video_add").style.display="block";
                 }
@@ -686,24 +690,41 @@
 
         var video_count = {{videoLinks|length }};
         var next_video = {{videoLinks|length }};
-        var newVideoTemplate = '<a style="display:none" id="edit_video@@forloop.counter@@" href="" data-control="" data-expanding="false" class="wa-video-thumbnail _storage-video-popup" title="">\n<img src="" alt="" class="thumbnail" />\n<img class="play-icon" src="{{imgLink}}VideoPlay.png" />\n<span class="metadata">\n<span class="date">\n<span></span>\n<span></span>\n</span>\n</span>\n</a>\n<p style="display:none" id="des_edit_video@@forloop.counter@@">\n</p>\n<div id="video_editing_@@forloop.counter@@" style="display:block">\n<div>\n<div>标题</div><textarea style="width:300px;height:20px" id="video_title_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>缩略图标题</div><textarea style="width:300px" id="video_image_title_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>链接</div><textarea style="width:300px" id="video_url_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>描述</div><textarea style="width:300px" id="video_description_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>发布时间</div><textarea style="width:300px" id="video_publishDate_@@forloop.counter@@"></textarea>\n</div>\n<div>\n<div>时长</div><textarea style="width:300px" id="video_duration_@@forloop.counter@@"></textarea>\n</div>\n</div>\n<a href="javascript:editField(\'edit_video@@forloop.counter@@\', \'video\')" title="编辑">\n<img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>\n</a>\n<a href="javascript:deleteField(\'edit_video_full@@forloop.counter@@\')" title="删除">\n<img src="/static/landingPage/img/delete.png" style="width:20px;height:20px;margin-bottom:0px"/>\n</a>'
         function add_video(){
-            textareanotclosed+=6;
+            textareanotclosed+=5;
             edit_video_add = document.getElementById("edit_video_add");
             div = document.createElement("div");
             div.className = "wa-spacer";
             div.id = "edit_video_full"+(next_video+1);
-            div.innerHTML = newVideoTemplate.replaceAll("@@forloop.counter@@", next_video+1)
+            editting["edit_video"+(next_video+1)] = true;
             next_video++;
             video_count++;
             edit_video_add.parentElement.insertBefore(div, edit_video_add);
             if(video_count>=3){
                 edit_video_add.style.display="none";
             }
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+            {
+                xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    div.innerHTML = xmlhttp.responseText
+                    document.getElementById("cover").style.display = "none";
+                }
+            }
+            xmlhttp.open("GET", "/landingpage/uploadimage/{{service_id}}/"+next_video, true);
+            xmlhttp.send();
+            document.getElementById("cover").style.display = "block";
         }
         
         function submitPage(){
-            if(textareanotclosed>0){
+            if(textareanotclosed!=0){
                 alert("TextArea not closed");
                 return false;
             }
@@ -728,7 +749,7 @@
                 if(title != null){
                     video = new Object();
                     video.Title = title.value;
-                    video.ImageUrl = document.getElementById("video_image_title_"+i).value;
+                    video.ImageUrl = document.getElementById("uploaded_images"+i).value;
                     video.VideoUrl = document.getElementById("video_url_"+i).value;
                     video.Description = document.getElementById("video_description_"+i).value;
                     video.PublishTime = document.getElementById("video_publishDate_"+i).value;
@@ -795,8 +816,24 @@
 
         function getContentJsonStr(){
             contentJson = new Object();
-            contentJson.subtitle = document.getElementById("edit_subtitle").textContent.trim();
-            contentJson.tutorial_message =  document.getElementById("edit_tutorial_message").textContent.trim();
+            edit_subtitle = document.getElementById("edit_subtitle");
+            edit_tutorial_message =  document.getElementById("edit_tutorial_message");
+            as = edit_subtitle.getElementsByTagName("a");
+            for(j=0; j<=as.length; j++){
+                if(as[j].title=="编辑"){
+                    edit_subtitle.removeChild(as[j]);
+                    break;
+                }
+            }
+            as = edit_tutorial_message.getElementsByTagName("a");
+            for(j=0; j<=as.length; j++){
+                if(as[j].title=="编辑"){
+                    edit_tutorial_message.removeChild(as[j]);
+                    break;
+                }
+            }
+            contentJson.subtitle = edit_subtitle.innerHTML.trim();
+            contentJson.tutorial_message =  edit_tutorial_message.innerHTML.trim();
             contentJson.update_search_links = "/what-is-new/";
             return contentJson;
         }
@@ -846,6 +883,13 @@
             }
         }
     </script>
+    <script>
+        function viewSelectedImage(i) {
+            selectList = document.getElementById("uploaded_images"+i);
+            imageViewer = document.getElementById("imageViewer"+i);
+            imageViewer.src = "{{imgLink2}}" + selectList.value;
+        }
+    </script>
     <style>
         .old-main-container {
             width: 100% !important;
@@ -879,6 +923,7 @@
                                 <div>描述</div><textarea id="meta_description" style="width:85%">{{metaDescription}}</textarea>
                             </div>
                         </div>
+                        {% autoescape off %}
                         <h5 id="edit_subtitle">
                             {{subtitle}}
                             <a href="javascript:editField('edit_subtitle', 'text')" title="编辑">
@@ -891,6 +936,7 @@
                                 <img src="/static/landingPage/img/edit.png" style="width:20px;height:20px;margin-bottom:0px"/>
                             </a>
                         </label>
+                        {% endautoescape %}
                             <div style="display:none" id="editSelectList">
                                 {% for option in options %}
                                 <div id="edit_option_{{forloop.counter}}">
@@ -932,7 +978,7 @@
                         {% for videoLink in videoLinks%}
                             <div class="wa-spacer" id="edit_video_full{{forloop.counter}}">
                                 <a  id="edit_video{{forloop.counter}}" href="{{videoLink.video_url}}" data-control="" data-expanding="false" class="wa-video-thumbnail _storage-video-popup" title="{{videoLink.title}}">
-                                    <img src="{{imgLink}}{{videoLink.image_title}}.png" alt="{{videoLink.title}}" class="thumbnail" />
+                                    <img src="{{imgLink2}}{{videoLink.image_title}}" alt="{{videoLink.title}}" class="thumbnail" />
                                     {% if azure %}
                                     <img class="play-icon" src="{{imgLink}}VideoPlay.png" />
                                     {% else %}
@@ -953,7 +999,26 @@
                                         <div>标题</div><textarea style="width:300px;height:20px" id="video_title_{{forloop.counter}}">{{videoLink.title}}</textarea>
                                     </div>
                                     <div>
-                                        <div>缩略图标题</div><textarea style="width:300px" id="video_image_title_{{forloop.counter}}">{{videoLink.image_title}}</textarea>
+                                        <div>缩略图</div>
+                                        <select id="uploaded_images{{forloop.counter}}" onchange="viewSelectedImage({{forloop.counter}})" value="{{videoLink.image_title}}">
+    {% for image in images %}
+    <option {% ifequal image videoLink.image_title %} selected {% endifequal %}>{{ image }}</option>
+    {% endfor %}
+</select>
+<br/>
+<img id="imageViewer{{forloop.counter}}" src="{{imgLink2}}{{ videoLink.image_title }}" width="300"/>
+<form action="{% url "uploadimage" service_id forloop.counter %}" method="post" enctype="multipart/form-data">
+    <p>{{ form.non_field_errors }}</p>
+
+    <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+
+    <p>
+        {{ form.docfile.errors }}
+        {{ form.docfile }}
+    </p>
+
+    <p><input type="submit" value="Upload"/></p>
+</form>
                                     </div>
                                     <div>
                                         <div>链接</div><textarea style="width:300px" id="video_url_{{forloop.counter}}">{{videoLink.video_url}}</textarea>

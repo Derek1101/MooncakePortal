@@ -1,5 +1,5 @@
-common
-storage
 compute
 resource
+common
+storage
 network

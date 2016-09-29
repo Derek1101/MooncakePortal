@@ -11,7 +11,6 @@ retry
 dist_is_editable
 FakeFile
 StringIO
-canonicalize_name
 ask_path_exists
 BZ2_EXTENSIONS
 call_subprocess
@@ -21,7 +20,8 @@ errno
 consume
 sys
 deprecation
-tarfile
+stdlib_pkgs
+encoding
 ensure_dir
 StreamWrapper
 captured_stdout
@@ -29,7 +29,7 @@ zipfile
 contextlib
 _make_build_dir
 untar_file
-lzma
+current_umask
 InstallationError
 os
 re
@@ -65,14 +65,15 @@ bz2
 format_size
 virtualenv_no_global
 SUPPORTED_EXTENSIONS
-stdlib_pkgs
+tarfile
 TAR_EXTENSIONS
 std_logging
 ZIP_EXTENSIONS
 absolute_import
 console_to_str
 splitext
-current_umask
+io
+lzma
 write_delete_marker_file
 file_contents
 egg_link_path
