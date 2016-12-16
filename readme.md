@@ -1,10 +1,10 @@
-#Test environment for landing page
+# Mooncake Content Team Portal
 
-This is the test environment for landing page. The page can be achieved on:
+This is the Mooncake Content Team Portal. The page can be achieved on:
 
-		http://firstwebapp.chinacloudsites.cn/landingpage/
+		http://acncontentteam.azurewebsites.net/
 
-Since it is a free websites from an Azure 1rmb trial subscription, the loading of the pages is quite slow. So it's better to have it run locally.
+The site includes the UT system for the Content Team, ACN Documentation Landing Page Generator.
 
 ### Local setting
 
@@ -23,15 +23,15 @@ Since it is a free websites from an Azure 1rmb trial subscription, the loading o
 
 	then, you will get the page on:
 		
-		http://localhost:8000/landingpage/
+		http://localhost:8000/
 
-### Access to my local pages
+### Access to my local site
 
 If you don't want to run your own environment, follow the steps below, then you can access my local pages.
 
 1. Add the following line to your host file.
 
-		10.168.174.195		test.com
+		10.168.176.1		test.com
 
 	the host file of your system can be achived here.
 		
@@ -41,10 +41,8 @@ If you don't want to run your own environment, follow the steps below, then you 
 
 2. Now, you can access the pages on:
 
-		http://test.com:8080/landingpage/
-
-	If and only if I am running the server. Server will be running from 9:00am to 6:00pm at work days.
-
-3. If you still think the environment is slow, you should run your own database locally. Some basic data is set in the project, hardcoded, so after your database is set, make the migrations and sync the database, you will get a running site.
+		http://test.com:8080/
 
 4. Futher information can be found on the django official site.
+
+Note: My local site will be available only if the Azure site is down.
