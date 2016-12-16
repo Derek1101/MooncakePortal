@@ -7,7 +7,7 @@
       ]]>
     </bodyText>
     <umbracoNaviHide>0</umbracoNaviHide>
-    <pageTitle>{{html_title}}</pageTitle>
+    <pageTitle>{{html_title}} | Azure</pageTitle>
     <metaKeywords>{{metaKeywords}}</metaKeywords>
     <metaDescription><![CDATA[{{metaDescription}}]]></metaDescription>
     <linkid>case-studies-Aile</linkid>

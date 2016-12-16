@@ -779,6 +779,7 @@
     <Content Include="landingPage\templates\landingPage\frame.html" />
     <Content Include="landingPage\templates\landingPage\frame_edit.html" />
     <Content Include="landingPage\templates\landingPage\index.html" />
+    <Content Include="landingPage\templates\landingPage\jsonNavGenerator.html" />
     <Content Include="landingPage\templates\landingPage\newTutorialOptionTemplate.html" />
     <Content Include="landingPage\templates\landingPage\page.html" />
     <Content Include="landingPage\templates\landingPage\selectListTemplate.html" />
