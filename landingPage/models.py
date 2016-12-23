@@ -34,6 +34,7 @@ class Landing_page(models.Model):
     update_search_link = models.CharField(max_length=255)
     newLinkCount = models.IntegerField(default=1)
     newGroupCount = models.IntegerField(default=0)
+    historyUpdateCount = models.IntegerField(default=3)
 
     def __str__(self):
         return self.service.service_name

@@ -24,17 +24,17 @@ def navigationParse(line, service_name, service_id):
             continue
         group = {}
         li = list(child.children)
-        a = li[1]
+        a = li[0]
         group["group"]=a.contents[0]
         group["id"] = "left_nav_first_level_"+service_id+"_"+str(group_i)
-        ul = li[3]
+        ul = li[2]
         articles = []
         article_i = 0
         for gantchild in ul.children:
             if str(gantchild) == ' ':
                 continue
             article = {}
-            article_a = list(gantchild.children)[1]
+            article_a = list(gantchild.children)[0]
             article["title"] = article_a.contents[0]
             article["id"] = "left_nav_second_level_"+service_id+"_"+str(group_i)+"_"+str(article_i)
             article["link"] = article_a.attrs["href"]

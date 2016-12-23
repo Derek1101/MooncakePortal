@@ -824,6 +824,7 @@
     <Content Include="SOTracker\templates\SOTracker\index.html" />
     <Content Include="UT\static\UT\img\left.png" />
     <Content Include="UT\static\UT\img\right.png" />
+    <Content Include="UT\templates\UT\reportForAll.html" />
     <Content Include="UT\templates\UT\selectArticles.html" />
     <Content Include="UT\templates\UT\articleList.html" />
     <Content Include="UT\templates\UT\addArticles.html" />

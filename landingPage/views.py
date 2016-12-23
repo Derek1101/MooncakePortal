@@ -20,6 +20,7 @@ import os
 from azure.storage.blob.blockblobservice import BlockBlobService
 from os import environ
 from azure.storage.blob import ContentSettings
+from bs4 import BeautifulSoup
 
 default_storage_account = environ.get("STORAGE_ACCOUNT")
 if default_storage_account == None:
@@ -322,13 +323,14 @@ def submitpage(request, service_id):
     videoLinks = sending["videoLink"]
     service = Service.objects.get(service_id=service_id)
     landing_page = service.landing_page_set.all()[0]
+    historyUpdateCount = landing_page.historyUpdateCount
     landing_page.navigationJson = navigationJson
     landing_page.subtitle=content["subtitle"]
     landing_page.tutorial_message=content["tutorial_message"]
     landing_page.update_search_link=content["update_search_links"]
     landing_page.newLinkCount = request.POST["newLinkCount"]
     landing_page.newGroupCount = request.POST["newGroupCount"]
-    landing_page.save()
+    
     meta_data = service.meta_data_set.all()[0]
     meta_data.meta_keywords = meta["metat_keywords"]
     meta_data.meta_description=meta["meta_description"]
@@ -405,15 +407,32 @@ def submitpage(request, service_id):
             old_updates[i].save()
         order_count = len(recentUpdates)-len(old_updates)-1
         for i in range(len(old_updates),len(recentUpdates)):
+            recentUpdates[i]["update_description"], recentUpdates[i]["update_detail"] = updateATagId(recentUpdates[i]["update_description"], recentUpdates[i]["update_detail"], service_id, historyUpdateCount)
             update = Recent_update(landing_page=landing_page, order=order_count, title=recentUpdates[i]["update_title"], date=recentUpdates[i]["update_date"], description=recentUpdates[i]["update_description"], detail=recentUpdates[i]["update_detail"])
             update.save()
+            historyUpdateCount+=1
             order_count-=1
+    landing_page.historyUpdateCount = historyUpdateCount
+    landing_page.save()
     expire_cache('landingPage.views.landingPage', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     expire_cache('landingPage.views.landingPageEdit', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     expire_cache('landingPage.views.xmlnavgenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     expire_cache('landingPage.views.jsonnavgenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     expire_cache('landingPage.views.xmlpagegenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     return redirect("/landingpage/"+service_id)
+
+def updateATagId(update_description, update_detail, service_id, historyUpdateCount):
+    description_soup = BeautifulSoup(update_description,"html.parser")
+    detail_soup = BeautifulSoup(update_detail,"html.parser")
+    a_count = 1
+    historyUpdateCount = historyUpdateCount+1
+    for a in description_soup.find_all("a"):
+        a["id"]="landing_page_"+service_id+"_update_"+str(historyUpdateCount)+"_"+str(a_count)
+        a_count+=1
+    for a in detail_soup.find_all("a"):
+        a["id"]="landing_page_"+service_id+"_update_"+str(historyUpdateCount)+"_"+str(a_count)
+        a_count+=1
+    return str(description_soup), str(detail_soup)
 
 @login_required
 @csrf_exempt

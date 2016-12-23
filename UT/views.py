@@ -45,6 +45,37 @@ def mainpage(request):
     )
 
 @login_required
+def reportForAll(request):
+    user_id = request.user.id
+    if Group.objects.get(name="Administrator") in request.user.groups.all():
+        disabled = False
+    else:
+        disabled = True
+    users = Group.objects.get(name="User").user_set.all()
+    services = Service.objects.order_by("id")
+    articles = Article.objects.filter(service_id = services[0].id).order_by("filename")
+    labor_types = Labor_type.objects.order_by("id")
+    today = datetime.now(timezone(timedelta(0, 28800)))
+    start_day = today - timedelta(0, 86400*(today.day-1))
+    return render(
+        request,
+        'UT/reportForAll.html',
+        context_instance = RequestContext(request,
+        {
+            'title':'UT',
+            'year':datetime.now().year,
+            "services":services,
+            "articles":articles,
+            "labor_types":labor_types,
+            "users":users,
+            "today":datetime.strftime(today, "%Y-%m-%d"),
+            "start_day":datetime.strftime(start_day, "%Y-%m-%d"),
+            "user_id":user_id,
+            "disabled":disabled,
+        })
+    )
+
+@login_required
 def updatearticles(request, service_id):
     articles = Article.objects.filter(service_id = int(service_id)).order_by("filename")
     return render(

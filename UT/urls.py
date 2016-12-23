@@ -5,6 +5,7 @@ from . import views
 app_name = 'UT'
 urlpatterns = [
     url(r'^$', views.mainpage, name='UTmainpage'),
+    url(r'^reportForAll/$', views.reportForAll, name='reportForAll'),
     url(r'^getlogs/(?P<user_id>[0-9]+)/(?P<record_num>[0-9]+)/$', views.getLog, name='getlogs'),
     url(r'^getlogs/(?P<user_id>[0-9]+)/from(?P<start>[0-9|\-]+)to(?P<end>[0-9|\-]+)/(?P<page>[0-9]+)/$', views.getLogByDuration, name='getLogByDuration'),
     url(r'^updatearticles/(?P<service_id>[0-9]+)/$', views.updatearticles, name='UTupdatearticles'),
