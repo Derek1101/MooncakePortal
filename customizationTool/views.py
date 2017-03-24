@@ -8,4 +8,4 @@ def mainpage(request):
     return HttpResponse("Currently under maintainance.")
 
 def documentation(request):
-    return redirect("http://www.windowsazure.cn"+request.path)
+    return redirect("http://www.azure.cn"+request.path)

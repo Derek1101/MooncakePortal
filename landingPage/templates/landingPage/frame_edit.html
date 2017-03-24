@@ -890,6 +890,14 @@
             imageViewer.src = "{{imgLink2}}" + selectList.value;
         }
     </script>
+    <script>
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.ctrlKey && evt.keyCode == 83) {
+                document.getElementById("save_the_page_button").click();
+            }
+        };
+    </script>
     <style>
         .old-main-container {
             width: 100% !important;
@@ -1115,7 +1123,7 @@
             <input type="hidden" id="newGroupCount" name="newGroupCount" value="">
             <input type="hidden" id="newLinkCount" name="newLinkCount" value="">
             <div style="float:right;">
-                <input type="submit" value="保存" />
+                <input type="submit" id="save_the_page_button" value="保存" />
             </div>
         </form>
         <style>

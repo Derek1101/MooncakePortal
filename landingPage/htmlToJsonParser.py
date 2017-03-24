@@ -16,23 +16,18 @@ def navigationParse(line, service_name, service_id):
     navigationJson["id"]= "left_nav_top_level_"+service_id
     navigation = []
     soup = bs4.BeautifulSoup(line, "html.parser")
-    soup.at
     group_i = 0
-    group_children = list(list(soup.children)[0].children)
-    for child in group_children[:len(group_children)-2]:
-        if str(child) == ' ':
-            continue
+    group_children = [x for x in soup.find("ul").children if x.name=="li"]
+    for child in group_children:
         group = {}
-        li = list(child.children)
-        a = li[0]
+        a = child.find("span")
         group["group"]=a.contents[0]
         group["id"] = "left_nav_first_level_"+service_id+"_"+str(group_i)
-        ul = li[2]
+        ul = child.find("ul")
+        ul_children = [x for x in ul.children if x.name=="li"]
         articles = []
         article_i = 0
-        for gantchild in ul.children:
-            if str(gantchild) == ' ':
-                continue
+        for gantchild in ul_children:
             article = {}
             article_a = list(gantchild.children)[0]
             article["title"] = article_a.contents[0]

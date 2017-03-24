@@ -11,8 +11,9 @@ TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = (
     'localhost',
-    '10.168.174.195',
+    '10.168.177.5',
     'test.com',
+    '0.0.0.0',
 )
 
 ADMINS = (

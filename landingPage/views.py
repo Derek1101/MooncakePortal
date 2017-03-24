@@ -54,7 +54,7 @@ def landingPage(request, service_id):
     first_option_title = tutorial_options[0].title
     first_option_link = tutorial_options[0].link
     template_file = 'landingPage/frame.html'
-    navigationJson = re.sub(r"(\"https?://azure.microsoft.com(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"https://www.windowsazure.cn/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+    navigationJson = re.sub(r"(\"https?://azure.microsoft.com(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"https://www.azure.cn/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
     #navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", navigationJson)
     #navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", navigationJson)
     recentUpdates = list(landingpage.recent_update_set.all().order_by("order"))
@@ -91,7 +91,7 @@ def landingPageEdit(request, service_id):
     first_option_title = tutorial_options[0].title
     first_option_link = tutorial_options[0].link
     template_file = 'landingPage/frame_edit.html'
-    navigationJson = re.sub(r"(\"https?://azure.microsoft.com(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"https://www.windowsazure.cn/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+    navigationJson = re.sub(r"(\"https?://azure.microsoft.com(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"https://www.azure.cn/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
     #navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", navigationJson)
     #navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", navigationJson)
     recentUpdates = list(landingpage.recent_update_set.all().order_by("order"))
@@ -133,7 +133,7 @@ def index(request):
 def xmlnavgenerator(request, service_id):
     service = get_object_or_404(Service, service_id=service_id)
     landingpage = service.landing_page_set.all()[0]
-    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8000|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
+    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|www.azure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8880|127.0.0.1:8000|10.168.177.5:8880|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
     navxml = parseJsonToXml(navigationJson)
     return render_to_response('landingPage/xmlNavGenerator.html',{"xmlContent":navxml.strip()})
 
@@ -141,7 +141,7 @@ def xmlnavgenerator(request, service_id):
 def jsonnavgenerator(request, service_id):
     service = get_object_or_404(Service, service_id=service_id)
     landingpage = service.landing_page_set.all()[0]
-    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8000|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
+    navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|www.azure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8880|127.0.0.1:8000|10.168.177.5:8880|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson)
     navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/pricing/?", r"/pricing/details/\1/", navigationJson)
     navigationJson = re.sub(r"/home/features/([^/|^#|^\"|^\'|^\)|^\s]+)/calculator/?", r"/pricing/calculator/\1/", navigationJson)
     return render_to_response('landingPage/jsonNavGenerator.html',{"jsonContent":navigationJson.strip()})
@@ -178,7 +178,7 @@ def xmlpagegenerator(request, service_id):
                                 "jsLink":BLOB_PATH+"js/landingpageresponsive.js",
                                 "imgLink":BLOB_PATH+"media/"}))
     else:
-        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8000|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|www.azure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8880|127.0.0.1:8000|10.168.177.5:8880|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
         html_body = body.render(Context({"service_name":service.service_name,
                                 "subtitle":landingpage.subtitle, 
                                 "service_id":service.service_id,
@@ -234,7 +234,7 @@ def xmlpagegenerator_old(request, service_id):
                                 "jsLink":BLOB_PATH+"js/landingpageresponsive.js",
                                 "imgLink":BLOB_PATH+"media/"}))
     else:
-        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8000|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
+        navigationJson = re.sub(r"(\"https?://(azure.microsoft.com|www.windowsazure.cn|www.azure.cn|acncontentteam.azurewebsites.net|127.0.0.1:8880|127.0.0.1:8000|10.168.177.5:8880|10.168.177.43:8000)(/zh\-cn)?/)|(\"(/zh\-cn)?/)","\"/",landingpage.navigationJson).replace("'", "\\'").replace("\n", "")
         html_body = body.render(Context({"service_name":service.service_name,
                                 "subtitle":landingpage.subtitle, 
                                 "service_id":service.service_id,
@@ -419,7 +419,7 @@ def submitpage(request, service_id):
     expire_cache('landingPage.views.xmlnavgenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     expire_cache('landingPage.views.jsonnavgenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
     expire_cache('landingPage.views.xmlpagegenerator', args=[service_id], HOSTNAME=request.META['HTTP_HOST'])
-    return redirect("/landingpage/"+service_id)
+    return redirect("/landingpage/"+service_id+"/edit/")
 
 def updateATagId(update_description, update_detail, service_id, historyUpdateCount):
     description_soup = BeautifulSoup(update_description,"html.parser")
